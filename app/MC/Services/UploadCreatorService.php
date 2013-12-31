@@ -84,7 +84,7 @@ class UploadCreatorService {
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
 //        BeanstalkdQueue->push($job);
-//        Queue::push('Transcode', array('asset_id' => $asset_id, 'filepath' => $filepath, 'type'=>$type));
+       Queue::push('Transcode', array('asset_id' => $asset_id, 'filepath' => $filepath, 'type'=>$type));
 
         // save asset_user table
         $user = User::find($userId);
