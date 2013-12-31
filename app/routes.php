@@ -77,11 +77,10 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	Route::get('settings', array('as' => 'settings', 'uses' => 'SettingsController@getIndex'));
 	Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@getIndex'));
 	Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@getIndex'));
-	Route::get('queues', array('as' => 'queues', 'uses' => 'QueuesController@index'));
+	Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
 	Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));
 	Route::get('capture', array('as' => 'capture', 'uses' => 'CaptureController@index'));
 	Route::get('reports', array('as' => 'reports', 'uses' => 'ReportsController@index'));
-	
 	Route::get('help', array('as' => 'help', function() {return View::make("backend.pages.help"); }));
 });
 
@@ -135,13 +134,13 @@ Route::group(array('prefix' => 'auth'), function()
 	Route::get('privacy', function(){ return View::make('frontend.pages.privacy-policy');});
 	Route::get('terms', function(){ return View::make('frontend.pages.terms-of-service');});
 	Route::get('about-us', function(){return View::make('frontend.pages.about-us');});
-	
+
 	Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
 	Route::post('contact-us', 'ContactUsController@postIndex');
 
 // Route::get('blog/{postSlug}', array('as' => 'view-post', 'uses' => 'BlogController@getView'));
 // Route::post('blog/{postSlug}', 'BlogController@postView');
-	
+
 	# Media Manager
 	Route::get('manage', array('before' => 'cas-login', 'as' => 'manage', 'uses' => 'ManageController@index'));
 
