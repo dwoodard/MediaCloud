@@ -99,9 +99,9 @@ Breadcrumbs::register('playlists', function($breadcrumbs) {
 
 // DASHBOARD > QUEUES
 
-Breadcrumbs::register('queues', function($breadcrumbs) {
+Breadcrumbs::register('queue', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Queues', route('queues'));
+    $breadcrumbs->push('Queue', route('queue'));
 });
 
 // DASHBOARD > HISTORY
