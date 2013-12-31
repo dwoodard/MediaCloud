@@ -1,8 +1,0 @@
-/* here you can put your own css to customize and override the theme */
-.home{}
-.home .slider{}
-
-.home .steps{}
-.home .steps-hide{
-	display:none;
-}

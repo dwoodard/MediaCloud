@@ -87,6 +87,12 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 
 
 
+#Frontend Static Pages
+Route::get('faq', array('as' => 'faq', function() {return View::make("frontend.faq"); }));
+Route::get('privacy-policy', array('as' => 'privacy-policy', function() {return View::make("frontend.pages.privacy-policy"); }));
+Route::get('terms-of-services', array('as' => 'terms-of-services', function() {return View::make("frontend.pages.terms-of-services"); }));
+
+
 
 
 /*
@@ -143,7 +149,7 @@ Route::group(array('prefix' => 'auth'), function()
 // Route::post('blog/{postSlug}', 'BlogController@postView');
 	
 	# Media Manager
-	Route::get('manage', array('before' => 'cas-login', 'as' => 'manage', 'uses' => 'ManageController@index'));
+	Route::get('manage', array('as' => 'manage', 'uses' => 'ManageController@index'));
 
 
 
