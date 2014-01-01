@@ -1,5 +1,7 @@
 <?php
 
+namespace queue;
+
 use Monolog\Logger;
 use Monolog\Handler\NullHandler;
 use FFMpeg\FFProbe;
