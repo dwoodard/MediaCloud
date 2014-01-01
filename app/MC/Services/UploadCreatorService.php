@@ -9,6 +9,7 @@ use Illuminate\Queue\BeanstalkdQueue;
 use MC\Exceptions\ValidationException;
 use MC\Validators\UploadValidator;
 use Mimes;
+
 use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use User;
@@ -83,8 +84,7 @@ class UploadCreatorService {
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
 //        BeanstalkdQueue->push($job);
-        $queue = new BeanstalkdQueue();
-        $queue->push('Transcode', array('asset_id' => $asset_id, 'filepath' => $filepath, 'type'=>$type));
+       Queue::push('Transcode', array('asset_id' => $asset_id, 'filepath' => $filepath, 'type'=>$type));
 
         // save asset_user table
         $user = User::find($userId);

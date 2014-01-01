@@ -4,12 +4,6 @@ namespace queue;
 
 use Monolog\Logger;
 use Monolog\Handler\NullHandler;
-use FFMpeg\FFProbe;
-use FFMpeg\FFMpeg;
-use FFMpeg\Format\Video\X264;
-use FFMpeg\Format\Video;
-use FFMpeg\Format\Audio\Mp3;
-use Illuminate\Filesystem\Filesystem;
 
 class Transcode {
 
