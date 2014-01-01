@@ -23,12 +23,17 @@ $original = $resource_path . '/original';
 
 
 if (!file_exists($resource_path) and !is_dir($resource_path)) {
-    mkdir($resource_path);
+  $oldmask = umask(0);
+  mkdir($resource_path,0777);
+  umask($oldmask);
 }
 
 
 if (!file_exists($original) and !is_dir($original)) {
-    mkdir($original);
+  
+  $oldmask = umask(0);
+  mkdir($original,0777);
+  umask($oldmask);
 }
 
 
