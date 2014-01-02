@@ -49,9 +49,7 @@ sudo ln -fs /vagrant /var/www
 
 
 echo "--- Set DocumentRoot to public ---"
-DocumentRoot /var/www/public
-sed -i "s/.*DocumentRoot /var/www.*/DocumentRoot /var/www/public/" /etc/apache2/sites-enabled/000-default.conf
-
+sudo sed -i "s/DocumentRoot \/var\/www/DocumentRoot \/var\/www\/public/" /etc/apache2/sites-enabled/000-default.conf
 
 echo "--- What developer codes without errors turned on? Not you ---"
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
@@ -174,5 +172,7 @@ sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
+
+
 
 

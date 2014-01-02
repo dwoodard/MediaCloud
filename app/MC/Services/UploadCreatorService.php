@@ -85,7 +85,7 @@ class UploadCreatorService {
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
 //        Queue::push('DoSomethingIntensive', array('asset_id' => 1));
-         Queue::push('Transcode', array('asset_id' => $asset_id);
+         Queue::push('Transcode', array('asset_id' => $asset->id));
 
         // save asset_user table
         $user = User::find($userId);

@@ -1,7 +1,5 @@
 <?php
 
-namespace queue;
-
 use Monolog\Logger;
 use Monolog\Handler\NullHandler;
 
@@ -23,8 +21,10 @@ class Transcode {
         {
             $job->delete();
         }
-
         
+        File::append(storage_path() . '/queue.txt', microtime() . '----' . $data['asset_id'] . PHP_EOL);
+        $job->delete();
+        die();
 
         $filepath = normalizePath($data['filepath']);
 
