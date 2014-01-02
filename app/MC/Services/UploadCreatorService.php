@@ -5,14 +5,15 @@ namespace MC\Services;
 use Asset;
 
 use Config;
-use Illuminate\Queue\BeanstalkdQueue;
+use User;
+use Mimes;
+use Queue;
+
 use MC\Exceptions\ValidationException;
 use MC\Validators\UploadValidator;
-use Mimes;
 
 use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use User;
 
 
 
@@ -83,12 +84,14 @@ class UploadCreatorService {
 
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
-//        BeanstalkdQueue->push($job);
-       Queue::push('Transcode', array('asset_id' => $asset_id, 'filepath' => $filepath, 'type'=>$type));
+//        Queue::push('DoSomethingIntensive', array('asset_id' => 1));
+         Queue::push('Transcode', array('asset_id' => $asset_id);
 
         // save asset_user table
         $user = User::find($userId);
         $user->assets()->attach($assetId);
+
+        echo json_encode(array('user'=>$user->toArray(), 'asset'=>$asset->toArray()));
 
     }
 

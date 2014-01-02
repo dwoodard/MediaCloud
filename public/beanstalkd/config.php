@@ -1,5 +1,5 @@
 <?php
 
 $config = array(
-    'servers' => array( /*'localhost:11300'*/)
+    'servers' => array( 'localhost:11300')
 );

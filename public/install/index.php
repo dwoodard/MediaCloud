@@ -197,11 +197,11 @@ if (preg_match('/Linux/',php_uname())){
 						<div class="row">
 							<div class="span3">
 								<label><strong>Host</strong></label>
-								<input type="text" name="queue-beanstalkd-host" placeholder="localhost" />
+								<input type="text" name="queue-beanstalkd-host" placeholder="localhost" value="localhost" />
 							</div>
 							<div class="span2">
 								<label><strong>Queue</strong></label>
-								<input type="text" name="queue-beanstalkd-queue" placeholder="default" />
+								<input type="text" name="queue-beanstalkd-queue" placeholder="default" value="default" />
 							</div>
 						</div>
 					</div>

@@ -6,7 +6,7 @@
 * APP Bindings
 */
 
-use Illuminate\Queue\BeanstalkdQueue;
+// use Illuminate\Queue\BeanstalkdQueue;
 
 App::bind('AssetRepository', 'Asset');
 

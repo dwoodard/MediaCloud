@@ -6,12 +6,13 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"edvinaskrucas/notification": "1.*",
-		"cartalyst/sentry": "2.0.*@dev",
+		"cartalyst/sentry": "v2.1.0",
 		"dwoodard/phpcas": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "~2.1.0",
 		"iron-io/iron_mq": "1.4.8",
 		"codescale/ffmpeg-php": "2.7.0",
-		"pda/pheanstalk": "dev-master"
+		"pda/pheanstalk": "dev-master",
+		"phpmyadmin/phpmyadmin": "dev-master"
 	},
 	"require-dev": {
 		"mockery/mockery": "dev-master",

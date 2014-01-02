@@ -23,7 +23,9 @@ class Transcode {
         {
             $job->delete();
         }
+
         
+
         $filepath = normalizePath($data['filepath']);
 
 
