@@ -1,4 +1,0 @@
-[2013-09-12 23:03:17] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /opt/MediaCloud/app/routes.php:27
-Stack trace:
-#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
-#1 {main} [] []

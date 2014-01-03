@@ -1,9 +1,0 @@
-[2013-08-28 02:06:50] log.ERROR: exception 'InvalidArgumentException' with message 'Command "server" is not defined.
-
-Did you mean this?
-    serve' in /opt/MediaCloud/vendor/symfony/console/Symfony/Component/Console/Application.php:617
-Stack trace:
-#0 /opt/MediaCloud/vendor/symfony/console/Symfony/Component/Console/Application.php(188): Symfony\Component\Console\Application->find('server')
-#1 /opt/MediaCloud/vendor/symfony/console/Symfony/Component/Console/Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#2 /opt/MediaCloud/artisan(59): Symfony\Component\Console\Application->run()
-#3 {main} [] []
