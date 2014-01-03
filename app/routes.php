@@ -141,6 +141,33 @@ Route::group(array('prefix' => 'auth'), function()
 // Route::get('blog/{postSlug}', array('as' => 'view-post', 'uses' => 'BlogController@getView'));
 // Route::post('blog/{postSlug}', 'BlogController@postView');
 
+
+
+	# Media Player
+
+Route::group(array('prefix' => 'player'), function()
+{
+	Route::get('single/{alphaID}', array('as' => 'single', 'uses' => 'PlayerController@single'));
+	Route::get('playlist/{id}', array('as' => 'playlist', 'uses' => 'PlayerController@playlist'));
+	Route::get('collection/{id}', array('as' => 'collection', 'uses' => 'PlayerController@collection'));
+
+});
+
+
+
+Route::group(array('prefix' => 'asset'), function()
+{
+	Route::get('{alphaID}', array('as' => 'single', 'uses' => 'AssetsController@file'));
+	Route::get('{alphaID}/thumb', array('as' => 'single', 'uses' => 'AssetsController@thumb'));
+
+});
+
+
+
+
+
+
+
 	# Media Manager
 	Route::get('manage', array('before' => 'cas-login', 'as' => 'manage', 'uses' => 'ManageController@index'));
 

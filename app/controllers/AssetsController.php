@@ -213,5 +213,10 @@ class AssetsController extends PermissionsController{
 		}
 	}
 
+	public function file($alphaID)
+	{
+		echo $alphaID;
+	}
+
 
 }
