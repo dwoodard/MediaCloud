@@ -200,12 +200,17 @@ class AssetsController extends PermissionsController{
 
 		//Check CPA if asset exsists
 		//Remove pivot asset
-
 		// Delete the asset
 		$asset->delete();
 
+		if (Request::ajax())
+		{
+			return json_encode(array('result' => 'success' ));	
+		}
+		else {
 		// Redirect to the assets management page
 		return Redirect::to('admin/assets')->with('success', Lang::get('admin/assets/message.delete.success'));
+		}
 	}
 
 

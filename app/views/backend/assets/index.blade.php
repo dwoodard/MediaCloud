@@ -6,8 +6,42 @@ User Management ::
 @parent
 @stop
 
+@section('scripts')
+
+<script>
+	$(document).ready(function() {
+
+		$("[id*='delete-']").click(function(e){
+			e.preventDefault()
+			btn = $(this);
+			url = this.action;
+		// confirm dialog
+		alertify.confirm("Whooo are you Sure?! Once it's gone, it ain't comin' back!", function (e) {
+			if (e) {
+				$.ajax({
+					url: url,
+					type: 'DELETE',
+					success: function(data) {
+						data = $.parseJSON(data);
+						console.log(data);
+						if(data.result == "success"){
+							$(btn).closest('tr').hide('slow');
+						}
+					}
+				});
+			} 
+		});
+
+		})
+	});
+</script>
+
+
+@stop
+
+
 @section('content')
-               {{Breadcrumbs::render('assets')}}
+			   {{Breadcrumbs::render('assets')}}
 
 <div class="page-header">
 
@@ -58,14 +92,15 @@ User Management ::
 					<td>{{{ $asset->filepatd}}}</td>
 					<td>{{{ $asset->permissions}}}</td>
 					<td>{{{ $asset->last_viewed}}}</td>
-                    <td>{{ link_to_route('asset.edit', 'Edit', array($asset->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                   		 <form method="POST" action="{{action('AssetsController@destroy',$asset->id )}}" accept-charset="UTF-8">
-                    		<input type="hidden" name="_method" value="DELETE" />
-                    		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        	{{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                    	</form>
-                    </td>
+					<td>{{ link_to_route('asset.edit', 'Edit', array($asset->id), array('class' => 'btn btn-info')) }}</td>
+					<td>
+						 <form id="delete-{{ $asset->id}}" method="POST" action="{{action('AssetsController@destroy',$asset->id )}}" accept-charset="UTF-8">
+							<input type="hidden" name="_method" value="DELETE" />
+							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+							{{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+
+						</form>
+					</td>
 				</tr>
 			@endforeach
 		</tbody>

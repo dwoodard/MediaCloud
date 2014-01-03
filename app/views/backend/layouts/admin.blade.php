@@ -35,6 +35,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="/_admin/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"/>
    <!-- END PAGE LEVEL PLUGIN STYLES -->
    <!-- BEGIN THEME STYLES -->
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css">
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css">
    <link href="/_admin/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
    <link href="/_admin/assets/css/style.css" rel="stylesheet" type="text/css"/>
    <link href="/_admin/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
@@ -499,6 +501,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <script src="/_admin/assets/scripts/app.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/index.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/tasks.js" type="text/javascript"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js" type="text/javascript"></script>
 
    @yield('scripts')
 
