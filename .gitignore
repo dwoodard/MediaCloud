@@ -7,11 +7,11 @@ composer.lock
 /app/config/database.php
 /app/config/settings.php
 /app/config/queue.php
-app/storage/sessions/*
-app/storage/views/*
-app/storage/cache/*
-app/storage/logs/*
-app/storage/meta/*
+/app/storage/sessions/*
+/app/storage/views/*
+/app/storage/cache/*
+/app/storage/logs/*
+/app/storage/meta/*
 /vendor
 /uploads
 /media

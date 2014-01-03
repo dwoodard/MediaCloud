@@ -14,11 +14,11 @@ class Transcode {
         $mediaPathOriginal = base_path(). "/" . Config::get('settings.media-path-original');
         $mediaPath = base_path(). "/" . Config::get('settings.media-path');
 
-        $ofp = "$mediaPathOriginal/$originalFilename";
+        $original = "$mediaPathOriginal/$originalFilename";
 
 
 
-        File::append(storage_path() . '/logs/queue.txt', $asset->id . '----' . $ofp .'----' . "$mediaPath/$filenameThumb" .'----' . "$mediaPath/$filename.mp4" . PHP_EOL);
+        File::append(storage_path() . '/logs/queue.txt', $asset->id . '--' . $asset->type .'--' . $original .'--' . "$mediaPath/$filenameThumb" .'--' . "$mediaPath/$filename.mp4" . PHP_EOL);
 
 
 
@@ -31,31 +31,27 @@ class Transcode {
         {
             case 'video':
 
-                exec("sudo ffmpeg -i $ofp -ss 5 $mediaPath/$filenameThumb", $out, $return);
+                exec("sudo ffmpeg -i $original -ss 5 $mediaPath/$filenameThumb", $out, $return);
 
                  switch($asset->original_ext){
                     case "mov":
-                        exec("sudo ffmpeg -i $ofp -vcodec copy -acodec aac -strict experimental -ac 2 -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
+                        exec("sudo ffmpeg -i $original -vcodec copy -acodec aac -strict experimental -ac 2 -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
                     break;
 
                     case "flv":
-                        exec("sudo ffmpeg -i $ofp -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
+                        exec("sudo ffmpeg -i $original -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
                     break;
 
-                    case default:
-                        exec("sudo ffmpeg -i $ofp $mediaPath/$filename.mp4", $out, $return);
+                    default:
+                        exec("sudo ffmpeg -i $original $mediaPath/$filename.mp4", $out, $return);
                     break;
                 }
 
-
-
-                $asset->filepath = $transcode_dir;
-                 
                 break;
 
             case 'audio':
-                exec("sudo ffmpeg -i $ofp $mediaPathOriginal/$filename.mp3", $out, $return );
-                 
+                exec("sudo ffmpeg -i $original $mediaPathOriginal/$filename.mp3", $out, $return );
+
                 break;
         }
 

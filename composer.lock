@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e9b22d39f22dd3b6959357ccb5613a10",
+    "hash": "980afb739b5bcdbacdb582466a856ad7",
     "packages": [
         {
             "name": "cartalyst/sentry",
-            "version": "dev-master",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "b59905eb0e04ca85737f6d2a57c1ef34e8f56dc6"
+                "reference": "f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/b59905eb0e04ca85737f6d2a57c1ef34e8f56dc6",
-                "reference": "b59905eb0e04ca85737f6d2a57c1ef34e8f56dc6",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d",
+                "reference": "f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "laravel",
                 "security"
             ],
-            "time": "2013-12-24 16:29:49"
+            "time": "2013-12-07 21:12:19"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -963,47 +963,6 @@
             "time": "2013-04-03 09:09:52"
         },
         {
-            "name": "phpmyadmin/phpmyadmin",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpmyadmin/phpmyadmin.git",
-                "reference": "89b57f6d87f607f61003a43aa67637dbc258d7cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpmyadmin/phpmyadmin/zipball/89b57f6d87f607f61003a43aa67637dbc258d7cb",
-                "reference": "89b57f6d87f607f61003a43aa67637dbc258d7cb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "application",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "The phpMyAdmin Team",
-                    "email": "phpmyadmin-devel@lists.sourceforge.net",
-                    "homepage": "http://www.phpmyadmin.net/home_page/team.php"
-                }
-            ],
-            "description": "MySQL web administration tool",
-            "homepage": "http://www.phpmyadmin.net/",
-            "keywords": [
-                "mysql",
-                "phpmyadmin",
-                "web"
-            ],
-            "time": "2014-01-02 17:17:08"
-        },
-        {
             "name": "phpseclib/phpseclib",
             "version": "dev-master",
             "source": {
@@ -1348,12 +1307,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "4534a0033d379d9d5a6031ead6a31c9813b9e03b"
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/4534a0033d379d9d5a6031ead6a31c9813b9e03b",
-                "reference": "4534a0033d379d9d5a6031ead6a31c9813b9e03b",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
                 "shasum": ""
             },
             "require": {
@@ -1392,7 +1351,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-12-31 13:43:26"
+            "time": "2014-01-01 08:14:50"
         },
         {
             "name": "symfony/css-selector",
@@ -1710,12 +1669,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "979b5cf2bdf1f5785a8faa30e2cea97044b31c4d"
+                "reference": "51dba46f98ff2ee026cb0591088daa117d2a5025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/979b5cf2bdf1f5785a8faa30e2cea97044b31c4d",
-                "reference": "979b5cf2bdf1f5785a8faa30e2cea97044b31c4d",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/51dba46f98ff2ee026cb0591088daa117d2a5025",
+                "reference": "51dba46f98ff2ee026cb0591088daa117d2a5025",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1710,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2013-12-31 13:43:26"
+            "time": "2014-01-01 08:14:50"
         },
         {
             "name": "symfony/http-kernel",
@@ -3269,10 +3228,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cartalyst/sentry": 20,
         "dwoodard/phpcas": 20,
         "pda/pheanstalk": 20,
-        "phpmyadmin/phpmyadmin": 20,
         "mockery/mockery": 20,
         "phpunit/phpunit": 20,
         "way/generators": 20
