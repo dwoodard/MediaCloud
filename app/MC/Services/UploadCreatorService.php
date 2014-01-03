@@ -71,6 +71,7 @@ class UploadCreatorService {
             $asset->title          = $attributes['title'];
             $asset->original_ext   = $attributes['original_ext'];
             $asset->type           = $attributes['type'];
+            $asset->filesize          = $attributes['filesize'];
             $asset->status         = "uploaded";
             $asset->save();
             $assetId = $asset->id;
@@ -89,9 +90,12 @@ class UploadCreatorService {
         $asset->save();
 
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
+        
+        if($asset->type == 'video' || $asset->type == 'audio'){
+           // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
+           Queue::push('Transcode', array('asset_id' => $asset->id));
+        }
 
-       // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
-       Queue::push('Transcode', array('asset_id' => $asset->id));
 
         // save asset_user table
         $user = User::find($userId);

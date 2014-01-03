@@ -78,6 +78,7 @@
         var myDropzone;
         Dropzone.options.filedrop = {
             maxFilesize: 2048,
+            addRemoveLinks: true,
             init: function () {
 
                 myDropzone = this;
