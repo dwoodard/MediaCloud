@@ -36,6 +36,8 @@ class UploadCreatorService {
 
         $filename = $file->getClientOriginalName();
         $extension =$file->getClientOriginalExtension();
+
+        $filesize = $file->getClientSize();
         $filetype = Mimes::getMimes(strtolower($extension));
 
 
@@ -46,11 +48,14 @@ class UploadCreatorService {
         $assetId = "";
         $attributes = array(
             "title" => $filename,
-            "filename_original" => $filename,
+            "original_ext" => $extension,
             "filename" => $filename,
+            "filesize" => $filesize,
             "type" => preg_replace('/(\w+)\/(.*)/','${1}',$filetype),
             "status" => "uploaded"
         );
+
+
         // If not a video or audio no need to transcode or save original out again.
         if($attributes['type'] == "video" || $attributes['type'] == "audio"){
             $destinationPath =  base_path(). "/" . Config::get('settings.media-path-original');
@@ -63,9 +68,10 @@ class UploadCreatorService {
         if($this->validator->isValid($attributes)){
             // Create a new asset
             $asset = new Asset;
-            $asset->title               = $attributes['title'];
-            $asset->type                =   $attributes['type'];
-            $asset->status              = "uploaded";
+            $asset->title          = $attributes['title'];
+            $asset->original_ext   = $attributes['original_ext'];
+            $asset->type           = $attributes['type'];
+            $asset->status         = "uploaded";
             $asset->save();
             $assetId = $asset->id;
 
@@ -84,8 +90,8 @@ class UploadCreatorService {
 
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
-//        Queue::push('DoSomethingIntensive', array('asset_id' => 1));
-         Queue::push('Transcode', array('asset_id' => $asset->id));
+       // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
+       Queue::push('Transcode', array('asset_id' => $asset->id));
 
         // save asset_user table
         $user = User::find($userId);

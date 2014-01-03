@@ -91,6 +91,14 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 
+echo "--- FFMPEG  ---"
+sudo apt-get install -y ffmpeg
+sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
+
+
+
+
+
 echo "--- Correct Time  ---"
 echo "America/Denver" | sudo tee /etc/timezone
 sudo dpkg-reconfigure --frontend noninteractive tzdata
@@ -100,9 +108,6 @@ echo "--- INSTALL SUPERVISORD  ---"
 sudo apt-get update
 sudo apt-get install -y beanstalkd supervisor
 sudo sed -i "s/.*#START.*/START yes/" /etc/default/beanstalkd
-beanstalkd -l 0.0.0.0 -p 11300
-
-sudo service beanstalkd start
 
 sudo tee -a /etc/supervisord.conf <<SUPERVISORD
 [supervisord]
@@ -172,6 +177,9 @@ sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
+sudo service beanstalkd start
+beanstalkd -l 0.0.0.0 -p 11300
+
 
 
 
