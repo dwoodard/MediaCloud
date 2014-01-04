@@ -100,58 +100,58 @@ class DemoSeeder extends Seeder {
 		$user->addGroup($group);
 /*****************************************/
 
-		// ADDING ASSETS
-		$assetsseeder = array(
-			array("title" => "Video 1", "description" => "Desc 1 - fraction", ), //user2, video 1, collection1, playlist1
-			array("title" => "Video 2", "description" => "Desc 2 - trig", ),
-			array("title" => "Video 3", "description" => "Desc 3 - addition", ),
-			array("title" => "Video 4", "description" => "Desc 4 - calc", ),
-			array("title" => "Video 5", "description" => "Desc 5 - cells", ),
-			array("title" => "Video 6", "description" => "Desc 6 - eyes", ),
-			array("title" => "Video 7", "description" => "Desc 7 - toes", ),
-			array("title" => "Video 8", "description" => "Desc 8 - physics", ),
-			array("title" => "Video 9", "description" => "Desc 9 - rocks", ),
-			array("title" => "Video 10", "description" => "Desc 10 - decimals", ),
-			array("title" => "Video 11", "description" => "Desc 11 - ", ),
-			array("title" => "Video 12", "description" => "Desc 12 - ", ),
-			array("title" => "Video 13", "description" => "Desc 13 - ", ),
-			array("title" => "Video 14", "description" => "Desc 14 - ", ),
-			array("title" => "Video 15", "description" => "Desc 15 - ", ),
-			array("title" => "Video 16", "description" => "Desc 16 - ", ),
-			array("title" => "Video 17", "description" => "Desc 17 - ", ),
-			array("title" => "Video 18", "description" => "Desc 18 - ", ),
-			array("title" => "Video 19", "description" => "Desc 19 - ", ),
-			array("title" => "Video 20", "description" => "Desc 20 - ", ),
-			);
-		DB::table('assets')->insert($assetsseeder);
+		// // ADDING ASSETS
+		// $assetsseeder = array(
+		// 	array("title" => "Video 1", "description" => "Desc 1 - fraction", ), //user2, video 1, collection1, playlist1
+		// 	array("title" => "Video 2", "description" => "Desc 2 - trig", ),
+		// 	array("title" => "Video 3", "description" => "Desc 3 - addition", ),
+		// 	array("title" => "Video 4", "description" => "Desc 4 - calc", ),
+		// 	array("title" => "Video 5", "description" => "Desc 5 - cells", ),
+		// 	array("title" => "Video 6", "description" => "Desc 6 - eyes", ),
+		// 	array("title" => "Video 7", "description" => "Desc 7 - toes", ),
+		// 	array("title" => "Video 8", "description" => "Desc 8 - physics", ),
+		// 	array("title" => "Video 9", "description" => "Desc 9 - rocks", ),
+		// 	array("title" => "Video 10", "description" => "Desc 10 - decimals", ),
+		// 	array("title" => "Video 11", "description" => "Desc 11 - ", ),
+		// 	array("title" => "Video 12", "description" => "Desc 12 - ", ),
+		// 	array("title" => "Video 13", "description" => "Desc 13 - ", ),
+		// 	array("title" => "Video 14", "description" => "Desc 14 - ", ),
+		// 	array("title" => "Video 15", "description" => "Desc 15 - ", ),
+		// 	array("title" => "Video 16", "description" => "Desc 16 - ", ),
+		// 	array("title" => "Video 17", "description" => "Desc 17 - ", ),
+		// 	array("title" => "Video 18", "description" => "Desc 18 - ", ),
+		// 	array("title" => "Video 19", "description" => "Desc 19 - ", ),
+		// 	array("title" => "Video 20", "description" => "Desc 20 - ", ),
+		// 	);
+		// DB::table('assets')->insert($assetsseeder);
 
 
-		//ownership
-		$user = User::find(2);
-		$user->assets()->attach(1);
-		$user->assets()->attach(2);
-		$user->assets()->attach(10);
-		$user->assets()->attach(3);
-		$user->assets()->attach(4);
-		// $user = User::find(3);
-		$user = User::find(4);
-		$user->assets()->attach(5);
-		$user->assets()->attach(6);
-		$user->assets()->attach(7);
-		$user = User::find(5);
-		$user->assets()->attach(8);
-		$user->assets()->attach(9);
-		$user->assets()->attach(18);
-		$user->assets()->attach(19);
-		$user->assets()->attach(20);
-		$user = User::find(2);
-		$user->assets()->attach(11);
-		$user->assets()->attach(12);
-		$user->assets()->attach(13);
-		$user->assets()->attach(14);
-		$user->assets()->attach(15);
-		$user->assets()->attach(16);
-		$user->assets()->attach(17);
+		// //ownership
+		// $user = User::find(2);
+		// $user->assets()->attach(1);
+		// $user->assets()->attach(2);
+		// $user->assets()->attach(10);
+		// $user->assets()->attach(3);
+		// $user->assets()->attach(4);
+		// // $user = User::find(3);
+		// $user = User::find(4);
+		// $user->assets()->attach(5);
+		// $user->assets()->attach(6);
+		// $user->assets()->attach(7);
+		// $user = User::find(5);
+		// $user->assets()->attach(8);
+		// $user->assets()->attach(9);
+		// $user->assets()->attach(18);
+		// $user->assets()->attach(19);
+		// $user->assets()->attach(20);
+		// $user = User::find(2);
+		// $user->assets()->attach(11);
+		// $user->assets()->attach(12);
+		// $user->assets()->attach(13);
+		// $user->assets()->attach(14);
+		// $user->assets()->attach(15);
+		// $user->assets()->attach(16);
+		// $user->assets()->attach(17);
 
 
 //******************************************************

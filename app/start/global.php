@@ -107,5 +107,5 @@ require app_path().'/filters.php';
 |
 */
 require app_path().'/helpers/alpha_id.php';
-require app_path().'/helpers/normalizePath.php';
-require app_path().'/helpers/recursiveChmod.php';
+require app_path().'/helpers/functions.php';
+

@@ -2,6 +2,8 @@
 
 use MC\Exceptions\UploadException;
 use MC\Services\UploadCreatorService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class AssetsController extends PermissionsController{
 
@@ -10,7 +12,7 @@ class AssetsController extends PermissionsController{
 
 	public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
 		$this->asset = $asset;
-        $this->uploadCreator = $uploadCreator;
+		$this->uploadCreator = $uploadCreator;
 	}
 
 
@@ -48,31 +50,31 @@ class AssetsController extends PermissionsController{
 	 */
 	public function store()
 	{
-        try{
-            $this->uploadCreator->make(Input::get("userId"), Input::file('file'));
-        }
-        catch(\MC\Exceptions\ValidationException $e){
-            return $e;
-//            return Redirect::back()->withInput()->withErrors($e->getErrors());
+		try{
+			$this->uploadCreator->make(Input::get("userId"), Input::file('file'));
+		}
+		catch(\MC\Exceptions\ValidationException $e){
+			return $e;
+//      return Redirect::back()->withInput()->withErrors($e->getErrors());
 
-        }
+		}
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param int $id
 	 * @return Response
 	 */
 	public function show($assetId)
 	{
-//        return View::make('blahcs.show');
+//    return View::make('blahcs.show');
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param int $id
 	 * @return Response
 	 */
 	public function edit($assetId)
@@ -114,7 +116,7 @@ class AssetsController extends PermissionsController{
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param int $id
 	 * @return Response
 	 */
 	public function update($assetId)
@@ -142,7 +144,7 @@ class AssetsController extends PermissionsController{
 			// 'last_viewed' => 'required',
 			// 'created_at' => 'required',
 			// 'updated_at' => 'required'
-		);
+			);
 
 		// Create a new validator instance from our validation rules
 		$validator = Validator::make(Input::all(), $rules);
@@ -158,7 +160,7 @@ class AssetsController extends PermissionsController{
 		$asset->title				= e(Input::get('title'));
 		$asset->description			= e(Input::get('description'));
 		$asset->filepath			= e(Input::get('filepath'));
-		$asset->filename			= e(Input::get('filename'));
+		// $asset->filename			= e(Input::get('filename'));
 		// $asset->transcoded_url		= e(Input::get('transcoded_url'));
 		// $asset->thumbnail_url		= e(Input::get('thumbnail_url'));
 		// $asset->url					= e(Input::get('url'));
@@ -186,7 +188,7 @@ class AssetsController extends PermissionsController{
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param int $id
 	 * @return Response
 	 */
 	public function destroy($assetId){
@@ -205,18 +207,75 @@ class AssetsController extends PermissionsController{
 
 		if (Request::ajax())
 		{
-			return json_encode(array('result' => 'success' ));	
+			return json_encode(array('result' => 'success' ));
 		}
 		else {
 		// Redirect to the assets management page
-		return Redirect::to('admin/assets')->with('success', Lang::get('admin/assets/message.delete.success'));
+			return Redirect::to('admin/assets')->with('success', Lang::get('admin/assets/message.delete.success'));
 		}
 	}
 
-	public function file($alphaID)
+	public function file($alphaID,$item=null)
 	{
-		echo $alphaID;
+		// echo '?good permissions?<br>';
+
+
+		$file = '';
+
+		try {
+			$asset = Asset::where('alphaID', '=', $alphaID)->firstOrFail();
+		}
+		catch (ModelNotFoundException $e) {
+			return Response::make('Sorry, The file: '.$alphaID.' doesn\'t seem to exsist', 404);
+		}
+
+		if ($item == "original" && $asset->type == "video" || $item == "original" && $asset->type == "audio") {
+			$path = Config::get('settings.media-path-original');
+		}
+		else{
+			$path = Config::get('settings.media-path');
+		}
+
+		if($item == "original"){
+			$ext = $asset->original_ext;
+		}
+		else{
+			switch ($asset->type) {
+				case 'video':
+					$ext = 'mp4';
+					break;
+				case 'audio':
+					$ext = 'mp3';
+					break;
+				default:
+					$ext = $asset->original_ext;
+					break;
+			}
+		}
+
+		switch ($item) {
+			case 'thumb':
+			$file = base_path(). "/" . $path . "/" . $alphaID.  "-thumb.jpg";
+			$ext = 'jpg';
+			break;
+
+			default:
+				$file = base_path(). "/" . $path . "/" . $alphaID.  '.' . $ext;
+			break;
+		}
+
+		// echo $file;
+		// die();
+		header('Content-type: '. Mimes::getMimes($ext) );
+		header('Content-Disposition: inline; filename="'.$asset->title.'.'.$ext.'"');
+		header('Content-Length: ' . filesize($file));
+		@read_file($file);
+
+
+
+
 	}
+
 
 
 }

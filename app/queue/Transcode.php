@@ -38,12 +38,20 @@ class Transcode {
                         exec("sudo ffmpeg -i $original -vcodec copy -acodec aac -strict experimental -ac 2 -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
                     break;
 
+                    case "webm":
+                        exec("sudo ffmpeg -fflags +genpts -i $original -r 24 $mediaPath/$filename.mp4", $out, $return);
+                    break;
+
+                    case "3gp":
+                        exec("sudo ffmpeg -i $original -crf 25.0 -vcodec libx264 -acodec libvo_aacenc -ar 48000 -b:a 160k -coder 1 -rc_lookahead 60 -threads 0 $mediaPath/$filename.mp4", $out, $return);
+                    break;
+
                     case "flv":
                         exec("sudo ffmpeg -i $original -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
                     break;
 
                     default:
-                        exec("sudo ffmpeg -i $original $mediaPath/$filename.mp4", $out, $return);
+                        exec("sudo ffmpeg -i $original -crf 25.0 -vcodec libx264 -acodec libvo_aacenc -ar 48000 -b:a 160k -coder 1 -rc_lookahead 60 -threads 0 $mediaPath/$filename.mp4", $out, $return);
                     break;
                 }
 

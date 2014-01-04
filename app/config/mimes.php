@@ -47,13 +47,8 @@ return array(
     'tiff' => 'image/tiff',
 
     // Docs
-    'ai' => 'application/postscript',
-    'class' => 'application/octet-stream',
     'css' => 'text/css',
     'csv' => array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream'),
-    'dcr' => 'application/x-director',
-    'dir' => 'application/x-director',
-    'dll' => 'application/octet-stream',
     'dms' => 'application/octet-stream',
     'doc' => 'application/msword',
     'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -65,7 +60,6 @@ return array(
     'js' => 'application/x-javascript',
     'json' => array('application/json', 'text/json'),
     'pdf' => array('application/pdf', 'application/x-download'),
-    'php' => array('application/x-httpd-php', 'text/x-php'),
     'ppt' => array('application/powerpoint', 'application/vnd.ms-powerpoint'),
     'psd' => 'application/x-photoshop',
     'rtf' => 'text/rtf',
@@ -84,4 +78,10 @@ return array(
     'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     'xml' => 'text/xml',
     'xsl' => 'text/xml'
+    // 'ai' => 'application/postscript',
+    // 'class' => 'application/octet-stream',
+    // 'dcr' => 'application/x-director',
+    // 'dir' => 'application/x-director',
+    // 'dll' => 'application/octet-stream',
+    // 'php' => array('application/x-httpd-php', 'text/x-php'),
 );

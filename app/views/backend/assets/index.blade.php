@@ -68,7 +68,7 @@ User Management ::
 				<th>filename</th>
 				<th>type</th>
 				<th>status</th>
-				<th>size</th>
+				<th>filesize</th>
 				<th>filepath</th>
 				<th>permissions</th>
 				<th>last_viewed</th>
@@ -88,8 +88,8 @@ User Management ::
 					<td>{{{ $asset->filename}}}</td>
 					<td>{{{ $asset->type}}}</td>
 					<td>{{{ $asset->status}}}</td>
-					<td>{{{ $asset->size}}}</td>
-					<td>{{{ $asset->filepatd}}}</td>
+					<td>{{{ humanFileSize($asset->filesize)}}}</td>
+					<td>{{{ $asset->filepath}}}</td>
 					<td>{{{ $asset->permissions}}}</td>
 					<td>{{{ $asset->last_viewed}}}</td>
 					<td>{{ link_to_route('asset.edit', 'Edit', array($asset->id), array('class' => 'btn btn-info')) }}</td>

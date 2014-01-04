@@ -154,11 +154,11 @@ Route::group(array('prefix' => 'player'), function()
 });
 
 
-
+#Asset File
 Route::group(array('prefix' => 'asset'), function()
 {
-	Route::get('{alphaID}', array('as' => 'single', 'uses' => 'AssetsController@file'));
-	Route::get('{alphaID}/thumb', array('as' => 'single', 'uses' => 'AssetsController@thumb'));
+	Route::get('{alphaID}/{item?}', array('as' => 'single', 'uses' => 'AssetsController@file'));
+
 
 });
 
