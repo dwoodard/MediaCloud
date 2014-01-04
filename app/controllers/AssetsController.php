@@ -264,12 +264,16 @@ class AssetsController extends PermissionsController{
 			break;
 		}
 
-		// echo $file;
+		// echo $file .  ' - - - -  ' . Mimes::getMimes($ext) . ' - - - -  ' .$asset->title.'.'.$ext. ' - - - -  ' .filesize($file);
 		// die();
-		header('Content-type: '. Mimes::getMimes($ext) );
-		header('Content-Disposition: inline; filename="'.$asset->title.'.'.$ext.'"');
-		header('Content-Length: ' . filesize($file));
+
+		header('Content-type:'. Mimes::getMimes($ext));
+		header('Content-Length: '.filesize($file)); // provide file size
+		header("Expires: -1");
+		header("Cache-Control: no-store, no-cache, must-revalidate");
+		header("Cache-Control: post-check=0, pre-check=0", false);
 		@read_file($file);
+
 
 
 
