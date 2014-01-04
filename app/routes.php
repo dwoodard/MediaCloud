@@ -143,6 +143,10 @@ Route::group(array('prefix' => 'auth'), function()
 
 
 
+	# Capture
+	Route::get('capture', array('as' => 'single', 'uses' => 'CaptureController@index'));
+
+
 	# Media Player
 
 Route::group(array('prefix' => 'player'), function()
