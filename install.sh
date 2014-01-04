@@ -93,6 +93,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 echo "------------------ FFMPEG  ------------------"
 sudo apt-get install -y ffmpeg
+sudo apt-get update
 sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavcodec-extra-53 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
 
 echo "------------------ Correct Time  ------------------"
@@ -102,8 +103,13 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 echo "------------------ INSTALL BEANSTALKD  ------------------"
 echo "------------------ INSTALL SUPERVISORD  ------------------"
 sudo apt-get update
-sudo apt-get install -y beanstalkd supervisor
+sudo apt-get install -y beanstalkd
 sudo sed -i "s/.*#START.*/START yes/" /etc/default/beanstalkd
+
+sudo apt-get install -y python-setuptools
+sudo easy_install supervisor
+sudo apt-get install -y supervisord
+
 
 sudo tee -a /etc/supervisord.conf <<SUPERVISORD
 [supervisord]
@@ -116,67 +122,34 @@ nodaemon=false               ; (start in foreground if true;default false)
 minfds=1024                  ; (min. avail startup file descriptors;default 1024)
 minprocs=200                 ; (min. avail process descriptors;default 200)
 
-[program:beanstalkd]
+[program:laravel]
 command=php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
 numprocs=8
-directory=/var/www/MediaCloud
+numprocs_start=8
+directory=/vagrant
+autostart=true
+autorestart=true
+exitcodes=2
+user=root
+
+[program:beanstalkdService]
+command=sudo beanstalkd -l 127.0.0.1 -p 11300
+process_name=%(program_name)s%(process_num)s
+numprocs=1
+numprocs_start=1
+directory=/
 autostart=true
 autorestart=true
 exitcodes=2
 user=root
 SUPERVISORD
 
-sudo tee -a /etc/init.d/supervisord <<SUPERVISORDCONF
-#! /bin/bash -e
 
-SUPERVISORD=/usr/local/bin/supervisord
-PIDFILE=/tmp/supervisord.pid
-OPTS="-c /etc/supervisord.conf"
-
-test -x $SUPERVISORD || exit 0
-
-. /lib/lsb/init-functions
-
-export PATH="${PATH:+$PATH:}/usr/local/bin:/usr/sbin:/sbin"
-
-case "$1" in
-  start)
-    log_begin_msg "Starting Supervisor daemon manager..."
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $SUPERVISORD -- $OPTS || log_end_msg 1
-    log_end_msg 0
-    ;;
-  stop)
-    log_begin_msg "Stopping Supervisor daemon manager..."
-    start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE || log_end_msg 1
-    log_end_msg 0
-    ;;
-
-  restart|reload|force-reload)
-    log_begin_msg "Restarting Supervisor daemon manager..."
-    start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE
-    start-stop-daemon --start --quiet --pidfile /var/run/sshd.pid --exec $SUPERVISORD -- $OPTS || log_end_msg 1
-    log_end_msg 0
-    ;;
-
-  *)
-    log_success_msg "Usage: /etc/init.d/supervisor
-{start|stop|reload|force-reload|restart}"
-    exit 1
-esac
-
-exit 0
-SUPERVISORDCONF
-
+sudo wget -O /etc/init.d/beanstalkd https://gist.github.com/dwoodard/8257582/raw/73ece556fa468d4ac05deb75b0246c3cfa00abcb/beanstalkd.init.sh
+sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/master/etc-init.d-supervisord
 
 sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
-sudo service beanstalkd start
-beanstalkd -l 0.0.0.0 -p 11300
-
-
-
-
-

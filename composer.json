@@ -11,8 +11,7 @@
 		"davejamesmiller/laravel-breadcrumbs": "~2.1.0",
 		"iron-io/iron_mq": "1.4.8",
 		"codescale/ffmpeg-php": "2.7.0",
-		"pda/pheanstalk": "dev-master",
-
+		"pda/pheanstalk": "dev-master"
 	},
 	"require-dev": {
 		"mockery/mockery": "dev-master",
