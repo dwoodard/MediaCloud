@@ -7974,6 +7974,126 @@ class Queue extends Illuminate\Support\Facades\Queue{
 		return Illuminate\Queue\QueueManager::__call($method, $parameters);
 	 }
 
+	/**
+	 * Push a new job onto the queue.
+	 *
+	 * @param string  $job
+	 * @param mixed   $data
+	 * @param string  $queue
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function push($job, $data = '', $queue = null){
+		return Illuminate\Queue\BeanstalkdQueue::push($job, $data, $queue);
+	 }
+
+	/**
+	 * Push a raw payload onto the queue.
+	 *
+	 * @param string  $payload
+	 * @param string  $queue
+	 * @param array   $options
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function pushRaw($payload, $queue = null, $options = array()){
+		return Illuminate\Queue\BeanstalkdQueue::pushRaw($payload, $queue, $options);
+	 }
+
+	/**
+	 * Push a new job onto the queue after a delay.
+	 *
+	 * @param \DateTime|int  $delay
+	 * @param string  $job
+	 * @param mixed  $data
+	 * @param string  $queue
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function later($delay, $job, $data = '', $queue = null){
+		return Illuminate\Queue\BeanstalkdQueue::later($delay, $job, $data, $queue);
+	 }
+
+	/**
+	 * Pop the next job off of the queue.
+	 *
+	 * @param string  $queue
+	 * @return \Illuminate\Queue\Jobs\Job|null
+	 * @static 
+	 */
+	 public static function pop($queue = null){
+		return Illuminate\Queue\BeanstalkdQueue::pop($queue);
+	 }
+
+	/**
+	 * Get the queue or return the default.
+	 *
+	 * @param string|null  $queue
+	 * @return string
+	 * @static 
+	 */
+	 public static function getQueue($queue){
+		return Illuminate\Queue\BeanstalkdQueue::getQueue($queue);
+	 }
+
+	/**
+	 * Get the underlying Pheanstalk instance.
+	 *
+	 * @return Pheanstalk
+	 * @static 
+	 */
+	 public static function getPheanstalk(){
+		return Illuminate\Queue\BeanstalkdQueue::getPheanstalk();
+	 }
+
+	/**
+	 * Marshal a push queue request and fire the job.
+	 *
+	 * @throws \RuntimeException
+	 * @static 
+	 */
+	 public static function marshal(){
+		//Method inherited from Illuminate\Queue\Queue
+		 Illuminate\Queue\BeanstalkdQueue::marshal();
+	 }
+
+	/**
+	 * Push a new an array of jobs onto the queue.
+	 *
+	 * @param array  $jobs
+	 * @param mixed  $data
+	 * @param string  $queue
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function bulk($jobs, $data = '', $queue = null){
+		//Method inherited from Illuminate\Queue\Queue
+		return Illuminate\Queue\BeanstalkdQueue::bulk($jobs, $data, $queue);
+	 }
+
+	/**
+	 * Get the current UNIX timestamp.
+	 *
+	 * @return int
+	 * @static 
+	 */
+	 public static function getTime(){
+		//Method inherited from Illuminate\Queue\Queue
+		return Illuminate\Queue\BeanstalkdQueue::getTime();
+	 }
+
+	/**
+	 * Set the IoC container instance.
+	 *
+	 * @param \Illuminate\Container\Container  $container
+	 * @return void
+	 * @static 
+	 */
+	 public static function setContainer($container){
+		//Method inherited from Illuminate\Queue\Queue
+		 Illuminate\Queue\BeanstalkdQueue::setContainer($container);
+	 }
+
 }
 
 class Redirect extends Illuminate\Support\Facades\Redirect{
