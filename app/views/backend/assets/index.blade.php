@@ -83,7 +83,7 @@ User Management ::
 					<td>{{{ $asset->title}}}</td>
 					<td>{{{ $asset->id}}}</td>
 					<td>{{{ $asset->description}}}</td>
-					<td>{{{ $asset->alphaID}}}</td>
+					<td> {{link_to(route('asset.file', $asset->alphaID), $asset->alphaID);}}</td>
 					<td>{{{ $asset->filename_original}}}</td>
 					<td>{{{ $asset->filename}}}</td>
 					<td>{{{ $asset->type}}}</td>

@@ -42,6 +42,13 @@ EOF
 echo "------------------ Enabling mod-rewrite ------------------"
 sudo a2enmod rewrite
 
+
+echo "------------------ Enabling mod-xsendfile ------------------"
+sudo apt-get update
+sudo apt-get install libapache2-mod-xsendfile
+sudo a2enmod xsendfile
+sudo invoke-rc.d apache reload
+
 echo "------------------ Setting document root ------------------"
 sudo rm -rf /var/www
 sudo ln -fs /vagrant /var/www
@@ -94,7 +101,8 @@ sudo mv composer.phar /usr/local/bin/composer
 echo "------------------ FFMPEG  ------------------"
 sudo apt-get install -y ffmpeg
 sudo apt-get update
-sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavcodec-extra-53 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
+sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
+sudo apt-get install -y libavcodec-extra-53
 
 echo "------------------ Correct Time  ------------------"
 echo "America/Denver" | sudo tee /etc/timezone
