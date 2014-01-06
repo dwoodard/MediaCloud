@@ -125,8 +125,8 @@ minprocs=200                 ; (min. avail process descriptors;default 200)
 [program:laravel]
 command=php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
-numprocs=8
-numprocs_start=8
+numprocs=2
+numprocs_start=2
 directory=/vagrant
 autostart=true
 autorestart=true
