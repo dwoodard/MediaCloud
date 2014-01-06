@@ -34,13 +34,17 @@ class Transcode {
                 exec("sudo ffmpeg -i $original -ss 5 $mediaPath/$filenameThumb", $out, $return);
 
                  switch($asset->original_ext){
-                    // case "avi":
-                    //     exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental  $mediaPath/$filename.mp4", $out, $return);
-                    // break;
+                    case 'mp4':
+                        exec("sudo cp $original $mediaPath/$filename.mp4", $out, $return);
+                    break;
 
-                    // case "mov":
-                    //     exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental $mediaPath/$filename.mp4", $out, $return);
-                    // break;
+                    case "avi":
+                        exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental  $mediaPath/$filename.mp4", $out, $return);
+                    break;
+
+                    case "mov":
+                        exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental $mediaPath/$filename.mp4", $out, $return);
+                    break;
 
                     // case "webm":
                     //     exec("sudo ffmpeg -fflags +genpts -i $original -r 24 $mediaPath/$filename.mp4", $out, $return);
@@ -59,15 +63,24 @@ class Transcode {
                     // break;
 
                     default:
-                        exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -strict experimental  $mediaPath/$filename.mp4", $out, $return);
+                        exec("sudo ffmpeg -i $original -strict experimental $mediaPath/$filename.mp4", $out, $return);
                     break;
                 }
 
                 break;
 
             case 'audio':
-                exec("sudo ffmpeg -i $original $mediaPathOriginal/$filename.mp3", $out, $return );
 
+                switch($asset->original_ext){
+                    case 'mp3':
+                        exec("sudo cp $original $mediaPath/$filename.mp3", $out, $return);
+                        break;
+
+                    default:
+                        exec("sudo ffmpeg -i $original $mediaPathOriginal/$filename.mp3", $out, $return);
+                        $asset->status = "transcoded:complete";
+                    break;
+                }
                 break;
         }
 
