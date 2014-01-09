@@ -373,7 +373,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                  <li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a>
+                <!--   <li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a>
                   </li>
                   <li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a>
                   </li>
@@ -385,7 +385,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a>
                   </li>
                   <li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a>
-                  </li>
+                  </li> -->
                   <li><a href="{{ URL::to('logout') }}"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>

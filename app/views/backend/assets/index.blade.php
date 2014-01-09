@@ -35,8 +35,6 @@ User Management ::
 		})
 	});
 </script>
-
-
 @stop
 
 
@@ -64,14 +62,14 @@ User Management ::
 				<th>id</th>
 				<th>description</th>
 				<th>alphaID</th>
-				<th>filename_original</th>
+				<!-- <th>filename_original</th> -->
 				<th>filename</th>
 				<th>type</th>
 				<th>status</th>
 				<th>filesize</th>
-				<th>filepath</th>
-				<th>permissions</th>
-				<th>last_viewed</th>
+				<!-- <th>filepath</th> -->
+				<!-- <th>permissions</th> -->
+				<!-- <th>last_viewed</th> -->
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
@@ -84,14 +82,14 @@ User Management ::
 					<td>{{{ $asset->id}}}</td>
 					<td>{{{ $asset->description}}}</td>
 					<td> {{link_to(route('asset.file', $asset->alphaID), $asset->alphaID);}}</td>
-					<td>{{{ $asset->filename_original}}}</td>
+					<!-- <td>{{{ $asset->filename_original}}}</td> -->
 					<td>{{{ $asset->filename}}}</td>
 					<td>{{{ $asset->type}}}</td>
 					<td>{{{ $asset->status}}}</td>
 					<td>{{{ humanFileSize($asset->filesize)}}}</td>
-					<td>{{{ $asset->filepath}}}</td>
-					<td>{{{ $asset->permissions}}}</td>
-					<td>{{{ $asset->last_viewed}}}</td>
+					<!-- <td>{{{ $asset->filepath}}}</td> -->
+					<!-- <td>{{{ $asset->permissions}}}</td> -->
+					<!-- <td>{{{ $asset->last_viewed}}}</td> -->
 					<td>{{ link_to_route('asset.edit', 'Edit', array($asset->id), array('class' => 'btn btn-info')) }}</td>
 					<td>
 						 <form id="delete-{{ $asset->id}}" method="POST" action="{{action('AssetsController@destroy',$asset->id )}}" accept-charset="UTF-8">

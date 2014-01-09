@@ -115,6 +115,17 @@ class App extends Illuminate\Support\Facades\App{
 	 }
 
 	/**
+	 * Resolve a service provider instance from the class name.
+	 *
+	 * @param string  $provider
+	 * @return \Illuminate\Support\ServiceProvider
+	 * @static 
+	 */
+	 public static function resolveProviderClass($provider){
+		return Illuminate\Foundation\Application::resolveProviderClass($provider);
+	 }
+
+	/**
 	 * Load and boot all of the remaining deferred providers.
 	 *
 	 * @return void
@@ -10591,6 +10602,18 @@ class View extends Illuminate\Support\Facades\View{
 	 */
 	 public static function addNamespace($namespace, $hints){
 		 Illuminate\View\Environment::addNamespace($namespace, $hints);
+	 }
+
+	/**
+	 * Prepend a new namespace to the loader.
+	 *
+	 * @param string  $namespace
+	 * @param string|array  $hints
+	 * @return void
+	 * @static 
+	 */
+	 public static function prependNamespace($namespace, $hints){
+		 Illuminate\View\Environment::prependNamespace($namespace, $hints);
 	 }
 
 	/**

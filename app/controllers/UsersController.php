@@ -118,7 +118,7 @@ class UsersController extends PermissionsController{
 				$success = Lang::get('admin/users/message.success.create');
 
 				// Redirect to the new user page
-				return Redirect::route('update/user', $user->id)->with('success', $success);
+				return Redirect::route('users', $user->id)->with('success', $success);
 			}
 
 			// Prepare the error message
@@ -285,7 +285,7 @@ class UsersController extends PermissionsController{
 				$success = Lang::get('admin/users/message.success.update');
 
 				// Redirect to the user page
-				return Redirect::route('update/user', $id)->with('success', $success);
+				return Redirect::route('users', $id)->with('success', $success);
 			}
 
 			// Prepare the error message
@@ -333,12 +333,20 @@ class UsersController extends PermissionsController{
 
 			// Delete the user
 			$user->delete();
-
 			// Prepare the success message
 			$success = Lang::get('admin/users/message.success.delete');
 
-			// Redirect to the user management page
-			return Redirect::route('users')->with('success', $success);
+			if (Request::ajax())
+			{
+				return json_encode(array('result' => 'success' ));
+			}
+			else {
+				// Redirect to the user management page
+				return Redirect::route('users')->with('success', $success);
+			}
+
+
+
 		}
 		catch (UserNotFoundException $e)
 		{

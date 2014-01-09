@@ -6,6 +6,39 @@ User Management ::
 @parent
 @stop
 
+@section('scripts')
+<script>
+	$(document).ready(function() {
+
+		$("[id*='delete-']").click(function(e){
+			e.preventDefault()
+			btn = $(this);
+			userId = /delete-(\d+)/.exec(e.currentTarget.id)[1];
+			url = this.baseURI + '/' + userId + '/delete';
+			console.log(url);
+		// confirm dialog
+		alertify.confirm("Whooo are you Sure?! Once it's gone, it ain't comin' back!", function (e) {
+			if (e) {
+				$.ajax({
+					url: url,
+					success: function(data) {
+						data = $.parseJSON(data);
+						console.log(data);
+						if(data.result == "success"){
+							$(btn).closest('tr').hide('slow');
+
+						}
+					}
+				});
+			} 
+		});
+
+		})
+	});
+</script>
+@stop
+
+
 {{-- Page content --}}
 @section('content')
 
@@ -61,7 +94,7 @@ User Management ::
 				<a href="{{ route('restore/user', $user->id) }}" class="btn btn-mini btn-warning">@lang('button.restore')</a>
 				@else
 				@if (Sentry::getId() !== $user->id)
-				<a href="{{ route('delete/user', $user->id) }}" class="btn btn-mini btn-danger">@lang('button.delete')</a>
+				<a href="{{ route('delete/user', $user->id) }}" id="delete-{{$user->id}}" class="btn btn-mini btn-danger">@lang('button.delete')</a>
 				@else
 				<span class="btn btn-mini btn-danger disabled">@lang('button.delete')</span>
 				@endif

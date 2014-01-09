@@ -71,11 +71,11 @@ class GroupsController extends PermissionsController {
 			if ($group = Sentry::getGroupProvider()->create($inputs))
 			{
 				// Redirect to the new group page
-				return Redirect::route('update/group', $group->id)->with('success', Lang::get('admin/groups/message.success.create'));
+				return Redirect::route('groups', $group->id)->with('success', Lang::get('admin/groups/message.success.create'));
 			}
 
 			// Redirect to the new group page
-			return Redirect::route('create/group')->with('error', Lang::get('admin/groups/message.error.create'));
+			return Redirect::route('groups')->with('error', Lang::get('admin/groups/message.error.create'));
 		}
 		catch (NameRequiredException $e)
 		{
@@ -87,7 +87,7 @@ class GroupsController extends PermissionsController {
 		}
 
 		// Redirect to the group create page
-		return Redirect::route('create/group')->withInput()->with('error', Lang::get('admin/groups/message.'.$error));
+		return Redirect::route('groups')->withInput()->with('error', Lang::get('admin/groups/message.'.$error));
 	}
 
 	/**
@@ -173,12 +173,12 @@ class GroupsController extends PermissionsController {
 			if ($group->save())
 			{
 				// Redirect to the group page
-				return Redirect::route('update/group', $id)->with('success', Lang::get('admin/groups/message.success.update'));
+				return Redirect::route('groups', $id)->with('success', Lang::get('admin/groups/message.success.update'));
 			}
 			else
 			{
 				// Redirect to the group page
-				return Redirect::route('update/group', $id)->with('error', Lang::get('admin/groups/message.error.update'));
+				return Redirect::route('groups', $id)->with('error', Lang::get('admin/groups/message.error.update'));
 			}
 		}
 		catch (NameRequiredException $e)
@@ -205,9 +205,24 @@ class GroupsController extends PermissionsController {
 
 			// Delete the group
 			$group->delete();
+		
+		if (Request::ajax())
+		{
+			return json_encode(array('result' => 'success' ));
 
+		}
+		else {
 			// Redirect to the group management page
 			return Redirect::route('groups')->with('success', Lang::get('admin/groups/message.success.delete'));
+		}
+
+
+
+
+
+
+
+
 		}
 		catch (GroupNotFoundException $e)
 		{

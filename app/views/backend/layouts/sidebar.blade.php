@@ -61,7 +61,7 @@
 
                <!-- <a href="/admin/users"> <i class="icon-user"></i> <span class="title">Users</span> <span class="selected"></span> </a> -->
             </li>
-            <li class="">
+           <!--  <li class="">
                <a href="javascript:;">
                <i class="icon-star-empty"></i>
                <span class="title">Layouts</span>
@@ -106,7 +106,7 @@
                      <a href="layout_ajax.html">Content Loading via Ajax</a>
                   </li>
                </ul>
-            </li>
+            </li> -->
             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/queue"> <i class="fa fa-tasks"></i> <span class="title">Queue</span> <span class="selected"></span></a>
             </li>
@@ -122,9 +122,7 @@
             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/settings"> <i class="icon-gears"></i> <span class="title">Settings</span> <span class="selected"></span></a>
             </li>
-            <li class="start {{(Request::is('admin') ? '' : '')}}">
-               <a href="/admin/help"> <i class="icon-gears"></i> <span class="title">Help</span> <span class="selected"></span></a>
-            </li>
+   
 
 <!--             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/capture"> <i class="fa fa-video-camera"></i> <span class="title">Capture</span> <span class="selected"></span></a>

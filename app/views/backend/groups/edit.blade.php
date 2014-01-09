@@ -26,7 +26,7 @@ Group Update ::
 </ul>
 
 	
-	<form class="form-horizontal" method="post" action="" autocomplete="off">
+	<form class="form-horizontal" method="POST" action="" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
@@ -86,7 +86,6 @@ Group Update ::
 			<div class="controls col-md-6">
 				<button type="submit" class="btn btn-success">Update Group</button>
 				<a class="btn btn-link" href="{{ route('groups') }}">Cancel</a>
-				<button type="reset" class="btn">Reset</button>
 
 
 			</div>

@@ -6,6 +6,11 @@ Create a Group ::
 @parent
 @stop
 
+
+
+
+
+
 {{-- Content --}}
 @section('content')
 
@@ -28,7 +33,7 @@ Create a Group ::
 	<li><a href="#tab-permissions" data-toggle="tab">Permissions</a></li>
 </ul>
 
-<form class="form-horizontal" method="post" action="" autocomplete="off">
+<form class="form-horizontal" method="POST" action="" autocomplete="off">
 	<!-- CSRF Token -->
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
@@ -91,7 +96,6 @@ Create a Group ::
 		<div class="controls col-md-6">
 			<button type="submit" class="btn btn-success">Create Group</button>
 			<a class="btn btn-link" href="{{ route('groups') }}">Cancel</a>
-			<button type="reset" class="btn">Reset</button>
 
 		</div>
 	</div>
