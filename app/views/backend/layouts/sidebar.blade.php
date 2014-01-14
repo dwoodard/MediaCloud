@@ -1,56 +1,3 @@
-@section('scripts')
-   <script type="text/javascript" charset="utf-8">
-  $(document).ready(function() {
-    var visualSearch = VS.init({
-      container : $('.visual_search'),
-      query     : '',
-      callbacks : {
-        search       : function(query, searchCollection) {},
-        facetMatches : function(callback) {
-          callback([
-      'account', 'filter', 'access', 'title',
-      { label: 'city',    category: 'location' },
-      { label: 'address', category: 'location' },
-      { label: 'country', category: 'location' },
-      { label: 'state',   category: 'location' },
-    ]);
-        },
-        valueMatches : function(facet, searchTerm, callback) {
-         switch (facet) {
-    case 'account':
-        callback([
-          { value: '1-amanda', label: 'Amanda' },
-          { value: '2-aron',   label: 'Aron' },
-          { value: '3-eric',   label: 'Eric' },
-          { value: '4-jeremy', label: 'Jeremy' },
-          { value: '5-samuel', label: 'Samuel' },
-          { value: '6-scott',  label: 'Scott' }
-        ]);
-        break;
-      case 'filter':
-        callback(['published', 'unpublished', 'draft']);
-        break;
-      case 'access':
-        callback(['public', 'private', 'protected']);
-        break;
-      case 'title':
-        callback([
-          'Pentagon Papers',
-          'CoffeeScript Manual',
-          'Laboratory for Object Oriented Thinking',
-          'A Repository Grows in Brooklyn'
-        ]);
-        break;
-    }
-        }
-
-      }
-    });
-  });
-</script>
-@stop
-
-
   <!-- BEGIN SIDEBAR -->
       <div class="page-sidebar navbar-collapse collapse">
          <!-- BEGIN SIDEBAR MENU -->
@@ -64,8 +11,7 @@
                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
 
 
-             <div class="visual_search">
-        <!--        <form class="sidebar-search" type="" action="" method="GET">
+               <form class="sidebar-search" type="" action="" method="GET">
                   <div class="form-container">
                      <div class="input-box">
                         <a href="javascript:;" class="remove"></a>
@@ -73,8 +19,7 @@
                         <input type="button" class="submit" value=""/>
                      </div>
                   </div>
-               </form> -->
-             </div>
+               </form>
             
                <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
