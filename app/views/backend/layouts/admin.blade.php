@@ -44,6 +44,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="/_admin/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
    <link href="/_admin/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
    <link href="/_admin/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+   <link href="/_admin/assets/css/visualsearch-datauri.css" media="screen" rel="stylesheet" type="text/css" />
+   <link href="/_admin/assets/css/visualsearch.css" media="screen" rel="stylesheet" type="text/css" />
    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
@@ -498,10 +500,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <script src="/_admin/assets/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
    <!-- END PAGE LEVEL PLUGINS -->
    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+   <script src="/_admin/assets/scripts/dependencies.js" type="text/javascript"></script>
+   <script src="/_admin/assets/scripts/visualsearch.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/app.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/index.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/tasks.js" type="text/javascript"></script>
    <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js" type="text/javascript"></script>
+
 
    @yield('scripts')
 

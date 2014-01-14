@@ -235,4 +235,5 @@ Route::group(array('prefix' => 'v1'), function()
      *
      */
     Route::get('test', array('uses' => 'Controllers\Api\V1\ApiController@test'));
+    Route::get('vstest', array('uses' => 'Controllers\Api\V1\ApiController@test'));
 });

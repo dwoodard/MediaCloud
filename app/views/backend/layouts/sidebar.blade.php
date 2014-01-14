@@ -1,3 +1,55 @@
+@section('scripts')
+   <script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    var visualSearch = VS.init({
+      container : $('.visual_search'),
+      query     : '',
+      callbacks : {
+        search       : function(query, searchCollection) {},
+        facetMatches : function(callback) {
+          callback([
+      'account', 'filter', 'access', 'title',
+      { label: 'city',    category: 'location' },
+      { label: 'address', category: 'location' },
+      { label: 'country', category: 'location' },
+      { label: 'state',   category: 'location' },
+    ]);
+        },
+        valueMatches : function(facet, searchTerm, callback) {
+         switch (facet) {
+    case 'account':
+        callback([
+          { value: '1-amanda', label: 'Amanda' },
+          { value: '2-aron',   label: 'Aron' },
+          { value: '3-eric',   label: 'Eric' },
+          { value: '4-jeremy', label: 'Jeremy' },
+          { value: '5-samuel', label: 'Samuel' },
+          { value: '6-scott',  label: 'Scott' }
+        ]);
+        break;
+      case 'filter':
+        callback(['published', 'unpublished', 'draft']);
+        break;
+      case 'access':
+        callback(['public', 'private', 'protected']);
+        break;
+      case 'title':
+        callback([
+          'Pentagon Papers',
+          'CoffeeScript Manual',
+          'Laboratory for Object Oriented Thinking',
+          'A Repository Grows in Brooklyn'
+        ]);
+        break;
+    }
+        }
+
+      }
+    });
+  });
+</script>
+@stop
+
 
   <!-- BEGIN SIDEBAR -->
       <div class="page-sidebar navbar-collapse collapse">
@@ -10,7 +62,10 @@
             </li>
             <li>
                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-               <form class="sidebar-search" action="extra_search.html" method="POST">
+
+
+             <div class="visual_search">
+        <!--        <form class="sidebar-search" type="" action="" method="GET">
                   <div class="form-container">
                      <div class="input-box">
                         <a href="javascript:;" class="remove"></a>
@@ -18,7 +73,9 @@
                         <input type="button" class="submit" value=""/>
                      </div>
                   </div>
-               </form>
+               </form> -->
+             </div>
+            
                <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
 
@@ -58,55 +115,8 @@
                      Groups</a>
                   </li>
                </ul>
-
-               <!-- <a href="/admin/users"> <i class="icon-user"></i> <span class="title">Users</span> <span class="selected"></span> </a> -->
             </li>
-           <!--  <li class="">
-               <a href="javascript:;">
-               <i class="icon-star-empty"></i>
-               <span class="title">Layouts</span>
-               <span class="arrow"></span>
-               </a>
-               <ul class="sub-menu">
-                  <li>
-                     <a href="layout_language_bar.html">
-                     <span class="badge badge-roundless badge-important">new</span>Language Switch Bar</a>
-                  </li>
-                  <li>
-                     <a href="layout_horizontal_sidebar_menu.html">Horizontal &amp; Sidebar Menu</a>
-                  </li>
-                  <li>
-                     <a href="layout_horizontal_menu1.html">Horizontal Menu 1</a>
-                  </li>
-                  <li>
-                     <a href="layout_horizontal_menu2.html">Horizontal Menu 2</a>
-                  </li>
-                  <li>
-                     <a href="layout_sidebar_fixed.html">Sidebar Fixed Page</a>
-                  </li>
-                  <li>
-                     <a href="layout_sidebar_closed.html">Sidebar Closed Page</a>
-                  </li>
-                  <li>
-                     <a href="layout_blank_page.html">Blank Page</a>
-                  </li>
-                  <li>
-                     <a href="layout_boxed_page.html">Boxed Page</a>
-                  </li>
-                  <li>
-                     <a href="layout_boxed_not_responsive.html">Non-Responsive Boxed Layout</a>
-                  </li>
-                  <li>
-                     <a href="layout_promo.html">Promo Page</a>
-                  </li>
-                  <li>
-                     <a href="layout_email.html">Email Templates</a>
-                  </li>
-                  <li>
-                     <a href="layout_ajax.html">Content Loading via Ajax</a>
-                  </li>
-               </ul>
-            </li> -->
+          
             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/queue"> <i class="fa fa-tasks"></i> <span class="title">Queue</span> <span class="selected"></span></a>
             </li>

@@ -583,15 +583,15 @@ var App = function () {
             } else {
                 height = $(this).css('height');
             }
-            $(this).slimScroll({
-                size: '7px',
-                color: '#a1b2bd',
-                position: isRTL ? 'left' : 'right',
-                height: height,
-                alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
-                railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
-                disableFadeOut: true
-            });
+            // $(this).slimScroll({
+            //     size: '7px',
+            //     color: '#a1b2bd',
+            //     position: isRTL ? 'left' : 'right',
+            //     height: height,
+            //     alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
+            //     railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
+            //     disableFadeOut: true
+            // });
         });
     }
 

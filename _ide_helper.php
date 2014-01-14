@@ -10431,6 +10431,17 @@ class View extends Illuminate\Support\Facades\View{
 	 }
 
 	/**
+	 * Register multiple view composers via an array.
+	 *
+	 * @param array  $composers
+	 * @return array
+	 * @static 
+	 */
+	 public static function composers($composers){
+		return Illuminate\View\Environment::composers($composers);
+	 }
+
+	/**
 	 * Register a view composer event.
 	 *
 	 * @param array|string  $views
