@@ -56,7 +56,7 @@ sudo ln -fs /vagrant /var/www
 
 
 echo "------------------ Set DocumentRoot to public ------------------"
-sudo sed -i "s/DocumentRoot \/var\/www/DocumentRoot \/var\/www\/public/" /etc/apache2/sites-enabled/000-default.conf
+sudo sed -i "s/DocumentRoot \/var\/www/html \/var\/www\/public/" /etc/apache2/sites-enabled/000-default.conf
 
 echo "------------------ What developer codes without errors turned on? Not you ------------------"
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
