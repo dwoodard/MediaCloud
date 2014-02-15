@@ -227,14 +227,9 @@ class AssetsController extends PermissionsController{
 		$file = base_path(). "/" . $path . "/" . $alphaID.  '.' . $ext;
 		$mime = Mimes::getMimes($ext);
 
-
-
 		if(file_exists($file)){
 			$filesize = filesize($file);
 		}
-
-
-
 
 		if (is_file($file)){
 			header('Content-Type:'. $mime);
@@ -287,7 +282,7 @@ class AssetsController extends PermissionsController{
 
             $start  = $c_start;
             $end    = $c_end;
-            $length = $end - $start + 1; 
+            $length = $end - $start + 1;
             fseek($fp, $start);
             header('HTTP/1.1 206 Partial Content');
 
@@ -302,7 +297,7 @@ class AssetsController extends PermissionsController{
             }
             set_time_limit(0);
             echo fread($fp, $buffer);
-            flush(); 
+            flush();
         }
 
         fclose($fp);

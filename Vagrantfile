@@ -7,10 +7,14 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
+	config.cache.enable :apt
+	config.cache.enable :composer
+
     config.vm.box = "base"
 
-    #config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+	#config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+	config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
 
 	config.vm.provider :virtualbox do |vb|
 	  vb.customize ["modifyvm", :id, "--memory", "1024"]
@@ -18,5 +22,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.network :forwarded_port, guest: 80, host: 8080
 
-    config.vm.provision :shell, :path => "install.sh"
+    # Install via command line:
+    # vagrant plugin install vagrant-cachier
+	if Vagrant.has_plugin?("vagrant-cachier")
+	config.cache.auto_detect = true
+		# If you are using VirtualBox, you might want to enable NFS for shared folders
+	    config.vm.provision :shell, :path => "install.sh"
+	end
+
+
 end
