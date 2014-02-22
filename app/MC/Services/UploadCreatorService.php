@@ -90,7 +90,7 @@ class UploadCreatorService {
         $asset->save();
 
         $file->move($destinationPath, $asset->alphaID . "." . $extension);
-        
+
         if($asset->type == 'video' || $asset->type == 'audio'){
            // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
            Queue::push('Transcode', array('asset_id' => $asset->id));

@@ -1,7 +1,5 @@
 <?php
 
-
-
 /*
 * APP Bindings
 */
@@ -15,8 +13,11 @@ App::bind('AssetRepository', 'Asset');
 Route::get('/test', function(){
 
 	// return Asset::orderBy('id', 'desc')->paginate(2);
-	Queue::push('DoSomethingIntensive', array('asset_id' => 1));
+	// Queue::push('DoSomethingIntensive', array('asset_id' => 1));
 	// BeanstalkdQueue::push('DoSomethingIntensive', array('asset_id' => 1));
+
+	$asset =  Asset::find(1);
+	return Carbon::instance($asset->created_at)->year . '-' . Carbon::instance($asset->created_at)->month;
 
 });
 

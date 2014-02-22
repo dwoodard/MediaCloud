@@ -4,6 +4,8 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+Vagrant.require_plugin 'vagrant-cachier'
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
@@ -17,7 +19,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
 	config.vm.provider :virtualbox do |vb|
-	  vb.customize ["modifyvm", :id, "--memory", "1024"]
+	  #vb.customize ["modifyvm", :id, "--memory", "1024"]
+	  vb.customize ["modifyvm", :id, "--memory", "4096"]
 	end
 
     config.vm.network :forwarded_port, guest: 80, host: 8080

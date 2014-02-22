@@ -181,7 +181,8 @@ return array(
 
 		//Custom Aliases
 		'Sentry'		  => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-  		'Breadcrumbs'	  => 'DaveJamesMiller\Breadcrumbs\Facade'
+  		'Breadcrumbs'	  => 'DaveJamesMiller\Breadcrumbs\Facade',
+  		'Carbon'	  	  => 'Carbon\Carbon'
 	),
 
 );
