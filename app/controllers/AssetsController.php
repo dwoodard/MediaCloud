@@ -194,32 +194,39 @@ class AssetsController extends PermissionsController{
 	 */
 	public function destroy($assetId){
 
+
 		// Check if the asset exists
 		if (is_null($asset = Asset::find($assetId)))
 		{
 			// Redirect to the assets management page
-			return Redirect::to('admin/assets')->with('error', Lang::get('admin/assets/message.not_found'));
+			if (Request::ajax())
+			{
+				return json_encode(array('result' => 'failed', "description" => "File Not Found" ));
+			}
+			else{
+				return Redirect::to('admin/assets')->with('error', Lang::get('admin/assets/message.not_found'));
+			}
 		}
+
 
 		//Check CPA if asset exsists
 
 		//Remove pivot asset
-		// return $asset->user();
-		// $asset->user()->detach();
-
+		foreach ($asset->users as $user) {
+			// $user->id;
+			$asset->users()->detach($user->id);
+		}
 
 		// Delete the asset
 		if ($asset->type == "video" || $asset->type == "audio") {
-			if ($asset->type == "video" ) {
-				File::delete($asset->fileLocation('transcoded-thumb'));
-			}
-			File::delete($asset->fileLocation('transcoded'));
-			File::delete($asset->fileLocation('original'));
+			file_exists($asset->fileLocation('transcoded')) 		? File::delete($asset->fileLocation('transcoded')):'';
+			file_exists($asset->fileLocation('transcoded-thumb')) 	? File::delete($asset->fileLocation('transcoded-thumb')):'';
+			file_exists($asset->fileLocation('original'))			? File::delete($asset->fileLocation('original')):'';
 		}else{
-
-			echo $asset->fileLocation('transcoded');
+			file_exists($asset->fileLocation('transcoded')) 		? File::delete($asset->fileLocation('transcoded')):'';
 		}
 
+		//remove the asset in db
 		$asset->delete();
 
 		if (Request::ajax())

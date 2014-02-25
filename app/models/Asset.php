@@ -60,16 +60,16 @@ class Asset extends Eloquent implements AssetRepository {
 		}
 	}
 
-	public function fileLocation($state)
+	public function fileLocation($item_location)
 	{
-		switch ($state) {
+		switch ($item_location) {
 
 			case 'original':
 				return base_path(). "/" . Config::get('settings.media-path-original')  . "/" .  $this->alphaID . '.' . $this->original_ext;
 			break;
 
 			case 'transcoded':
-				return base_path(). "/" . Config::get('settings.media-path'). "/". $this->alphaID . '.' . $this->ext;
+				return base_path(). "/" . Config::get('settings.media-path'). "/". $this->alphaID . '.' . $this->ext();
 			break;
 
 			case 'transcoded-thumb':
@@ -87,9 +87,9 @@ class Asset extends Eloquent implements AssetRepository {
 
 	}
 
-	public function user()
+	public function users()
 	{
-		return $this->belongsTo('User', 'id');
+		return $this->belongsToMany('User');
 	}
 
 	public function playlists()
