@@ -42,16 +42,26 @@ class Transcode {
 						exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental  $mediaPath/$filename.mp4", $out, $return);
 					break;
 
+					case "wmv":
+						exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -strict experimental $mediaPath/$filename.mp4", $out, $return);
+					break;
+
 					case "mv4":
 						exec("sudo ffmpeg -i $original -vcodec libx264 -strict experimental $mediaPath/$filename.mp4", $out, $return);
 					break;
 
+					case "mpg":
+					case "mpeg":
+						exec("sudo ffmpeg -i $original -vcodec libx264 -strict experimental $mediaPath/$filename.mp4", $out, $return);
+					break;
+
+					case "qt":
 					case "mov":
 						exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -flags +aic+mv4 -strict experimental $mediaPath/$filename.mp4", $out, $return);
 					break;
 
 					case "webm":
-						exec("sudo ffmpeg -fflags +genpts -i $original -r 24 $mediaPath/$filename.mp4", $out, $return);
+						exec("sudo ffmpeg -fflags +genpts -i $original -r 24 -vcodec libx264 $mediaPath/$filename.mp4", $out, $return);
 					break;
 
 					case "3gp":
@@ -59,11 +69,15 @@ class Transcode {
 					break;
 
 					case "flv":
-						exec("sudo ffmpeg -i $original -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
+						exec("sudo ffmpeg -i $original -vcodec libx264 -acodec libvo_aacenc -ar 44100 -ab 192k $mediaPath/$filename.mp4", $out, $return);
 					break;
 
 					case "ts":
 						exec("sudo ffmpeg -i $original -acodec aac -b:a 128k -vcodec libx264 -b:v 25000k -strict experimental $mediaPath/$filename.mp4", $out, $return);
+					break;
+
+					case "mts":
+						exec("sudo ffmpeg -i $original -vcodec libx264 -b:v 15M -acodec libmp3lame -b:a 192k -strict experimental $mediaPath/$filename.mp4", $out, $return);
 					break;
 
 					default:
@@ -81,7 +95,7 @@ class Transcode {
 						break;
 
 					default:
-						exec("sudo ffmpeg -i $original $mediaPathOriginal/$filename.mp3", $out, $return);
+						exec("sudo ffmpeg -i $original $mediaPath/$filename.mp3", $out, $return);
 						$asset->status = "transcoded:complete";
 					break;
 				}

@@ -202,8 +202,24 @@ class AssetsController extends PermissionsController{
 		}
 
 		//Check CPA if asset exsists
+
 		//Remove pivot asset
+		// return $asset->user();
+		// $asset->user()->detach();
+
+
 		// Delete the asset
+		if ($asset->type == "video" || $asset->type == "audio") {
+			if ($asset->type == "video" ) {
+				File::delete($asset->fileLocation('transcoded-thumb'));
+			}
+			File::delete($asset->fileLocation('transcoded'));
+			File::delete($asset->fileLocation('original'));
+		}else{
+
+			echo $asset->fileLocation('transcoded');
+		}
+
 		$asset->delete();
 
 		if (Request::ajax())
@@ -223,9 +239,21 @@ class AssetsController extends PermissionsController{
 
 		$asset = Asset::where('alphaID', '=', $alphaID)->firstOrFail();
 		$path = Config::get('settings.media-path');
-		$ext = $asset->original_ext;
-		$file = base_path(). "/" . $path . "/" . $alphaID.  '.' . $ext;
+
+		switch ($asset->type) {
+			case 'video':
+				$ext = "mp4";
+				break;
+			case 'audio':
+				$ext = "mp3";
+				break;
+			default:
+				$ext = $asset->original_ext;
+				break;
+		}
+		$file = base_path() . "/" . $path . "/" . $alphaID.  '.' . $ext;
 		$mime = Mimes::getMimes($ext);
+
 
 		if(file_exists($file)){
 			$filesize = filesize($file);

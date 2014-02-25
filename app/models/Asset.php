@@ -38,12 +38,54 @@ class Asset extends Eloquent implements AssetRepository {
 	public function getAll($page_count = 15)
 	{
 		// $assets = DB::select("SELECT * FROM assets ORDER BY  created_at DESC LIMIT 0 , $amount");
-		
+
 		return Asset::orderBy('id', 'desc')->paginate($page_count);
-		
+
 	}
 
 
+
+	public function ext()
+	{
+		switch ($this->type) {
+			case 'video':
+				return "mp4";
+			break;
+			case 'audio':
+				return "mp3";
+			break;
+			default:
+				return $this->original_ext;
+			break;
+		}
+	}
+
+	public function fileLocation($state)
+	{
+		switch ($state) {
+
+			case 'original':
+				return base_path(). "/" . Config::get('settings.media-path-original')  . "/" .  $this->alphaID . '.' . $this->original_ext;
+			break;
+
+			case 'transcoded':
+				return base_path(). "/" . Config::get('settings.media-path'). "/". $this->alphaID . '.' . $this->ext;
+			break;
+
+			case 'transcoded-thumb':
+				return base_path(). "/" . Config::get('settings.media-path'). "/". $this->alphaID."-thumb.jpg";
+			break;
+		}
+
+		// $mediaPathOriginal = base_path(). "/" . Config::get('settings.media-path-original');
+		// $mediaPathTranscoded = base_path(). "/" . Config::get('settings.media-path');
+		// $filenameOriginal =  $this->alphaID . '.' . $this->original_ext;
+		// $filenameTranscoded =  $this->alphaID . '.' . $ext;
+		// $filenameTranscodedThumb =   $this->alphaID."-thumb.jpg";
+
+		// $original = "$mediaPathOriginal/$filenameOriginal";
+
+	}
 
 	public function user()
 	{
