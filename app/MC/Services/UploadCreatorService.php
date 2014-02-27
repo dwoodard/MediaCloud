@@ -71,7 +71,7 @@ class UploadCreatorService {
             $asset->title          = $attributes['title'];
             $asset->original_ext   = $attributes['original_ext'];
             $asset->type           = $attributes['type'];
-            $asset->filesize          = $attributes['filesize'];
+            $asset->filesize       = $attributes['filesize'];
             $asset->status         = "uploaded";
             $asset->save();
             $assetId = $asset->id;
