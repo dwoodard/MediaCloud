@@ -1,0 +1,103 @@
+html,body{
+height:100%
+}
+
+#App{
+height:100%;
+position:relative;
+}
+
+#notifications{
+background:#e1e1e1;
+}
+
+#manage_nav{
+border-right:1px solid #e1e1e1;
+height:100%;
+width:70px;
+float:left;
+background:#F9F9F7;
+}
+#manage_nav ul{
+margin:0;
+padding:0;
+}
+#manage_nav ul li{
+list-style:none;
+margin:0;
+overflow:hidden;
+padding:0;
+}
+#manage_nav ul li i{
+margin:0 auto;
+}
+
+#manage_nav ul li a{
+display:block;
+height:70px;
+margin:0;
+padding-top:7px;
+text-align:center;
+text-decoration:none;
+width:70px;
+}
+#manage_nav ul li{
+border-bottom:1px solid #e1e1e1;
+}
+#manage_nav .nav-text{
+display:block
+}
+
+#main{
+display:block;
+background:#ecebe8;
+position:absolute;
+top:0px;
+bottom:0px;
+left:70px;
+right:250px;
+}
+
+#main-content{
+position:relative;
+top:0;
+bottom:0;
+height: 70%;
+}
+
+
+#main section{
+height:100%;
+}
+#main section .root{
+	height: 100%;
+background:green;
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+right:0;
+}
+
+#main section .front{
+background:lightgreen;
+position:absolute;
+top:0;
+bottom:0;
+left:250px;
+right:0;
+}
+
+#assets_area{
+right:0;
+position:absolute;
+height:100%;
+width:250px;
+background:red;
+
+}
+
+#player{
+background:lightblue;
+height:150px
+}

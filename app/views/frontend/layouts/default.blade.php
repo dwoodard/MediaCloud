@@ -12,6 +12,8 @@
 
    <!-- BEGIN GLOBAL MANDATORY STYLES -->
    <link href="/_frontend/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
    <link href="/_frontend/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
    <!-- END GLOBAL MANDATORY STYLES -->
 
@@ -31,7 +33,7 @@
    <!-- END THEME STYLES -->
 
    <!-- BEGIN CUSTOM STYLES -->
-   <link href="/assets/css/frontend-style.css" rel="stylesheet" type="text/css"/>
+   <link href="/assets/css/app.css" rel="stylesheet" type="text/css"/>
    <!-- END CUSTOM STYLES -->
 
    <link rel="shortcut icon" href="favicon.ico"/>
@@ -48,9 +50,7 @@
 			<div class="navbar-header">
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 				<button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<span class="fa fa-bars"></span>
 				</button>
 				<!-- END RESPONSIVE MENU TOGGLER -->
 				<!-- BEGIN LOGO (you can use logo image instead of text)-->
@@ -70,8 +70,8 @@
 
 					@if (Sentry::check())
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">
-							Welcome {{Sentry::getUser()->username}}! <i class="icon-angle-down"></i></a>
+							<a class="dropdown-toggle" data-toggle="dropdown" data-click="dropdown" data-delay="0" data-close-others="false" href="#">
+							Welcome {{Sentry::getUser()->username}}! <i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
 								<!-- <li class="active"><a href="index.html">Home Default</a></li> -->
 								@if (Sentry::getUser()->hasAccess('admin'))
@@ -99,7 +99,7 @@
 	</div>
 	<!-- END HEADER -->
 
-	<!-- BEGIN ALERTS -->
+	<!-- BEGIN ALERTS
 	<div id="alerts">
 		@if(Session::has('message'))
 		<div class="alert alert-success">
@@ -150,15 +150,15 @@
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<ul class="social-footer">
-						<li><a href="#"><i class="icon-facebook"></i></a></li>
-						<li><a href="#"><i class="icon-google-plus"></i></a></li>
-						<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin"></i></a></li>
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
-						<li><a href="#"><i class="icon-skype"></i></a></li>
-						<li><a href="#"><i class="icon-github"></i></a></li>
-						<li><a href="#"><i class="icon-youtube"></i></a></li>
-						<li><a href="#"><i class="icon-dropbox"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-skype"></i></a></li>
+						<li><a href="#"><i class="fa fa-github"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						<li><a href="#"><i class="fa fa-dropbox"></i></a></li>
 					</ul>
 				</div>
 			</div>
