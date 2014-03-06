@@ -19,6 +19,3 @@ var mcApp = angular.module('mcApp', [
 // 		$routeProvider.otherwise({redirectTo: '/view1'});
 // 	}]);
 
-
-[[]]
-{{}}
