@@ -20,7 +20,7 @@
                      </div>
                   </div>
                </form>
-            
+
                <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
 
@@ -61,7 +61,7 @@
                   </li>
                </ul>
             </li>
-          
+
             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/queue"> <i class="fa fa-tasks"></i> <span class="title">Queue</span> <span class="selected"></span></a>
             </li>
@@ -77,7 +77,7 @@
             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/settings"> <i class="icon-gears"></i> <span class="title">Settings</span> <span class="selected"></span></a>
             </li>
-   
+
 
 <!--             <li class="start {{(Request::is('admin') ? '' : '')}}">
                <a href="/admin/capture"> <i class="fa fa-video-camera"></i> <span class="title">Capture</span> <span class="selected"></span></a>

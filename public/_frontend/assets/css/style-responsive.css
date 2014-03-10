@@ -386,10 +386,10 @@
 		float: none;
 		margin-left: -15px;
 	}
-	.header ul.nav {
+	/*.header ul.nav {
 		clear: both;
 		float: left;
-	}
+	}*/
 	.header .nav li {
 		margin-right: 25px;
 	}
