@@ -43,7 +43,7 @@
 						<ul class="nav navbar-nav pull-left">
 							<li><a href="#" class="brand">Media Cloud</a></li>
 							<li><a id="test1" href="#">test1</a></li>
-							<li><a href="#">test2</a></li>
+							<li><a id="test2" href="#">test2</a></li>
 							<li><a href="#">test3</a></li>
 						</ul>
 
@@ -122,7 +122,14 @@
 					<div class="front">collections front</div>
 				</section>
 				<section id="browse" class="">
-					<div class="root">browse root</div>
+					<div class="root">
+						<input type="text" ng-model="data">
+
+						<h1> [[data]] </h1>
+						<p>browse root</p>
+						<p> [[2+4]] browse root</p>
+						<p>browse root</p>
+					</div>
 					<div class="front">browse front [[2+2]] </div>
 				</section>
 			</div>
@@ -148,6 +155,10 @@
 	$("#test1").click(function () {
 		console.log('working');
 		$("#browse .front").animate({left:"100%"})
+	})
+	$("#test2").click(function () {
+		console.log('working');
+		$("#browse .front").animate({left:"20%"}, 500)
 	})
 	</script>
 
