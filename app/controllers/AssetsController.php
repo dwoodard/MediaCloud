@@ -27,7 +27,14 @@ class AssetsController extends PermissionsController{
 		// Grab all the assets
 		$assets = $this->asset->getAll();
 
-		// die(var_dump($assets));
+		foreach ($assets as $asset) {
+
+			$asset->users->each(function($user)
+			{
+			    $asset->users[] = $user;
+			});	
+		}
+		
 		// Show the page
 		return View::make('backend/assets/index', compact('assets'));
 	}
@@ -162,16 +169,16 @@ class AssetsController extends PermissionsController{
 		$asset->description			= e(Input::get('description'));
 		$asset->filepath			= e(Input::get('filepath'));
 		// $asset->filename			= e(Input::get('filename'));
-		// $asset->transcoded_url		= e(Input::get('transcoded_url'));
-		// $asset->thumbnail_url		= e(Input::get('thumbnail_url'));
-		// $asset->url					= e(Input::get('url'));
+		// $asset->transcoded_url	= e(Input::get('transcoded_url'));
+		// $asset->thumbnail_url	= e(Input::get('thumbnail_url'));
+		// $asset->url				= e(Input::get('url'));
 		$asset->type				= e(Input::get('type'));
 		$asset->status				= e(Input::get('status'));
 		// $asset->tags				= e(Input::get('tags'));
-		// $asset->views				= e(Input::get('views'));
-		// $asset->last_viewed			= e(Input::get('last_viewed'));
-		// $asset->created_at			= e(Input::get('created_at'));
-		// $asset->updated_at			= e(Input::get('updated_at'));
+		// $asset->views			= e(Input::get('views'));
+		// $asset->last_viewed		= e(Input::get('last_viewed'));
+		// $asset->created_at		= e(Input::get('created_at'));
+		// $asset->updated_at		= e(Input::get('updated_at'));
 
 
 

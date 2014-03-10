@@ -60,10 +60,9 @@ User Management ::
 			<tr>
 				<th>title</th>
 				<th>id</th>
-				<th>description</th>
-				<th>alphaID</th>
-				<!-- <th>filename_original</th> -->
 				<th>filename</th>
+				<th>users</th>
+				<!-- <th>filename_original</th> -->
 				<th>type</th>
 				<th>status</th>
 				<th>filesize</th>
@@ -80,10 +79,14 @@ User Management ::
 				<tr>
 					<td>{{{ $asset->title}}}</td>
 					<td>{{{ $asset->id}}}</td>
-					<td>{{{ $asset->description}}}</td>
 					<td> {{link_to(route('asset.file', $asset->alphaID), $asset->alphaID);}}</td>
-					<!-- <td>{{{ $asset->filename_original}}}</td> -->
-					<td>{{{ $asset->filename}}}</td>
+					<td>
+						@foreach ($asset['users'] as $user)
+
+						<a href="/admin/users/{{$user->id}}/edit">{{{ $user->username}}}</a> 
+
+						@endforeach
+					</td>
 					<td>{{{ $asset->type}}}</td>
 					<td>{{{ $asset->status}}}</td>
 					<td>{{{ humanFileSize($asset->filesize)}}}</td>
