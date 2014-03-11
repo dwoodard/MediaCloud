@@ -96,6 +96,8 @@
 			<p>test</p>
 		</div>
 		<div id="main-content">
+			
+		<collection data="json"></collection>
 
 			<section id="collections" class="hide">
 				<div class="root">collections root</div>
@@ -116,9 +118,40 @@
 					<p>browse root</p>
 					<p>browse root</p>
 					<p>browse root</p>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
+					<p>browse root</p>
+					<h1> [[data]] </h1>
 					<p>broasdfwse root</p>
 					<p>browse root</p>
 					<p>browse root</p>
+					<h1> [[data]] </h1>
 					<p>browse root</p>
 					<p>broasdfwse root</p>
 					<h1> [[data]] </h1>
@@ -171,7 +204,7 @@
 @stop
 
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script src="/bower/angular/angular.js"></script>
 <script src="/app/app.js"></script>
 <script src="/app/controllers/manageController.js"></script>
 
@@ -183,7 +216,11 @@
 	})
 	$("#test2").click(function () {
 		console.log('working');
-		$("#browse .front").animate({left:"20%"}, 250)
+		$("#browse .front").animate({left:"25%"}, 250)
 	})
 </script>
+@stop
+
+@section('style')
+   <link href="/assets/css/app.css" rel="stylesheet" type="text/css"/>
 @stop

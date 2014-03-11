@@ -31,9 +31,7 @@
    <link href="/_frontend/assets/css/custom.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
 
-   <!-- BEGIN CUSTOM STYLES -->
-   <link href="/assets/css/app.css" rel="stylesheet" type="text/css"/>
-   <!-- END CUSTOM STYLES -->
+	@yield('style')
 
    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -170,7 +168,10 @@
 	<!--[if lt IE 9]>
 	<script src="/_frontend/assets/plugins/respond.min.js"></script>
 	<![endif]-->
+	<!-- 
 	<script src="/_frontend/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	 -->
+	 <script src="/bower/jquery/dist/jquery.js"></script>
 	<script src="/_frontend/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 	<script src="/_frontend/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="/_frontend/assets/plugins/hover-dropdown.js"></script>

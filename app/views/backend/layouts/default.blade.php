@@ -9,9 +9,9 @@
 			Administration
 			@show
 		</title>
-		<meta name="keywords" content="your, awesome, keywords, here" />
-		<meta name="author" content="Jon Doe" />
-		<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+		<meta name="keywords" content="Media Cloud" />
+		<meta name="author" content="Dustin Woodard" />
+		<meta name="description" content="" />
 
 		<!-- Mobile Specific Metas
 		================================================== -->
@@ -93,8 +93,7 @@
 			@yield('content')
 		</div>
 
-		<!-- Javascripts
-		================================================== -->
+		<!-- Javascripts ================================================== -->
 		<script src="{{ asset('assets/js/jquery.1.10.2.min.js') }}"></script>
 		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
 	</body>
