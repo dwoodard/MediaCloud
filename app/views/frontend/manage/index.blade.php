@@ -3,6 +3,8 @@
 
 @section('content')
 <div id="App" ng-app="mcApp">
+
+
 	<div id="main-header">
 		<div id="notifications" class="">
 			<div class="container">
@@ -85,114 +87,27 @@
 
 		<nav id="manage_nav">
 			<ul>
-				<li> <a href="#"><i class="fa fa-search fa-3x"></i> <span class="nav-text">Search</span></a></li>
-				<li> <a href="#"><i class="fa fa-cloud-upload  fa-3x"></i> <span class="nav-text">Upload</span></a></li>
-				<li> <a href="#"><i class="fa fa-folder  fa-3x"></i> <span class="nav-text">Browse</span></a></li>
-				<li> <a href="#"><i class="fa fa-th-large  fa-3x"></i> <span class="nav-text">Collections</span></a></li>
+				<li> <a href="#search"><i class="fa fa-search fa-3x"></i> <span class="nav-text">Search</span></a></li>
+				<li> <a href="#upload"><i class="fa fa-cloud-upload  fa-3x"></i> <span class="nav-text">Upload</span></a></li>
+				<li> <a href="#browse"><i class="fa fa-folder  fa-3x"></i> <span class="nav-text">Browse</span></a></li>
+				<li> <a href="#collections"><i class="fa fa-th-large  fa-3x"></i> <span class="nav-text">Collections</span></a></li>
 			</ul>
 		</nav>
+
 		<div id="assets_container">
 			<div id="player">myvid</div>
 			<p>test</p>
 		</div>
-		<div id="main-content">
+		<div id="main-content" ng-view>
+
 			
-		<collection data="json"></collection>
 
 			<section id="collections" class="hide">
 				<div class="root">collections root</div>
 				<div class="front">collections front</div>
 			</section>
 
-			<section id="browse" class="">
-				<div class="root">
-					<input type="text" ng-model="data" >
 
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p> [[2+4]] browse root</p>
-					<p>browasdfse root</p>
-					<p>broasdwse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>broasdfwse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<p>browse root</p>
-					<p>broasdfwse root</p>
-					<h1> [[data]] </h1>
-				</div>
-				<div class="front" data-spy="affix" data-offset-top="10" data-offset-bottom="30">
-					browse front [[2+2]] [[2+2]] 
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse [[data]]</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse [[data]]</p>
-					<p>browse front</p>
-					<p>[[data]] front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse [[data]]</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>[[data]] front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-				</div>
-			</section>
 
 		</div>
 
@@ -205,20 +120,23 @@
 
 @section('scripts')
 <script src="/bower/angular/angular.js"></script>
+<script src="/bower/angular-route/angular-route.js"></script>
 <script src="/app/app.js"></script>
-<script src="/app/controllers/manageController.js"></script>
+<!-- <script src="/app/controllers/manageController.js"></script> -->
+<script src="/app/controllers/collectionController.js"></script>
 
 
 <script type="text/javascript">
 	$("#test1").click(function () {
 		console.log('working');
-		$("#browse .front").animate({left:"100%"}, 800)
+		$("#collections .front").animate({left:"100%"}, 800)
 	})
 	$("#test2").click(function () {
 		console.log('working');
-		$("#browse .front").animate({left:"25%"}, 250)
+		$("#collections .front").animate({left:"25%"}, 250)
 	})
 </script>
+
 @stop
 
 @section('style')
