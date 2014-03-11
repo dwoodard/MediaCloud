@@ -1,5 +1,5 @@
 /***
-Responsive Theme. 
+Responsive Theme.
 Based on http://getbootstrap.com/css/#responsive-utilities-classes
 ***/
 
@@ -7,11 +7,11 @@ Based on http://getbootstrap.com/css/#responsive-utilities-classes
 Form Medium Devices Up To Large Devices
 ***/
 
-@media (min-width: 992px) and (max-width: 1200px) {  
+@media (min-width: 992px) and (max-width: 1200px) {
 
 	.page-boxed .header .dropdown .username {
 		display: none;
-	}	
+	}
 
 }
 
@@ -19,7 +19,7 @@ Form Medium Devices Up To Large Devices
 From Medium Devices Up To Larger Devices
 ***/
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 
  	/***
  	Page sidebar
@@ -43,8 +43,8 @@ From Medium Devices Up To Larger Devices
 	}
 
 	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar {
-		z-index: 10000;		
-		width: 35px;		
+		z-index: 10000;
+		width: 35px;
 	}
 
 	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar .selected {
@@ -72,7 +72,7 @@ From Medium Devices Up To Larger Devices
 
 	.page-sidebar-hovering .sub-menu,
 	.page-sidebar-hovering span.title,
-	.page-sidebar-hovering span.arrow {		  
+	.page-sidebar-hovering span.arrow {
 		display: none !important;
 	}
 
@@ -85,15 +85,15 @@ From Medium Devices Up To Larger Devices
   	/***
   	Page content
   	***/
-  	.page-content { 
-  		margin-left: 225px; 
+  	.page-content {
+  		margin-left: 225px;
 		margin-top: 0px;
-		min-height: 760px; 
+		min-height: 760px;
 		padding: 25px 20px 20px 20px;
 	}
 
 	.page-sidebar-fixed .page-content {
-		min-height: 600px; 
+		min-height: 600px;
 	}
 
 	.page-content.no-min-height {
@@ -124,7 +124,7 @@ From Medium Devices Up To Larger Devices
 	/* end: fixed footer */
 
 	.page-boxed .footer {
-  		padding: 8px 0 5px 0; 
+  		padding: 8px 0 5px 0;
 	}
 
 	.page-sidebar-fixed .footer {
@@ -141,7 +141,7 @@ From Medium Devices Up To Larger Devices
 	  margin-left: 35px;
 	}
 
-	.page-sidebar-fixed .footer .footer-tools .go-top { 
+	.page-sidebar-fixed .footer .footer-tools .go-top {
 	  background-color: #666;
 	}
 
@@ -169,8 +169,8 @@ From Medium Devices Up To Larger Devices
 Up To Medium Devices
 ***/
 
-@media (max-width:991px) { 
-	
+@media (max-width:991px) {
+
 	/***
  	Page header
  	***/
@@ -192,7 +192,7 @@ Up To Medium Devices
 	    display: none !important;
 	}
 
-	.page-sidebar.navbar-collapse.in {	 	
+	.page-sidebar.navbar-collapse.in {
 	 	overflow: hidden !important;
 	 	overflow-y: auto !important;
 	 }
@@ -218,7 +218,7 @@ Up To Medium Devices
     	float: right;
     	margin: 0;
   	}
-  
+
  	.header .navbar-nav > li {
     	float: left;
   	}
@@ -230,7 +230,7 @@ Up To Medium Devices
 
 	.header .navbar-brand {
   		margin-left: 0px !important;
-  		padding-left: 0px !important; 
+  		padding-left: 0px !important;
 	}
 
 	.header .navbar-brand img {
@@ -250,8 +250,8 @@ Up To Medium Devices
   	***/
   	.page-content {
   		margin: 0px !important;
-  		padding: 20px 20px 20px 20px !important;  		
-		min-height: 280px; 
+  		padding: 20px 20px 20px 20px !important;
+		min-height: 280px;
   	}
 
 	/***
@@ -310,8 +310,8 @@ Up To Medium Devices
 /***
 From Small Devices Up To Medium Devices
 ***/
- 
-@media (min-width: 768px) and (max-width: 991px) { 
+
+@media (min-width: 768px) and (max-width: 991px) {
 
 	/***
 	Body
@@ -323,43 +323,43 @@ From Small Devices Up To Medium Devices
 	/***
 	Page sidebar
 	***/
-	.page-sidebar .btn-navbar.collapsed .arrow { 
+	.page-sidebar .btn-navbar.collapsed .arrow {
 		display: none;
-	}	
+	}
 
 	.page-sidebar .btn-navbar .arrow {
 	  position: absolute;
 	  right: 25px;
-	  width: 0; 
+	  width: 0;
 	  height: 0;
 	  top:50px;
 	  border-bottom: 15px solid #5f646b;
-	  border-left: 15px solid transparent; 
-	  border-right: 15px solid transparent; 
+	  border-left: 15px solid transparent;
+	  border-right: 15px solid transparent;
 	}
 
-} 
- 
+}
+
 /***
 Extra Small Devices Only
 ***/
 
-@media (max-width: 767px) { 
-	
+@media (max-width: 767px) {
+
 	/***
 	Page header
 	***/
-	
+
 	.header {
  		padding: 0 10px 0 10px;
  	}
 
-	.header .top-nav .nav{  
+	.header .top-nav .nav{
 	 	margin-top: 0px;
 	 	margin-right: 5px;
 	}
 
-	.header .nav > li > .dropdown-menu.notification:after, 
+	.header .nav > li > .dropdown-menu.notification:after,
 	.header .nav > li > .dropdown-menu.notification:before {
 		margin-right: 180px;
 	}
@@ -368,7 +368,7 @@ Extra Small Devices Only
   		margin-right: -180px;
 	}
 
-	.header .nav > li > .dropdown-menu.inbox:after, 
+	.header .nav > li > .dropdown-menu.inbox:after,
 	.header .nav > li > .dropdown-menu.inbox:before {
 		margin-right: 140px;
 	}
@@ -377,7 +377,7 @@ Extra Small Devices Only
   		margin-right: -140px;
 	}
 
-	.header .nav > li > .dropdown-menu.tasks:after, 
+	.header .nav > li > .dropdown-menu.tasks:after,
 	.header .nav > li > .dropdown-menu.tasks:before {
 		margin-right: 90px;
 	}
@@ -391,7 +391,7 @@ Extra Small Devices Only
   		margin-left: 0px !important;
   		width: 110px;
 	}
-	
+
 	/***
 	Page content
 	***/
@@ -412,14 +412,14 @@ Extra Small Devices Only
 		font-size: 13px;
 		padding-top: 3px;
 	}
-	
+
 	/***
 	Styler pagel
 	***/
 	.styler-panel {
 		top:58px;
 		right:12px;
-	}	
+	}
 
 	/***
 	Page breadcrumb
@@ -433,20 +433,20 @@ Extra Small Devices Only
 	Portlet form action
 	***/
 	.portlet-body.form .form-actions{
-	  padding-left: 15px;	
-	} 
+	  padding-left: 15px;
+	}
 
 
 	/***
 	Form input validation states
 	***/
-	.input-icon .input-error, 
-	.input-icon .input-warning, 
-	.input-icon .input-success { 
+	.input-icon .input-error,
+	.input-icon .input-warning,
+	.input-icon .input-success {
 		top:-27px;
 		float: right;
 		right:10px !important;
-	}	
+	}
 
 	/***
 	Advance tables
@@ -456,14 +456,14 @@ Extra Small Devices Only
 	}
 
 	/***
-	Footer	
-	***/	
+	Footer
+	***/
 	.footer {
 		padding-left: 10px;
-		padding-right: 10px;		
-	}	
-	
-	.footer .go-top {  
+		padding-right: 10px;
+	}
+
+	.footer .go-top {
 		float: right;
 		display: block;
 		margin-right: 0px;
@@ -480,11 +480,11 @@ Extra Small Devices Only
 	Form controls
 	***/
 	.form-horizontal .form-actions {
-  		padding-left: 180px; 	
+  		padding-left: 180px;
   	}
 
   	.portlet .form-horizontal .form-actions {
-  		padding-left: 190px; 	
+  		padding-left: 190px;
   	}
 }
 
@@ -505,7 +505,7 @@ The Most Extra Small Devices Landscape Mode Only
 
 	.header .navbar-nav > li.dropdown .dropdown-toggle {
   		margin-top:-1px !important;
-  	}	
+  	}
 
   	.header .navbar-nav li.dropdown .dropdown-toggle .badge {
   		top: 8px;
@@ -531,7 +531,7 @@ The Most Extra Small Devices Landscape Mode Only
 	Forms
 	***/
   	.portlet .form-horizontal .form-actions {
-  		padding-left: 10px; 	
+  		padding-left: 10px;
   	}
 
 	/***
@@ -539,11 +539,11 @@ The Most Extra Small Devices Landscape Mode Only
 	***/
 	.page-content .breadcrumb .dashboard-date-range  {
 		padding-bottom: 8px;
-	} 
+	}
 
 	.page-content .breadcrumb .dashboard-date-range span {
 		display: none;
-	}	
+	}
 
   	.page-content .breadcrumb > .btn-group span {
   		display: none;
@@ -582,5 +582,5 @@ The Most Extra Small Devices Portrait Mode Only
 
 	.header .navbar-brand {
 		width: 100px;
-	}	
-}	
+	}
+}

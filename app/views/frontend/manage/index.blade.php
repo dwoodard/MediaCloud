@@ -107,67 +107,12 @@
 					<input type="text" ng-model="data" >
 
 					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
 					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
-					<h1> [[data]] </h1>
 					<h1> [[data]] </h1>
 					<p>browse root</p>
 					<p> [[2+4]] browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
 					<p>browasdfse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
 					<p>broasdwse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
-					<p>browse root</p>
 					<p>browse root</p>
 					<p>browse root</p>
 					<p>browse root</p>
@@ -185,6 +130,7 @@
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
+					<p>browse [[data]]</p>
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
@@ -193,52 +139,17 @@
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
+					<p>browse [[data]]</p>
+					<p>browse front</p>
+					<p>[[data]] front</p>
+					<p>browse front</p>
+					<p>browse front</p>
+					<p>browse [[data]]</p>
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
-					<p>browse front</p>
+					<p>[[data]] front</p>
 					<p>browse front</p>
 					<p>browse front</p>
 					<p>browse front</p>
