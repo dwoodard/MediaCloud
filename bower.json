@@ -19,6 +19,7 @@
     "WOW": "~0.1.6",
     "angular": "~1.2.14",
     "jquery": "~2.1.0",
-    "angular-route": "~1.2.14"
+    "angular-route": "~1.2.14",
+    "bootstrap": "~3.1.1"
   }
 }

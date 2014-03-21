@@ -1,0 +1,7 @@
+/*global.css*/
+
+@import url(../../_frontend/assets/fonts/font.css);
+
+body{
+	font-family: 'Open Sans' !important;
+}

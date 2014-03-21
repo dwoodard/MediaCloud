@@ -89,7 +89,7 @@
 
 				</ul>
 			</div>
-			<!-- BEGIN TOP NAVIGATION MENU -->
+			<!-- END TOP NAVIGATION MENU -->
 		</div>
 
 

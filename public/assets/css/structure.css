@@ -1,0 +1,21 @@
+/*structure.css*/
+
+#main-nav{
+margin-bottom: 0;
+}
+
+#subnav-search{
+margin: 3px 15px;
+}
+
+#subnav-container{
+max-height: 50px;
+background: #e1e1e1;
+}
+
+#subnav-container>.subnav>ul{
+line-height: 30px
+}
+#subnav-container>.subnav>form{
+	margin-top: 8px;
+}
