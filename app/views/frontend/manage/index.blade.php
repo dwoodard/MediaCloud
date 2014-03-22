@@ -8,15 +8,7 @@
 		<div class="container subnav">
 
 			<ul class="nav nav-pills pull-left">
-				<li><a href="#upload"><i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span></a></li>
-				<li><a href="#browse"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a></li>
-				<li><a href="#collections"><i class="fa fa-th-large"></i> <span class="nav-text">Collections</span></a></li>
-			</ul>
-
-
-			<ul class="nav navbar-nav pull-right">
-
-				<li class="dropdown" id="header_notification_bar">
+				<li class="dropdown" id="search_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="fa fa-search"></i>
 					</a>
@@ -25,19 +17,28 @@
 							<ul class="dropdown-menu-list scroller">
 								<li>
 									<form id="subnav-search" class="form-inline" role="form">
-										<div class="input-group">
+										<div class="input-group ">
 											<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 											<div class="input-group-btn">
 												<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 											</div>
 										</div>
 									</form>
-
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</li>
+
+				<li><a href="#collections"><i class="fa fa-th-large"></i> <span class="nav-text">Collections</span></a></li>
+				<li><a href="#upload"><i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span></a></li>
+				<li><a href="#browse"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a></li>
+			</ul>
+
+
+			<ul class="nav navbar-nav pull-right">
+
+
 			</ul>
 
 
@@ -113,19 +114,298 @@
 
 
 	<div id="main">
-		<!--
-		<div id="assets_container">
-			<div id="player">myvid</div>
-			<p>test</p>
-		</div>
-	-->
 
-	<div id="main-content" ng-view>
-		<section id="collections" class="hide">
-			<div class="root">collections root</div>
-			<div class="front">collections front</div>
-		</section>
+		<div class="app-folders-container" style="margin-top: 0px;">
+			<div class="jaf-row jaf-container">
+				<div class="folder" id="okcomputer" style="opacity: 1;">
+					<a href="#">
+						<i class="fa fa-search"></i>
+						<p class="album-name">OK Computer</p>
+						<p class="artist-name">Radiohead</p>
+					</a>
+				</div>
+				<div class="folder" id="intheaeroplane" style="opacity: 1;">
+					<a href="#">
+						<i class="fa fa-search"></i>
+						<p class="album-name">In the Aeroplane Over the Sea</p>
+						<p class="artist-name">Neutral Milk Hotel</p>
+					</a>
+				</div>
+				<div class="folder" id="yankeehotelfoxtrot" style="opacity: 1;">
+					<a href="#">
+						<i class="fa fa-search"></i>
+						<p class="album-name">Yankee Hotel Foxtrot</p>
+						<p class="artist-name">Wilco</p>
+					</a>
+				</div>
+				<div class="folder" id="sophtwareslump" style="opacity: 1;">
+					<a href="#">
+						<i class="fa fa-search"></i>
+						<p class="album-name">The Sophtware Slump</p>
+						<p class="artist-name">Grandaddy</p>
+					</a>
+				</div>
+				<br class="clear">
+			</div><div class="folderContent sophtwareslump" style="display: none; background-color: rgb(146, 163, 177);">
+			<div class="jaf-container">
+				<div>
+					<div class="art-wrap" style="box-shadow: rgb(146, 163, 177) 12px 15px 20px inset, rgb(146, 163, 177) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+					</div>
+					<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">The Sophtware Slump</a></h2>
+					<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Grandaddy (2000)</h3>
+					<div class="multi">
+						<ol class="secondaryColor" style="color: rgb(0, 0, 0);">
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">He's Simple, He's Dumb, He's the Pilot</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Hewlett's Daughter</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Jed the Humanoid</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">The Crystal Lake</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Chartsengrafs</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Underneath the Weeping Willow</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Broken Household Appliance National Forest</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Jed's Other Poem (Beautiful Ground)</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">E. Knievel Interlude (The Perils of Keeping It Real)</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">Miner at the Dial-A-View</a></li>
+							<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">So You'll Aim Toward the Sky</a></li>
+						</ol>
+					</div>
+				</div>
+				<br class="clear">
+			</div>
+			<a href="#" class="close">×</a>
+		</div><div class="folderContent yankeehotelfoxtrot" style="display: none; background-color: rgb(195, 179, 147);">
+		<div class="jaf-container">
+			<div>
+				<div class="art-wrap" style="box-shadow: rgb(195, 179, 147) 12px 15px 20px inset, rgb(195, 179, 147) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+				</div>
+				<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Yankee Hotel Foxtrot</a></h2>
+				<h3 class="secondaryColor" style="color: rgb(100, 84, 68);">Wilco (2002)</h3>
+				<div class="multi">
+					<ol class="secondaryColor" style="color: rgb(100, 84, 68);">
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">I Am Trying to Break Your Heart</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Kamera</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Radio Cure</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">War on War</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Jesus, Etc.</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Ashes of American Flags</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Heavy Metal Drummer</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">I'm the Man Who Loves You</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Pot Kettle Black</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Poor Places</a></li>
+						<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Reservations</a></li>
+					</ol>
+				</div>
+			</div>
+			<br class="clear">
+		</div>
+		<a href="#" class="close">×</a>
+	</div><div class="folderContent intheaeroplane" style="display: none; background-color: rgb(179, 185, 146);">
+	<div class="jaf-container">
+		<div>
+			<div class="art-wrap" style="box-shadow: rgb(179, 185, 146) 12px 15px 20px inset, rgb(179, 185, 146) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+			</div>
+			<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">In the Aeroplane Over the Sea</a></h2>
+			<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Neutral Milk Hotel (1998)</h3>
+			<div class="multi">
+				<ol class="secondaryColor" style="color: rgb(0, 0, 0);">
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">The King of Carrot Flowers Pt. One</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">The King of Carrot Flowers Pts. Two &amp; Three</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">In the Aeroplane Over the Sea</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Two-Headed Boy</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">The Fool</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Holland, 1945</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Communist Daughter</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Oh Comely</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Ghost</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">*</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">Two-Headed Boy Pt. Two</a></li>
+				</ol>
+			</div>
+		</div>
+		<br class="clear">
 	</div>
+	<a href="#" class="close">×</a>
+</div><div class="folderContent okcomputer" style="display: none; background-color: rgb(224, 232, 233);">
+<div class="jaf-container">
+	<div>
+		<div class="art-wrap" style="box-shadow: rgb(224, 232, 233) 12px 15px 20px inset, rgb(224, 232, 233) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+		</div>
+		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">OK Computer</a></h2>
+		<h3 class="secondaryColor" style="color: rgb(117, 93, 98);">Radiohead (1997)</h3>
+		<div class="multi">
+			<ol class="secondaryColor" style="color: rgb(117, 93, 98);">
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Airbag</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Paranoid Android</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Subterranean Homesick Alien</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Exit Music (For a Film)</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Let Down</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Karma Police</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Fitter Happier</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Electioneering</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Climbing Up the Walls</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">No Surprises</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">Lucky</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">The Tourist</a></li>
+			</ol>
+		</div>
+	</div>
+	<br class="clear">
+</div>
+<a href="#" class="close">×</a>
+</div>
+<div class="jaf-row jaf-container">
+	<div class="folder" id="originofsymmetry" style="opacity: 1;">
+		<a href="#">
+			<i class="fa fa-search"></i>
+			<p class="album-name">Origin of Symmetry</p>
+			<p class="artist-name">Muse</p>
+		</a>
+	</div>
+	<div class="folder" id="yoshimibattlesthepinkrobots" style="opacity: 1;">
+		<a href="#">
+			<i class="fa fa-search"></i>
+			<p class="album-name">Yoshimi Battles the Pink Robots</p>
+			<p class="artist-name">The Flaming Lips</p>
+		</a>
+	</div>
+	<div class="folder" id="kida" style="opacity: 1;">
+		<a href="#">
+			<i class="fa fa-search"></i>
+			<p class="album-name">Kid A</p>
+			<p class="artist-name">Radiohead</p>
+		</a>
+	</div>
+	<div class="folder" id="agaetisbyrjun" style="opacity: 1;">
+		<a href="#">
+			<i class="fa fa-search"></i>
+			<p class="album-name">Ágætis byrjun</p>
+			<p class="artist-name">Sigur Rós</p>
+		</a>
+	</div>
+	<br class="clear">
+</div><div class="folderContent kida" style="display: none; background-color: rgb(9, 8, 9);">
+<div class="jaf-container">
+	<div>
+		<div class="art-wrap" style="box-shadow: rgb(9, 8, 9) 12px 15px 20px inset, rgb(9, 8, 9) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+		</div>
+		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Kid A</a></h2>
+		<h3 class="secondaryColor" style="color: rgb(106, 120, 134);">Radiohead (2000)</h3>
+		<div class="multi">
+			<ol class="secondaryColor" style="color: rgb(106, 120, 134);">
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Everything in its Right Place</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Kid A</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">The National Anthem</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">How to Disappear Completely</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Treefingers</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Optimistic</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">In Limbo</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Idioteque</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Morning Bell</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Motion Picture Soundtrack</a></li>
+			</ol>
+		</div>
+	</div>
+	<br class="clear">
+</div>
+<a href="#" class="close">×</a>
+</div><div class="folderContent yoshimibattlesthepinkrobots" style="display: none; background-color: rgb(235, 212, 139);">
+<div class="jaf-container">
+	<div>
+		<div class="art-wrap" style="box-shadow: rgb(235, 212, 139) 12px 15px 20px inset, rgb(235, 212, 139) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+		</div>
+		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Yoshimi Battles the Pink Robots</a></h2>
+		<h3 class="secondaryColor" style="color: rgb(115, 130, 92);">The Flaming Lips (2002)</h3>
+		<div class="multi">
+			<ol class="secondaryColor" style="color: rgb(115, 130, 92);">
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Fight Test</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">One More Robot/Sympathy 3000-21</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Yoshimi Battles the Pink Robots Part 1</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Yoshimi Battles the Pink Robots Part 2</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">In the Morning of the Magicians</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Ego Tripping at the Gates of Hell</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Are You a Hypnotist??</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">It's Summertime</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Do You Realize??</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">All We Have is Now</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Approaching Pavonis Mons by Balloon (Utopia Planitia)</a></li>
+			</ol>
+		</div>
+	</div>
+	<br class="clear">
+</div>
+<a href="#" class="close">×</a>
+</div><div class="folderContent originofsymmetry" style="display: none; background-color: rgb(247, 152, 48);">
+<div class="jaf-container">
+	<div>
+		<div class="art-wrap" style="box-shadow: rgb(247, 152, 48) 12px 15px 20px inset, rgb(247, 152, 48) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+		</div>
+		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Origin of Symmetry</a></h2>
+		<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Muse (2005)</h3>
+		<div class="multi">
+			<ol class="secondaryColor" style="color: rgb(0, 0, 0);">
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">New Born</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Bliss</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Space Dementia</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Hyper Music</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Plug In Baby</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Citizen Erased</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Micro Cuts</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Screenager</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Dark Shines</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Feeling Good</a></li>
+				<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Megalomania</a></li>
+			</ol>
+		</div>
+	</div>
+	<br class="clear">
+</div>
+<a href="#" class="close">×</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="folderContent agaetisbyrjun" style="display: none; background-color: rgb(44, 52, 68);">
+	<div class="jaf-container">
+		<div>
+			<div class="art-wrap" style="box-shadow: rgb(44, 52, 68) 12px 15px 20px inset, rgb(44, 52, 68) -1px -1px 150px inset;">
+				<i class="fa fa-search"></i>
+			</div>
+			<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Ágætis byrjun</a></h2>
+			<h3 class="secondaryColor" style="color: rgb(255, 255, 255);">Sigur Rós (1999)</h3>
+			<div class="multi">
+				<ol class="secondaryColor" style="color: rgb(255, 255, 255);">
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Intro</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Svefn-g-englar</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Starálfur</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Flugufrelsarinn</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Ný batterí</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Hjartað hamast (bamm bamm bamm)</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Viðrar vel til loftárása</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Olsen Olsen</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Ágætis byrjun</a></li>
+					<li><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Avalon</a></li>
+				</ol>
+			</div>
+		</div>
+		<br class="clear">
+	</div>
+	<a href="#" class="close">×</a>
+</div>
+</div>
+
 
 </div>
 
@@ -135,14 +415,31 @@
 @stop
 
 @section('scripts')
-<script src="/bower/angular/angular.js"></script>
-<script src="/bower/angular-route/angular-route.js"></script>
-<script src="/app/app.js"></script>
-<!-- <script src="/app/controllers/manageController.js"></script> -->
-<script src="/app/controllers/collectionController.js"></script>
-
+<script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
 
 <script type="text/javascript">
+
+	$(function() {
+		$('.app-folders-container').appFolders({
+			opacity: .5, 								// Opacity of non-selected items
+			marginTopAdjust: true, 						// Adjust the margin-top for the folder area based on row selected?
+			marginTopBase: 0, 							// If margin-top-adjust is "true", the natural margin-top for the area
+			marginTopIncrement: 30,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
+			animationSpeed: 200,						// Time (in ms) for transitions
+			URLrewrite: true, 							// Use URL rewriting?
+			URLbase: "/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes): "/services/"
+			internalLinkSelector: ".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
+			instaSwitch: true
+		});
+	});
+
+	$(function(){
+		$("#search_bar a").click(function (e) {
+			console.log($("#srch-term"),e);
+			$("#srch-term")[0].focus()
+		})
+	});
+
 	$("#test1").click(function () {
 		console.log('working');
 		$("#collections .front").animate({left:"100%"}, 800)
@@ -157,4 +454,313 @@
 
 @section('style')
 <link href="/assets/css/app.css" rel="stylesheet" type="text/css"/>
+
+<style>
+/**/
+	body {
+		margin: 0 0 60px;
+		background-color: #f9f8f9;
+		color: #333;
+		font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+		font-size: 13px;
+		overflow: -moz-scrollbars-vertical;
+	}
+
+	h1 {
+		margin: 40px 0 20px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	h2 {
+		margin-bottom: 0;
+	}
+
+	h3 {
+		margin: 0 0 20px;
+		font-weight: normal;
+	}
+
+	p {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	a {
+		color: #333;
+		text-decoration: none;
+	}
+
+	ol, li {
+		margin: 0;
+	}
+
+	.about {
+		margin-top: 60px;
+		text-align: center;
+	}
+
+	.about a {
+		color: #999;
+		-webkit-transition: color 0.2s ease-in;
+		-moz-transition: color 0.2s ease-in;
+		transition: color 0.2s ease-in;
+	}
+
+	.about a:hover {
+		color: #333;
+		-webkit-transition: color 0.2s ease-in;
+		-moz-transition: color 0.2s ease-in;
+		transition: color 0.2s ease-in;
+	}
+
+	.links {
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	.jaf-container {
+		position: relative;
+		padding: 0;
+	}
+
+	.jaf-row {
+		/*zoom: 1;*/
+		min-width: 320px;
+	}
+
+	.folder {
+		position: relative;
+		float: left;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 25%;
+		/*height: 225px;*/
+		padding: 3% 3% 10px 3%;
+		cursor: pointer;
+	}
+
+	.folder::before {
+		position: absolute;
+		bottom: -1px;
+		left: 50%;
+		content: '';
+		width: 0;
+		height: 0;
+		margin-left: 7px;
+		border-left: 0 solid transparent;
+		border-right: 0 solid transparent;
+		border-bottom: 0 solid transparent;
+		-webkit-transition: bottom 0.2s ease-in;
+		-moz-transition: bottom 0.2s ease-in;
+		transition: bottom 0.2s ease-in;
+	}
+
+	.folder::after {
+		position: absolute;
+		bottom: -1px;
+		left: 50%;
+		content: '';
+		width: 0;
+		height: 0;
+		margin-left: 6px;
+		border-left: 0 solid transparent;
+		border-right: 0 solid transparent;
+		border-bottom: 0 solid transparent;
+		-webkit-transition: bottom 0.2s ease-in;
+		-moz-transition: bottom 0.2s ease-in;
+		transition: bottom 0.2s ease-in;
+	}
+
+	.folder img {
+		position: relative;
+		margin-top: 0;
+		margin-left: 0;
+		max-width: 100%;
+		background-color: #888;
+		border: 1px solid #888;
+		box-shadow: 2px 2px 5px #aaa;
+		-webkit-transition: all 0.2s ease-in;
+		-moz-transition: all 0.2s ease-in;
+		transition: all 0.2s ease-in;
+	}
+
+	.album-name {
+		font-weight: bold;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+/*	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;*/
+}
+
+.artist-name {
+	opacity: 1;
+	margin-bottom: 2px;
+	color: #888;
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.app-folders-container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.active-tool {
+	z-index: 10;
+}
+
+.active-tool::before {
+	bottom: -1px;
+	margin-left: -7px;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 12px solid rgba(0,0,0,0.3);
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.active-tool::after {
+	bottom: -1px;
+	margin-left: -6px;
+	border-left: 11px solid transparent;
+	border-right: 11px solid transparent;
+	border-bottom: 11px solid transparent;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.active-tool img {
+	max-width: 110%;
+	margin-top: -5%;
+	margin-left: -5%;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.active-tool .album-name {
+	padding-bottom: 6px;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.active-tool .artist-name {
+	opacity: 0;
+	height: 2px;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.folderContent {
+	position: relative;
+	z-index: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	min-width: 320px;
+	padding: 20px 0 0 60px;
+	background-color: #aaa;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-width: 1px 0;
+}
+
+.folderContent a:hover {
+	text-decoration: underline;
+}
+
+.folderContent .close {
+	position: absolute;
+	top: 15px;
+	left: 10px;
+	padding: 1px 5px 3px;
+	border-radius: 10px;
+	background-color: rgba(0,0,0,0.3);
+	color: rgba(255,255,255,0.5);
+	font-weight: bold;
+}
+
+.folderContent .close:hover {
+	text-decoration: none;
+	background-color: rgba(0,0,0,0.6);
+	color: rgba(255,255,255,0.5);
+}
+
+.multi {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+}
+
+.art-wrap {
+	float: right;
+	text-align: right;
+	/*width: 30%;*/
+}
+
+.art-wrap img {
+	position: relative;
+	z-index: -2;
+	display: block;
+	width: 100%;
+	max-width: 300px;
+}
+
+.clear {
+	clear: both;
+}
+
+@media (max-width: 480px){
+
+	.folder {
+		height: 145px;
+	}
+
+	.folderContent {
+		padding: 20px 40px;
+		width: 100%;
+	}
+
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+
+	.folder {
+		height: 210px;
+	}
+}
+
+@media (max-width: 768px){
+
+	.multi {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+
+	.art-wrap {
+		display: none;
+	}
+}
+
+@media (min-width: 769px){
+
+	.jaf-row {
+		width: 800px;
+		margin: 0 auto;
+	}
+}
+</style>
 @stop

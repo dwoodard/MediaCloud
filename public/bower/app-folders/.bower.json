@@ -1,0 +1,11 @@
+{
+  "name": "app-folders",
+  "_cacheHeaders": {
+    "Content-Length": "8317",
+    "Content-Type": "text/plain"
+  },
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js"
+}

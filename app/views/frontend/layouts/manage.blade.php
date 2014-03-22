@@ -15,6 +15,8 @@
 		@import url("assets/css/master.css");
 	</style>
 
+	@yield('style')
+
 
 </head>
 
@@ -86,5 +88,9 @@
 
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	@yield('scripts')
+
+
   </body>
 </html>
