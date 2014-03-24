@@ -173,8 +173,16 @@ Route::group(array('prefix' => 'asset'), function()
 
 
 
-	# Media Manager
-	Route::get('manage', array('before' => 'cas-login', 'as' => 'manage', 'uses' => 'ManageController@index'));
+# Media Manager
+Route::group(array('prefix' => 'manage'), function()
+{
+	Route::get('/', array('before' => 'cas-login', 'as' => 'manage.index', 'uses' => 'ManageController@index'));
+	Route::get('/test', array('before' => 'cas-login', 'as' => 'manage.test', 'uses' => 'ManageController@create'));
+	Route::get('/collection', array('before' => 'cas-login', 'as' => 'manage.index', 'uses' => 'ManageController@index'));
+	Route::get('/collection/playlist', array('before' => 'cas-login', 'as' => 'manage.index', 'uses' => 'ManageController@index'));
+	Route::get('/upload', array('before' => 'cas-login', 'as' => 'manage.index', 'uses' => 'ManageController@index'));
+
+});
 
 
 

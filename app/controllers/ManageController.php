@@ -2,6 +2,12 @@
 
 class ManageController extends BaseController {
 
+
+	public function test()
+	{
+        return View::make('frontend.manage.test');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -19,7 +25,8 @@ class ManageController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('frontend.manage.create');
+        return View::make('frontend.manage.test');
+        // return View::make('frontend.manage.create');
 	}
 
 	/**

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style type="text/css" media="Screen">
-		@import url("assets/css/master.css");
+		@import url("/assets/css/master.css");
 	</style>
 
 	@yield('style')
@@ -28,12 +28,10 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand" href="/">
-          	<img width="45%"src="assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
+          	<img width="45%"src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
           	<!-- <img width="50%"src="assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span> -->
           </a>
         </div>

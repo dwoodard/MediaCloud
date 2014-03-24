@@ -119,28 +119,28 @@
 			<div class="jaf-row jaf-container">
 				<div class="folder" id="okcomputer" style="opacity: 1;">
 					<a href="#">
-						<img src="/assets/img/collection-icon-open.png" alt="">
+						<i class="fa fa-search"></i>
 						<p class="album-name">OK Computer</p>
 						<p class="artist-name">Radiohead</p>
 					</a>
 				</div>
 				<div class="folder" id="intheaeroplane" style="opacity: 1;">
 					<a href="#">
-						<img src="/assets/img/collection-icon-close.png" alt="">
+						<i class="fa fa-search"></i>
 						<p class="album-name">In the Aeroplane Over the Sea</p>
 						<p class="artist-name">Neutral Milk Hotel</p>
 					</a>
 				</div>
 				<div class="folder" id="yankeehotelfoxtrot" style="opacity: 1;">
 					<a href="#">
-						<img src="/assets/img/collection-icon-close.png" alt="">
+						<i class="fa fa-search"></i>
 						<p class="album-name">Yankee Hotel Foxtrot</p>
 						<p class="artist-name">Wilco</p>
 					</a>
 				</div>
 				<div class="folder" id="sophtwareslump" style="opacity: 1;">
 					<a href="#">
-						<img src="/assets/img/collection-icon-close.png" alt="">
+						<i class="fa fa-search"></i>
 						<p class="album-name">The Sophtware Slump</p>
 						<p class="artist-name">Grandaddy</p>
 					</a>
@@ -150,7 +150,7 @@
 			<div class="jaf-container">
 				<div>
 					<div class="art-wrap" style="box-shadow: rgb(146, 163, 177) 12px 15px 20px inset, rgb(146, 163, 177) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 					</div>
 					<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.318902893&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fthe-sophtware-slump%2Fid318902893%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(0, 0, 0);">The Sophtware Slump</a></h2>
 					<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Grandaddy (2000)</h3>
@@ -177,7 +177,7 @@
 		<div class="jaf-container">
 			<div>
 				<div class="art-wrap" style="box-shadow: rgb(195, 179, 147) 12px 15px 20px inset, rgb(195, 179, 147) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 				</div>
 				<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.300981120&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyankee-hotel-foxtrot%2Fid300981120%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(52, 47, 37);">Yankee Hotel Foxtrot</a></h2>
 				<h3 class="secondaryColor" style="color: rgb(100, 84, 68);">Wilco (2002)</h3>
@@ -204,7 +204,7 @@
 	<div class="jaf-container">
 		<div>
 			<div class="art-wrap" style="box-shadow: rgb(179, 185, 146) 12px 15px 20px inset, rgb(179, 185, 146) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 			</div>
 			<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.5611612&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fin-the-aeroplane-over-the-sea%2Fid5611612%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(94, 54, 30);">In the Aeroplane Over the Sea</a></h2>
 			<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Neutral Milk Hotel (1998)</h3>
@@ -231,7 +231,7 @@
 <div class="jaf-container">
 	<div>
 		<div class="art-wrap" style="box-shadow: rgb(224, 232, 233) 12px 15px 20px inset, rgb(224, 232, 233) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 		</div>
 		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.18421725&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fok-computer%2Fid18421725%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(59, 81, 93);">OK Computer</a></h2>
 		<h3 class="secondaryColor" style="color: rgb(117, 93, 98);">Radiohead (1997)</h3>
@@ -259,28 +259,28 @@
 <div class="jaf-row jaf-container">
 	<div class="folder" id="originofsymmetry" style="opacity: 1;">
 		<a href="#">
-			<img src="/assets/img/collection-icon-close.png" alt="">
+			<i class="fa fa-search"></i>
 			<p class="album-name">Origin of Symmetry</p>
 			<p class="artist-name">Muse</p>
 		</a>
 	</div>
 	<div class="folder" id="yoshimibattlesthepinkrobots" style="opacity: 1;">
 		<a href="#">
-			<img src="/assets/img/collection-icon-close.png" alt="">
+			<i class="fa fa-search"></i>
 			<p class="album-name">Yoshimi Battles the Pink Robots</p>
 			<p class="artist-name">The Flaming Lips</p>
 		</a>
 	</div>
 	<div class="folder" id="kida" style="opacity: 1;">
 		<a href="#">
-			<img src="/assets/img/collection-icon-close.png" alt="">
+			<i class="fa fa-search"></i>
 			<p class="album-name">Kid A</p>
 			<p class="artist-name">Radiohead</p>
 		</a>
 	</div>
 	<div class="folder" id="agaetisbyrjun" style="opacity: 1;">
 		<a href="#">
-			<img src="/assets/img/collection-icon-close.png" alt="">
+			<i class="fa fa-search"></i>
 			<p class="album-name">Ágætis byrjun</p>
 			<p class="artist-name">Sigur Rós</p>
 		</a>
@@ -290,7 +290,7 @@
 <div class="jaf-container">
 	<div>
 		<div class="art-wrap" style="box-shadow: rgb(9, 8, 9) 12px 15px 20px inset, rgb(9, 8, 9) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 		</div>
 		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.280438123&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fkid-a%2Fid280438123%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(198, 202, 198);">Kid A</a></h2>
 		<h3 class="secondaryColor" style="color: rgb(106, 120, 134);">Radiohead (2000)</h3>
@@ -316,7 +316,7 @@
 <div class="jaf-container">
 	<div>
 		<div class="art-wrap" style="box-shadow: rgb(235, 212, 139) 12px 15px 20px inset, rgb(235, 212, 139) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 		</div>
 		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.145124351&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fyoshimi-battles-pink-robots%2Fid145124351%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(190, 62, 45);">Yoshimi Battles the Pink Robots</a></h2>
 		<h3 class="secondaryColor" style="color: rgb(115, 130, 92);">The Flaming Lips (2002)</h3>
@@ -343,7 +343,7 @@
 <div class="jaf-container">
 	<div>
 		<div class="art-wrap" style="box-shadow: rgb(247, 152, 48) 12px 15px 20px inset, rgb(247, 152, 48) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 		</div>
 		<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.314261574&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Forigin-of-symmetry%2Fid314261574%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(56, 47, 49);">Origin of Symmetry</a></h2>
 		<h3 class="secondaryColor" style="color: rgb(0, 0, 0);">Muse (2005)</h3>
@@ -381,7 +381,7 @@
 	<div class="jaf-container">
 		<div>
 			<div class="art-wrap" style="box-shadow: rgb(44, 52, 68) 12px 15px 20px inset, rgb(44, 52, 68) -1px -1px 150px inset;">
-				<img src="/assets/img/collection-icon-close.png" alt="">
+				<i class="fa fa-search"></i>
 			</div>
 			<h2><a href="http://click.linksynergy.com/link?id=wyucSOE7tvo&amp;offerid=146261.402946221&amp;type=2&amp;murl=https%3A%2F%2Fitunes.apple.com%2Falbum%2Fagaetis-byrjun%2Fid402946221%3Fuo%3D5" target="_blank" class="primaryColor" style="color: rgb(133, 137, 146);">Ágætis byrjun</a></h2>
 			<h3 class="secondaryColor" style="color: rgb(255, 255, 255);">Sigur Rós (1999)</h3>
