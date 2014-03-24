@@ -6,11 +6,6 @@
 <script src="/assets/js/dropzone.js"></script>
 
 <script>
-// $(document).ready(function($){
-// 	$(".lookUpUser").lookUpUser('/allusers', getUserInfo);
-// 	$('#owner').focus()
-// });
-
 
 	$( document ).ready(function( $ ) {
         $('.typeahead').autocomplete({
@@ -26,7 +21,7 @@
                             return {
                                 id:item.id,
                                 username:item.username,
-                                label: item.id+":"+item.username ,
+                                label: item.id+": "+item.username ,
                                 value: item.username,
 
                             }
@@ -42,7 +37,7 @@
         });
 
         function showDropzone(){
-            $(".btn-getUserInfo").text("got it")
+            $(".btn-getUserInfo").text("got it");
             $("#uploads-area").removeClass('hide');
 
         }

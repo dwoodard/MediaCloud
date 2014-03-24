@@ -1,11 +1,17 @@
 <?php
 
+use MC\Exceptions\UploadException;
+use MC\Services\UploadCreatorService;
+
+
 class ManageController extends BaseController {
 
+	protected $asset;
+	protected $uploadCreator;
 
-	public function test()
-	{
-        return View::make('frontend.manage.test');
+	public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
+		$this->asset = $asset;
+		$this->uploadCreator = $uploadCreator;
 	}
 
 	/**
@@ -13,21 +19,22 @@ class ManageController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function collection()
 	{
-        return View::make('frontend.manage.index');
+		return View::make('frontend.manage.collection');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+
+	public function browse()
 	{
-        return View::make('frontend.manage.test');
-        // return View::make('frontend.manage.create');
+		return View::make('frontend.manage.browse');
 	}
+
+	public function upload()
+	{
+		return View::make('frontend.manage.upload');
+	}
+
 
 	/**
 	 * Store a newly created resource in storage.
@@ -36,7 +43,14 @@ class ManageController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		// return array(Input::get("userId"), Input::file('file'));
+		// return Input::all();
+		try{
+			$this->uploadCreator->make(Input::get("userId"), Input::file('file'));
+		}
+		catch(\MC\Exceptions\ValidationException $e){
+			return $e;
+		}
 	}
 
 	/**
@@ -47,7 +61,7 @@ class ManageController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('frontend.manage.show');
+		return View::make('frontend.manage.show');
 	}
 
 	/**
@@ -58,7 +72,7 @@ class ManageController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('frontend.manage.edit');
+		return View::make('frontend.manage.edit');
 	}
 
 	/**
@@ -82,5 +96,7 @@ class ManageController extends BaseController {
 	{
 		//
 	}
+
+
 
 }
