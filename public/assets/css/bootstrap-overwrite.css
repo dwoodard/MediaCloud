@@ -12,3 +12,9 @@ top: 8px;
 right: 25px;
 background: red;
 }
+
+.nav.pull-right > li > .dropdown-menu,
+.nav > li > .dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}

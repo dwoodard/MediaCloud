@@ -1,4 +1,4 @@
-body {
+/*body {
 margin: 0 0 60px;
 background-color: #f9f8f9;
 color: #333;
@@ -53,7 +53,7 @@ color: #333;
 -webkit-transition: color 0.2s ease-in;
 -moz-transition: color 0.2s ease-in;
 transition: color 0.2s ease-in;
-}
+}*/
 
 .links {
 margin-top: 20px;
