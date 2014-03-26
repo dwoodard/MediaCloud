@@ -7,12 +7,17 @@ margin-bottom: 0;
 #subnav-search{
 margin: 3px 15px;
 width: 400px;
+}
 
+#app{
+	margin-top: 101px;
 }
 
 #subnav-container{
-max-height: 50px;
 background: #e1e1e1;
+max-height: 50px;
+top:51px;
+z-index: 11;
 }
 
 #subnav-container>.subnav>ul{

@@ -23,7 +23,7 @@
 
 <body>
 
-    <div id="main-nav" class="navbar navbar-default navbar-static-top" role="navigation">
+    <div id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,7 +36,7 @@
           </a>
         </div>
 
-        			<!-- BEGIN TOP NAVIGATION MENU -->
+        	<!-- BEGIN TOP NAVIGATION MENU -->
 			<div class="navbar-collapse collapse pull-right">
 				<ul class="nav navbar-nav">
 					@if (Sentry::check())

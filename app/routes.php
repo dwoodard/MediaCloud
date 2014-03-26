@@ -176,13 +176,13 @@ Route::group(array('prefix' => 'asset'), function()
 # Media Manager
 Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 {
-	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
-	Route::get('test', array('as' => 'manage.test', 'uses' => 'ManageController@create'));
-	Route::get('collections', array('as' => 'manage.index', 'uses' => 'ManageController@collection'));
+	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@collection'));
+	Route::get('test', array('as' => 'manage.test', 'uses' => 'ManageController@test'));
+	Route::get('collections', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
 	Route::get('collections/playlists', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
 	Route::get('upload', array('as' => 'manage.upload', 'uses' => 'ManageController@upload'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
-	Route::get('browse', array('as' => 'manage.index', 'uses' => 'ManageController@browse'));
+	Route::get('browse', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 
 });
 

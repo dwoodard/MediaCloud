@@ -35,7 +35,7 @@
 
 	$( document ).ready(function( $ ) {
 
-		
+
 		$(".btn-getUserInfo").click(function(e){
 			e.preventDefault();
             showDropzone();

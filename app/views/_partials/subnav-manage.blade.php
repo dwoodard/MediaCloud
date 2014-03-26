@@ -1,7 +1,8 @@
-	<div id="subnav-container">
+	<div id="subnav-container" class="navbar navbar-default navbar-fixed-top">
 		<div class="container subnav">
 
 			<ul class="nav nav-pills pull-left">
+
 				<li class="dropdown" id="search_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="fa fa-search"></i>
@@ -24,14 +25,20 @@
 					</ul>
 				</li>
 
-				<li><a href="/manage/collections"><i class="fa fa-th-large"></i> <span class="nav-text">Collections</span></a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" data-click="dropdown" data-delay="0" data-close-others="false" href="#">
+						<i class="fa fa-th-large"></i> <span class="nav-text">Collections</span>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="/manage/collections">Collections</a></li>
+						<li><a role="menuitem" data-target="#"><i class="fa fa-th-large"></i> New Collection</a></li>
+					</ul>
+				</li>
+
 				<li><a href="/manage/upload"><i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span></a></li>
 				<li><a href="/manage/browse"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a></li>
 			</ul>
-
-
-			
-
 
 			<ul class="nav navbar-nav pull-right">
 
