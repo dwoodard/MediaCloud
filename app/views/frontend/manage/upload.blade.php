@@ -4,22 +4,22 @@
 @section('content')
 @include('_partials.subnav-manage')
 
-
+<div id="app">
 
 <div class="row">
-	<div class="col-md-12">
-		<div id="uploads-area" class="">
+    <div class="col-md-12">
+        <div id="uploads-area" class="">
 
-			<form id="filedrop" method="post" action="/manage/upload" class="dropzone" enctype="multipart/form-data">
-				<input id="userId" type="hidden" value="{{Sentry::getUser()->id}}">
-				<div class="fallback">
-					<input name="files[]" type="file" multiple=""/>
-				</div>
-			</form>
-		</div>
-	</div>
+            <form id="filedrop" method="post" action="/manage/upload" class="dropzone" enctype="multipart/form-data">
+                <input id="userId" type="hidden" value="{{Sentry::getUser()->id}}">
+                <div class="fallback">
+                    <input name="files[]" type="file" multiple=""/>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
+</div>
 
 @stop
 

@@ -4,12 +4,10 @@
 @section('content')
 @include('_partials.subnav-manage')
 
-<div>Browse</div>
+<div id="app"><div>Browse</div></div>
 @stop
 
 @section('scripts')
-
-
 @stop
 
 @section('style')

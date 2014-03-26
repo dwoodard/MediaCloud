@@ -1,0 +1,11 @@
+{
+  "name": "flippant.js",
+  "_cacheHeaders": {
+    "Content-Length": "2382",
+    "Content-Type": "text/plain"
+  },
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/mintchaos/flippant.js/master/flippant.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/mintchaos/flippant.js/master/flippant.min.js"
+}
