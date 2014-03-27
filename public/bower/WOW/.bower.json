@@ -27,6 +27,6 @@
     "commit": "2d21042463ea85b8ba0963a9ff484fbb557036b7"
   },
   "_source": "git://github.com/matthieua/WOW.git",
-  "_target": "~0.1.6",
+  "_target": "0.1.6",
   "_originalSource": "WOW"
 }

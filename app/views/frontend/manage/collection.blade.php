@@ -5,6 +5,8 @@
 @include('_partials.subnav-manage')
 <div id="app" ng-app="mcApp">
 
+
+
 	<div id="main" class="">
 		<div class="app-folders-container" style="margin-top: 0px;">
 
@@ -28,31 +30,43 @@
 			<div class="folderContent {{camel_case($cpa->name)}}" style="display: none; background-color: rgb(224, 232, 233);">
 				<div class="jaf-container">
 
-					<a id="left-menu" href="#left-menu">Left Menu</a> 
-					<a id="right-menu" href="#right-menu">Right Menu</a>
+					<div class="flip_container ">
+						<div class="flip_card">
+							<div class="face front" style="">
+								<button class="btn btn-toggleSettings pull-right"> <i class="fa fa-cog"></i></button>
+								<div class="playlists">
+									<h2><a href="#" target="_blank" class="primaryColor">{{$cpa->name}}</a></h2>
+									<ul>
+										@foreach ($cpa->playlists as $playlist)
+										<li><a href="#">{{$playlist->name}}</a></li>
+										@endforeach
+									</ul>
+								</div>
 
+							</div>
+							<div class="face back">
+								<button class="btn btn-toggleSettings"> <i class="fa fa-cog"></i></button>
 
-					<div id="navigation">
-						<nav class="nav">
-							<ul>
-								<li><a href="#download">Download</a></li>
-								<li><a href="#getstarted">Get started</a></li>
-								<li><a href="#usage">Demos &amp; Usage</a></li>
-								<li><a href="#documentation">Documentation</a></li>
-								<li><a href="#themes">Themes</a></li>
-								<li><a href="#support">Support</a></li>
-							</ul>
-						</nav>
+								<div class="container">
+									<ul class="nav nav-tabs" id="myTab">
+										<li class="active"><a href="#home">Home</a></li>
+										<li><a href="#profile">Profile</a></li>
+										<li><a href="#messages">Messages</a></li>
+										<li><a href="#settings">Settings</a></li>
+									</ul>
+									
+									<div class="tab-content">
+										<div class="tab-pane active" id="home">Home content...</div>
+										<div class="tab-pane" id="profile">Content here...</div>
+										<div class="tab-pane" id="messages">Messages...</div>
+										<div class="tab-pane" id="settings">Settings...</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
-					<h2><a href="#" target="_blank" class="primaryColor">{{$cpa->name}}</a></h2>
-					<div id="playlists">
-						<ul>
-							@foreach ($cpa->playlists as $playlist)
-							<li><a href="#">{{$playlist->name}}</a></li>
-							@endforeach
-						</ul>
-					</div>
+					
 					<br class="clear">
 				</div>
 
@@ -68,10 +82,8 @@
 
 @section('scripts')
 <script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
-<script src="/bower/flippant.js/index.js"></script>
 
 <script src="/assets/js/manage.js"></script>
-<script src="/bower/sidr/jquery.sidr.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -79,25 +91,19 @@
 	});
 </script>
 
-<script>
-	$(document).ready(function() {
-		$('#left-menu').sidr({
-			name: 'sidr-left',
-			side: 'left' // By default
-		});
-		$('#right-menu').sidr({
-			name: 'sidr-right',
-			side: 'right'
-		});
-	});
-</script>
+
 
 
 @stop
 
 @section('style')
+<link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/jquery.app-folder.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/flippant.css" rel="stylesheet" type="text/css"/>
-<link href="/bower/sidr/stylesheets/jquery.sidr.dark.css" rel="stylesheet" type="text/css"/>
+
+<style>
+
+
+</style>
 
 @stop

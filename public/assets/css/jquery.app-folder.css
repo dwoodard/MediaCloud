@@ -55,14 +55,15 @@ color: #333;
 transition: color 0.2s ease-in;
 }*/
 
-.links {
+/*.links {
 margin-top: 20px;
 text-align: center;
-}
+}*/
 
 .jaf-container {
 position: relative;
 padding: 0;
+min-height: 180px
 }
 
 .jaf-row {
@@ -114,7 +115,7 @@ border-bottom: 0 solid transparent;
 transition: bottom 0.2s ease-in;
 }
 
-.folder img {
+/*.folder img {
 position: relative;
 margin-top: 0;
 margin-left: 0;
@@ -125,19 +126,23 @@ box-shadow: 2px 2px 5px #aaa;
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
-}
+}*/
 
 .album-name {
-font-weight: bold;
+/*font-weight: bold;*/
 white-space: nowrap;
-overflow: hidden;
+/*overflow: hidden;*/
+text-align:center;
 text-overflow: ellipsis;
-/*	-webkit-transition: all 0.2s ease-in;
+-webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
-transition: all 0.2s ease-in;*/
+transition: all 0.2s ease-in;
 }
 
-.artist-name {
+.jaf-container .playlists h2{
+font-weight: bold;
+}
+/*.artist-name {
 opacity: 1;
 margin-bottom: 2px;
 color: #888;
@@ -148,7 +153,7 @@ text-overflow: ellipsis;
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
-}
+}*/
 
 .app-folders-container {
 width: 100%;
@@ -181,29 +186,35 @@ border-bottom: 11px solid transparent;
 transition: all 0.2s ease-in;
 }
 
-.active-tool img {
-max-width: 110%;
-margin-top: -5%;
-margin-left: -5%;
+.jaf-container img {
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
 }
 
-.active-tool .album-name {
+.active-tool img {
+max-width: 130%;
+margin-top: -15%;
+margin-left: -15%;
+-webkit-transition: all 0.2s ease-in;
+-moz-transition: all 0.2s ease-in;
+transition: all 0.2s ease-in;
+}
+
+/*.active-tool .album-name {
 padding-bottom: 6px;
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
 }
-
-.active-tool .artist-name {
+*/
+/*.active-tool .artist-name {
 opacity: 0;
 height: 2px;
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
-}
+}*/
 
 .folderContent {
 position: relative;

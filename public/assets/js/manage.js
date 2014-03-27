@@ -4,10 +4,10 @@ var Manage = {
 
 	init:function(){
 		this.initAppFolders();
-		this.searchBtn();
-
+		this.initEvents();
 	},
 	initAppFolders:function(){
+		// console.log('initAppFolders')
 
 		$('.app-folders-container').appFolders({
 			opacity:.5, 								// Opacity of non-selected items
@@ -22,6 +22,15 @@ var Manage = {
 		})
 
 	},
+	initEvents:function(){
+		// console.log('initEvents');
+
+		this.searchBtn();
+		this.toggleFlip();
+		this.playListSettings();
+
+
+	},
 	searchBtn:function(){
 
 		$("#search_bar a").on( "click", function(e) {
@@ -30,5 +39,21 @@ var Manage = {
 			}, 0);
 		});
 
+	},
+	toggleFlip:function(){
+		$(".btn-toggleSettings").on( "click", function(e) {
+			console.log(e)
+			$(this).closest(".flip_container").toggleClass('flip')
+		});
+	},
+	playListSettings:function () {
+		$('#myTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+
+		$(function () {
+			$('#myTab a:last').tab('show');
+		})
 	}
 }
