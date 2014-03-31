@@ -131,19 +131,19 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="front-steps front-step-one">
                         <h2>Upload</h2>
-                        <p> Upload your media by simply dragging and dropping your media on the upload page. Quick. Simple. Easy to Use.</p>
+                        <p> Uploading your media is as simple as can be on our easy to use upload page.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="front-steps front-step-two">
                         <h2>Manage</h2>
-                        <p>Decide what your media is called, where it goes, and who gets to see it. Or delete it, if you're into that sort of thing.</p>
+                        <p>Decide what your media is called, where it goes, and who gets to see it. </p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="front-steps front-step-three">
                         <h2>Share</h2>
-                        <p>Share with your friends, family, students or professors. No need to be stingy. </p>
+                        <p>Share with Everyone you know. Use the links provided to link your web page to any video you upload here. </p>
                     </div>
                 </div>
             </div>

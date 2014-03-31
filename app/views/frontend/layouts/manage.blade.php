@@ -10,6 +10,7 @@
 	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style type="text/css" media="Screen">
 		@import url("/assets/css/master.css");
@@ -30,7 +31,7 @@
             <span class="sr-only">Toggle navigation</span>
             <i class="fa fa-bars"></i>
           </button>
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand navbar-brand-size" href="/">
           	<img width="45%"src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
           	<!-- <img width="50%"src="assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span> -->
           </a>

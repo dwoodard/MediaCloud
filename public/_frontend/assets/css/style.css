@@ -1104,6 +1104,7 @@ Content and content elements.
 /*Steps*/
 .front-steps {
 	padding: 15px 20px 33px;
+	height: 175px;
 }
 
 .front-steps p {
@@ -2378,4 +2379,8 @@ a.btn-transparent:hover {
 }
 .panel-danger .panel-title {
 	color: #B94A48;
+}
+
+.navbar-brand-size{
+	width: 85%;
 }

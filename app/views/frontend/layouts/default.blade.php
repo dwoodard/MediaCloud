@@ -51,9 +51,12 @@
 				</button>
 				<!-- END RESPONSIVE MENU TOGGLER -->
 				<!-- BEGIN LOGO (you can use logo image instead of text)-->
+				<div class="col-md-3">
+					
 				<a class="navbar-brand" href="/">
 					<img src="/assets/img/WSU.jpg" id="logoimg" alt="">Media Cloud
 				</a>
+				</div>
 				<!-- END LOGO -->
 			</div>
 
