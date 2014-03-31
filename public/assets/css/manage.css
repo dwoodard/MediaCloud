@@ -1,67 +1,15 @@
 /*manage.css*/
 
-
-
-.flip_container {
-position: relative;
-/*margin: 10px auto;
-width: 450px;
-height: 281px;
-*/z-index: 1;
+.folderContent{}
+.folderContent h2{
+font-size: 34px;
+line-height: inherit;
 }
-.flip_card {
--moz-transform-style: preserve-3d;
--moz-transition: all .5s ease-in-out;
--ms-transition: all .5s ease-in-out;
--o-transform-style: preserve-3d;
--o-transition: all .5s ease-in-out;
--webkit-transform-style: preserve-3d;
--webkit-transition: all .5s ease-in-out;
-transform-style: preserve-3d;
-transition: all .5s ease-in-out;
-height: 100%;
-width: 100%;
+
+.collection-settings{
+	background: #666;
 }
-/*.flip_card{
-width: 100%;
-height: 100%;
-transform-style: preserve-3d;
--webkit-transition: all .25s ease-in-out;
--moz-transition: all .25s ease-in-out;
--ms-transition: all .25s ease-in-out;
--o-transition: all .25s ease-in-out;
-transition: all .25s ease-in-out;
+
+/*.playlists,.collection-settings{
+	height: 400px
 }*/
-.flip_container.flip .flip_card {
--webkit-transform: rotateY(180deg);
--moz-transform: rotateY(180deg);
--o-transform: rotateY(180deg);
-transform: rotateY(180deg);
--webkit-box-shadow: -5px 5px 5px #aaa;
--moz-box-shadow: -5px 5px 5px #aaa;
-box-shadow: -5px 5px 5px #aaa;
-}
-.face {
-position: absolute;
-width: 100%;
-height: 100%;
--webkit-backface-visibility: hidden;
--moz-backface-visibility: hidden;
--o-backface-visibility: hidden;
-backface-visibility: hidden;
-}
-.face.back {
-height: auto;
-display: block;
--webkit-transform: rotateY(180deg);
--webkit-box-sizing: border-box;
--moz-transform: rotateY(180deg);
--moz-box-sizing: border-box;
--o-transform: rotateY(180deg);
--o-box-sizing: border-box;
-transform: rotateY(180deg);
-box-sizing: border-box;
-padding: 10px;
-color: white;
-background-color: rgba(0,0,0,.9);
-}
