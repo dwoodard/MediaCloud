@@ -1,3 +1,7 @@
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/dropzone.css" rel="stylesheet" type="text/css"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
+
 	<div id="subnav-container" class="navbar navbar-default navbar-fixed-top">
 		<div class="container subnav">
 
@@ -25,6 +29,29 @@
 					</ul>
 				</li>
 
+				
+<li class="dropdown keep-open">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span>
+					</a>
+					<ul class="dropdown-menu" id="upload-dropdown">
+						<li>
+							<ul class="dropdown-menu-list scroller">
+								<li>
+									<div id="uploads-area" class="">
+										<form id="filedrop" method="post" action="/manage/upload" class="dropzone" enctype="multipart/form-data">
+											<input id="userId" type="hidden" value="{{Sentry::getUser()->id}}">
+											<div class="fallback">
+												<input name="files[]" type="file" multiple=""/>
+											</div>
+										</form>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" data-click="dropdown" data-delay="0" data-close-others="false" href="#">
 						<i class="fa fa-th-large"></i> <span class="nav-text">Collections</span>
@@ -36,7 +63,7 @@
 					</ul>
 				</li>
 
-				<li><a href="/manage/upload"><i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span></a></li>
+				
 				<li><a href="/manage/browse"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a></li>
 			</ul>
 
@@ -84,6 +111,10 @@
 				</li>
 			</ul>
 
-
 		</div>
 	</div>
+
+
+
+
+
