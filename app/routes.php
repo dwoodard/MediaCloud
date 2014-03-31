@@ -233,7 +233,7 @@ Route::group(array('prefix' => 'v1'), function()
      * Admin Apis
      */
     Route::get('users/{id?}', array('before' => 'admin-auth', 'uses' => 'Controllers\Api\V1\ApiController@users'));
-    Route::get('assets/{id?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@assets'));
+    Route::get('assets/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@assets'));
 
     /*
      * cas-auth Apis

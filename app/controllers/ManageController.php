@@ -34,7 +34,9 @@ class ManageController extends BaseController {
 		for ($i=0; $i < count($cpa); $i+=4) {
 			array_push($cpa_rows,array_slice($cpa, $count+$i, 4));
 		}
-		$data = array('cpas' => $cpa, 'cpa_rows'=> $cpa_rows);
+
+		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
+		$data = array('cpas' => $cpa, 'cpa_rows'=> $cpa_rows, 'unassignedAssets' => $unassignedAssets);
 
 		return View::make('frontend.manage.collection', $data);
 	}
@@ -47,7 +49,19 @@ class ManageController extends BaseController {
 
 	public function upload()
 	{
-		return View::make('frontend.manage.upload');
+		$cpa = new CollectionPlaylistAsset;
+        $cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
+
+        $cpa_rows = array();
+		$count = 0;
+		for ($i=0; $i < count($cpa); $i+=4) {
+			array_push($cpa_rows,array_slice($cpa, $count+$i, 4));
+		}
+
+		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
+		$data = array('cpas' => $cpa, 'cpa_rows'=> $cpa_rows, 'unassignedAssets' => $unassignedAssets);
+
+		return View::make('frontend.manage.upload', $data);
 	}
 
 

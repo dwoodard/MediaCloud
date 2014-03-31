@@ -3,6 +3,7 @@
 namespace Controllers\Api\V1;
 
 use Asset;
+use Sentry;
 use BaseController;
 use CollectionPlaylistAsset;
 use Exception;
@@ -67,18 +68,39 @@ class ApiController extends BaseController {
         return $cpa->get_cpa_by_user_id($id);
     }
 
-    public function assets($id = null){
+    public function assets($id = null, $token = null){
         if($id==null){
            return Asset::all();
         }
         else{
-            $user = User::find($id);
-            $assets = array();
-            foreach ($user->assets as $asset)
-            {
-                $assets[] = $asset["attributes"];
-            }
-            return $assets;
+
+        	if (is_numeric($id) && $token == null) {
+        		
+				$user = User::find($id);
+				$assets = array();
+				foreach ($user->assets as $asset)
+				{
+					$assets[] = $asset["attributes"];
+				}
+				return $assets;
+
+        	}else{
+        		switch ($token) {
+        			case 'unassigned':
+        				return Asset::unassigned($id);
+        				break;
+        			
+        			default:
+        				return array();
+        				break;
+        		}
+
+        	}
+
+
+        	 
+
+            
         }
     }
 
@@ -86,6 +108,8 @@ class ApiController extends BaseController {
     public function test(){
         return json_encode(array(Request::query(), Request::ajax(), Request::cookie()));
     }
+
+
 
 }
 //Route::get('allusers', function(){
