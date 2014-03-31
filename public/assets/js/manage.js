@@ -5,6 +5,7 @@ var Manage = {
 	init:function(){
 		this.initAppFolders();
 		this.initEvents();
+		// console.log(this);
 	},
 	initAppFolders:function(){
 		// console.log('initAppFolders')
@@ -26,8 +27,9 @@ var Manage = {
 		// console.log('initEvents');
 
 		this.searchBtn();
-		this.toggleFlip();
+		// this.toggleFlip();
 		this.playListSettings();
+		this.flipEvents();
 
 
 	},
@@ -40,10 +42,11 @@ var Manage = {
 		});
 
 	},
-	toggleFlip:function(){
-		$(".btn-toggleSettings").on( "click", function(e) {
-			console.log(e)
-			$(this).closest(".flip_container").toggleClass('flip')
+	flipEvents:function(){
+		$("body").on("click", '.btn-reverse',function(e){
+			// $container = $(e.target).closest('.flipbox-container')
+			$(".flipbox").flippyReverse();
+			e.preventDefault();
 		});
 	},
 	playListSettings:function () {
