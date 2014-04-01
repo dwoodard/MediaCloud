@@ -52,7 +52,7 @@
 				<!-- END RESPONSIVE MENU TOGGLER -->
 				<!-- BEGIN LOGO (you can use logo image instead of text)-->
 				<div class="col-md-3">
-					
+
 				<a class="navbar-brand" href="/">
 					<img src="/assets/img/WSU.jpg" id="logoimg" alt="">Media Cloud
 				</a>
@@ -76,8 +76,12 @@
 								<!-- <li class="active"><a href="index.html">Home Default</a></li> -->
 								@if (Sentry::getUser()->hasAccess('admin'))
 									<li><a href="{{URL::to('/admin')}}">Admin</a></li>
+								@endif
+
+								@if (Sentry::getUser()->hasAccess('manage'))
 									<li><a href="{{URL::to('/manage')}}">Manage</a></li>
 								@endif
+
 
 
 								<li><a href="{{URL::to('logout')}}">Logout</a></li>
@@ -171,7 +175,7 @@
 	<!--[if lt IE 9]>
 	<script src="/_frontend/assets/plugins/respond.min.js"></script>
 	<![endif]-->
-	<!-- 
+	<!--
 	<script src="/_frontend/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
 	 -->
 	 <script src="/bower/jquery/dist/jquery.js"></script>

@@ -50,6 +50,9 @@
 									<li><a href="{{URL::to('/admin')}}">Admin</a></li>
 									<li><a href="{{URL::to('/manage')}}">Manage</a></li>
 								@endif
+								@if (Sentry::getUser()->hasAccess('manage'))
+									<li><a href="{{URL::to('/manage')}}">Manage</a></li>
+								@endif
 
 
 								<li><a href="{{URL::to('logout')}}">Logout</a></li>

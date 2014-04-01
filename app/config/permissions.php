@@ -8,6 +8,12 @@ return [
 			'label'      => 'Admin Rights',
 			],
 		],
+	'Manage' => [
+		[
+			'permission' => 'manage',
+			'label'      => 'Manage Rights',
+			],
+		],
 	'Global' => [
 		[
 			'permission' => 'superuser',
