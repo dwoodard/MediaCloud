@@ -6,8 +6,10 @@ font-size: 24px;
 line-height: inherit;
 }
 
-.collection-settings{
-	background: #ccc;
+.btn-collection-settings{
+top: 30px;
+right: 10px;
+position: absolute;
 }
 
 
@@ -20,11 +22,11 @@ line-height: inherit;
 
 
 #upload-dropdown{
-	width: 600px;
+width: 600px;
 }
 
 /*.playlists,.collection-settings{
-	height: 400px
+height: 400px
 }*/
 
 

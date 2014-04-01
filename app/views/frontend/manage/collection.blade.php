@@ -16,9 +16,11 @@
 			<div class="jaf-row jaf-container">
 				@foreach ($cpa_row as $key => $cpa)
 				<div class="folder" id="{{camel_case($cpa->name)}}" style="opacity: 1;">
+					<button class="btn-collection-settings"><i class="fa fa-ellipsis-h"></i></button>
+
 					<a href="#">
 						<img src="/assets/img/collection-icon-close.png" alt="">
-						<p class="album-name">{{$cpa->name}}</p>
+						<p class="album-name">{{$cpa->name}} </p>
 						<!-- <p class="artist-name">Radiohead</p> -->
 					</a>
 				</div>
@@ -31,109 +33,37 @@
 			<div class="folderContent {{camel_case($cpa->name)}}" style="display: none; background-color: rgb(224, 232, 233);">
 				<div class="jaf-container">
 
-					<div class="row settings-container">
-
-						<div class="collection-settings col-sm-12"  >
-
-							<span>{{$cpa->name}}</span>
-							<h2> Collection Settings</h2>
-
-							<div class="container">
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active"><a href="#home">Home</a></li>
-									<li><a href="#profile">Profile</a></li>
-									<li><a href="#messages">Messages</a></li>
-									<li><a href="#settings">Settings</a></li>
-								</ul>
-
-								<div class="tab-content">
-									<div class="tab-pane active" id="home">Home content...</div>
-									<div class="tab-pane" id="profile">Content here...
-										<br>asdf
-										<br>
-										<br>
-										<br>asdf
-										<br>
-									</div>
-									<div class="tab-pane" id="messages">Messages...</div>
-									<div class="tab-pane" id="settings">Settings...</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="playlist-settings col-sm-12"  >
-
-							<span>{{$cpa->name}}</span>
-							<h2> playlist Settings</h2>
-
-							<div class="container">
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active"><a href="#home">Home</a></li>
-									<li><a href="#profile">Profile</a></li>
-									<li><a href="#messages">Messages</a></li>
-									<li><a href="#settings">Settings</a></li>
-								</ul>
-
-								<div class="tab-content">
-									<div class="tab-pane active" id="home">Home content...</div>
-									<div class="tab-pane" id="profile">Content here...
-										<br>asdf
-										<br>
-										<br>
-										<br>asdf
-										<br>
-									</div>
-									<div class="tab-pane" id="messages">Messages...</div>
-									<div class="tab-pane" id="settings">Settings...</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="asset-settings col-sm-12"  >
-
-							<span>{{$cpa->name}}</span>
-							<h2> Asset Settings</h2>
-
-							<div class="container">
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active"><a href="#home">Home</a></li>
-									<li><a href="#profile">Profile</a></li>
-									<li><a href="#messages">Messages</a></li>
-									<li><a href="#settings">Settings</a></li>
-								</ul>
-
-								<div class="tab-content">
-									<div class="tab-pane active" id="home">Home content...</div>
-									<div class="tab-pane" id="profile">Content here...
-										<br>asdf
-										<br>
-										<br>
-										<br>asdf
-										<br>
-									</div>
-									<div class="tab-pane" id="messages">Messages...</div>
-									<div class="tab-pane" id="settings">Settings...</div>
-								</div>
-							</div>
-						</div>
 
 
-					</div>
 					<div class="row">
 
-						<div id="col1" class="col-sm-12">
-							<div class="playlists">
-								<div class="pull-right">
-									<button type="button" data-toggle="toggle" class="btn-asset-settings btn btn-primary"><i class="fa fa-ellipsis-h"></i></button>
-									<button type="button" data-toggle="toggle" class="btn-playlist-settings btn btn-primary"><i class="fa fa-list"></i></button>
-									<button type="button" data-toggle="toggle" class="btn-collection-settings btn btn-primary"><i class="fa fa-cog"></i></button>
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-sm-12">
+									<h2> {{$cpa->name}} </h2>
 								</div>
-								<h2> {{$cpa->name}} </h2>
+							</div>
+
+							<div class="playlists">
+
 								<ul>
 									@foreach ($cpa->playlists as $playlist)
 									<li><a href="#">{{$playlist->name}}</a></li>
 									@endforeach
 								</ul>
+
+							</div>
+						</div>
+						<div class="col-sm-9">
+							<div id="{{camel_case($playlist->name)}}" class="asset">
+								<div class="pull-right">
+								</div>
+
+								@foreach ($cpa->playlists as $playlist)
+								<div>
+									<a href="#">{{$playlist->name}}</a>
+								</div>
+								@endforeach
 							</div>
 						</div>
 
@@ -182,31 +112,15 @@
 
 				console.log($(elm).is(":visible"))
 				if($(elm).is(":visible")){
-					$(elm).show()
+					$(elm).show();
 				}
 				else{
-					$(elm).hide()
+					$(elm).hide();
 				}
-				
-				// switch(currentBtn){
-				// 	case "btn-collection-settings":
-				// 	break;
-				// 	case "btn-playlist-settings":
-				// 	break;
-				// 	case "btn-asset-settings":
-				// 	break;
-				// }
-
-				
 			});
-			// console.log("."+elmName+"-settings", $("."+elmName+"-settings"));
+
+
 			$(element).find("."+elmName+"-settings").slideToggle();
-			// elmName-settings.show()
-
-			
-
-
-
 
 		})
 	});
@@ -222,7 +136,9 @@
 	$( document ).ready(function( $ ) {
 
 
-
+		$('.btn-collection-settings').click(function (e) {
+			console.log('click')
+		})
 
 
 		$('.dropdown.keep-open').on({
