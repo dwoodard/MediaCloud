@@ -35,7 +35,7 @@
 
 					<div class="playlists">
 						<div class="pull-right">
-							<button type="button" class="btn-collection-settings btn btn-primary"><i class="fa fa-cog"></i> Collection Settings</button>
+							<button type="button" class="btn-collection-settings btn btn-primary"><i class="fa fa-cog"></i></button>
 						</div>
 						<h2> {{$cpa->name}} </h2>
 						<ul>
@@ -45,6 +45,10 @@
 						</ul>
 					</div>
 
+					<div class="assets">
+						assets
+					</div>
+
 
 					<div class="collection-settings" style="display: none">
 						<div class="pull-right">
@@ -52,8 +56,6 @@
 						</div>
 						<span>{{$cpa->name}}</span>
 						<h2> Collection Settings</h2>
-
-
 
 						<div class="container">
 							<ul class="nav nav-tabs" id="myTab">
@@ -76,20 +78,7 @@
 								<div class="tab-pane" id="settings">Settings...</div>
 							</div>
 						</div>
-
-
-
-
 					</div>
-
-
-
-
-
-
-
-
-
 
 					<br class="clear">
 				</div>
@@ -106,7 +95,6 @@
 
 @section('scripts')
 <script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
-<script src="bower/flippy/jquery.flippy.min.js"></script>
 
 <script src="/assets/js/manage.js"></script>
 
@@ -120,29 +108,22 @@
 			var element = $(e.currentTarget).closest('.folderContent')[0];
 
 
-			var classList =$(this).attr('class').split(/\s+/);
-			$.each( classList, function(index, item){
-				if (item === 'settings-active') {
-					console.log(item)
-
-				}
-			});
 
 
 			if($(element).has('settings-active')){
-				$(element).find('.playlists').slideUp();
+				$(element).find('.playlists').slideToggle();
 				$(element)
 				.find('.collection-settings')
 				.removeClass('hide')
 				.slideToggle()
-				.animate({ 'min-height': "400px" }, 'fast');
+				// .animate({ 'min-height': "400px" }, 'fast');
 			}
 			else{
 				$(element).removeClass('settings-active')
 
-				$(element).find('.playlists').slideDown();
+				$(element).find('.playlists').slideToggle();
 				$(element).find('.collection-settings')
-				.animate({ 'min-height': "0px" }, 'fast');
+				// .animate({ 'min-height': "0px" }, 'fast');
 
 			}
 
@@ -212,17 +193,17 @@
 </script>
 
 <script type="text/javascript">
-$( document ).ready(function( $ ) {
+	$( document ).ready(function( $ ) {
 
 
 
 
 
-$('.dropdown.keep-open').on({
-    "shown.bs.dropdown": function() { $(this).data('closable', false); },
-    "click":             function() { $(this).data('closable', true);  },
-    "hide.bs.dropdown":  function() { return $(this).data('closable'); }
-});
+		$('.dropdown.keep-open').on({
+			"shown.bs.dropdown": function() { $(this).data('closable', false); },
+			"click":             function() { $(this).data('closable', true);  },
+			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
+		});
 
 
 
@@ -232,51 +213,51 @@ $('.dropdown.keep-open').on({
 
 		$(".btn-getUserInfo").click(function(e){
 			e.preventDefault();
-            showDropzone();
+			showDropzone();
 		})
 
-        function doComplete(){
-            console.log('all complete')
-        }
+		function doComplete(){
+			console.log('all complete')
+		}
 
-        var myDropzone;
-        Dropzone.options.filedrop = {
-            maxFilesize: 2048,
-            addRemoveLinks: true,
-            init: function () {
+		var myDropzone;
+		Dropzone.options.filedrop = {
+			maxFilesize: 2048,
+			addRemoveLinks: true,
+			init: function () {
 
-                myDropzone = this;
+				myDropzone = this;
 
-                var totalFiles = 0,
-                    completeFiles = 0;
+				var totalFiles = 0,
+				completeFiles = 0;
 
-                this.on("sending", function (file, xhr, formData) {
-                    formData.append("userId", $("#userId").val());
-                    console.log('sending', xhr)
-                });
-                this.on("addedfile", function (file, xhr, formData) {
-                    totalFiles += 1;
-                });
+				this.on("sending", function (file, xhr, formData) {
+					formData.append("userId", $("#userId").val());
+					console.log('sending', xhr)
+				});
+				this.on("addedfile", function (file, xhr, formData) {
+					totalFiles += 1;
+				});
 
-                this.on("error", function (file) {
-                    if(file.status == "error"){
-                        console.log("do something");
-                    }
-                });
+				this.on("error", function (file) {
+					if(file.status == "error"){
+						console.log("do something");
+					}
+				});
 
-                this.on("removed file", function (file, xhr, formData) {
-                    totalFiles -= 1;
-                });
-                this.on("complete", function (file) {
-                    completeFiles += 1;
-                    if (completeFiles === totalFiles) {
-                        doComplete();
-                    }
-                });
-            }
-        };
+				this.on("removed file", function (file, xhr, formData) {
+					totalFiles -= 1;
+				});
+				this.on("complete", function (file) {
+					completeFiles += 1;
+					if (completeFiles === totalFiles) {
+						doComplete();
+					}
+				});
+			}
+		};
 	});
-	   
+
 </script>
 
 

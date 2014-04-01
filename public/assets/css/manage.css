@@ -2,12 +2,25 @@
 
 .folderContent{}
 .folderContent h2{
-font-size: 34px;
+font-size: 24px;
 line-height: inherit;
 }
 
 .collection-settings{
-	background: #666;
+	background: #ccc;
+}
+
+
+
+.playlists{
+	width:30%;
+	background: #ccc;
+	float: left;
+}
+.assets{
+	width:70%;
+	background: #fff;
+	float: left;
 }
 
 .face.back {

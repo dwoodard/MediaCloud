@@ -13,7 +13,7 @@ class GroupTableSeeder extends Seeder {
 				'permissions' => array(
 					'users' => 1,
 					'upload' => 1,
-					'manage-media' => 1,
+					'manage' => 1,
 					'capture' => 1
 					)
 				)

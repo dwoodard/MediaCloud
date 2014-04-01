@@ -48,7 +48,6 @@
 								<!-- <li class="active"><a href="index.html">Home Default</a></li> -->
 								@if (Sentry::getUser()->hasAccess('admin'))
 									<li><a href="{{URL::to('/admin')}}">Admin</a></li>
-									<li><a href="{{URL::to('/manage')}}">Manage</a></li>
 								@endif
 								@if (Sentry::getUser()->hasAccess('manage'))
 									<li><a href="{{URL::to('/manage')}}">Manage</a></li>

@@ -120,7 +120,7 @@ Route::filter('cas-login', function(){
 
 		$user = '';
 		try {
-			$user = (array) DB::table('users')->where('username', 'math1')->first();
+			$user = (array) DB::table('users')->where('username', 'admin')->first();
 		} catch (Exception $e) {
 
 			Session::flash('error', $e->getMessage());
@@ -130,7 +130,7 @@ Route::filter('cas-login', function(){
 			$data = array(
 				'id' => $user['id'],
 				'email' => $user['email'],
-				'password' => 'math1',
+				'password' => 'admin',
 				);
 
 			$user = Sentry::authenticate($data, false);
