@@ -50,13 +50,11 @@ var Manage = {
 		});
 	},
 	playListSettings:function () {
-		$('#myTab a').click(function (e) {
+		$('.nav.nav-tabs a').click(function (e) {
 			e.preventDefault();
 			$(this).tab('show');
 		});
 
-		$(function () {
-			$('#myTab a:last').tab('show');
-		})
+
 	}
 }

@@ -13,31 +13,11 @@ line-height: inherit;
 
 
 .playlists{
-	width:30%;
-	background: #ccc;
-	float: left;
 }
 .assets{
-	width:70%;
-	background: #fff;
-	float: left;
 }
 
-.face.back {
-height: auto;
-display: block;
--webkit-transform: rotateY(180deg);
--webkit-box-sizing: border-box;
--moz-transform: rotateY(180deg);
--moz-box-sizing: border-box;
--o-transform: rotateY(180deg);
--o-box-sizing: border-box;
-transform: rotateY(180deg);
-box-sizing: border-box;
-padding: 10px;
-color: white;
-background-color: rgba(0,0,0,.9);
-}
+
 
 #upload-dropdown{
 	width: 600px;
@@ -46,4 +26,9 @@ background-color: rgba(0,0,0,.9);
 /*.playlists,.collection-settings{
 	height: 400px
 }*/
+
+
+
+
+
 
