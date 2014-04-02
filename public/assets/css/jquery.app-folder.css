@@ -129,8 +129,8 @@ transition: all 0.2s ease-in;
 }*/
 
 .album-name {
-	/*font-weight: bold;*/
 	white-space: nowrap;
+	font-weight: bold;
 	/*overflow: hidden;*/
 	text-align:center;
 	text-overflow: ellipsis;
@@ -223,7 +223,7 @@ transition: all 0.2s ease-in;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	min-width: 320px;
-	/*padding: 20px 0 0 60px;*/
+	padding: 5px 0 0 10px;
 	background-color: #aaa;
 	border: 1px solid rgba(0,0,0,0.3);
 	border-width: 1px 0;

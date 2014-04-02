@@ -53,15 +53,15 @@
 			</li>
 
 			<li>
-				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
-			</li>
-			<li>
 				<a id="subnav-btn-collections"  href="#">
 					<i class="fa fa-th-large"></i> <span class="nav-text">Collections</span>
 				</a>
 			</li>
 			<li>
 				<a id="subnav-btn-assets" href="#"><i class="fa fa-list"></i> <span class="nav-text">Assets</span></a>
+			</li>
+			<li>
+				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
 			</li>
 		</ul>
 
