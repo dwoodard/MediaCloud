@@ -7,8 +7,6 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -18,11 +16,10 @@
 
 	@yield('style')
 
-
 </head>
 
 
-<body>
+<body class="cbp-spmenu-push cbp-spmenu-push-toright">
 
     <div id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -63,24 +60,11 @@
 				</ul>
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
-
-
-        <!--
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-         -->
         <!--/.nav-collapse -->
       </div>
     </div>
 
-
     @yield('content')
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -92,7 +76,6 @@
 	<script src="/assets/js/dropzone.js"></script>
 
 	@yield('scripts')
-
 
   </body>
 </html>

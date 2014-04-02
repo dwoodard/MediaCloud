@@ -22,6 +22,7 @@
     "angular-route": "1.2.14",
     "app-folders": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
     "bootstrap": "3.1.1",
-    "hammer.min.js": "https://github.com/EightMedia/hammer.js/blob/master/hammer.min.js"
+    "hammer.min.js": "https://github.com/EightMedia/hammer.js/blob/master/hammer.min.js",
+    "classie": "~1.0.0"
   }
 }

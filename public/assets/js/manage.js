@@ -3,11 +3,15 @@
 var Manage = {
 
 	init:function(){
-		this.initAppFolders();
-		this.initEvents();
+		this.appFolders();
+		this.dropzoneInit();
+		this.menuEvents();
+		this.playListSettings();
+		this.flipEvents();
+
 		// console.log(this);
 	},
-	initAppFolders:function(){
+	appFolders:function(){
 		// console.log('initAppFolders')
 
 		$('.app-folders-container').appFolders({
@@ -23,24 +27,61 @@ var Manage = {
 		})
 
 	},
-	initEvents:function(){
-		// console.log('initEvents');
+	dropzoneInit:function  () {
+		function doComplete(){
+			console.log('all complete')
+		}
 
-		this.searchBtn();
-		// this.toggleFlip();
-		this.playListSettings();
-		this.flipEvents();
+		var myDropzone;
+		Dropzone.options.filedrop = {
+			maxFilesize: 2048,
+			addRemoveLinks: true,
+			init: function () {
 
+				myDropzone = this;
 
+				var totalFiles = 0,
+				completeFiles = 0;
+
+				this.on("sending", function (file, xhr, formData) {
+					formData.append("userId", $("#userId").val());
+					console.log('sending', xhr)
+				});
+				this.on("addedfile", function (file, xhr, formData) {
+					totalFiles += 1;
+				});
+
+				this.on("error", function (file) {
+					if(file.status == "error"){
+						console.log("do something");
+					}
+				});
+
+				this.on("removed file", function (file, xhr, formData) {
+					totalFiles -= 1;
+				});
+				this.on("complete", function (file) {
+					completeFiles += 1;
+					if (completeFiles === totalFiles) {
+						doComplete();
+					}
+				});
+			}
+		};
 	},
-	searchBtn:function(){
+	menuEvents: function(){
+
+		$('.dropdown.keep-open').on({
+			"shown.bs.dropdown": function() { $(this).data('closable', false); },
+			"click":             function() { $(this).data('closable', true);  },
+			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
+		});
 
 		$("#search_bar a").on( "click", function(e) {
 			setTimeout(function(){
 				$("#srch-term")[0].focus();
 			}, 0);
 		});
-
 	},
 	flipEvents:function(){
 		$("body").on("click", '.btn-reverse',function(e){
