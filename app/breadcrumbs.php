@@ -88,6 +88,14 @@ Breadcrumbs::register('collections', function($breadcrumbs) {
     $breadcrumbs->push('Collections', route('collections'));
 });
 
+// DASHBOARD > COLLECTIONS > EDIT
+
+Breadcrumbs::register('editCollections', function($breadcrumbs) {
+    $breadcrumbs->parent('collections');
+    $breadcrumbs->push('Edit Collections', route('collections'));
+});
+
+
 
 // DASHBOARD > PLAYLISTS
 

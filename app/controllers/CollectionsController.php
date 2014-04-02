@@ -9,13 +9,28 @@ class CollectionsController extends PermissionsController {
 	 */
 	public function getIndex()
 	{
-		// echo "hey";
+
+// Grab all the collections
+
+		$collections = Collection::all();
+
 		// Show the page
-		return View::make('backend/collections/index');
+		return View::make('backend/collections/index', compact('collections'));
 	}
 
 	public function postIndex()
 	{
 	}
+
+public function edit($id)
+	{
+		$collection = Collection::find($id);
+
+		return View::make('backend/collections/edit', compact('collection'));
+	}
+
+
+
+
 
 }
