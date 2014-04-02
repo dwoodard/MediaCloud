@@ -3,12 +3,67 @@
 
 @section('content')
 @include('_partials.subnav-manage')
-<div id="app" ng-app="mcApp">
+
+
+<div id="app" >
+
+	<div id="main">
+
+		<!--  -->
+		<nav id="collections-container" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open">
+			<h3>Collections</h3>
+			<a href="#"><i class="fa fa-plus"> </i> New Collection</a>
+			@foreach($cpas as $key => $cpa)
+
+			<a href="#">{{$cpa->name}}</a>
+
+			@endforeach
 
 
 
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+			<h3>Menu</h3>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-top" id="cbp-spmenu-s3">
+			<h3>Menu</h3>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
+			<h3>Menu</h3>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+		</nav>
+		<!--  -->
 
-	<div id="main" class="">
+
 		<div class="app-folders-container" style="margin-top: 0px;">
 
 			@foreach($cpa_rows as $key => $cpa_row)
@@ -16,8 +71,6 @@
 			<div class="jaf-row jaf-container">
 				@foreach ($cpa_row as $key => $cpa)
 				<div class="folder" id="{{camel_case($cpa->name)}}" style="opacity: 1;">
-					<button class="btn-collection-settings"><i class="fa fa-ellipsis-h"></i></button>
-
 					<a href="#">
 						<img src="/assets/img/collection-icon-close.png" alt="">
 						<p class="album-name">{{$cpa->name}} </p>
@@ -92,113 +145,58 @@
 
 @section('scripts')
 <script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
-<!-- <script src="/bower/jquery-mobile-bower/js/jquery.mobile-1.4.2.min.js"></script> -->
+<script src="/bower/classie/classie.js"></script>
 
 <script src="/assets/js/manage.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		Manage.init()
+
+
 	});
-
-	$(document).ready(function(){
-		$(".btn-collection-settings, .btn-playlist-settings, .btn-asset-settings").click(function  (e) {
-			var currentBtn =  /(btn-(.*)-settings)/.exec(e.currentTarget.className)[1]
-			var elmName =  /(btn-(.*)-settings)/.exec(e.currentTarget.className)[2]
-			var element = $(e.currentTarget).closest('.folderContent')[0];
-			var settingsContainer = $(element).find('.settings-container')[0];
-
-			$(settingsContainer).children().each(function(key, elm){
-
-				console.log($(elm).is(":visible"))
-				if($(elm).is(":visible")){
-					$(elm).show();
-				}
-				else{
-					$(elm).hide();
-				}
-			});
-
-
-			$(element).find("."+elmName+"-settings").slideToggle();
-
-		})
-	});
-
-
-
-
-
 
 </script>
 
 <script type="text/javascript">
 	$( document ).ready(function( $ ) {
 
+		
 
-		$('.btn-collection-settings').click(function (e) {
-			console.log('click')
-		})
+		
 
-
-		$('.dropdown.keep-open').on({
-			"shown.bs.dropdown": function() { $(this).data('closable', false); },
-			"click":             function() { $(this).data('closable', true);  },
-			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
-		});
-
-
-
-
-
-
-
-		$(".btn-getUserInfo").click(function(e){
-			e.preventDefault();
-			showDropzone();
-		})
-
-		function doComplete(){
-			console.log('all complete')
-		}
-
-		var myDropzone;
-		Dropzone.options.filedrop = {
-			maxFilesize: 2048,
-			addRemoveLinks: true,
-			init: function () {
-
-				myDropzone = this;
-
-				var totalFiles = 0,
-				completeFiles = 0;
-
-				this.on("sending", function (file, xhr, formData) {
-					formData.append("userId", $("#userId").val());
-					console.log('sending', xhr)
-				});
-				this.on("addedfile", function (file, xhr, formData) {
-					totalFiles += 1;
-				});
-
-				this.on("error", function (file) {
-					if(file.status == "error"){
-						console.log("do something");
-					}
-				});
-
-				this.on("removed file", function (file, xhr, formData) {
-					totalFiles -= 1;
-				});
-				this.on("complete", function (file) {
-					completeFiles += 1;
-					if (completeFiles === totalFiles) {
-						doComplete();
-					}
-				});
-			}
-		};
 	});
+
+
+
+	var menuLeft = document.getElementById( 'collections-container' ),
+	menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+	menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+	showBottom = document.getElementById( 'subnav-btn-browse' ),
+	showLeft = document.getElementById( 'subnav-btn-collections' ),
+	showRight = document.getElementById( 'subnav-btn-assets' ),
+	body = document.body;
+
+	showBottom.onclick = function() {
+		classie.toggle( this, 'active' );
+		classie.toggle( menuBottom, 'cbp-spmenu-open' );
+		disableOther( 'showBottom' );
+	};
+	showLeft.onclick = function() {
+		classie.toggle( this, 'active' );
+		classie.toggle( body, 'cbp-spmenu-push-toright' );
+		classie.toggle( menuLeft, 'cbp-spmenu-open' );
+	};
+	showRight.onclick = function() {
+		classie.toggle( this, 'active' );
+	// classie.toggle( body, 'cbp-spmenu-push-toleft' );
+	classie.toggle( menuRight, 'cbp-spmenu-open' );
+};
+
+classie.toggle( this, 'active' );
+classie.toggle( body, 'cbp-spmenu-push-toright' );
+classie.toggle( menuLeft, 'cbp-spmenu-open' );
+
 
 </script>
 
