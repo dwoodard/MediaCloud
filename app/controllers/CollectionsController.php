@@ -18,9 +18,11 @@ class CollectionsController extends PermissionsController {
 		return View::make('backend/collections/index', compact('collections'));
 	}
 
-	public function postIndex()
-	{
-	}
+public function create()
+{
+ 
+ return View::make('backend/collections/create');
+}
 
 public function edit($id)
 	{

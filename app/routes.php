@@ -72,8 +72,8 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	Route::group(array('prefix' => 'playlists'), function()
 	{
         Route::get('/', array('as' => 'playlists','uses' => 'PlaylistsController@index'));
-        Route::get('upload', array('as' => 'playlist.create', 'uses' => 'PlaylistsController@create'));
-		Route::post('upload', array('as' => 'playlist.store', 'uses' => 'PlaylistsController@store'));
+        Route::get('create', array('as' => 'playlist.create', 'uses' => 'PlaylistsController@create'));
+		Route::post('create', array('as' => 'playlist.store', 'uses' => 'PlaylistsController@store'));
         //show
 		Route::get('{playlistId}/edit', array('as' => 'playlist.edit', 'uses' => 'PlaylistsController@edit'));
 		Route::post('{playlistId}/edit', array('as' => 'playlist.update', 'uses' => 'PlaylistsController@update')); //POST /admin/Playlists/{playlistId}/edit
@@ -84,8 +84,8 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	Route::group(array('prefix' => 'collections'), function()
 	{
         Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
-        Route::get('upload', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
-		Route::post('upload', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+        Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
+		Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
         //show
 		Route::get('{collectionId}/edit', array('as' => 'collection.edit', 'uses' => 'CollectionsController@edit'));
 		Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
