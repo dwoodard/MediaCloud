@@ -1,30 +1,26 @@
 // manage.js
 
 var Manage = {
+	manage:this,
+	data:{},
+	init:function(data){
+		this.data = data;
 
-	init:function(){
 		this.appFolders();
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
 		this.flipEvents();
+		
+		this.getCollection(this.data[0].id)
+		this.manage = this;
 
 		// console.log(this);
 	},
 	appFolders:function(){
 		// console.log('initAppFolders')
 
-		$('.app-folders-container').appFolders({
-			opacity:.5, 								// Opacity of non-selected items
-			marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
-			marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
-			marginTopIncrement:0,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
-			animationSpeed:200,						// Time (in ms) for transitions
-			// URLrewrite:true, 							// Use URL rewriting?
-			// URLbase:"/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
-			internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
-			instaSwitch:true
-		})
+
 
 	},
 	dropzoneInit:function  () {
@@ -82,6 +78,31 @@ var Manage = {
 				$("#srch-term")[0].focus();
 			}, 0);
 		});
+
+		$('#collections-list a').on("click",function(e) {
+			Manage.getCollection($(e.currentTarget).data("collection-id"));
+		});
+
+	},
+	getCollection:function(id) {
+		$.ajax({
+			url: "/manage/collections/"+id
+		}).done(function(data) {
+			$("#collection-view").html(data);
+
+			$('.app-folders-container').appFolders({
+					opacity:.5, 								// Opacity of non-selected items
+					marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
+					marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
+					marginTopIncrement:0,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
+					animationSpeed:200,						// Time (in ms) for transitions
+					// URLrewrite:true, 							// Use URL rewriting?
+					// URLbase:"/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
+					internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
+					instaSwitch:true
+				});
+		});
+
 	},
 	flipEvents:function(){
 		$("body").on("click", '.btn-reverse',function(e){
