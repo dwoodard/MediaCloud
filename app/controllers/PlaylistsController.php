@@ -23,9 +23,10 @@ class PlaylistsController extends PermissionsController {
 	}
 
 
-public function getCreate()
+public function create()
 {
-	# code...
+ 
+ return View::make('backend/playlists/create');
 }
 
 

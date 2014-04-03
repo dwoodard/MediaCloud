@@ -9,7 +9,7 @@
 	<h1>All Playlists
 
 		<div class="pull-right">
-			<a href="{{ URL::route('asset.upload') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i>  Add Playlist</a>
+			<a href="{{ URL::route('playlist.create') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i>   Add Playlist</a>
 		</div>
 	</h1>
 </div>

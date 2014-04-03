@@ -8,7 +8,7 @@
 <h1>All Collections
 
 <div class="pull-right">
-			<a href="{{ URL::route('asset.upload') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i>  Add Collection</a>
+			<a href="{{ URL::route('collection.create') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i>  Add Collection</a>
 		</div>
 </h1>
 </div>
