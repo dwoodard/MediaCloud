@@ -8,18 +8,37 @@ height: 100%;
 #collection-view{}
 #collection-view header{
 position: relative;
-background: whitesmoke;
+background: #404040;
 height: 160px;
 }
 
 #collection-view header h2{
 font-size: 2em;
-padding: 15px
+color: white;
+padding: 15px;
 }
 #collection-view header .share{
 position: absolute;
 bottom: 10px;
 left: 10px;
+}
+
+
+#collection-view .nav-tabs{
+	background: #333;
+}
+#collection-view .nav-tabs li a{
+color: white;
+}
+#collection-view .nav-tabs li.active a,
+#collection-view .nav-tabs li.active a:hover,
+#collection-view .nav-tabs li.active a:focus{
+color: #333;
+font-weight: bold;
+}
+
+#collection-view table tbody{
+	background: whitesmoke;
 }
 
 
@@ -37,11 +56,10 @@ position: absolute;
 
 
 
-.playlists{
-}
-.assets{
-}
-
+#playlists-container{}
+#assets-container{}
+#settings-container{}
+#deployments-container{}
 
 
 #upload-dropdown{
@@ -502,7 +520,7 @@ transition: all 0.3s ease;
 @media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
 /* Styles */
 #collection-view header{
-background: whitesmoke;
+background: grey;
 height: 90px
 }
 

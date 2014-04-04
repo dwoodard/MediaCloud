@@ -30,17 +30,12 @@
 
 
 		</nav>
-		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-			<h3>Menu</h3>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
+		<nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
+			<div id="asset-player"></div>
+			
 		</nav>
 
-		<nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
+		<nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
 			<h3>Browse</h3>
 			<a href="#">Asset</a>
 			<a href="#">Asset</a>
@@ -82,8 +77,8 @@
 	var menuLeft = document.getElementById( 'collections-list' ),
 	showLeft = document.getElementById( 'subnav-btn-collections' ),
 	showRight = document.getElementById( 'subnav-btn-assets' ),
-	menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-	menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+	menuRight = document.getElementById( 'asset-view' ),
+	menuBottom = document.getElementById( 'browse-view' ),
 	showBottom = document.getElementById( 'subnav-btn-browse' ),
 	body = document.body;
 

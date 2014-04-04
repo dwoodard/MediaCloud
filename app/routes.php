@@ -177,7 +177,7 @@ Route::group(array('prefix' => 'auth'), function()
 
 Route::group(array('prefix' => 'player'), function()
 {
-	Route::get('single/{alphaID}', array('as' => 'single', 'uses' => 'PlayerController@single'));
+	Route::get('single/{id}', array('as' => 'single', 'uses' => 'PlayerController@single'));
 	Route::get('playlist/{id}', array('as' => 'playlist', 'uses' => 'PlayerController@playlist'));
 	Route::get('collection/{id}', array('as' => 'collection', 'uses' => 'PlayerController@collection'));
 
@@ -187,9 +187,7 @@ Route::group(array('prefix' => 'player'), function()
 #Asset File
 Route::group(array('prefix' => 'asset'), function()
 {
-	Route::get('{alphaID}/{item?}', array('as' => 'asset.file', 'uses' => 'AssetsController@file'));
-
-
+	Route::get('{id}/{item?}', array('as' => 'asset.file', 'uses' => 'AssetsController@file'));
 });
 
 

@@ -100,10 +100,30 @@ var Manage = {
 					internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
 					instaSwitch:true
 				});
+
+
+
+
+			$('.asset-player-btn').on("click",function(e) {
+				console.log($(this).data('asset-id'));
+
+				Manage.getAssetPlayer($(this).data('asset-id'))
+			});
+
 		});
 
 	},
-	
+	getAssetPlayer:function(id) {
+		$.ajax({
+			url: "/player/single/"+id
+		}).done(function(data) {
+			$("#asset-player").html(data);
+			$("#asset-view").addClass("cbp-spmenu-open")
+
+		});
+
+	},
+
 	playListSettings:function () {
 		$('.nav.nav-tabs a').click(function (e) {
 			e.preventDefault();
