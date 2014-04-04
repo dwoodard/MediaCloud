@@ -10,7 +10,6 @@ var Manage = {
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
-		this.flipEvents();
 		
 		this.getCollection(this.data[0].id)
 		this.manage = this;
@@ -79,7 +78,7 @@ var Manage = {
 			}, 0);
 		});
 
-		$('#collections-list a').on("click",function(e) {
+		$('#collections-list>a').on("click",function(e) {
 			Manage.getCollection($(e.currentTarget).data("collection-id"));
 		});
 
@@ -104,13 +103,7 @@ var Manage = {
 		});
 
 	},
-	flipEvents:function(){
-		$("body").on("click", '.btn-reverse',function(e){
-			// $container = $(e.target).closest('.flipbox-container')
-			$(".flipbox").flippyReverse();
-			e.preventDefault();
-		});
-	},
+	
 	playListSettings:function () {
 		$('.nav.nav-tabs a').click(function (e) {
 			e.preventDefault();

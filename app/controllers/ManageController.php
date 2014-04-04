@@ -33,8 +33,8 @@ class ManageController extends BaseController {
 
 		$cpa_rows = array();
 		$count = 0;
-		for ($i=0; $i < count($cpa); $i+=3) {
-			array_push($cpa_rows,array_slice($cpa, $count+$i, 3));
+		for ($i=0; $i < count($cpa); $i+=2) {
+			array_push($cpa_rows,array_slice($cpa, $count+$i, 2));
 		}
 
 		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);

@@ -51,9 +51,9 @@
 
 
 		<div id="collection-view">
-			
+
 		</div>
-		
+
 	</div> <!-- /main -->
 </div> <!-- /app -->
 @stop
