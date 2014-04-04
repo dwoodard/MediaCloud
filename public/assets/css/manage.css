@@ -40,6 +40,9 @@ font-weight: bold;
 #collection-view table tbody{
 	background: whitesmoke;
 }
+.panelHeader{
+	background: #333
+}
 
 
 .folderContent{}

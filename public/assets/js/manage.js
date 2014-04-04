@@ -1,7 +1,6 @@
 // manage.js
 
 var Manage = {
-	manage:this,
 	data:{},
 	init:function(data){
 		this.data = data;
@@ -12,7 +11,6 @@ var Manage = {
 		this.playListSettings();
 		
 		this.getCollection(this.data[0].id)
-		this.manage = this;
 
 		// console.log(this);
 	},
@@ -72,6 +70,9 @@ var Manage = {
 			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
 		});
 
+
+		var collections-list = $("collections-list")[0]
+
 		$("#search_bar a").on( "click", function(e) {
 			setTimeout(function(){
 				$("#srch-term")[0].focus();
@@ -81,6 +82,20 @@ var Manage = {
 		$('#collections-list>a').on("click",function(e) {
 			Manage.getCollection($(e.currentTarget).data("collection-id"));
 		});
+
+		$(".close").on("click", function(e) {
+
+			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
+
+			if (cbp_menu.id == "collections-list") {
+				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+				$("body").removeClass('cbp-spmenu-push-toright')
+			}else{
+				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+			}
+
+		})
+
 
 	},
 	getCollection:function(id) {
@@ -112,24 +127,24 @@ var Manage = {
 
 		});
 
-	},
-	getAssetPlayer:function(id) {
-		$.ajax({
-			url: "/player/single/"+id
-		}).done(function(data) {
-			$("#asset-player").html(data);
-			$("#asset-view").addClass("cbp-spmenu-open")
+},
+getAssetPlayer:function(id) {
+	$.ajax({
+		url: "/player/single/"+id
+	}).done(function(data) {
+		$("#asset-player").html(data);
+		$("#asset-view").addClass("cbp-spmenu-open")
 
-		});
+	});
 
-	},
+},
 
-	playListSettings:function () {
-		$('.nav.nav-tabs a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
+playListSettings:function () {
+	$('.nav.nav-tabs a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
 
 
-	}
+}
 }

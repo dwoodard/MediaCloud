@@ -11,6 +11,7 @@
 
 		<!--  -->
 		<nav id="collections-list" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open">
+			<i class="close fa fa-times-circle-o fa-2x"></i>
 			<h3>Collections</h3>
 
 			<ul class="toolbar clearfix">
@@ -31,11 +32,13 @@
 
 		</nav>
 		<nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
+			<i class="close fa fa-times-circle-o fa-2x"></i>
 			<div id="asset-player"></div>
-			
+
 		</nav>
 
 		<nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
+			<i class="close fa fa-times-circle-o fa-2x"></i>
 			<h3>Browse</h3>
 			<a href="#">Asset</a>
 			<a href="#">Asset</a>
@@ -61,18 +64,18 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-
 		var data = {{json_encode($cpas)}}
-
 		Manage.init(data);
-
-
 	});
 
 </script>
 
 <script type="text/javascript">
-
+	// $("#collections-list h3")
+	// .hammer()
+	// .on("hold", function(e) {
+	// 	console.log($(e.currentTarget));
+	// });
 
 	var menuLeft = document.getElementById( 'collections-list' ),
 	showLeft = document.getElementById( 'subnav-btn-collections' ),

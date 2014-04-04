@@ -1,0 +1,11 @@
+{
+  "name": "jquery.hammer.js",
+  "_cacheHeaders": {
+    "Content-Length": "1134",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js"
+}
