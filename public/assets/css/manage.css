@@ -69,6 +69,7 @@ min-width: 320px;
 }
 
 .folder {
+margin-right: 80px;
 position: relative;
 float: left;
 -webkit-box-sizing: border-box;

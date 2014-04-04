@@ -51,6 +51,7 @@ class ManageController extends BaseController {
 						array_push($playlists,array_slice($item->playlists, $count+$i, 2));
 					}
 					$data = array('item' => $item, 'playlists_group' => $playlists);
+					// return json_encode($data['item']);
 					// return $data['playlists_group'];
 					// return json_encode($data['playlists_group']);
 					// return json_encode($data['playlists_group'][0][0]->assets['1']->name);
