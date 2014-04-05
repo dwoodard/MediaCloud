@@ -23,8 +23,6 @@
     "app-folders": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
     "bootstrap": "3.1.1",
     "hammer.js": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
-    "jquery.hammer.js": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
-    "classie": "~1.0.0",
-    "video-js": "~4.5.1"
+    "jquery.hammer.js": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js"
   }
 }

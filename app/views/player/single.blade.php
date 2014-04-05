@@ -5,8 +5,8 @@
     <title>Weber State University - Media Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link href="/bower/video-js/dist/video-js/video-js.min.css" rel="stylesheet">
-    <script src="/bower/video-js/dist/video-js/video-js.min.js"></script>
+    <link href="/assets/js/video-js/video-js.min.css" rel="stylesheet">
+    <script src="/assets/js/video-js/video.js"></script>
     <style type="text/css">
         html, body {
             margin: 0;

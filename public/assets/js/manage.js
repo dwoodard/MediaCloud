@@ -9,7 +9,7 @@ var Manage = {
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
-		
+
 		this.getCollection(this.data[0].id)
 
 		// console.log(this);
@@ -71,7 +71,24 @@ var Manage = {
 		});
 
 
-		var collections-list = $("collections-list")[0]
+		// Toggle Navigation
+		$("#subnav-btn-collections, #subnav-btn-assets, #subnav-btn-browse")
+		.on("click",function(e) {
+
+			switch(/subnav-btn-(.*)/.exec(e.currentTarget.id)[1]){
+				case "collections":
+					$("#collections-list").toggleClass('cbp-spmenu-open')
+					$("body").toggleClass('cbp-spmenu-push-toright')
+					break;
+				case "assets":
+					$("#asset-view").toggleClass('cbp-spmenu-open')
+					break;
+				case "browse":
+					$("#browse-view").toggleClass('cbp-spmenu-open')
+					break;
+			}
+		})
+
 
 		$("#search_bar a").on( "click", function(e) {
 			setTimeout(function(){
@@ -94,6 +111,15 @@ var Manage = {
 				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
 			}
 
+		});
+
+		$("#btn-new-collection").on("click", function(e) {
+			$(".newCollection").show().find(':input').focus().select()
+		});
+
+		$("#btn-save-new-collection").on('click',function(e) {
+			console.log('save new collection')
+			
 		})
 
 
@@ -120,7 +146,7 @@ var Manage = {
 
 
 			$('.asset-player-btn').on("click",function(e) {
-				console.log($(this).data('asset-id'));
+				// console.log($(this).data('asset-id'));
 
 				Manage.getAssetPlayer($(this).data('asset-id'))
 			});

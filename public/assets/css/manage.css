@@ -74,6 +74,15 @@ height: 400px
 }*/
 
 
+#asset-view{
+width: 300px;
+}
+
+#asset-player{
+position: relative;
+top: 31px;
+height: 135px;
+}
 
 
 
@@ -339,8 +348,8 @@ background: #196490;
 .cbp-spmenu input{
 color: #333;
 padding: 3px 4px;
-font-size: 19px;
-width: 80%;
+font-size: 15px;
+width: 64%;
 margin-top: -5px;
 }
 
@@ -486,26 +495,7 @@ transition: all 0.3s ease;
 
 }
 
-@media screen and (max-height: 26.375em){
 
-	.cbp-spmenu-vertical {
-		font-size: 90%;
-		width: 190px;
-	}
-
-	.cbp-spmenu-left,
-	.cbp-spmenu-push-toleft {
-		left: -190px;
-	}
-
-	.cbp-spmenu-right {
-		right: -190px;
-	}
-
-	.cbp-spmenu-push-toright {
-		left: 190px;
-	}
-}
 
 
 

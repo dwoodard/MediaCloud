@@ -58,10 +58,13 @@
 				</a>
 			</li>
 			<li>
-				<a id="subnav-btn-assets" href="#"><i class="fa fa-list"></i> <span class="nav-text">Assets</span></a>
+				<a id="subnav-btn-assets" href="#"><i class="fa fa-play-circle"></i> <span class="nav-text">Player</span></a>
 			</li>
 			<li>
 				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
+			</li>
+			<li>
+				<a id="subnav-btn-browse" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
 			</li>
 		</ul>
 

@@ -161,6 +161,8 @@ class DemoSeeder extends Seeder {
         $collection->name = 'Math Department';
         $collection->save();
 
+        $user->collection()->attach($collection->id);
+
         // Adding Playlists
         $playlist = new Playlist;
         $playlist->name = 'Playlist - Math Department 1';

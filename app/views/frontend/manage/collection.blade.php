@@ -15,13 +15,15 @@
 			<h3>Collections</h3>
 
 			<ul class="toolbar clearfix">
-				<li> <a href="#"><i class="fa fa-plus"></i> New Collection</a></li>
+				<li> <a id="btn-new-collection" href="#"><i class="fa fa-plus"></i> New Collection</a></li>
 			</ul>
 
-			<div class="newCollection" href="#">
+			<div class="newCollection" href="#" style="display:none">
 				<input type="text" value="Collection Name" class="input-sm">
-				<button><i class="fa fa-check"></i> </button>
+				<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
+				<button id="btn-save-new-collection"><i class="fa fa-times"></i> </button>
 			</div>
+
 			@foreach($cpas as $key => $cpa)
 
 			<a data-collection-id="{{$cpa->id}}" href="#">{{$cpa->name}}</a>
@@ -58,52 +60,15 @@
 
 @section('scripts')
 <script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
-<script src="/bower/classie/classie.js"></script>
 
 <script src="/assets/js/manage.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		var data = {{json_encode($cpas)}}
+		var data = {{json_encode($cpas)}};
+
 		Manage.init(data);
 	});
-
-</script>
-
-<script type="text/javascript">
-	// $("#collections-list h3")
-	// .hammer()
-	// .on("hold", function(e) {
-	// 	console.log($(e.currentTarget));
-	// });
-
-	var menuLeft = document.getElementById( 'collections-list' ),
-	showLeft = document.getElementById( 'subnav-btn-collections' ),
-	showRight = document.getElementById( 'subnav-btn-assets' ),
-	menuRight = document.getElementById( 'asset-view' ),
-	menuBottom = document.getElementById( 'browse-view' ),
-	showBottom = document.getElementById( 'subnav-btn-browse' ),
-	body = document.body;
-
-	showBottom.onclick = function() {
-		// classie.toggle( this, 'active' );
-		classie.toggle( menuBottom, 'cbp-spmenu-open' );
-	};
-	showLeft.onclick = function() {
-		// classie.toggle( this, 'active' );
-		classie.toggle( body, 'cbp-spmenu-push-toright' );
-		classie.toggle( menuLeft, 'cbp-spmenu-open' );
-	};
-	showRight.onclick = function() {
-		// classie.toggle( this, 'active' );
-	// classie.toggle( body, 'cbp-spmenu-push-toleft' );
-	classie.toggle( menuRight, 'cbp-spmenu-open' );
-};
-
-// classie.toggle( this, 'active' );
-// classie.toggle( body, 'cbp-spmenu-push-toright' );
-// classie.toggle( menuLeft, 'cbp-spmenu-open' );
-
 
 </script>
 
