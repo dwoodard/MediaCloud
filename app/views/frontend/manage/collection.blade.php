@@ -30,7 +30,10 @@
 				ng-repeat="collection in collections"
 				ng-cloak
 				ng-click="getCollectionView(collection)"
-				editable-text="collection.name">[[collection.name]]</a>
+				>[[collection.name]]</a>
+			<!-- <a ng-repeat="collection in collections" href=""> [[collection.name]] </a> -->
+
+
 			<!-- <a ng-repeat="collection in collections" href=""> [[collection.name]] </a> -->
 
 
@@ -63,6 +66,7 @@
 <script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
 <script src="/bower/angular-xeditable/dist/js/xeditable.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
 <script src="/app/app.js"></script>
 
 

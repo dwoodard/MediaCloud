@@ -5,7 +5,6 @@ var Manage = {
 	init:function(data){
 		this.data = data;
 
-		this.appFolders();
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
@@ -13,12 +12,6 @@ var Manage = {
 		this.getCollection(this.data[0].id)
 
 		// console.log(this);
-	},
-	appFolders:function(){
-		// console.log('initAppFolders')
-
-
-
 	},
 	dropzoneInit:function  () {
 		function doComplete(){
@@ -104,50 +97,50 @@ var Manage = {
 		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
 		// });
 
-		$(".close").on("click", function(e) {
+$(".close").on("click", function(e) {
 
-			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
+	var cbp_menu = $(this).closest('.cbp-spmenu')[0]
 
-			if (cbp_menu.id == "collections-list") {
-				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
-				$("body").removeClass('cbp-spmenu-push-toright')
-			}else{
-				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
-			}
+	if (cbp_menu.id == "collections-list") {
+		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+		$("body").removeClass('cbp-spmenu-push-toright')
+	}else{
+		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+	}
 
-		});
+});
 
-		$("#btn-new-collection").on("click", function(e) {
-			$(".newCollection").show().find(':input').focus().select()
-		});
+$("#btn-new-collection").on("click", function(e) {
+	$(".newCollection").show().find(':input').focus().select()
+});
 
-		$("#btn-save-new-collection").on('click',function(e) {
-			console.log('save new collection');
-			var data = {
-					name: $("#input-new-collection").val(),
-					userId: userId
-				}
-			$.ajax({
-				type: "POST",
-				url:"/collections/store",
-				data: data,
-				dataType: "json"
-			}).done(function(data) {
+$("#btn-save-new-collection").on('click',function(e) {
+	console.log('save new collection');
+	var data = {
+		name: $("#input-new-collection").val(),
+		userId: userId
+	}
+	$.ajax({
+		type: "POST",
+		url:"/collections/store",
+		data: data,
+		dataType: "json"
+	}).done(function(data) {
 
-				console.log(data);
-			});
+		console.log(data);
+	});
 
-		})
+})
 
 
-	},
-	getCollection:function(id) {
-		$.ajax({
-			url: "/manage/collections/"+id
-		}).done(function(data) {
-			$("#collection-view").html(data);
+},
+getCollection:function(id) {
+	$.ajax({
+		url: "/manage/collections/"+id
+	}).done(function(data) {
+		$("#collection-view").html(data);
 
-			$('.app-folders-container').appFolders({
+		$('.app-folders-container').appFolders({
 					opacity:.5, 								// Opacity of non-selected items
 					marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
 					marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
@@ -162,13 +155,13 @@ var Manage = {
 
 
 
-			$('.asset-player-btn').on("click",function(e) {
+		$('.asset-player-btn').on("click",function(e) {
 				// console.log($(this).data('asset-id'));
 
 				Manage.getAssetPlayer($(this).data('asset-id'))
 			});
 
-		});
+	});
 
 },
 getAssetPlayer:function(id) {

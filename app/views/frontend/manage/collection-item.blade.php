@@ -103,7 +103,7 @@
 
 			@else
 
-			You aint got no Assets
+			No Assets to load
 
 			@endif
 
