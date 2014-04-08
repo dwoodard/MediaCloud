@@ -154,6 +154,7 @@ class AppInstallCommand extends Command {
 
 						'admin' => 1,
 						'manage' => 1,
+						'upload' => 1,
 
                         'DashboardController@getIndex' => 1,
 

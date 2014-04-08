@@ -7,13 +7,14 @@ class PlayerController extends BaseController {
 	 *
 	 * @return View
 	 */
-		public function single($alphaID)
+		public function single($id)
 		{
 			// echo "hey";
 			// Show the page
 			 //    return Asset::find($id);
-	return View::make('player.single')->with('asset', Asset::where('alphaID', '=', $alphaID));
-    
+			$asset = Asset::find($id);
+			return View::make('player.single')->with('asset', $asset);
+
 
 
 			return View::make('frontend/player/single');

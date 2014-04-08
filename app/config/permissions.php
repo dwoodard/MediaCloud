@@ -14,10 +14,10 @@ return [
 			'label'      => 'Manage Rights',
 			],
 		],
-	'Global' => [
+	'Upload' => [
 		[
-			'permission' => 'superuser',
-			'label'      => 'Super User',
+			'permission' => 'upload',
+			'label'      => 'Upload',
 			],
 		],
 	'Frontend Admin' => [

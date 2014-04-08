@@ -1,37 +1,39 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-var mcApp = angular.module('mcApp',
-		['ngRoute'],
-		function($interpolateProvider){
+var app = angular.module('manage',['ngResource','xeditable','ui.bootstrap'],
+	function($interpolateProvider){
 		$interpolateProvider.startSymbol('[[');
 		$interpolateProvider.endSymbol(']]');
 	});
 
-mcApp.config(function($routeProvider){
-	$routeProvider
 
-		.when('/',{
-			templateUrl: 'app/templates/collections.html'
-		})
-		.when('/upload',{
-			templateUrl: 'app/templates/upload.html'
-		})
-		.when('/browse',{
-			templateUrl: 'app/templates/browse.html'
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 
-		// if(window.history && window.history.pushState){
-		// 	$locationProvider.html5Mode(true);
-		// }
+app.factory('Collections', function($http) {
+
+	var dataFactory = {};
+
+	dataFactory.getCollections = function () {
+		return $http.get('/collections');
+	};
+
+	
+	return dataFactory;
+});
+
+
+app.controller('manageController', function($scope, $http, $location, Collections) {
+
+	Collections.getCollections().success(function (data) {
+		$scope.collections = data;
+	})
+
+	$scope.getCollectionView = function(e) {
+		Manage.getCollection(e.id);
+	};
+
 
 })
-// mcApp.config(['$routeProvider', function($routeProvider) {
-// 		$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-// 		$routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-// 		$routeProvider.otherwise({redirectTo: '/view1'});
-// 	}]);
-

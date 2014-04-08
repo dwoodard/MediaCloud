@@ -1,0 +1,11 @@
+{
+  "name": "hammer.min.js",
+  "_cacheHeaders": {
+    "Content-Length": "14002",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js"
+}

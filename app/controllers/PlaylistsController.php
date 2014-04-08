@@ -23,11 +23,11 @@ class PlaylistsController extends PermissionsController {
 	}
 
 
-public function create()
-{
- 
- return View::make('backend/playlists/create');
-}
+	public function create()
+	{
+
+		return View::make('backend/playlists/create');
+	}
 
 
 public function store()
@@ -60,7 +60,9 @@ public function store()
 
 
 
-public function edit($id)
+
+	public function edit($id)
+
 	{
 		$playlist = Playlist::find($id);
 
@@ -155,7 +157,7 @@ public function update($id)
 			$playlist->users()->detach($user->id);
 		}
 
-		
+
 		//remove the playlist in db
 		$playlist->delete();
 

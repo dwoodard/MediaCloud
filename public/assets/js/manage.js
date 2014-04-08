@@ -1,31 +1,17 @@
 // manage.js
 
 var Manage = {
+	data:{},
+	init:function(data){
+		this.data = data;
 
-	init:function(){
-		this.appFolders();
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
-		this.flipEvents();
+
+		this.getCollection(this.data[0].id)
 
 		// console.log(this);
-	},
-	appFolders:function(){
-		// console.log('initAppFolders')
-
-		$('.app-folders-container').appFolders({
-			opacity:.5, 								// Opacity of non-selected items
-			marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
-			marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
-			marginTopIncrement:0,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
-			animationSpeed:200,						// Time (in ms) for transitions
-			// URLrewrite:true, 							// Use URL rewriting?
-			// URLbase:"/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
-			internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
-			instaSwitch:true
-		})
-
 	},
 	dropzoneInit:function  () {
 		function doComplete(){
@@ -77,25 +63,124 @@ var Manage = {
 			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
 		});
 
+
+		// Toggle Navigation
+		$("#subnav-btn-collections, #subnav-btn-assets, #subnav-btn-browse")
+		.on("click",function(e) {
+
+			switch(/subnav-btn-(.*)/.exec(e.currentTarget.id)[1]){
+				case "collections":
+				$("#collections-list").toggleClass('cbp-spmenu-open')
+				$("body").toggleClass('cbp-spmenu-push-toright')
+				break;
+				case "assets":
+				$("#asset-view").toggleClass('cbp-spmenu-open')
+				break;
+				case "browse":
+				$("#browse-view").toggleClass('cbp-spmenu-open')
+				break;
+			}
+		})
+
+
 		$("#search_bar a").on( "click", function(e) {
 			setTimeout(function(){
 				$("#srch-term")[0].focus();
 			}, 0);
 		});
-	},
-	flipEvents:function(){
-		$("body").on("click", '.btn-reverse',function(e){
-			// $container = $(e.target).closest('.flipbox-container')
-			$(".flipbox").flippyReverse();
-			e.preventDefault();
-		});
-	},
-	playListSettings:function () {
-		$('.nav.nav-tabs a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
 
+		// $('#collections-list>a').on("click",function(e) {
+		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
+		// });
 
+		// $('#collections-list>a').on("click",function(e) {
+		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
+		// });
+
+$(".close").on("click", function(e) {
+
+	var cbp_menu = $(this).closest('.cbp-spmenu')[0]
+
+	if (cbp_menu.id == "collections-list") {
+		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+		$("body").removeClass('cbp-spmenu-push-toright')
+	}else{
+		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
 	}
+
+});
+
+$("#btn-new-collection").on("click", function(e) {
+	$(".newCollection").show().find(':input').focus().select()
+});
+
+$("#btn-save-new-collection").on('click',function(e) {
+	console.log('save new collection');
+	var data = {
+		name: $("#input-new-collection").val(),
+		userId: userId
+	}
+	$.ajax({
+		type: "POST",
+		url:"/collections/store",
+		data: data,
+		dataType: "json"
+	}).done(function(data) {
+
+		console.log(data);
+	});
+
+})
+
+
+},
+getCollection:function(id) {
+	$.ajax({
+		url: "/manage/collections/"+id
+	}).done(function(data) {
+		$("#collection-view").html(data);
+
+		$('.app-folders-container').appFolders({
+					opacity:.5, 								// Opacity of non-selected items
+					marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
+					marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
+					marginTopIncrement:0,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
+					animationSpeed:200,						// Time (in ms) for transitions
+					// URLrewrite:true, 							// Use URL rewriting?
+					// URLbase:"/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
+					internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
+					instaSwitch:true
+				});
+
+
+
+
+		$('.asset-player-btn').on("click",function(e) {
+				// console.log($(this).data('asset-id'));
+
+				Manage.getAssetPlayer($(this).data('asset-id'))
+			});
+
+	});
+
+},
+getAssetPlayer:function(id) {
+	$.ajax({
+		url: "/player/single/"+id
+	}).done(function(data) {
+		$("#asset-player").html(data);
+		$("#asset-view").addClass("cbp-spmenu-open")
+
+	});
+
+},
+
+playListSettings:function () {
+	$('.nav.nav-tabs a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+
+
+}
 }

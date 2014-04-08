@@ -53,15 +53,18 @@
 			</li>
 
 			<li>
-				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
-			</li>
-			<li>
 				<a id="subnav-btn-collections"  href="#">
 					<i class="fa fa-th-large"></i> <span class="nav-text">Collections</span>
 				</a>
 			</li>
 			<li>
-				<a id="subnav-btn-assets" href="#"><i class="fa fa-list"></i> <span class="nav-text">Assets</span></a>
+				<a id="subnav-btn-assets" href="#"><i class="fa fa-play-circle"></i> <span class="nav-text">Player</span></a>
+			</li>
+			<li>
+				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
+			</li>
+			<li>
+				<a id="subnav-btn-browse" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
 			</li>
 		</ul>
 
@@ -81,7 +84,7 @@
 
 							@foreach ($unassignedAssets as $asset)
 							<li>
-								<a href="#">
+								<a href="#" class="asset-player-btn" data-asset-id="{{$asset->id}}">
 									<span class="label label-sm label-icon label-success">
 										@if ($asset->type === 'video')
 										<i class="fa fa-video-camera"></i>

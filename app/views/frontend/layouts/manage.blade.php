@@ -24,10 +24,10 @@
     <div id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <i class="fa fa-bars"></i>
-          </button>
+          </button> -->
           <a class="navbar-brand navbar-brand-size" href="/">
           	<img width="45%"src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
           	<!-- <img width="50%"src="assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span> -->
@@ -35,7 +35,7 @@
         </div>
 
         	<!-- BEGIN TOP NAVIGATION MENU -->
-			<div class="navbar-collapse collapse pull-right">
+			<div class="pull-right">
 				<ul class="nav navbar-nav">
 					@if (Sentry::check())
 						<li class="dropdown">
@@ -73,6 +73,8 @@
 
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower/hammer.js/index.js"></script>
+	<script src="/bower/jquery.hammer.js/index.js"></script>
 	<script src="/assets/js/dropzone.js"></script>
 
 	@yield('scripts')

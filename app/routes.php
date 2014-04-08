@@ -35,8 +35,8 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	# Assets Management
 	Route::group(array('prefix' => 'assets'), function()
 	{
-        Route::get('/', array('as' => 'assets','uses' => 'AssetsController@index'));
-        Route::get('upload', array('as' => 'asset.upload', 'uses' => 'AssetsController@create'));
+		Route::get('/', array('as' => 'assets','uses' => 'AssetsController@index'));
+		Route::get('upload', array('as' => 'asset.upload', 'uses' => 'AssetsController@create'));
 		Route::post('upload', array('as' => 'asset.store', 'uses' => 'AssetsController@store'));
         //show
 		Route::get('{assetId}/edit', array('as' => 'asset.edit', 'uses' => 'AssetsController@edit'));
@@ -68,17 +68,18 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 		Route::get('{groupId}/restore', array('as' => 'restore/group', 'uses' => 'GroupsController@getRestore'));
 	});
 
-		# Playlists Management
+	# Playlists Management
 	Route::group(array('prefix' => 'playlists'), function()
 	{
-        Route::get('/', array('as' => 'playlists','uses' => 'PlaylistsController@index'));
-        Route::get('create', array('as' => 'playlist.create', 'uses' => 'PlaylistsController@create'));
+		Route::get('/', array('as' => 'playlists','uses' => 'PlaylistsController@index'));
+		Route::get('create', array('as' => 'playlist.create', 'uses' => 'PlaylistsController@create'));
 		Route::post('create', array('as' => 'playlist.store', 'uses' => 'PlaylistsController@store'));
         //show
 		Route::get('{playlistId}/edit', array('as' => 'playlist.edit', 'uses' => 'PlaylistsController@edit'));
 		Route::post('{playlistId}/edit', array('as' => 'playlist.update', 'uses' => 'PlaylistsController@update')); //POST /admin/Playlists/{playlistId}/edit
 		Route::delete('{playlistId}/delete', array('as' => 'playlist.delete', 'uses' => 'PlaylistsController@destroy'));
 	});
+
 
 # Collections Management
 	Route::group(array('prefix' => 'collections'), function()
@@ -91,6 +92,19 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 		Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
 		Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
 	});
+
+	# Collections Management
+	// Route::group(array('prefix' => 'collections'), function()
+	// {
+	// 	Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
+	// 	Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
+	// 	Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+ //        //show
+	// 	Route::get('{collectionId}/edit', array('as' => 'collection.edit', 'uses' => 'CollectionsController@edit'));
+	// 	Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
+	// 	Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
+	// });
+
 
 
 
@@ -153,31 +167,29 @@ Route::group(array('prefix' => 'auth'), function()
 
 
 
-	# Frontend Static Pages
+# Frontend Static Pages
 
-	Route::get('help', function(){ return View::make('frontend.pages.help');});
-	Route::get('faq', function(){ return View::make('frontend.pages.faq');});
-	Route::get('privacy', function(){ return View::make('frontend.pages.privacy-policy');});
-	Route::get('terms', function(){ return View::make('frontend.pages.terms-of-service');});
-	Route::get('about-us', function(){return View::make('frontend.pages.about-us');});
+Route::get('help', function(){ return View::make('frontend.pages.help');});
+Route::get('faq', function(){ return View::make('frontend.pages.faq');});
+Route::get('privacy', function(){ return View::make('frontend.pages.privacy-policy');});
+Route::get('terms', function(){ return View::make('frontend.pages.terms-of-service');});
+Route::get('about-us', function(){return View::make('frontend.pages.about-us');});
 
-	Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
-	Route::post('contact-us', 'ContactUsController@postIndex');
-
-// Route::get('blog/{postSlug}', array('as' => 'view-post', 'uses' => 'BlogController@getView'));
-// Route::post('blog/{postSlug}', 'BlogController@postView');
+Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
+Route::post('contact-us', 'ContactUsController@postIndex');
 
 
 
-	# Capture
-	Route::get('capture', array('as' => 'single', 'uses' => 'CaptureController@index'));
 
 
-	# Media Player
+# Capture
+Route::get('capture', array('as' => 'single', 'uses' => 'CaptureController@index'));
 
+
+# Media Player
 Route::group(array('prefix' => 'player'), function()
 {
-	Route::get('single/{alphaID}', array('as' => 'single', 'uses' => 'PlayerController@single'));
+	Route::get('single/{id}', array('as' => 'single', 'uses' => 'PlayerController@single'));
 	Route::get('playlist/{id}', array('as' => 'playlist', 'uses' => 'PlayerController@playlist'));
 	Route::get('collection/{id}', array('as' => 'collection', 'uses' => 'PlayerController@collection'));
 
@@ -187,12 +199,16 @@ Route::group(array('prefix' => 'player'), function()
 #Asset File
 Route::group(array('prefix' => 'asset'), function()
 {
-	Route::get('{alphaID}/{item?}', array('as' => 'asset.file', 'uses' => 'AssetsController@file'));
-
-
+	Route::get('{id}/{item?}', array('as' => 'asset.file', 'uses' => 'AssetsController@file'));
 });
 
+#Collections
+Route::group(array('prefix' => 'collections'), function()
+{
+	Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
+	Route::post('store', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 
+});
 
 
 
@@ -201,15 +217,12 @@ Route::group(array('prefix' => 'asset'), function()
 # Media Manager
 Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 {
-	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@collection'));
-	Route::get('test', array('as' => 'manage.test', 'uses' => 'ManageController@test'));
-	Route::get('collections', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
-	Route::get('collections/playlists', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
-	Route::get('upload', array('as' => 'manage.upload', 'uses' => 'ManageController@upload'));
+	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
+	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
-	Route::get('browse', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
-
 });
+
+
 
 
 

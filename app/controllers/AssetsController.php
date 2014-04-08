@@ -31,10 +31,10 @@ class AssetsController extends PermissionsController{
 
 			$asset->users->each(function($user)
 			{
-			    $asset->users[] = $user;
-			});	
+				$asset->users[] = $user;
+			});
 		}
-		
+
 		// Show the page
 		return View::make('backend/assets/index', compact('assets'));
 	}
@@ -246,26 +246,31 @@ class AssetsController extends PermissionsController{
 		}
 	}
 
-	public function file($alphaID)
+	public function file($id)
 	{
 		// echo '?good permissions?<br>';
 
+		if (is_numeric($id)) {
+			$asset = Asset::where('id', '=', $id)->firstOrFail();
+		}
+		else{
+			$asset = Asset::where('alphaID', '=', $id)->firstOrFail();
+		}
 
-		$asset = Asset::where('alphaID', '=', $alphaID)->firstOrFail();
 		$path = Config::get('settings.media-path');
 
 		switch ($asset->type) {
 			case 'video':
-				$ext = "mp4";
-				break;
+			$ext = "mp4";
+			break;
 			case 'audio':
-				$ext = "mp3";
-				break;
+			$ext = "mp3";
+			break;
 			default:
-				$ext = $asset->original_ext;
-				break;
+			$ext = $asset->original_ext;
+			break;
 		}
-		$file = base_path() . "/" . $path . "/" . $alphaID.  '.' . $ext;
+		$file = base_path() . "/" . $path . "/" . $asset->alphaID.  '.' . $ext;
 		$mime = Mimes::getMimes($ext);
 
 
@@ -287,62 +292,62 @@ class AssetsController extends PermissionsController{
 	function rangeDownload($file){
 		$fp = @fopen($file, 'rb');
 
-        $size   = filesize($file);
-        $length = $size;
-        $start  = 0;
-        $end    = $size - 1;
+		$size   = filesize($file);
+		$length = $size;
+		$start  = 0;
+		$end    = $size - 1;
 
 
-        header("Accept-Ranges: 0-$length");
+		header("Accept-Ranges: 0-$length");
 
 
-        if (isset($_SERVER['HTTP_RANGE'])){
-        	$c_start = $start;
-        	$c_end   = $end;
-        	list(, $range) = explode('=', $_SERVER['HTTP_RANGE'], 2);
-        	if (strpos($range, ',') !== false){
+		if (isset($_SERVER['HTTP_RANGE'])){
+			$c_start = $start;
+			$c_end   = $end;
+			list(, $range) = explode('=', $_SERVER['HTTP_RANGE'], 2);
+			if (strpos($range, ',') !== false){
 				header('HTTP/1.1 416 Requested Range Not Satisfiable');
-        		header("Content-Range: bytes $start-$end/$size");
-        		exit;
-            }
+				header("Content-Range: bytes $start-$end/$size");
+				exit;
+			}
 
-            if ($range{0} == '-'){
-            	$c_start = $size - substr($range, 1);
-            } else {
-            	$range  = explode('-', $range);
-            	$c_start = $range[0];
-            	$c_end   = (isset($range[1]) && is_numeric($range[1])) ? $range[1] : $size;
-            }
+			if ($range{0} == '-'){
+				$c_start = $size - substr($range, 1);
+			} else {
+				$range  = explode('-', $range);
+				$c_start = $range[0];
+				$c_end   = (isset($range[1]) && is_numeric($range[1])) ? $range[1] : $size;
+			}
 
-            $c_end = ($c_end > $end) ? $end : $c_end;
+			$c_end = ($c_end > $end) ? $end : $c_end;
 
-            if ($c_start > $c_end || $c_start > $size - 1 || $c_end >= $size){
-            	header('HTTP/1.1 416 Requested Range Not Satisfiable');
-            	header("Content-Range: bytes $start-$end/$size");
-            	exit;
-            }
+			if ($c_start > $c_end || $c_start > $size - 1 || $c_end >= $size){
+				header('HTTP/1.1 416 Requested Range Not Satisfiable');
+				header("Content-Range: bytes $start-$end/$size");
+				exit;
+			}
 
-            $start  = $c_start;
-            $end    = $c_end;
-            $length = $end - $start + 1;
-            fseek($fp, $start);
-            header('HTTP/1.1 206 Partial Content');
+			$start  = $c_start;
+			$end    = $c_end;
+			$length = $end - $start + 1;
+			fseek($fp, $start);
+			header('HTTP/1.1 206 Partial Content');
 
-        }
-        header("Content-Range: bytes $start-$end/$size");
-        header("Content-Length: $length");
+		}
+		header("Content-Range: bytes $start-$end/$size");
+		header("Content-Length: $length");
 
-        $buffer = 1024 * 8;
-        while(!feof($fp) && ($p = ftell($fp)) <= $end){
-        	if ($p + $buffer > $end){
-        		$buffer = $end - $p + 1;
-            }
-            set_time_limit(0);
-            echo fread($fp, $buffer);
-            flush();
-        }
+		$buffer = 1024 * 8;
+		while(!feof($fp) && ($p = ftell($fp)) <= $end){
+			if ($p + $buffer > $end){
+				$buffer = $end - $p + 1;
+			}
+			set_time_limit(0);
+			echo fread($fp, $buffer);
+			flush();
+		}
 
-        fclose($fp);
-    }
+		fclose($fp);
+	}
 
 }
