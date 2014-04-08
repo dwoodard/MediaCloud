@@ -1,5 +1,39 @@
 @extends('backend/layouts/admin')
 
+@section('scripts')
+
+<script>
+	$(document).ready(function() {
+
+		$("[id*='delete-']").click(function(e){
+			e.preventDefault()
+			btn = $(this);
+			url = this.action;
+		// confirm dialog
+		alertify.confirm("Whooo are you Sure?! Once it's gone, it ain't comin' back!", function (e) {
+			if (e) {
+				$.ajax({
+					url: url,
+					type: 'DELETE',
+					success: function(data) {
+						data = $.parseJSON(data);
+						console.log(data);
+						if(data.result == "success"){
+							$(btn).closest('tr').hide('slow');
+						}
+					}
+				});
+			} 
+		});
+
+		})
+	});
+</script>
+@stop
+
+
+
+
 @section('content')
 {{Breadcrumbs::render('collections')}}
 

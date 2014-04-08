@@ -30,12 +30,104 @@ public function create()
 }
 
 
+public function store()
+		{
+// Create a new Playlist
+		$playlist =  new Playlist;
+
+		// Update the blog playlist data
+		$playlist->name            = e(Input::get('name'));
+		$playlist->description        = e(Input::get('description'));
+	
+
+		// Was the blog playlist created?
+		if($playlist->save())
+		{
+			// Redirect to the new blog playlist page
+			return Redirect::to("admin/playlists")->with('success', Lang::get('admin/blogs/message.create.success'));
+		}
+
+		// Redirect to the blog playlist create page
+		return Redirect::to('admin/playlists')->with('error', Lang::get('Error Adding playlist'));
+
+
+	}
+
+
+
+
+
+
+
+
 public function edit($id)
 	{
 		$playlist = Playlist::find($id);
 
 		return View::make('backend/playlists/edit', compact('playlist'));
 	}
+
+
+
+public function update($id)
+{
+	
+
+
+	// Check if the assets exists
+		if (is_null($playlist = Playlist::find($id)))
+		{
+			// Redirect to the playlists management page
+			return Redirect::to('admin/playlists')->with('error', Lang::get('playlist does not exist'));
+		}
+
+
+		// Declare the rules for the form validation
+		$rules = array(
+			// 'name' => 'required',
+			// 'description' => 'required',
+			// 'filepath' => 'required',
+			// 'filename' => 'required',
+			// 'thumbnail_url' => 'required',
+			// 'url' => 'required',
+			// 'type' => 'required',
+			// 'status' => 'required',
+			// 'tags' => 'required',
+			// 'views' => 'required',
+			// 'last_viewed' => 'required',
+			// 'created_at' => 'required',
+			// 'updated_at' => 'required'
+			);
+
+		// Create a new validator instance from our validation rules
+		$validator = Validator::make(Input::all(), $rules);
+
+		// If validation fails, we'll exit the operation now.
+		if ($validator->fails())
+		{
+			// Ooops.. something went wrong
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		// Update the playlist data
+		$playlist->name				= e(Input::get('name'));
+		$playlist->description			= e(Input::get('description'));
+
+
+
+
+		// Was the playlist updated?
+		if($playlist->save())
+		{
+			// Redirect to the new playlist page
+			return Redirect::to("admin/playlists")->with('success', Lang::get('admin/playlists/message.update.success'));
+		}
+
+		// Redirect to the playlists post management page
+		return Redirect::to("admin/playlists/$playlist->id/edit")->with('error', Lang::get('admin/playlists/message.update.error'));
+	}
+
+
 
 
 	public function destroy($id){

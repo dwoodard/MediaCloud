@@ -7,6 +7,7 @@
 <div class="page-header">    
     <h1>Edit Collection
         <div class="pull-right">
+        <div class="pull-right">
             <a href="{{ route('collections') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> Back</a>
         </div>
     </h1>
@@ -25,7 +26,7 @@
 </ul>
 
 
-<form method="POST" action="{{url('admin/assets/'.$collection->id.'/edit')}}" class="form-horizontal" >
+<form method="POST" action="{{url('admin/collections/'.$collection->id.'/edit')}}" class="form-horizontal" >
     {{Form::token()}}
     <div class="tab-content">
     <div class="tab-pane active" id="tab-general">
@@ -35,7 +36,7 @@
                   <div class="form-group">
                      <label class="control-label col-md-3">Title</label>
                      <div class="col-md-9">
-                        {{ Form::text('title', $collection->name,  array('class' => 'form-control')) }}
+                        {{ Form::text('name', $collection->name,  array('class' => 'form-control')) }}
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@
 </ul>
 
 
-<form method="POST" action="{{url('admin/assets/'.$playlist->id.'/edit')}}" class="form-horizontal" >
+<form method="POST" action="{{url('admin/playlists/'.$playlist->id.'/edit')}}" class="form-horizontal" >
     {{Form::token()}}
     <div class="tab-content">
     <div class="tab-pane active" id="tab-general">
@@ -35,7 +35,7 @@
                   <div class="form-group">
                      <label class="control-label col-md-3">Title</label>
                      <div class="col-md-9">
-                        {{ Form::text('title', $playlist->name,  array('class' => 'form-control')) }}
+                        {{ Form::text('name', $playlist->name,  array('class' => 'form-control')) }}
                     </div>
                 </div>
             </div>
