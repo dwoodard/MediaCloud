@@ -84,7 +84,7 @@
 
 							@foreach ($unassignedAssets as $asset)
 							<li>
-								<a href="#">
+								<a href="#" class="asset-player-btn" data-asset-id="{{$asset->id}}">
 									<span class="label label-sm label-icon label-success">
 										@if ($asset->type === 'video')
 										<i class="fa fa-video-camera"></i>

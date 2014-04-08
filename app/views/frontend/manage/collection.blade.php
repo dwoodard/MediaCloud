@@ -4,29 +4,38 @@
 @section('content')
 @include('_partials.subnav-manage')
 
-<div id="app" >
+<div id="app" ng-app="manage">
+	<div ng-controller="manageController">
+		<!-- Slide Push Menus -->
+		<nav id="collections-list" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open">
+			<i class="close fa fa-times-circle-o fa-2x"></i>
+			<h3>Collections</h3>
 
-	<!-- Slide Push Menus -->
-	<nav id="collections-list" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open">
-		<i class="close fa fa-times-circle-o fa-2x"></i>
-		<h3>Collections</h3>
 
-		<ul class="toolbar clearfix">
-			<li> <a id="btn-new-collection" href="#"><i class="fa fa-plus"></i> New Collection</a></li>
-		</ul>
+			<ul class="toolbar clearfix">
+				<li> <a id="btn-new-collection" href="#"><i class="fa fa-plus"></i> New Collection</a></li>
+			</ul>
 
-		<div class="newCollection" href="#" style="display:none">
-			<input type="text" value="Collection Name" class="input-sm">
-			<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
-			<button id="btn-save-new-collection"><i class="fa fa-times"></i> </button>
-		</div>
+			<div class="newCollection" href="#" style="display:none">
+				<input id="input-new-collection" type="text" value="Collection Name" class="input-sm">
+				<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
+				<button id="btn-save-new-collection"><i class="fa fa-times"></i> </button>
+			</div>
 
-		@foreach($cpas as $key => $cpa)
 
-		<a data-collection-id="{{$cpa->id}}" href="#">{{$cpa->name}}</a>
 
-		@endforeach
-	</nav>
+
+
+			<a href="#"
+				ng-repeat="collection in collections"
+				ng-cloak
+				ng-click="getCollectionView(collection)"
+				editable-text="collection.name">[[collection.name]]</a>
+			<!-- <a ng-repeat="collection in collections" href=""> [[collection.name]] </a> -->
+
+
+		</nav>
+	</div>
 
 	<nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
 		<i class="close fa fa-times-circle-o fa-2x"></i>
@@ -50,17 +59,23 @@
 
 @section('scripts')
 <script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
+<script src="/bower/angular/angular.js"></script>
+<script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
+<script src="/bower/angular-xeditable/dist/js/xeditable.min.js"></script>
+<script src="/app/app.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		var data = {{json_encode($cpas)}};
-
+		var userId = {{json_encode(Sentry::getUser()->id)}};
 		Manage.init(data);
 	});
 </script>
 @stop
 
 @section('style')
+<link href="/bower/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
 @stop

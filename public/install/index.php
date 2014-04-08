@@ -181,7 +181,7 @@ if (preg_match('/Linux/',php_uname())){
 						<select name='queue' class="chzn-select">
 							<option value=""></option>
 							<option value="resque">Resque</option>
-							<option value="beanstalkd">Beanstalkd</option>
+							<option selected value="beanstalkd">Beanstalkd</option>
 							<option value="iron">IronIO</option>
 							<option value="sqs">SQS</option>
 						</select>
@@ -193,7 +193,7 @@ if (preg_match('/Linux/',php_uname())){
 						</p>
 <pre>Resque Stuff</pre>
 					</div>
-					<div id="queue-beanstalkd" class="control-group hide">
+					<div id="queue-beanstalkd" class="control-group">
 						<div class="row">
 							<div class="span3">
 								<label><strong>Host</strong></label>
@@ -265,14 +265,14 @@ if (preg_match('/Linux/',php_uname())){
 					<div class="control-group">
 						<select name='auth' class="chzn-select">
 							<option></option>
-							<option value="cas">CAS</option>
+							<option selected value="cas">CAS</option>
 							<option value="ldap">LDAP</option>
 							<option value="saml">SAML</option>
 							<option value="database">Database</option>
 						</select>
 					</div>
 
-					<div id="auth-cas" class="control-group hide">
+					<div id="auth-cas" class="control-group">
 						<div class="row">
 							<div class="span3">
 								<label><strong>Login URL</strong></label>
@@ -477,7 +477,7 @@ if (preg_match('/Linux/',php_uname())){
 						dataType: 'json',
 						success: function (data) {
 							if (data) {
-								
+
 								if (data.status == 'success') {
 									wizard.submitSuccess();
 								} else {

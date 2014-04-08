@@ -10,30 +10,30 @@
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 
-   <!-- BEGIN GLOBAL MANDATORY STYLES -->
-   <!-- <link href="/_frontend/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
-   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-   <link href="/_frontend/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-   <!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+	<!-- <link href="/_frontend/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="/_frontend/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<!-- END GLOBAL MANDATORY STYLES -->
 
-   <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-   <link href="/_frontend/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
-   <link rel="stylesheet" href="/_frontend/assets/plugins/revolution_slider/css/rs-style.css" media="screen">
-   <link rel="stylesheet" href="/_frontend/assets/plugins/revolution_slider/rs-plugin/css/settings.css" media="screen">
-   <link href="/_frontend/assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet" />
-   <!-- END PAGE LEVEL PLUGIN STYLES -->
+	<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+	<link href="/_frontend/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/_frontend/assets/plugins/revolution_slider/css/rs-style.css" media="screen">
+	<link rel="stylesheet" href="/_frontend/assets/plugins/revolution_slider/rs-plugin/css/settings.css" media="screen">
+	<link href="/_frontend/assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet" />
+	<!-- END PAGE LEVEL PLUGIN STYLES -->
 
-   <!-- BEGIN THEME STYLES -->
-   <link href="/_frontend/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-   <link href="/_frontend/assets/css/style.css" rel="stylesheet" type="text/css"/>
-   <link href="/_frontend/assets/css/themes/blue.css" rel="stylesheet" type="text/css" id="style_color"/>
-   <link href="/_frontend/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-   <link href="/_frontend/assets/css/custom.css" rel="stylesheet" type="text/css"/>
-   <!-- END THEME STYLES -->
+	<!-- BEGIN THEME STYLES -->
+	<link href="/_frontend/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="/_frontend/assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="/_frontend/assets/css/themes/blue.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="/_frontend/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="/_frontend/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- END THEME STYLES -->
 
 	@yield('style')
 
-   <link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
 
@@ -41,7 +41,7 @@
 <body>
 
 
-	  <!-- BEGIN HEADER -->
+	<!-- BEGIN HEADER -->
 	<div class="header navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -50,14 +50,9 @@
 					<span class="fa fa-bars"></span>
 				</button>
 				<!-- END RESPONSIVE MENU TOGGLER -->
-				<!-- BEGIN LOGO (you can use logo image instead of text)-->
-				<div class="col-md-3">
-
-				<a class="navbar-brand" href="/">
-					<img src="/assets/img/WSU.jpg" id="logoimg" alt="">Media Cloud
-				</a>
-				</div>
-				<!-- END LOGO -->
+					<a class="navbar-brand" href="/">
+						<img src="/assets/img/WSU.jpg" id="logoimg" alt="">Media Cloud
+					</a>
 			</div>
 
 
@@ -69,17 +64,17 @@
 
 
 					@if (Sentry::check())
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" data-click="dropdown" data-delay="0" data-close-others="false" href="#">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" data-click="dropdown" data-delay="0" data-close-others="false" href="#">
 							Welcome {{Sentry::getUser()->username}}! <i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
 								<!-- <li class="active"><a href="index.html">Home Default</a></li> -->
 								@if (Sentry::getUser()->hasAccess('admin'))
-									<li><a href="{{URL::to('/admin')}}">Admin</a></li>
+								<li><a href="{{URL::to('/admin')}}">Admin</a></li>
 								@endif
 
 								@if (Sentry::getUser()->hasAccess('manage'))
-									<li><a href="{{URL::to('/manage')}}">Manage</a></li>
+								<li><a href="{{URL::to('/manage')}}">Manage</a></li>
 								@endif
 
 
@@ -87,21 +82,21 @@
 								<li><a href="{{URL::to('logout')}}">Logout</a></li>
 							</ul>
 						</li>
-					@else
+						@else
 						<li><a id="login" href="{{URL::to('login')}}" target="">Login</a></li>
-					@endif
+						@endif
 
 
 
 
-				</ul>
+					</ul>
+				</div>
+				<!-- END TOP NAVIGATION MENU -->
 			</div>
-			<!-- END TOP NAVIGATION MENU -->
+
+
 		</div>
-
-
-	</div>
-	<!-- END HEADER -->
+		<!-- END HEADER -->
 
 	<!-- BEGIN ALERTS
 	<div id="alerts">
@@ -140,7 +135,7 @@
 
 
 
-@yield('content')
+	@yield('content')
 
 	<!-- BEGIN COPYRIGHT -->
 	<div class="container">
@@ -177,31 +172,31 @@
 	<![endif]-->
 	<!--
 	<script src="/_frontend/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-	 -->
-	 <script src="/bower/jquery/dist/jquery.js"></script>
-	<script src="/_frontend/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-	<script src="/_frontend/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="/_frontend/assets/plugins/hover-dropdown.js"></script>
-	<script type="text/javascript" src="/_frontend/assets/plugins/back-to-top.js"></script>
-	<!-- END CORE PLUGINS -->
+-->
+<script src="/bower/jquery/dist/jquery.js"></script>
+<script src="/_frontend/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/_frontend/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/_frontend/assets/plugins/hover-dropdown.js"></script>
+<script type="text/javascript" src="/_frontend/assets/plugins/back-to-top.js"></script>
+<!-- END CORE PLUGINS -->
 
-	<!-- BEGIN PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
-	<script type="text/javascript" src="/_frontend/assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="/_frontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-	<script type="text/javascript" src="/_frontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript" src="/_frontend/assets/plugins/bxslider/jquery.bxslider.min.js"></script>
-	<script src="/_frontend/assets/scripts/app.js"></script>
-	<script src="/_frontend/assets/scripts/index.js"></script>
-	<script src="/assets/js/main.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			App.init();
-			App.initBxSlider();
-			Index.initRevolutionSlider();
-		});
-	</script>
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
+<script type="text/javascript" src="/_frontend/assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/_frontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="/_frontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="/_frontend/assets/plugins/bxslider/jquery.bxslider.min.js"></script>
+<script src="/_frontend/assets/scripts/app.js"></script>
+<script src="/_frontend/assets/scripts/index.js"></script>
+<script src="/assets/js/main.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		App.init();
+		App.initBxSlider();
+		Index.initRevolutionSlider();
+	});
+</script>
 
-	 @yield('scripts')
+@yield('scripts')
 
 
 </body>

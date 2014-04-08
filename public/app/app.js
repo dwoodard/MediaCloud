@@ -1,37 +1,32 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-var mcApp = angular.module('mcApp',
-		['ngRoute'],
-		function($interpolateProvider){
+var app = angular.module('manage',['ngResource','xeditable'],
+	function($interpolateProvider){
 		$interpolateProvider.startSymbol('[[');
 		$interpolateProvider.endSymbol(']]');
 	});
 
-mcApp.config(function($routeProvider){
-	$routeProvider
+app.factory('Collections', function($http) {
 
-		.when('/',{
-			templateUrl: 'app/templates/collections.html'
-		})
-		.when('/upload',{
-			templateUrl: 'app/templates/upload.html'
-		})
-		.when('/browse',{
-			templateUrl: 'app/templates/browse.html'
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
+	var dataFactory = {};
 
-		// if(window.history && window.history.pushState){
-		// 	$locationProvider.html5Mode(true);
-		// }
+	dataFactory.getCollections = function () {
+		return $http.get('/collections');
+	};
+	return dataFactory;
+});
+
+
+app.controller('manageController', function($scope, $http, $location, Collections) {
+
+	Collections.getCollections().success(function (data) {
+		$scope.collections = data;
+	})
+
+	$scope.getCollectionView = function(e) {
+		Manage.getCollection(e.id);
+	};
+
 
 })
-// mcApp.config(['$routeProvider', function($routeProvider) {
-// 		$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-// 		$routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-// 		$routeProvider.otherwise({redirectTo: '/view1'});
-// 	}]);
-

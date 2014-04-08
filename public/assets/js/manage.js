@@ -77,15 +77,15 @@ var Manage = {
 
 			switch(/subnav-btn-(.*)/.exec(e.currentTarget.id)[1]){
 				case "collections":
-					$("#collections-list").toggleClass('cbp-spmenu-open')
-					$("body").toggleClass('cbp-spmenu-push-toright')
-					break;
+				$("#collections-list").toggleClass('cbp-spmenu-open')
+				$("body").toggleClass('cbp-spmenu-push-toright')
+				break;
 				case "assets":
-					$("#asset-view").toggleClass('cbp-spmenu-open')
-					break;
+				$("#asset-view").toggleClass('cbp-spmenu-open')
+				break;
 				case "browse":
-					$("#browse-view").toggleClass('cbp-spmenu-open')
-					break;
+				$("#browse-view").toggleClass('cbp-spmenu-open')
+				break;
 			}
 		})
 
@@ -96,9 +96,13 @@ var Manage = {
 			}, 0);
 		});
 
-		$('#collections-list>a').on("click",function(e) {
-			Manage.getCollection($(e.currentTarget).data("collection-id"));
-		});
+		// $('#collections-list>a').on("click",function(e) {
+		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
+		// });
+
+		// $('#collections-list>a').on("click",function(e) {
+		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
+		// });
 
 		$(".close").on("click", function(e) {
 
@@ -118,8 +122,21 @@ var Manage = {
 		});
 
 		$("#btn-save-new-collection").on('click',function(e) {
-			console.log('save new collection')
-			
+			console.log('save new collection');
+			var data = {
+					name: $("#input-new-collection").val(),
+					userId: userId
+				}
+			$.ajax({
+				type: "POST",
+				url:"/collections/store",
+				data: data,
+				dataType: "json"
+			}).done(function(data) {
+
+				console.log(data);
+			});
+
 		})
 
 

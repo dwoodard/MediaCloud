@@ -87,18 +87,18 @@ height: 135px;
 
 
 /***************  App Folder ******************/
-.jaf-container {
+.jaf-container{
 position: relative;
 padding: 0;
 min-height: 160px
 }
 
-.jaf-row {
+.jaf-row{
 /*zoom: 1;*/
 min-width: 320px;
 }
 
-.folder {
+.folder{
 margin-right: 80px;
 position: relative;
 float: left;
@@ -111,7 +111,7 @@ padding: 3% 3% 10px 3%;
 cursor: pointer;
 }
 
-.folder::before {
+.folder::before{
 position: absolute;
 bottom: -1px;
 left: 50%;
@@ -127,7 +127,7 @@ border-bottom: 0 solid transparent;
 transition: bottom 0.2s ease-in;
 }
 
-.folder::after {
+.folder::after{
 position: absolute;
 bottom: -1px;
 left: 50%;
@@ -145,7 +145,7 @@ transition: bottom 0.2s ease-in;
 
 
 
-.album-name {
+.album-name{
 white-space: nowrap;
 font-weight: bold;
 /*overflow: hidden;*/
@@ -160,16 +160,16 @@ transition: all 0.2s ease-in;
 font-weight: bold;
 }
 
-.app-folders-container {
+.app-folders-container{
 width: 100%;
 margin: 0 auto;
 }
 
-.active-tool {
+.active-tool{
 z-index: 10;
 }
 
-.active-tool::before {
+.active-tool::before{
 bottom: -1px;
 margin-left: -7px;
 border-left: 12px solid transparent;
@@ -180,7 +180,7 @@ border-bottom: 12px solid rgba(0,0,0,0.3);
 transition: all 0.2s ease-in;
 }
 
-.active-tool::after {
+.active-tool::after{
 bottom: -1px;
 margin-left: -6px;
 border-left: 11px solid transparent;
@@ -191,13 +191,13 @@ border-bottom: 11px solid transparent;
 transition: all 0.2s ease-in;
 }
 
-.jaf-container img {
+.jaf-container img{
 -webkit-transition: all 0.2s ease-in;
 -moz-transition: all 0.2s ease-in;
 transition: all 0.2s ease-in;
 }
 
-.active-tool img {
+.active-tool img{
 max-width: 130%;
 margin-top: -15%;
 margin-left: -15%;
@@ -206,7 +206,7 @@ margin-left: -15%;
 transition: all 0.2s ease-in;
 }
 
-.folderContent {
+.folderContent{
 position: relative;
 z-index: 0;
 -webkit-box-sizing: border-box;
@@ -219,11 +219,11 @@ border: 1px solid rgba(0,0,0,0.3);
 border-width: 1px 0;
 }
 
-.folderContent a:hover {
+.folderContent a:hover{
 text-decoration: underline;
 }
 
-.folderContent .close {
+.folderContent .close{
 position: absolute;
 top: 15px;
 left: 10px;
@@ -234,25 +234,25 @@ color: rgba(255,255,255,0.5);
 font-weight: bold;
 }
 
-.folderContent .close:hover {
+.folderContent .close:hover{
 text-decoration: none;
 background-color: rgba(0,0,0,0.6);
 color: rgba(255,255,255,0.5);
 }
 
-.multi {
+.multi{
 -webkit-column-count: 2;
 -moz-column-count: 2;
 column-count: 2;
 }
 
-.art-wrap {
+.art-wrap{
 float: right;
 text-align: right;
 /*width: 30%;*/
 }
 
-.art-wrap img {
+.art-wrap img{
 position: relative;
 z-index: -2;
 display: block;
@@ -260,17 +260,17 @@ width: 100%;
 max-width: 300px;
 }
 
-.clear {
+.clear{
 clear: both;
 }
 
 @media (max-width: 480px){
 
-.folder {
+.folder{
 height: 145px;
 }
 
-.folderContent {
+.folderContent{
 /*padding: 20px 40px;*/
 width: 100%;
 }
@@ -279,27 +279,27 @@ width: 100%;
 
 @media (min-width: 481px) and (max-width: 768px){
 
-.folder {
+.folder{
 height: 210px;
 }
 }
 
 @media (max-width: 768px){
 
-.multi {
+.multi{
 -webkit-column-count: 1;
 -moz-column-count: 1;
 column-count: 1;
 }
 
-.art-wrap {
+.art-wrap{
 display: none;
 }
 }
 
 @media (min-width: 769px){
 
-.jaf-row {
+.jaf-row{
 width: 800px;
 margin: 0;
 }
@@ -315,7 +315,7 @@ margin: 0;
 
 
 /* General styles for all menus */
-.cbp-spmenu {
+.cbp-spmenu{
 background: #47a3da;
 position: fixed;
 overflow-y: auto;
@@ -353,7 +353,7 @@ width: 64%;
 margin-top: -5px;
 }
 
-.cbp-spmenu h3 {
+.cbp-spmenu h3{
 color: #afdefa;
 font-size: 1.9em;
 padding: 20px;
@@ -362,7 +362,7 @@ font-weight: 300;
 background: #0d77b6;
 }
 
-.cbp-spmenu a {
+.cbp-spmenu a{
 display: block;
 color: #fff;
 font-size: 1.1em;
@@ -371,30 +371,30 @@ font-weight: 300;
 
 
 
-.cbp-spmenu a:hover {
+.cbp-spmenu a:hover{
 background: #258ecd;
 }
 
-.cbp-spmenu a:active {
+.cbp-spmenu a:active{
 background: #afdefa;
 color: #47a3da;
 }
 
 /* Orientation-dependent styles for the content of the menu */
 
-.cbp-spmenu-vertical {
+.cbp-spmenu-vertical{
 width: 240px;
 height: 100%;
 top: 101px;
 z-index: 1;
 }
 
-.cbp-spmenu-vertical a {
+.cbp-spmenu-vertical a{
 border-bottom: 1px solid #258ecd;
 padding: 1em;
 }
 
-.cbp-spmenu-horizontal {
+.cbp-spmenu-horizontal{
 width: 100%;
 height: 300px;
 left: 0;
@@ -402,13 +402,13 @@ z-index: 11;
 overflow: hidden;
 }
 
-.cbp-spmenu-horizontal h3 {
+.cbp-spmenu-horizontal h3{
 height: 100%;
 width: 20%;
 float: left;
 }
 
-.cbp-spmenu-horizontal a {
+.cbp-spmenu-horizontal a{
 float: left;
 width: 20%;
 padding: 0.8em;
@@ -417,60 +417,60 @@ border-left: 1px solid #258ecd;
 
 /* Vertical menu that slides from the left or right */
 
-.cbp-spmenu-left {
+.cbp-spmenu-left{
 left: -340px;
 }
 
-.cbp-spmenu-right {
+.cbp-spmenu-right{
 right: -340px;
 }
 
-.cbp-spmenu-left.cbp-spmenu-open {
+.cbp-spmenu-left.cbp-spmenu-open{
 left: 0px;
 }
 
-.cbp-spmenu-right.cbp-spmenu-open {
+.cbp-spmenu-right.cbp-spmenu-open{
 right: 0px;
 }
 
 /* Horizontal menu that slides from the top or bottom */
 
-.cbp-spmenu-top {
+.cbp-spmenu-top{
 top: -250px;
 }
 
-.cbp-spmenu-bottom {
+.cbp-spmenu-bottom{
 bottom: -300px;
 }
 
-.cbp-spmenu-top.cbp-spmenu-open {
+.cbp-spmenu-top.cbp-spmenu-open{
 top: 0px;
 }
 
-.cbp-spmenu-bottom.cbp-spmenu-open {
+.cbp-spmenu-bottom.cbp-spmenu-open{
 bottom: 0px;
 }
 
 /* Push classes applied to the body */
 
-.cbp-spmenu-push {
+.cbp-spmenu-push{
 overflow-x: hidden;
 position: relative;
 left: 0;
 }
 
-.cbp-spmenu-push-toright {
+.cbp-spmenu-push-toright{
 left: 240px;
 }
 
-.cbp-spmenu-push-toleft {
+.cbp-spmenu-push-toleft{
 left: -240px;
 }
 
 /* Transitions */
 
 .cbp-spmenu,
-.cbp-spmenu-push {
+.cbp-spmenu-push{
 -webkit-transition: all 0.3s ease;
 -moz-transition: all 0.3s ease;
 transition: all 0.3s ease;
@@ -480,16 +480,16 @@ transition: all 0.3s ease;
 
 @media screen and (max-width: 55.1875em){
 
-	.cbp-spmenu-horizontal {
+	.cbp-spmenu-horizontal{
 		font-size: 75%;
 		height: 110px;
 	}
 
-	.cbp-spmenu-top {
+	.cbp-spmenu-top{
 		top: -110px;
 	}
 
-	.cbp-spmenu-bottom {
+	.cbp-spmenu-bottom{
 		bottom: -210px;
 	}
 
@@ -510,7 +510,7 @@ transition: all 0.3s ease;
 
 
 /* iPads (landscape) ----------- */
-@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
 /* Styles */
 #collection-view header{
 background: grey;
@@ -525,3 +525,14 @@ left: 10px;
 
 }
 
+/*******  xEditable Styles************/
+.editable-click, a.editable-click{
+text-decoration: none;
+color: white;
+border-bottom: dashed 1px #428bca;
+}
+
+.editable-input{
+margin: 0px;
+}
+/*******  / xEditable Styles************/
