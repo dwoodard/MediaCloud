@@ -30,43 +30,25 @@ class CollectionsController extends PermissionsController {
 		// return View::make('backend/collections/index', compact('collections'));
 	}
 
+
+
+
 	public function create()
 	{
 
 
+		return View::make('backend/collections/create');
 	}
-
-
+	
 	public function store()
 	{
-
-		$collection = new Collection;
-		$collection->name = Input::get('name');
-		$collection->save();
-
-		$user = User::find(Input::get('userId'));
-		$user->collections()->attach($collection->id);
-
-		return 'hey';
-	}
-
-
-public function create()
-{
-
-
-	return View::make('backend/collections/create');
-}
-	
-public function store()
-		{
 // Create a new blog post
 		$collection =  new Collection;
 
 		// Update the blog collection data
 		$collection->name            = e(Input::get('name'));
 		$collection->description        = e(Input::get('description'));
-	
+		
 
 		// Was the blog collection created?
 		if($collection->save())
@@ -93,9 +75,9 @@ public function store()
 
 
 
-public function update($id)
-{
-	
+	public function update($id)
+	{
+		
 
 	// Check if the assets exists
 		if (is_null($collection = Collection::find($id)))
@@ -167,9 +149,9 @@ public function update($id)
 
 
 
-public function destroy($id)
-{
-	
+	public function destroy($id)
+	{
+		
 		// Check if the collection exists
 		if (is_null($collection = collection::find($id)))
 		{
@@ -204,7 +186,7 @@ public function destroy($id)
 		// Redirect to the assets management page
 			return Redirect::to('admin/collections')->with('success', Lang::get('admin/assets/message.delete.success'));
 		}
-}
+	}
 
 
 

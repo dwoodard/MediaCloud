@@ -86,7 +86,8 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	{
         Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
         Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
-		Route::post('create', 'CollectionsController@store');
+        Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+		// Route::post('create', 'CollectionsController@store');
         //show
 		Route::get('{collectionId}/edit', array('as' => 'collection.edit', 'uses' => 'CollectionsController@edit'));
 		Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit

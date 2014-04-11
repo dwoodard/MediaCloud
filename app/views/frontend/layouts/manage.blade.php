@@ -6,7 +6,7 @@
 	<title>MediaCloud</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -70,8 +70,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="/bower/hammer.js/index.js"></script>
 	<script src="/bower/jquery.hammer.js/index.js"></script>

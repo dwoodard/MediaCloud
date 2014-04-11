@@ -51,13 +51,17 @@ class CollectionPlaylistAsset extends Eloquent {
 			collection_playlist_asset.id,
 			collection_playlist_asset.collection_id,
 			collection_playlist_asset.playlist_id,
-			collection_playlist_asset.asset_id
-
+			collection_playlist_asset.asset_id,
+			collection_playlist_asset.asset_order
+			
 			FROM collection_playlist_asset
 
 			LEFT JOIN asset_user
 			ON collection_playlist_asset.asset_id = asset_user.asset_id
-			WHERE asset_user.user_id = $id" ));
+			WHERE asset_user.user_id = $id 
+			ORDER BY    collection_playlist_asset.collection_id ASC,
+						collection_playlist_asset.playlist_id ASC,
+						collection_playlist_asset.asset_order ASC"));
 
 		// return $data;
 		if (count($data) == 0){
@@ -66,8 +70,10 @@ class CollectionPlaylistAsset extends Eloquent {
 
 		$cpa = (Object) array();
 		// $cpa->user_id = $id;
+			// return json_encode($data);
 		foreach ($data as $key => $v) {
-			// var_dump($v->collection_id. " ".$v->playlist_id ." ".$v->asset_id .  " " . Playlist::find($v->playlist_id)['name']);
+			// return json_encode($v->collection_id. " ".$v->playlist_id ." ".$v->asset_id ." ".$v->asset_order .  " " . Playlist::find($v->playlist_id)['name']);
+			// return json_encode($v);
 			// collection
 			// var_dump($v->collection_id);
 			if (!property_exists($cpa, "collections") ) {
@@ -79,7 +85,7 @@ class CollectionPlaylistAsset extends Eloquent {
 
 				$tmp = Collection::find($v->collection_id);
 				$cpa->collections[$v->collection_id]->name = $tmp['name'];
-				
+
 				$cpa->collections[$v->collection_id]->id = Collection::find($v->collection_id)['id'];
 			}
 
@@ -130,8 +136,8 @@ class CollectionPlaylistAsset extends Eloquent {
 		}
 
 
-
-		// die();
+// return $cpa;
+// 		die();
 		$collections = current($cpa);
 		if (count($collections) && is_array($collections)) {
 			return array_values($collections);

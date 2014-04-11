@@ -19,6 +19,7 @@
     "WOW": "0.1.6",
     "angular": "1.2.14",
     "jquery": "2.1.0",
+    "jquery-ui": "~1.10.4",
     "angular-route": "1.2.14",
     "app-folders": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
     "bootstrap": "3.1.1",

@@ -90,7 +90,7 @@ var node = $( '#' + hash );
 if ( node.length ) {
 	node.attr( 'id', '' );
 }
-document.location.hash = hash;
+// document.location.hash = hash;
 if ( node.length ) {
 	node.attr( 'id', hash );
 }
@@ -114,7 +114,7 @@ if ( node.length ) {
 							}
 						});
 
-						document.location.hash = '';
+						// document.location.hash = '';
 
 						//Reset the margin-top for the container
 						$(this).parent().parent().animate({ marginTop: settings.marginTopBase }, settings.animationSpeed );
@@ -154,7 +154,7 @@ if ( node.length ) {
 							var hash = $(clickedFolder).attr('id');
 							var node = $( '#' + hash );
 
-							document.location.hash = hash;
+							// document.location.hash = hash;
 							if ( node.length ) {
 								node.attr( 'id', hash );
 							}

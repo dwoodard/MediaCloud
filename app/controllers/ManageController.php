@@ -115,6 +115,23 @@ class ManageController extends BaseController {
 		//
 	}
 
+public function newCollection()
+{
+	$collection =  new Collection;
 
+		// Update the  collection data
+		$collection->name            = e(Input::get('name'));
+		$collection->description        = e(Input::get('description'));
+
+		// Was the  collection created?
+		if($collection->save())
+		{
+			// Redirect to the new  collection page
+			return Redirect::to("admin/collections")->with('success', Lang::get('admin/blogs/message.create.success'));
+		}
+
+		// Redirect to the  collection create page
+		return Redirect::to('admin/collections')->with('error', Lang::get('Error Adding Collection'));
+}
 
 }

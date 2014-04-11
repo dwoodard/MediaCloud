@@ -9,6 +9,7 @@ var Manage = {
 		this.menuEvents();
 		this.playListSettings();
 
+
 		this.getCollection(this.data[0].id)
 
 		// console.log(this);
@@ -89,98 +90,142 @@ var Manage = {
 			}, 0);
 		});
 
-		// $('#collections-list>a').on("click",function(e) {
-		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
-		// });
 
-		// $('#collections-list>a').on("click",function(e) {
-		// 	Manage.getCollection($(e.currentTarget).data("collection-id"));
-		// });
+		$(".close").on("click", function(e) {
 
-$(".close").on("click", function(e) {
+			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
 
-	var cbp_menu = $(this).closest('.cbp-spmenu')[0]
+			if (cbp_menu.id == "collections-list") {
+				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+				$("body").removeClass('cbp-spmenu-push-toright')
+			}else{
+				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+			}
 
-	if (cbp_menu.id == "collections-list") {
-		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
-		$("body").removeClass('cbp-spmenu-push-toright')
-	}else{
-		$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
-	}
+		});
 
-});
+		$("#btn-new-collection").on("click", function(e) {
+			$(".newCollection").show().find(':input').focus().select()
+		});
 
-$("#btn-new-collection").on("click", function(e) {
-	$(".newCollection").show().find(':input').focus().select()
-});
+		$("#btn-save-new-collection").on('click',function(e) {
+			console.log('save new collection');
+			var data = {
+				name: $("#input-new-collection").val(),
+				userId: userId
+			}
+			$.ajax({
+				type: "POST",
+				url:"collections",
+				data: data,
+				dataType: "json"
+			}).done(function(data) {
 
-$("#btn-save-new-collection").on('click',function(e) {
-	console.log('save new collection');
-	var data = {
-		name: $("#input-new-collection").val(),
-		userId: userId
-	}
-	$.ajax({
-		type: "POST",
-		url:"/collections/store",
-		data: data,
-		dataType: "json"
-	}).done(function(data) {
+				console.log(data);
+			});
 
-		console.log(data);
-	});
-
-})
-
-
-},
-getCollection:function(id) {
-	$.ajax({
-		url: "/manage/collections/"+id
-	}).done(function(data) {
-		$("#collection-view").html(data);
-
-		$('.app-folders-container').appFolders({
-					opacity:.5, 								// Opacity of non-selected items
-					marginTopAdjust:true, 						// Adjust the margin-top for the folder area based on row selected?
-					marginTopBase:0, 							// If margin-top-adjust is "true", the natural margin-top for the area
-					marginTopIncrement:0,						// If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
-					animationSpeed:200,						// Time (in ms) for transitions
-					// URLrewrite:true, 							// Use URL rewriting?
-					// URLbase:"/barebones/",						// If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
-					internalLinkSelector:".jaf-internal a",	// a jQuery selector containing links to content within a jQuery App Folder
-					instaSwitch:true
-				});
+		})
 
 
 
+	},
 
-		$('.asset-player-btn').on("click",function(e) {
-				// console.log($(this).data('asset-id'));
+	getCollection:function(id) {
+		$.ajax({
+			url: "/manage/collections/"+id
+		})
+		.done(function(data) {
+			$("#collection-view").html(data);
 
+			$('.sortable').sortable({
+				update: function (event, ui) {
+					var data = $(this).sortable('toArray');
+					// console.log(event, ui, data);
+					console.log($(this));
+
+
+					
+					
+
+
+				}
+			});
+			Manage.addFolderInit();
+			Manage.dragAsset();
+
+
+
+
+
+			$('.asset-player-btn').on("click",function(e) {
+				console.log($(this).data('asset-id'));
 				Manage.getAssetPlayer($(this).data('asset-id'))
 			});
 
-	});
-
-},
-getAssetPlayer:function(id) {
-	$.ajax({
-		url: "/player/single/"+id
-	}).done(function(data) {
-		$("#asset-player").html(data);
-		$("#asset-view").addClass("cbp-spmenu-open")
-
-	});
-
-},
-
-playListSettings:function () {
-	$('.nav.nav-tabs a').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
 
 
-}
+		});
+
+	},
+	addFolderInit: function() {
+		$('.app-folders-container').appFolders({
+				opacity:.5,                                 // Opacity of non-selected items
+				marginTopAdjust:true,                       // Adjust the margin-top for the folder area based on row selected?
+				marginTopBase:0,                            // If margin-top-adjust is "true", the natural margin-top for the area
+				marginTopIncrement:0,                       // If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
+				animationSpeed:200,                     // Time (in ms) for transitions
+				URLrewrite:true,                             // Use URL rewriting?
+				URLbase:"",                       // If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
+				internalLinkSelector:".jaf-internal a", // a jQuery selector containing links to content within a jQuery App Folder
+				instaSwitch:true
+			});
+	},
+	getAssetPlayer:function(id) {
+		$.ajax({
+			url: "/player/single/"+id
+		}).done(function(data) {
+			$("#asset-player").html(data);
+			$("#asset-view").addClass("cbp-spmenu-open")
+
+		});
+
+	},
+
+	playListSettings:function () {
+		$('.nav.nav-tabs a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+
+	},
+
+	dragAsset: function () {
+
+
+		$( "li", $(".draggable-assets") ).draggable({
+			revert: "invalid"
+		});
+
+
+		$('.folderContent').droppable({
+			accept: ".draggable-assets li",
+			activeClass: "dashed",
+			hoverClass: "dashed",
+			over: function( e, ui ) {
+				console.log(e, ui);
+
+			},
+			drop: function( e, ui ) {
+				e.preventDefault();
+				console.log(e, ui);
+			}
+		});
+
+
+
+
+
+	}
+
+
 }

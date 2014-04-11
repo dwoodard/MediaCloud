@@ -16,11 +16,11 @@
 				<li> <a id="btn-new-collection" href="#"><i class="fa fa-plus"></i> New Collection</a></li>
 			</ul>
 
-			<div class="newCollection" href="#" style="display:none">
-				<input id="input-new-collection" type="text" value="Collection Name" class="input-sm">
-				<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
-				<button id="btn-save-new-collection"><i class="fa fa-times"></i> </button>
-			</div>
+				<div class="newCollection" href="#" style="display:none">
+					<input id="input-new-collection" type="text" value="Collection Name" class="input-sm">
+					<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
+					<button id="btn-save-new-collection"><i class="fa fa-times"></i> </button>
+				</div>
 
 
 
@@ -31,6 +31,10 @@
 				ng-cloak
 				ng-click="getCollectionView(collection)"
 				>[[collection.name]]</a>
+
+
+
+
 			<!-- <a ng-repeat="collection in collections" href=""> [[collection.name]] </a> -->
 
 
@@ -61,7 +65,7 @@
 @stop
 
 @section('scripts')
-<script src="http://app-folders.com/barebones/js/jquery.app-folders.js"></script>
+<script src="/bower/app-folders/index.js"></script>
 <script src="/bower/angular/angular.js"></script>
 <script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
@@ -80,6 +84,10 @@
 @stop
 
 @section('style')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/dropzone.css" rel="stylesheet" type="text/css"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
 <link href="/bower/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
+
 @stop

@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/dropzone.css" rel="stylesheet" type="text/css"/>
-<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
 
 <div id="subnav-container" class="navbar navbar-default navbar-fixed-top">
 	<div class="container subnav">
@@ -33,7 +30,7 @@
 			<li class="dropdown keep-open">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span>
-				</a>
+			</a>
 				<ul class="dropdown-menu" id="upload-dropdown">
 					<li>
 						<ul class="dropdown-menu-list scroller">
@@ -80,7 +77,7 @@
 						<p>You have {{count($unassignedAssets)}} Unassigned Assets</p>
 					</li>
 					<li>
-						<ul class="dropdown-menu-list scroller">
+						<ul class="dropdown-menu-list scroller draggable-assets" >
 
 							@foreach ($unassignedAssets as $asset)
 							<li>

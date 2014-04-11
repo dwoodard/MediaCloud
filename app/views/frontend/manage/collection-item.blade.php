@@ -1,3 +1,6 @@
+
+
+
 <div id="current-collection" data-current-collection-id="{{$item->id}}">
 
 
@@ -24,7 +27,7 @@
 				<div class="jaf-row jaf-container">
 					@foreach ($playlists as $key => $playlist)
 					<div class="folder" id="{{camel_case($playlist->name)}}" style="opacity: 1;">
-						<a href="#">
+						<a href="">
 							<img src="/assets/img/collection-icon-close.png" alt="">
 							<p class="album-name">{{$playlist->name}} </p>
 						</a>
@@ -41,7 +44,7 @@
 									<div class="col-sm-9">
 										<h2> {{$playlist->name}} </h2>
 
-										<div class="col-sm-9">
+										<div class="col-sm-9 ">
 											<table id="" class="table table-striped">
 												<thead>
 													<tr>
@@ -50,9 +53,9 @@
 														<th>Description</th>
 													</tr>
 												</thead>
-												<tbody>
+												<tbody class="sortable">
 													@foreach ($playlist->assets as $key => $asset)
-													<tr>
+													<tr id="cpa-{{$item->id}}-{{$playlist->id}}-{{$asset->id}}" class="" data-asset-id="{{$asset->id}}">
 														<td width="7px"><a class="asset-player-btn" data-asset-id="{{$asset->id}}" href="#"><i class="fa fa-play-circle-o"></i></a></td>
 														<td>{{$asset->name}}</td>
 														<td>{{$asset->description}}</td>
@@ -76,7 +79,7 @@
 			</div> <!-- .app-folders-container -->
 
 		</div>
-		<div class="tab-pane" id="assets-container">
+		<div class="tab-pane droppable" id="assets-container">
 
 
 			@if(isset($item->assets))
@@ -115,3 +118,4 @@
 	</div>
 
 </div>
+

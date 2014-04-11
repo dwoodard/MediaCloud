@@ -17,6 +17,7 @@ class CreateCollectionPlaylistAssetTable extends Migration {
 			$table->integer('collection_id');
 			$table->integer('playlist_id');
 			$table->integer('asset_id');
+			$table->integer('asset_order')->nullable();
 		});
 	}
 
