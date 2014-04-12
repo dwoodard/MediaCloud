@@ -17,12 +17,12 @@ class ApiController extends BaseController {
 
     public function users($id = null){
 
-
         $isAdvanced = count(array_keys(Request::query()));
         if($isAdvanced){
             //Is Advanced
 
-            //search
+            //search usage - /v1/users?search=de&fields=email,id,username
+
             $search = strlen(Request::query('search')) ? Request::query('search') : '.*';
 
             //fields
@@ -75,7 +75,7 @@ class ApiController extends BaseController {
         else{
 
         	if (is_numeric($id) && $token == null) {
-        		
+
 				$user = User::find($id);
 				$assets = array();
 				foreach ($user->assets as $asset)
@@ -89,7 +89,7 @@ class ApiController extends BaseController {
         			case 'unassigned':
         				return Asset::unassigned($id);
         				break;
-        			
+
         			default:
         				return array();
         				break;
@@ -98,9 +98,9 @@ class ApiController extends BaseController {
         	}
 
 
-        	 
 
-            
+
+
         }
     }
 

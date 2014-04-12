@@ -144,10 +144,29 @@ var Manage = {
 					console.log($(this));
 
 
-					
-					
 
+					$.each(data, function(i,v){
+						// console.log(i,v)
+						var cpa = /cpa-(\d+)-(\d+)-(\d+)/g.exec(v),
+						data = {
+							'collection_id':cpa[1],
+							'playlist_id':cpa[2],
+							'asset_id':cpa[3],
+							'asset_order':i
+						};
 
+						console.log(data);
+						$.ajax({
+							type: "POST",
+							url:"/cpa/update",
+							data: data,
+							dataType: "json"
+						}).done(function(data) {
+
+							console.log(data);
+						});
+
+				})
 				}
 			});
 			Manage.addFolderInit();

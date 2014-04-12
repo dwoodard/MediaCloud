@@ -30,6 +30,9 @@ use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cartalyst\Sentry\Groups\Eloquent\Group[] $groups
  */
 class User extends SentryUserModel {
+	
+	protected $guarded = array('password');
+
 
 	/**
 	 * Indicates if the model should soft delete.

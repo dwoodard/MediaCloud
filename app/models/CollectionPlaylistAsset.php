@@ -44,6 +44,9 @@ class CollectionPlaylistAsset extends Eloquent {
 //        );
     }
 
+    public function update_asset_order($cpaKey,$order_id){
+
+    }
 
 	public function get_cpa_by_user_id($id)
 	{
@@ -53,12 +56,12 @@ class CollectionPlaylistAsset extends Eloquent {
 			collection_playlist_asset.playlist_id,
 			collection_playlist_asset.asset_id,
 			collection_playlist_asset.asset_order
-			
+
 			FROM collection_playlist_asset
 
 			LEFT JOIN asset_user
 			ON collection_playlist_asset.asset_id = asset_user.asset_id
-			WHERE asset_user.user_id = $id 
+			WHERE asset_user.user_id = $id
 			ORDER BY    collection_playlist_asset.collection_id ASC,
 						collection_playlist_asset.playlist_id ASC,
 						collection_playlist_asset.asset_order ASC"));
