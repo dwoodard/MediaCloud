@@ -4,7 +4,7 @@
 
 		<ul class="nav nav-pills pull-left">
 
-			<li class="dropdown" id="search_bar">
+			<li class="dropdown keep-open" id="search_bar">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-search"></i>
 				</a>

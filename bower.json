@@ -26,6 +26,7 @@
     "hammer.js": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
     "jquery.hammer.js": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
     "angular-resource": "~1.2.16",
-    "angular-xeditable": "~0.1.8"
+    "angular-xeditable": "~0.1.8",
+    "jQuery.mmenu": "~4.2.5"
   }
 }

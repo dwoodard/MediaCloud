@@ -106,7 +106,19 @@
 
 			@else
 
-			No Assets to load
+			<div class="col-md-9">
+				<table id="cp-{{$item->id}}-0" class="table table-striped">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Title</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody class="sortable">
+					</tbody>
+				</table>
+			</div>
 
 			@endif
 
