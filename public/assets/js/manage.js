@@ -82,8 +82,11 @@ var Manage = {
 				$("#asset-view").toggleClass('cbp-spmenu-open')
 				break;
 				case "browse":
-				$("#browse-view").toggleClass('cbp-spmenu-open')
+				$("#browse-view").toggleClass('cbp-spmenu-open');
+				Manage.getBrowse();
 				break;
+
+
 			}
 		})
 
@@ -184,16 +187,30 @@ var Manage = {
 
 		});
 
-},
+	},
 
-assetPlayerBtn: function(){
-$('.asset-player-btn').on("click",function(e) {
-				console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
-				Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
-			});
-},
-addFolderInit: function() {
-	$('.app-folders-container').appFolders({
+	assetPlayerBtn: function(){
+		$('.asset-player-btn').on("click",function(e) {
+			console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
+			Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
+		});
+	},
+
+	getBrowse: function(){
+
+		$.ajax({
+			url: "/manage/browse/"+Manage.userId
+		})
+		.done(function(data) {
+			$("#browse-view-container").html(data);
+			Manage.assetPlayerBtn();
+			Manage.browseDragAsset();
+		});
+
+	},
+
+	addFolderInit: function() {
+		$('.app-folders-container').appFolders({
 				opacity:.5,                                 // Opacity of non-selected items
 				marginTopAdjust:true,                       // Adjust the margin-top for the folder area based on row selected?
 				marginTopBase:0,                            // If margin-top-adjust is "true", the natural margin-top for the area
@@ -204,83 +221,79 @@ addFolderInit: function() {
 				internalLinkSelector:".jaf-internal a", // a jQuery selector containing links to content within a jQuery App Folder
 				instaSwitch:true
 			});
-},
-getAssetPlayer:function(id) {
-	$.ajax({
-		url: "/player/single/"+id
-	}).done(function(data) {
-		$("#asset-player").html(data);
-		$("#asset-view").addClass("cbp-spmenu-open")
+	},
+	getAssetPlayer:function(id) {
+		$.ajax({
+			url: "/player/single/"+id
+		}).done(function(data) {
+			$("#asset-player").html(data);
+			$("#asset-view").addClass("cbp-spmenu-open")
 
-	});
+		});
 
-},
+	},
 
-playListSettings:function () {
-	$('.nav.nav-tabs a').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
+	playListSettings:function () {
+		$('.nav.nav-tabs a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
 
-},
-
-dragAsset: function () {
-
-
-	$( "li a", $(".draggable-assets") ).draggable({
-		revert: "invalid"
-	});
-
-
-	$('.folderContent, #assets-container').droppable({
-		accept: ".draggable-assets li a",
-		activeClass: "drag-to",
-		hoverClass: "drag-to-hover",
-		drop: function( e, ui ) {
-			console.log($(e.target).find('table'));
-			var draggedElm = $(ui)[0].draggable;
-			var draggedParent = $(draggedElm[0]).closest('li')[0]
-			var table = $(e.target).find('table')[0]
-			var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id),
-			data = {
-				'collection_id':Number(cp[1]),
-				'playlist_id':Number(cp[2]),
-				'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId')
-			};
-
-			$.ajax({
-				type: "POST",
-				url:"/cpa/add",
-				data: data,
-				dataType: "json"
-			}).done(function(data) {
-				console.log("/v1/assets/"+data['asset_id']+"/asset")
-				
-				
-			});
-
-			$.ajax({
-				url: "/v1/assets/"+data['asset_id']+"/asset",
-				dataType: "json"
-			}).done(function(result){
-				console.log(result);
-				$(table).find('tbody').append('<tr id="cpa-'+data['collection_id']+'-'+data['playlist_id']+'-'+data['asset_id']+'"> <td width="7px"><a class="asset-player-btn" data-asset-id="'+data["asset_id"]+'" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>'+result.title+'</td> <td>'+result.description+'</td> </tr>')
-
-				Manage.assetPlayerBtn();
-				
-			})
-
-			$(draggedParent).remove();
+	},
+	browseDragAsset: function() {
+		$(".draggable-asset").draggable({
+			revert: "invalid"
+		});
+	},
+	dragAsset: function () {
 
 
-		}
-	});
+		$(".draggable-asset").draggable({
+			revert: "invalid"
+		});
 
 
+		$('.folderContent, #assets-container').droppable({
+			accept: ".draggable-asset",
+			activeClass: "drag-to",
+			hoverClass: "drag-to-hover",
+			drop: function( e, ui ) {
+				console.log($(e.target).find('table'));
+				var draggedElm = $(ui)[0].draggable;
+				var draggedParent = $(draggedElm[0]).closest('li')[0]
+				var table = $(e.target).find('table')[0]
+				var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id),
+				data = {
+					'collection_id':Number(cp[1]),
+					'playlist_id':Number(cp[2]),
+					'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId')
+				};
+
+				$.ajax({
+					type: "POST",
+					url:"/cpa/add",
+					data: data,
+					dataType: "json"
+				}).done(function(data) {
+					console.log("/v1/assets/"+data['asset_id']+"/asset")
 
 
+				});
 
+				$.ajax({
+					url: "/v1/assets/"+data['asset_id']+"/asset",
+					dataType: "json"
+				}).done(function(result){
+					console.log(result);
+					$(table).find('tbody').append('<tr id="cpa-'+data['collection_id']+'-'+data['playlist_id']+'-'+data['asset_id']+'"> <td width="7px"><a class="asset-player-btn" data-asset-id="'+data["asset_id"]+'" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>'+result.title+'</td> <td>'+result.description+'</td> </tr>')
+
+					Manage.assetPlayerBtn();
+
+				})
+
+				$(draggedParent).remove();
+			}
+		});
 }
-
 
 }

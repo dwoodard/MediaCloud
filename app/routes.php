@@ -230,7 +230,7 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 {
 	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
-	Route::get('browse/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@browse'));
+	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 });
 

@@ -55,7 +55,16 @@ class ManageController extends BaseController {
 	public function browse($id = null)
 	{
 		$user = User::find($id);
-		return $user->assets()->get();
+		$assets = array();
+		foreach ($user->assets as $key => $asset)
+		{
+			array_push($assets, $asset);
+		}
+
+		$data = array('assets' => $assets );
+		
+		return View::make('frontend.manage.browse-assets', $data);
+
 
 	}
 

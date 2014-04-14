@@ -79,11 +79,11 @@
 						<p>You have {{count($unassignedAssets)}} Unassigned Assets</p>
 					</li>
 					<li>
-						<ul class="dropdown-menu-list scroller draggable-assets" >
+						<ul class="dropdown-menu-list scroller" >
 
 							@foreach ($unassignedAssets as $asset)
 							<li data-asset-id="{{$asset->id}}">
-								<a href="#" >
+								<a class="draggable-asset" href="#" >
 									<i class="fa fa-ellipsis-v "></i>
 									<span class="label label-sm label-icon label-success">
 										@if ($asset->type === 'video')
