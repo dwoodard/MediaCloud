@@ -34,12 +34,6 @@
 				ng-click="getCollectionView(collection)"
 				>[[collection.name]]</a> -->
 
-
-
-
-
-
-
 			</nav>
 		</div>
 
@@ -50,15 +44,12 @@
 
 		<nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
 			<i class="close fa fa-times-circle-o fa-2x"></i>
-			<h3>Browse</h3>
-			<a href="#">Asset</a>
-			<a href="#">Asset</a>
-			<a href="#">Asset</a>
-			<a href="#">Asset</a>
+			<div id="browse-view-container"></div>
+		
 		</nav>
 		<!-- / Slide Push Menus -->
 
-		<div id="collection-view"> </div>
+		<div id="collection-view"></div>
 
 	<!-- /app -->
 	<!-- </div>  -->

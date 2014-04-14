@@ -417,11 +417,15 @@ width: 20%;
 float: left;
 }
 
-.cbp-spmenu-horizontal a{
+.cbp-spmenu-horizontal a i{
 float: left;
-width: 20%;
-padding: 0.8em;
-border-left: 1px solid #258ecd;
+padding-right: 1em;
+color: #258ecd;
+/*height: auto;*/
+}
+
+.cbp-spmenu-horizontal a i:hover{
+	color: #196490;
 }
 
 /* Vertical menu that slides from the left or right */
@@ -557,4 +561,12 @@ li{
 }
 .drag-to-hover{
 	outline: 2px dashed lightgreen;
+}
+
+.browse-assets-container{
+
+background: #fff;
+border-top: 1px solid black;
+overflow-y: scroll;
+height: 100%;
 }
