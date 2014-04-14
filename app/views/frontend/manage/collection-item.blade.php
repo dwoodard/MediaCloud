@@ -56,7 +56,7 @@
 												<tbody class="sortable">
 													@foreach ($playlist->assets as $key => $asset)
 													<tr id="cpa-{{$item->id}}-{{$playlist->id}}-{{$asset->id}}" class="" data-asset-id="{{$asset->id}}">
-														<td width="7px"><a class="asset-player-btn" data-asset-id="{{$asset->id}}" href="#"><i class="fa fa-play-circle-o"></i></a></td>
+														<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
 														<td>{{$asset->name}}</td>
 														<td>{{$asset->description}}</td>
 													</tr>
@@ -94,8 +94,8 @@
 					</thead>
 					<tbody class="sortable">
 						@foreach ($item->assets as $key => $asset)
-						<tr id="cpa-{{$item->id}}-0-{{$asset->id}}">
-							<td width="7px"><a class="asset-player-btn" data-asset-id="{{$asset->id}}" href="#"><i class="fa fa-play-circle-o"></i></a></td>
+						<tr id="cpa-{{$item->id}}-0-{{$asset->id}}" data-asset-id="{{$asset->id}}">
+							<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
 							<td class="col-md-4">{{$asset->name}}</td>
 							<td>{{$asset->description}}</td>
 						</tr>

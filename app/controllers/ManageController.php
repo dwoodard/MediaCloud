@@ -51,6 +51,17 @@ class ManageController extends BaseController {
 
 	}
 
+	
+	public function browse($id = null)
+	{
+		$user = User::find($id);
+		return $user->assets()->get();
+
+	}
+
+
+
+
 
 
 	/**

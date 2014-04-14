@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.network :forwarded_port, guest: 80, host: 8080
 
-    # Install via command line:
+    # Install 'vagrant-cachier' via command line:
     # vagrant plugin install vagrant-cachier
 	if Vagrant.has_plugin?("vagrant-cachier")
 	config.cache.auto_detect = true
