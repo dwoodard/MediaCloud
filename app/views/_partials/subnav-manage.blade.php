@@ -30,7 +30,7 @@
 			<li class="dropdown keep-open">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span>
-			</a>
+				</a>
 				<ul class="dropdown-menu" id="upload-dropdown">
 					<li>
 						<ul class="dropdown-menu-list scroller">
@@ -70,7 +70,9 @@
 			<li class="dropdown" id="header_notification_bar">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-warning"></i>
+					@if(count($unassignedAssets))
 					<span class="badge">{{count($unassignedAssets)}}</span>
+					@endif
 				</a>
 				<ul class="dropdown-menu extended notification">
 					<li>
@@ -80,8 +82,9 @@
 						<ul class="dropdown-menu-list scroller draggable-assets" >
 
 							@foreach ($unassignedAssets as $asset)
-							<li>
-								<a href="#" class="asset-player-btn" data-asset-id="{{$asset->id}}">
+							<li data-asset-id="{{$asset->id}}">
+								<a href="#" >
+									<i class="fa fa-ellipsis-v "></i>
 									<span class="label label-sm label-icon label-success">
 										@if ($asset->type === 'video')
 										<i class="fa fa-video-camera"></i>
@@ -95,8 +98,13 @@
 
 
 									</span>
-
 								</a>
+								<div class="pull-right">
+									<a href="#" class="asset-player-btn"><i class="fa fa-play-circle"></i></a>
+									<a href="#" class=""><i class="fa fa-ellipsis-h"></i></a>
+								</div>
+
+
 							</li>
 							@endforeach
 

@@ -30,7 +30,7 @@ class CollectionPlaylistAsset extends Eloquent {
 	}
 
     public function deleteByAsset($assetId){
-        //Find the all cpa with asset id
+        // Find the all cpa with asset id
 
         //delete all found
 
@@ -73,7 +73,7 @@ class CollectionPlaylistAsset extends Eloquent {
 
 		$cpa = (Object) array();
 		// $cpa->user_id = $id;
-			// return json_encode($data);
+		// return json_encode($data);
 		foreach ($data as $key => $v) {
 			// return json_encode($v->collection_id. " ".$v->playlist_id ." ".$v->asset_id ." ".$v->asset_order .  " " . Playlist::find($v->playlist_id)['name']);
 			// return json_encode($v);
@@ -112,8 +112,14 @@ class CollectionPlaylistAsset extends Eloquent {
 				// end if playlist
 			}
 			else{
-				// if asset not playlist
-				$cpa->collections[$v->collection_id]->assets = array();
+				// if asset not playlist its an asset
+				if (!property_exists($cpa->collections[$v->collection_id], "assets") ) {
+					$cpa->collections[$v->collection_id]->assets = array();
+				}
+				if (!array_key_exists($v->asset_id, $cpa->collections[$v->collection_id]->assets)) {
+					$cpa->collections[$v->collection_id]->assets[$v->asset_id] = new stdClass();
+				}
+
 				$cpa->collections[$v->collection_id]->assets[$v->asset_id] = new stdClass;
 				$cpa->collections[$v->collection_id]->assets[$v->asset_id]->id = $v->asset_id;
 				$cpa->collections[$v->collection_id]->assets[$v->asset_id]->name = Asset::find($v->asset_id)['title'];

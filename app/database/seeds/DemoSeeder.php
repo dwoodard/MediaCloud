@@ -207,6 +207,7 @@ class DemoSeeder extends Seeder {
         $user->playlists()->attach($playlist->id);
 		$cpa->add($collection->id,$playlist->id,11);
         $cpa->add($collection->id,$playlist->id,12);
+        $cpa->add($collection->id,$playlist->id,13);
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - WSU 2';

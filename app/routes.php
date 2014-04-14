@@ -215,9 +215,9 @@ Route::group(array('prefix' => 'collections'), function()
 Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
 {
     Route::get('/', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@index'));
-    Route::get('/test', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@test'));
     Route::get('/{id}', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@show'));
     Route::post('/update', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@update_order_by_cpa'));
+    Route::post('/add', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@add'));
 
 });
 

@@ -109,7 +109,7 @@ class Asset extends Eloquent implements AssetRepository {
 
 	public static function unassigned($user_id)
 	{
-		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE id NOT IN ( (SELECT asset_id FROM collection_playlist_asset) ) AND user_id = ".$user_id. "))" );
+		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( (SELECT asset_id FROM collection_playlist_asset) ) AND user_id = ".$user_id. "))" );
 	}
 
 }

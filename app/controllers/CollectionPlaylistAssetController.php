@@ -4,35 +4,38 @@ class CollectionPlaylistAssetController extends \BaseController {
 
 	public function index()
 	{
-        return  CollectionPlaylistAsset::all();
+		return  CollectionPlaylistAsset::all();
 	}
 
-	public function test()
+	public function add()
 	{
-        return  CollectionPlaylistAsset::all();
+		
+		$cpa = new CollectionPlaylistAsset;
+		$cpa->add(
+			Input::get('collection_id'),
+			Input::get('playlist_id'),
+			Input::get('asset_id'));
 	}
-
-
 
 	public function update_order_by_cpa(){
 
 		
-		$cpa =  CollectionPlaylistAsset::where('collection_id', '=', Input::get('collection_id'))
-				->where('playlist_id', '=', Input::get('playlist_id'), 'AND')
-				->where('asset_id', '=', Input::get('asset_id'), 'AND')
-				->get()
-				->first();
-		//return $cpa;
+		$cpa = CollectionPlaylistAsset::where('collection_id', '=', Input::get('collection_id'))
+		->where('playlist_id', '=', Input::get('playlist_id'), 'AND')
+		->where('asset_id', '=', Input::get('asset_id'), 'AND')
+		->get()
+		->first();
+		// return $cpa;
 
-			$cpa->asset_order = Input::get('asset_order');
-			$cpa->save();
+		$cpa->asset_order = Input::get('asset_order');
+		$cpa->save();
 
-			return $cpa;
+		return $cpa;
 	}
 
 	public function show($id)
 	{
-        return  CollectionPlaylistAsset::find($id);
+		return  CollectionPlaylistAsset::find($id);
 	}
 
 

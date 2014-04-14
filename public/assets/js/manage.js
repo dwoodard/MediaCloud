@@ -2,13 +2,13 @@
 
 var Manage = {
 	data:{},
-	init:function(data){
+	userId:"",
+	init:function(data, userId){
 		this.data = data;
-
+		this.userId = userId;
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
-
 
 		this.getCollection(this.data[0].id)
 
@@ -57,6 +57,10 @@ var Manage = {
 		};
 	},
 	menuEvents: function(){
+
+		$('.loadCollection').on("click",function(e) {
+			Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
+		});
 
 		$('.dropdown.keep-open').on({
 			"shown.bs.dropdown": function() { $(this).data('closable', false); },
@@ -130,12 +134,17 @@ var Manage = {
 
 	},
 
-	getCollection:function(id) {
+	getCollection:function(id, elm) {
+
+		$(elm).append(' <i class="fa fa-spinner fa-spin"></i>')
+
 		$.ajax({
 			url: "/manage/collections/"+id
 		})
 		.done(function(data) {
 			$("#collection-view").html(data);
+
+			$(elm).find('i.fa-spinner').remove();
 
 			$('.sortable').sortable({
 				update: function (event, ui) {
@@ -166,7 +175,7 @@ var Manage = {
 							console.log(data);
 						});
 
-				})
+					})
 				}
 			});
 			Manage.addFolderInit();
@@ -177,17 +186,17 @@ var Manage = {
 
 
 			$('.asset-player-btn').on("click",function(e) {
-				console.log($(this).data('asset-id'));
-				Manage.getAssetPlayer($(this).data('asset-id'))
+				console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
+				Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
 			});
 
 
 
 		});
 
-	},
-	addFolderInit: function() {
-		$('.app-folders-container').appFolders({
+},
+addFolderInit: function() {
+	$('.app-folders-container').appFolders({
 				opacity:.5,                                 // Opacity of non-selected items
 				marginTopAdjust:true,                       // Adjust the margin-top for the folder area based on row selected?
 				marginTopBase:0,                            // If margin-top-adjust is "true", the natural margin-top for the area
@@ -198,53 +207,71 @@ var Manage = {
 				internalLinkSelector:".jaf-internal a", // a jQuery selector containing links to content within a jQuery App Folder
 				instaSwitch:true
 			});
-	},
-	getAssetPlayer:function(id) {
-		$.ajax({
-			url: "/player/single/"+id
-		}).done(function(data) {
-			$("#asset-player").html(data);
-			$("#asset-view").addClass("cbp-spmenu-open")
+},
+getAssetPlayer:function(id) {
+	$.ajax({
+		url: "/player/single/"+id
+	}).done(function(data) {
+		$("#asset-player").html(data);
+		$("#asset-view").addClass("cbp-spmenu-open")
 
-		});
+	});
 
-	},
+},
 
-	playListSettings:function () {
-		$('.nav.nav-tabs a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
+playListSettings:function () {
+	$('.nav.nav-tabs a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
 
-	},
+},
 
-	dragAsset: function () {
-
-
-		$( "li", $(".draggable-assets") ).draggable({
-			revert: "invalid"
-		});
+dragAsset: function () {
 
 
-		$('.folderContent').droppable({
-			accept: ".draggable-assets li",
-			activeClass: "dashed",
-			hoverClass: "dashed",
-			over: function( e, ui ) {
-				console.log(e, ui);
-
-			},
-			drop: function( e, ui ) {
-				e.preventDefault();
-				console.log(e, ui);
-			}
-		});
+	$( "li a", $(".draggable-assets") ).draggable({
+		revert: "invalid"
+	});
 
 
+	$('.folderContent').droppable({
+		accept: ".draggable-assets li a",
+		activeClass: "drag-to",
+		hoverClass: "drag-to-hover",
+		drop: function( e, ui ) {
+			console.log($(e.target).find('table'));
+			var draggedElm = $(ui)[0].draggable;
+			var draggedParent = $(draggedElm[0]).closest('li')[0]
+
+			var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id),
+			data = {
+				'collection_id':Number(cp[1]),
+				'playlist_id':Number(cp[2]),
+				'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId')
+			};
+
+			$.ajax({
+				type: "POST",
+				url:"/cpa/add",
+				data: data,
+				dataType: "json"
+			}).done(function(data) {
+
+				console.log(data);
+			});
+
+			$(draggedParent).remove();
+
+
+		}
+	});
 
 
 
-	}
+
+
+}
 
 
 }

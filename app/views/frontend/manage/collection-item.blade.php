@@ -45,7 +45,7 @@
 										<h2> {{$playlist->name}} </h2>
 
 										<div class="col-sm-9 ">
-											<table id="" class="table table-striped">
+											<table id="cp-{{$item->id}}-{{$playlist->id}}" class="table table-striped">
 												<thead>
 													<tr>
 														<th></th>
@@ -92,9 +92,9 @@
 							<th>Description</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="sortable">
 						@foreach ($item->assets as $key => $asset)
-						<tr>
+						<tr id="cpa-{{$item->id}}-0-{{$asset->id}}">
 							<td width="7px"><a class="asset-player-btn" data-asset-id="{{$asset->id}}" href="#"><i class="fa fa-play-circle-o"></i></a></td>
 							<td class="col-md-4">{{$asset->name}}</td>
 							<td>{{$asset->description}}</td>

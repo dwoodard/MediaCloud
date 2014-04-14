@@ -552,6 +552,9 @@ li{
 
 
 
-.dashed{
-	border: 2px dashed #333;
+.drag-to{
+	outline: 2px dashed #333;
+}
+.drag-to-hover{
+	outline: 2px dashed lightgreen;
 }

@@ -20,7 +20,6 @@ app.factory('Collections', function($http) {
 		return $http.get('/collections');
 	};
 
-	
 	return dataFactory;
 });
 

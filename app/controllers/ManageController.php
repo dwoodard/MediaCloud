@@ -28,10 +28,9 @@ class ManageController extends BaseController {
 
 	public function collection($id = null)
 	{
-		
 		$cpa = new CollectionPlaylistAsset;
 		$cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
-		
+
 		foreach ($cpa as $key => $item) {
 			if ($id == $item->id) {
 					// $data = array('item' => $item, 'cpas' => $cpa, 'cpa_rows'=> $cpa_rows, 'unassignedAssets' => $unassignedAssets);
@@ -49,7 +48,7 @@ class ManageController extends BaseController {
 				return View::make('frontend.manage.collection-item', $data);
 			}
 		}
-		
+
 	}
 
 
@@ -115,9 +114,9 @@ class ManageController extends BaseController {
 		//
 	}
 
-public function newCollection()
-{
-	$collection =  new Collection;
+	public function newCollection()
+	{
+		$collection =  new Collection;
 
 		// Update the  collection data
 		$collection->name            = e(Input::get('name'));
@@ -132,6 +131,6 @@ public function newCollection()
 
 		// Redirect to the  collection create page
 		return Redirect::to('admin/collections')->with('error', Lang::get('Error Adding Collection'));
-}
+	}
 
 }
