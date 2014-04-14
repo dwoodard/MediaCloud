@@ -180,20 +180,17 @@ var Manage = {
 			});
 			Manage.addFolderInit();
 			Manage.dragAsset();
-
-
-
-
-
-			$('.asset-player-btn').on("click",function(e) {
-				console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
-				Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
-			});
-
-
+			Manage.assetPlayerBtn();
 
 		});
 
+},
+
+assetPlayerBtn: function(){
+$('.asset-player-btn').on("click",function(e) {
+				console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
+				Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
+			});
 },
 addFolderInit: function() {
 	$('.app-folders-container').appFolders({
@@ -235,7 +232,7 @@ dragAsset: function () {
 	});
 
 
-	$('.folderContent').droppable({
+	$('.folderContent, #assets-container').droppable({
 		accept: ".draggable-assets li a",
 		activeClass: "drag-to",
 		hoverClass: "drag-to-hover",
@@ -243,7 +240,7 @@ dragAsset: function () {
 			console.log($(e.target).find('table'));
 			var draggedElm = $(ui)[0].draggable;
 			var draggedParent = $(draggedElm[0]).closest('li')[0]
-
+			var table = $(e.target).find('table')[0]
 			var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id),
 			data = {
 				'collection_id':Number(cp[1]),
@@ -257,9 +254,21 @@ dragAsset: function () {
 				data: data,
 				dataType: "json"
 			}).done(function(data) {
-
-				console.log(data);
+				console.log("/v1/assets/"+data['asset_id']+"/asset")
+				
+				
 			});
+
+			$.ajax({
+				url: "/v1/assets/"+data['asset_id']+"/asset",
+				dataType: "json"
+			}).done(function(result){
+				console.log(result);
+				$(table).find('tbody').append('<tr id="cpa-'+data['collection_id']+'-'+data['playlist_id']+'-'+data['asset_id']+'"> <td width="7px"><a class="asset-player-btn" data-asset-id="'+data["asset_id"]+'" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>'+result.title+'</td> <td>'+result.description+'</td> </tr>')
+
+				Manage.assetPlayerBtn();
+				
+			})
 
 			$(draggedParent).remove();
 

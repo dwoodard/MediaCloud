@@ -79,12 +79,12 @@
 			</div> <!-- .app-folders-container -->
 
 		</div>
-		<div class="tab-pane droppable" id="assets-container">
+		<div class="tab-pane droppable clearfix" id="assets-container">
 
 
 			@if(isset($item->assets))
 			<div class="col-md-9">
-				<table class="table table-striped">
+				<table id="cp-{{$item->id}}-0" class="table table-striped">
 					<thead>
 						<tr>
 							<th></th>

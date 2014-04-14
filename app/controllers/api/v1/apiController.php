@@ -86,8 +86,12 @@ class ApiController extends BaseController {
 
         	}else{
         		switch ($token) {
-        			case 'unassigned':
-        				return Asset::unassigned($id);
+                    case 'unassigned':
+                        return Asset::unassigned($id);
+                        break;
+
+        			case 'asset':
+        				return Asset::find($id);
         				break;
 
         			default:
