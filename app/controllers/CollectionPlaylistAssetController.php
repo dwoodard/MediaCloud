@@ -9,17 +9,19 @@ class CollectionPlaylistAssetController extends \BaseController {
 
 	public function add()
 	{
-		
+
 		$cpa = new CollectionPlaylistAsset;
-		$cpa->add(
+		$res = $cpa->add(
 			Input::get('collection_id'),
 			Input::get('playlist_id'),
 			Input::get('asset_id'));
+		return json_encode($res);
+
 	}
 
 	public function update_order_by_cpa(){
 
-		
+
 		$cpa = CollectionPlaylistAsset::where('collection_id', '=', Input::get('collection_id'))
 		->where('playlist_id', '=', Input::get('playlist_id'), 'AND')
 		->where('asset_id', '=', Input::get('asset_id'), 'AND')

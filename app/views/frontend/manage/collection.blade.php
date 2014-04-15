@@ -38,12 +38,17 @@
 		</div>
 
 		<nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
-			<i class="close fa fa-times-circle-o fa-2x"></i>
+			<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i> 
+				<h3>Assets</h3>
+			</div>
 			<div id="asset-player"></div>
 		</nav>
 
 		<nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
-			<i class="close fa fa-times-circle-o fa-2x"></i>
+			<div id="browse-view-header"><i class="close fa fa-times-circle-o fa-2x"></i> 
+			<h3>Browse Assets</h3>
+			</div>
+			
 			<div id="browse-view-container"></div>
 		
 		</nav>

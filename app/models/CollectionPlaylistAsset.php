@@ -20,13 +20,14 @@ class CollectionPlaylistAsset extends Eloquent {
 
                 // $playlist_id = $playlist_id == null ? $playlist_id : 0;
 
-		DB::table('collection_playlist_asset')->insert(
+		$cpa = DB::table('collection_playlist_asset')->insert(
 			array(
 				'collection_id' => $collection_id,
 				'playlist_id' => $playlist_id,
 				'asset_id' => $asset_id,
 				)
 			);
+
 	}
 
     public function deleteByAsset($assetId){

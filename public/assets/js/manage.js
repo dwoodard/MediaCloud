@@ -102,12 +102,21 @@ var Manage = {
 
 			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
 
-			if (cbp_menu.id == "collections-list") {
-				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
-				$("body").removeClass('cbp-spmenu-push-toright')
-			}else{
-				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
+
+			switch(cbp_menu.id){
+				case "collections-list":
+					$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open");
+					$("body").removeClass("cbp-spmenu-push-toright");
+					break;
+				case "asset-view":
+					$("#asset-player").html("");
+					break;
+				case "browse-view":
+					break;
+				default:
+					break;
 			}
+			$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
 
 		});
 
@@ -268,7 +277,7 @@ var Manage = {
 					'playlist_id':Number(cp[2]),
 					'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId')
 				};
-
+				console.log(data);
 				$.ajax({
 					type: "POST",
 					url:"/cpa/add",
