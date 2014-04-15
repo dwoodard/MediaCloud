@@ -3,6 +3,8 @@
 namespace Controllers\Api\V1;
 
 use Asset;
+use Input;
+use Redirect;
 use Sentry;
 use BaseController;
 use CollectionPlaylistAsset;
@@ -54,13 +56,18 @@ class ApiController extends BaseController {
 
         }
 
+    }
 
+    public function tos()
+    {
 
+        if (Input::get('tos')) {
 
-
-
-
-
+            $user = Sentry::getUserProvider()->findById(Input::get('user_id'));
+            $user->permissions = array_merge($user->permissions, array('tos' => '1'));
+            $user->save();
+            return Redirect::route('manage')->with('message', 'You can Upload now');
+        }
     }
 
     public function cpa($id){
@@ -71,47 +78,47 @@ class ApiController extends BaseController {
     public function assets($id = null, $token = null){
         if($id==null){
            return Asset::all();
-        }
-        else{
+       }
+       else{
 
-        	if (is_numeric($id) && $token == null) {
+         if (is_numeric($id) && $token == null) {
 
-				$user = User::find($id);
-				$assets = array();
-				foreach ($user->assets as $asset)
-				{
-					$assets[] = $asset["attributes"];
-				}
-				return $assets;
+            $user = User::find($id);
+            $assets = array();
+            foreach ($user->assets as $asset)
+            {
+             $assets[] = $asset["attributes"];
+         }
+         return $assets;
 
-        	}else{
-        		switch ($token) {
-                    case 'unassigned':
-                        return Asset::unassigned($id);
-                        break;
+     }else{
+      switch ($token) {
+        case 'unassigned':
+        return Asset::unassigned($id);
+        break;
 
-        			case 'asset':
-        				return Asset::find($id);
-        				break;
+        case 'asset':
+        return Asset::find($id);
+        break;
 
-        			default:
-        				return array();
-        				break;
-        		}
-
-        	}
-
-
-
-
-
-        }
+        default:
+        return array();
+        break;
     }
 
+}
 
-    public function test(){
-        return json_encode(array(Request::query(), Request::ajax(), Request::cookie()));
-    }
+
+
+
+
+}
+}
+
+
+public function test(){
+    return json_encode(array(Request::query(), Request::ajax(), Request::cookie()));
+}
 
 
 

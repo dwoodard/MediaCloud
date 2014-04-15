@@ -105,16 +105,16 @@ var Manage = {
 
 			switch(cbp_menu.id){
 				case "collections-list":
-					$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open");
-					$("body").removeClass("cbp-spmenu-push-toright");
-					break;
+				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open");
+				$("body").removeClass("cbp-spmenu-push-toright");
+				break;
 				case "asset-view":
-					$("#asset-player").html("");
-					break;
+				$("#asset-player").html("");
+				break;
 				case "browse-view":
-					break;
+				break;
 				default:
-					break;
+				break;
 			}
 			$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open")
 
@@ -303,6 +303,14 @@ var Manage = {
 				$(draggedParent).remove();
 			}
 		});
+},
+contextMenu: function($type) {
+//type Collection/Playlist/Asset
+
+// place Menu x y
+
+
+
 }
 
 }

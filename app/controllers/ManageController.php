@@ -68,7 +68,11 @@ class ManageController extends BaseController {
 
 	}
 
-
+	public function context_menu($type=null)
+	{
+		return View::make('frontend.manage.context-menu');
+		
+	}
 
 
 

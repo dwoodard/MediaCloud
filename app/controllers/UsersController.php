@@ -391,4 +391,16 @@ class UsersController extends PermissionsController{
 		}
 	}
 
+
+	public function tos($user_id)
+	{
+		$data = array_merge($this->userData, array(
+			'permissions' => array(
+				'tos' => 1
+				),
+			));
+		$user = Sentry::getUserProvider()->findById($user_id);
+
+	}
+
 }

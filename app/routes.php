@@ -11,13 +11,10 @@ App::bind('AssetRepository', 'Asset');
 
 
 Route::get('/test', function(){
+	
 
-	// return Asset::orderBy('id', 'desc')->paginate(2);
-	// Queue::push('DoSomethingIntensive', array('asset_id' => 1));
-	// BeanstalkdQueue::push('DoSomethingIntensive', array('asset_id' => 1));
 
-	$asset =  Asset::find(1);
-	return Carbon::instance($asset->created_at)->year . '-' . Carbon::instance($asset->created_at)->month;
+
 
 });
 
@@ -84,32 +81,15 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 # Collections Management
 	Route::group(array('prefix' => 'collections'), function()
 	{
-        Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
-        Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
-        Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+		Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
+		Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
+		Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 		// Route::post('create', 'CollectionsController@store');
         //show
 		Route::get('{collectionId}/edit', array('as' => 'collection.edit', 'uses' => 'CollectionsController@edit'));
 		Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
 		Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
 	});
-
-	# Collections Management
-	// Route::group(array('prefix' => 'collections'), function()
-	// {
-	// 	Route::get('/', array('as' => 'collections','uses' => 'CollectionsController@index'));
-	// 	Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
-	// 	Route::post('create', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
- //        //show
-	// 	Route::get('{collectionId}/edit', array('as' => 'collection.edit', 'uses' => 'CollectionsController@edit'));
-	// 	Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
-	// 	Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
-	// });
-
-
-
-
-
 
 	# Dashboard
 	Route::get('/', array('as' => 'admin', 'uses' => 'DashboardController@getIndex'));
@@ -214,10 +194,10 @@ Route::group(array('prefix' => 'collections'), function()
 #CollectionsPlaylistAsset
 Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
 {
-    Route::get('/', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@index'));
-    Route::get('/{id}', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@show'));
-    Route::post('/update', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@update_order_by_cpa'));
-    Route::post('/add', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@add'));
+	Route::get('/', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@index'));
+	Route::get('/{id}', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@show'));
+	Route::post('/update', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@update_order_by_cpa'));
+	Route::post('/add', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@add'));
 
 });
 
@@ -228,10 +208,11 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
 # Media Manager
 Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 {
-	Route::get('/', array('as' => 'manage.index', 'uses' => 'ManageController@index'));
+	Route::get('/', array('as' => 'manage', 'uses' => 'ManageController@index'));
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
+	Route::get('context-menu', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 });
 
 
@@ -283,6 +264,7 @@ Route::group(array('prefix' => 'v1'), function()
      * Admin Apis
      */
     Route::get('users/{id?}', array('before' => 'admin-auth', 'uses' => 'Controllers\Api\V1\ApiController@users'));
+    Route::post('user/tos', array('uses' => 'Controllers\Api\V1\ApiController@tos'));
     Route::get('assets/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@assets'));
 
     /*

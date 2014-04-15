@@ -14,10 +14,10 @@ return [
 			'label'      => 'Manage Rights',
 			],
 		],
-	'Upload' => [
+	'Terms of Services Agreed' => [
 		[
-			'permission' => 'upload',
-			'label'      => 'Upload',
+			'permission' => 'tos',
+			'label'      => 'Terms of Services',
 			],
 		],
 	'Frontend Admin' => [

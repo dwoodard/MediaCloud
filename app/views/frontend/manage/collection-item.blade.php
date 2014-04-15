@@ -1,15 +1,13 @@
 
-
-
 <div id="current-collection" data-current-collection-id="{{$item->id}}">
-
-
 	<header>
-		<h2>{{$item->name}}</h2>
-		<button class="share btn btn-primary">Share ... </i></button>
+		<h2>{{$item->name}} </h2>
+
+		<button class="share btn btn-primary">Share ...</button>
 	</header>
 
-	<?php //var_dump($item->assets) ?>
+
+
 
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#playlists-container" data-toggle="tab">Playlists</a></li>
@@ -51,6 +49,7 @@
 														<th></th>
 														<th>Title</th>
 														<th>Description</th>
+														<th></th>
 													</tr>
 												</thead>
 												<tbody class="sortable">
@@ -59,6 +58,7 @@
 														<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
 														<td>{{$asset->name}}</td>
 														<td>{{$asset->description}}</td>
+														<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
 													</tr>
 													@endforeach
 												</tbody>
@@ -79,8 +79,8 @@
 			</div> <!-- .app-folders-container -->
 
 		</div>
-		<div class="tab-pane droppable clearfix" id="assets-container">
 
+		<div class="tab-pane droppable clearfix" id="assets-container">
 
 			@if(isset($item->assets))
 			<div class="col-md-9">
@@ -122,11 +122,12 @@
 
 			@endif
 
-
-
 		</div>
+
 		<div class="tab-pane" id="settings-container">Settings</div>
+
 		<div class="tab-pane" id="deployments-container">Deployments</div>
+
 	</div>
 
 </div>

@@ -98,7 +98,7 @@
 		</div>
 		<!-- END HEADER -->
 
-	<!-- BEGIN ALERTS
+	<!-- BEGIN ALERTS-->
 	<div id="alerts">
 		@if(Session::has('message'))
 		<div class="alert alert-success">

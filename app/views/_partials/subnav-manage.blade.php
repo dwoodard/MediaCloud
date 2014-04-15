@@ -32,6 +32,7 @@
 					<i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span>
 				</a>
 				<ul class="dropdown-menu" id="upload-dropdown">
+					@if (Sentry::getUser()->hasAccess('tos'))
 					<li>
 						<ul class="dropdown-menu-list scroller">
 							<li>
@@ -46,6 +47,42 @@
 							</li>
 						</ul>
 					</li>
+					@else
+					<li>
+						<ul class="dropdown-menu-list scroller">
+							<li>
+								<div id="uploads-area" class="">
+									<form class="form-horizontal" action="v1/user/tos" method="POST">
+										<fieldset>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="tos">Terms of services</label>
+												<div class="col-md-7">
+													<label class="checkbox-inline" for="tos-0">
+														<input type="hidden" name="user_id" id="user_id" value="{{Sentry::getUser()->id}}">
+														<input type="checkbox" name="tos" id="tos-0" value="1">
+														I will <strong>not upload copyrighted</strong> material
+													</label>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-md-4 control-label"></label>
+												<div class="col-md-4">
+												<button type="submit" class="btn btn-success">I Agree</button>
+												</div>
+											</div>
+
+										</fieldset>
+									</form>
+
+								</div>
+							</li>
+						</ul>
+					</li>
+
+					@endif
+
+
 				</ul>
 			</li>
 

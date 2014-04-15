@@ -599,3 +599,9 @@ column-count:2;
 .browse-assets-container ul li{
 	padding: 2px 0px
 }
+
+/*context-menu*/
+.context-menu{display: none}
+.context-menu.open{display: block}
+
+/*/context-menu*/

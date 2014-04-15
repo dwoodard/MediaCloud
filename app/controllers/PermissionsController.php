@@ -38,7 +38,7 @@ class PermissionsController extends BaseController {
 //        return call_user_func_array(array($this, $method), $args);
 //    }
 
-
+	
 
 	/**
 	 * Encodes the permissions so that they are form friendly.

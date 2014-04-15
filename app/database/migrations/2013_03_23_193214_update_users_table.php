@@ -19,7 +19,6 @@ class UpdateUsersTable extends Migration {
 			$table->string('website')->nullable();
 			$table->string('country')->nullable();
 			$table->string('gravatar')->nullable();
-			// $table->number('tos');
 		});
 	}
 
