@@ -46,7 +46,10 @@ font-weight: bold;
 	background: #333
 }
 
+#current-collection .nav-tabs a:hover{
+	color: #333
 
+}
 .folderContent{
 }
 .folderContent h2{
@@ -94,7 +97,12 @@ padding: 20px;
 background: red;
 }
 
-
+#newPlaylist{
+padding: 10px;
+background: #189515;
+}
+#btn-new-playlist{
+}
 
 
 
@@ -334,9 +342,9 @@ overflow-y: auto;
 }
 
 
-#collections-list .newCollection{
+#newCollection{
 border-bottom: 1px solid #258ecd;
-padding: 1em;
+padding: 10px;
 background: #189515;
 
 -webkit-transition: all 0.3s ease;
@@ -444,6 +452,7 @@ right: -340px;
 
 .cbp-spmenu-left.cbp-spmenu-open{
 left: 0px;
+padding-bottom: 150px;
 }
 
 .cbp-spmenu-right.cbp-spmenu-open{
@@ -478,7 +487,10 @@ left: 0;
 
 .cbp-spmenu-push-toright{
 left: 240px;
+width: 80%;
 }
+
+
 
 .cbp-spmenu-push-toleft{
 left: -240px;
@@ -592,9 +604,9 @@ height: 300px;
 }
 .browse-assets-container ul{
 	padding:4px 40px 40px 40px;
-column-count:2;
--moz-column-count:2; /* Firefox */
--webkit-column-count:2; /* Safari and Chrome */
+column-count:4;
+-moz-column-count:4; /* Firefox */
+-webkit-column-count:4; /* Safari and Chrome */
 }
 .browse-assets-container ul li{
 	padding: 2px 0px

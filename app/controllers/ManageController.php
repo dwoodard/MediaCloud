@@ -16,14 +16,18 @@ class ManageController extends BaseController {
 
 	public function index(){
 
-		$cpa = new CollectionPlaylistAsset;
-		$cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
+		$user =  User::find(Sentry::getUser()->id);
+		$collection = Collection::find($user->collections->first()->id);
+		$playlists = $collection->playlists;
+		$assets = $collection->assets;
+
+
 
 
 		$user =  User::find(Sentry::getUser()->id);
 
 		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
-		$data = array('cpas' => $cpa, 'unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections );
+		$data = array('collection' => $collection, 'unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections );
 		// return $user->collections->toArray();
 		return View::make('frontend.manage.collection', $data);
 
@@ -32,28 +36,42 @@ class ManageController extends BaseController {
 
 	public function collection($id = null)
 	{
-		$cpa = new CollectionPlaylistAsset;
-		$cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
+		// $cpa = new CollectionPlaylistAsset;
+		// $cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
 		// return json_encode($cpa);
+
+
 		$user =  User::find(Sentry::getUser()->id);
 
-		$playlists = array();
-		$assets = array();
-		foreach ($cpa as $key => $item) {
-			if ($id == $item->id) {
-					// $data = array('item' => $item, 'cpas' => $cpa, 'cpa_rows'=> $cpa_rows, 'unassignedAssets' => $unassignedAssets);
+		$collection = Collection::find($user->collections->find($id)->id);
+		$collection->playlists;
+		$collection->assets;
 
-				$count = 0;
+		foreach ($collection->playlists as $key => $playlist) {
 
-				for ($i=0; $i < count($cpa); $i+=2) {
-					array_push($playlists,array_slice($item->playlists, $count+$i, 2));
-				}
-			}
+			$collection->playlists->merge($playlist->assets);
 		}
+		// return $collection;
+		$playlists_group = array();
+		$count = 0;
+		for ($i=0; $i < count($collection->playlists); $i+=2) {
+			array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 2));
+		}
+		// return $playlists;
+
+		// foreach ($playlists_group as $key => $playlists) {
+		// 	foreach ($playlists as $key => $playlist) {
+		// 			// var_dump($playlist);
+		// 		foreach ($playlist['assets'] as $key => $asset) {
+		// 			var_dump($asset);
+		// 		}
+		// 	}
+		// }
+		// die();
 
 		$data = array(
-			'item'=>$user->collections->find($id),
-			'playlists_group'=> $playlists,
+			'collection'=>$collection,
+			'playlists_group'=> $playlists_group,
 			'assets'=> $user->assets,
 			);
 		// return $data;

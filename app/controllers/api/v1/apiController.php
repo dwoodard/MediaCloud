@@ -6,6 +6,7 @@ use Asset;
 use Input;
 use Redirect;
 use Collection;
+use Playlist;
 use Sentry;
 use BaseController;
 use CollectionPlaylistAsset;
@@ -83,6 +84,15 @@ class ApiController extends BaseController {
 
         $collection->users()->attach(Input::get('userId'));
         return $collection;
+    }
+    public function playlist_add(){
+
+        $playlist = new Playlist;
+        $playlist->name = Input::get('name');
+        $playlist->save();
+
+        $playlist->collections()->attach(Input::get('collection'));
+        return $playlist;
     }
 
     public function assets($id = null, $token = null){

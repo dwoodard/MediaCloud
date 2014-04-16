@@ -49,6 +49,8 @@ class CollectionPlaylistAsset extends Eloquent {
 
     }
 
+
+
 	public function get_cpa_by_user_id($id)
 	{
 		$data =  DB::select(DB::raw("SELECT

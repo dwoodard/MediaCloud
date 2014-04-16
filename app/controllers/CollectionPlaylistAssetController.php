@@ -37,7 +37,8 @@ class CollectionPlaylistAssetController extends \BaseController {
 
 	public function show($id)
 	{
-		return  CollectionPlaylistAsset::find($id);
+		$cpa = new CollectionPlaylistAsset;
+		return $cpa->get_cpa_by_user_id($id);
 	}
 
 

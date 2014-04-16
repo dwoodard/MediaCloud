@@ -22,7 +22,7 @@ class Playlist extends Eloquent {
 	}
 	public function collections()
 	{
-		return $this->belongsToMany('Collections');
+		return $this->belongsToMany('Collection');
 	}
 
 }

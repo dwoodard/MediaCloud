@@ -3,14 +3,14 @@
 var Manage = {
 	data:{},
 	userId:"",
-	init:function(data, userId){
-		this.data = data;
+	init:function(collectionId, userId){
+
 		this.userId = userId;
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
 
-		this.getCollection(this.data[0].id)
+		this.getCollection(collectionId)
 
 		// console.log(this);
 	},
@@ -56,11 +56,14 @@ var Manage = {
 			}
 		};
 	},
-	menuEvents: function(){
-
+	loadCollection: function(){
 		$('.loadCollection').on("click",function(e) {
 			Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
 		});
+	},
+	menuEvents: function(){
+
+		Manage.loadCollection();
 
 		$('.dropdown.keep-open').on({
 			"shown.bs.dropdown": function() { $(this).data('closable', false); },
@@ -99,20 +102,20 @@ var Manage = {
 
 
 		$(".close").on("click", function(e) {
-
 			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
-
-
 			switch(cbp_menu.id){
 				case "collections-list":
 				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open");
 				$("body").removeClass("cbp-spmenu-push-toright");
 				break;
+
 				case "asset-view":
 				$("#asset-player").html("");
 				break;
+
 				case "browse-view":
 				break;
+
 				default:
 				break;
 			}
@@ -121,44 +124,36 @@ var Manage = {
 		});
 
 		$("#btn-new-collection").on("click", function(e) {
-			$(".newCollection").show().find(':input').focus().select();
+			$("#newCollection").show().find(':input').focus().select();
 		});
 
 		$("#btn-cancel-new-collection").on('click',function(e) {
 			$("#input-new-collection").val("New Collection")
+			$("#newCollection").hide()
 		})
 
 		$("#btn-save-new-collection").on('click',function(e) {
-			console.log('save new collection');
-			
+			$("#newCollection").hide()
 
-			setTimeout(function(){
-				var data = {
+			$.ajax({
+				type: "POST",
+				url:"v1/collection/add",
+				data: {
 					name: $("#input-new-collection").val(),
 					userId: Manage.userId
-				}
-				$.ajax({
-					type: "POST",
-					url:"v1/collection/add",
-					data: data,
-					dataType: "json"
-				}).done(function(data) {
+				},
+				dataType: "json"
+			}).done(function(data) {
+				$('#collections-list')
+				.append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
+				.find('[data-collection-id='+data.id+']')
+				.bind('click', function(e){
+					Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
+				})
 
-					console.log(data);
-					$(".newCollection").hide()
-					$('#collections-list')
-					.append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
-
-				});
-
-			}, 50);
-			
-			
+			});
 
 		})
-
-
-
 	},
 
 	getCollection:function(id, elm) {
@@ -208,8 +203,46 @@ var Manage = {
 			Manage.addFolderInit();
 			Manage.dragAsset();
 			Manage.assetPlayerBtn();
+			Manage.addPlaylist();
 
 		});
+
+	},
+	addPlaylist: function(){
+		$("#btn-new-playlist").bind("click", function(e){
+			console.log(e);
+			$("#newPlaylist").show().find(':input').focus().select();
+		})
+
+		$("#btn-cancel-new-playlist").on('click',function(e) {
+			$("#input-new-playlist").val("Playlist Name")
+			$("#newPlaylist").hide()
+		});
+
+		$("#btn-save-new-playlist").on('click',function(e) {
+			$("#newPlaylist").hide()
+
+			$.ajax({
+				type: "POST",
+				url:"v1/playlist/add",
+				data: {
+					name: $("#input-new-playlist").val(),
+					collection:$("#current-collection").data("current-collection-id")
+				},
+				dataType: "json"
+			}).done(function(data) {
+				console.log(data);
+				// $('#collections-list')
+				// .append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
+				// .find('[data-collection-id='+data.id+']')
+				// .bind('click', function(e){
+				// 	Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
+				// })
+
+			});
+
+		})
+
 
 	},
 

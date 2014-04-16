@@ -11,12 +11,14 @@ App::bind('AssetRepository', 'Asset');
 
 
 Route::get('/test', function(){
-	
 
-
-
-
+	$user =  User::find(Sentry::getUser()->id);
+	$collection = Collection::find($user->collections->first()->id);
+	$playlists = $collection->playlists;
+	$assets = $collection->assets;
+	return $collection;
 });
+
 
 /*
 |--------------------------------------------------------------------------
@@ -273,6 +275,7 @@ Route::group(array('prefix' => 'v1'), function()
     Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
 
     Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection_add'));
+    Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@playlist_add'));
 
 
     /*

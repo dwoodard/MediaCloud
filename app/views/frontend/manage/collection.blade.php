@@ -15,7 +15,7 @@
 			<li> <a id="btn-new-collection" href="#"><i class="fa fa-plus"></i> New Collection</a></li>
 		</ul>
 
-		<div class="newCollection" href="#" style="display:none">
+		<div id="newCollection" href="#" style="display:none">
 			<input id="input-new-collection" type="text" value="Collection Name" class="input-sm">
 			<button id="btn-save-new-collection"><i class="fa fa-check"></i> </button>
 			<button id="btn-cancel-new-collection"><i class="fa fa-times"></i> </button>
@@ -66,7 +66,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		Manage.init( {{json_encode($cpas)}}, {{json_encode(Sentry::getUser()->id)}} );
+		Manage.init( {{json_encode($collection->id)}}, {{json_encode(Sentry::getUser()->id)}} );
 	});
 </script>
 @stop
