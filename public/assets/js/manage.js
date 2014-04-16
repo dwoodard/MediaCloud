@@ -121,24 +121,39 @@ var Manage = {
 		});
 
 		$("#btn-new-collection").on("click", function(e) {
-			$(".newCollection").show().find(':input').focus().select()
+			$(".newCollection").show().find(':input').focus().select();
 		});
+
+		$("#btn-cancel-new-collection").on('click',function(e) {
+			$("#input-new-collection").val("New Collection")
+		})
 
 		$("#btn-save-new-collection").on('click',function(e) {
 			console.log('save new collection');
-			var data = {
-				name: $("#input-new-collection").val(),
-				userId: userId
-			}
-			$.ajax({
-				type: "POST",
-				url:"collections",
-				data: data,
-				dataType: "json"
-			}).done(function(data) {
+			
 
-				console.log(data);
-			});
+			setTimeout(function(){
+				var data = {
+					name: $("#input-new-collection").val(),
+					userId: Manage.userId
+				}
+				$.ajax({
+					type: "POST",
+					url:"v1/collection/add",
+					data: data,
+					dataType: "json"
+				}).done(function(data) {
+
+					console.log(data);
+					$(".newCollection").hide()
+					$('#collections-list')
+					.append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
+
+				});
+
+			}, 50);
+			
+			
 
 		})
 

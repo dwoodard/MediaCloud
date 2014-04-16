@@ -272,6 +272,7 @@ Route::group(array('prefix' => 'v1'), function()
      */
     Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
 
+    Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection_add'));
 
 
     /*

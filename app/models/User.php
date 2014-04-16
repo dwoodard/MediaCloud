@@ -79,7 +79,7 @@ class User extends SentryUserModel {
 
 	public function collections()
 	{
-		return $this->belongsToMany('Collection');
+		return $this->belongsToMany('Collection','collection_user');
 	}
 
 	public function playlists()

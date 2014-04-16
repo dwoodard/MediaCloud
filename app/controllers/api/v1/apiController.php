@@ -5,6 +5,7 @@ namespace Controllers\Api\V1;
 use Asset;
 use Input;
 use Redirect;
+use Collection;
 use Sentry;
 use BaseController;
 use CollectionPlaylistAsset;
@@ -73,6 +74,15 @@ class ApiController extends BaseController {
     public function cpa($id){
         $cpa = new CollectionPlaylistAsset;
         return $cpa->get_cpa_by_user_id($id);
+    }
+    public function collection_add(){
+
+        $collection = new Collection;
+        $collection->name = Input::get('name');
+        $collection->save();
+
+        $collection->users()->attach(Input::get('userId'));
+        return $collection;
     }
 
     public function assets($id = null, $token = null){

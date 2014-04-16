@@ -39,16 +39,15 @@ class CollectionsController extends PermissionsController {
 
 		return View::make('backend/collections/create');
 	}
-	
+
 	public function store()
 	{
-// Create a new blog post
+
 		$collection =  new Collection;
 
-		// Update the blog collection data
 		$collection->name            = e(Input::get('name'));
 		$collection->description        = e(Input::get('description'));
-		
+
 
 		// Was the blog collection created?
 		if($collection->save())
@@ -77,7 +76,7 @@ class CollectionsController extends PermissionsController {
 
 	public function update($id)
 	{
-		
+
 
 	// Check if the assets exists
 		if (is_null($collection = Collection::find($id)))
@@ -151,7 +150,7 @@ class CollectionsController extends PermissionsController {
 
 	public function destroy($id)
 	{
-		
+
 		// Check if the collection exists
 		if (is_null($collection = collection::find($id)))
 		{
@@ -174,7 +173,7 @@ class CollectionsController extends PermissionsController {
 			$collection->users()->detach($user->id);
 		}
 
-		
+
 		//remove the collection in db
 		$collection->delete();
 

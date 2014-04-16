@@ -19,8 +19,12 @@ class ManageController extends BaseController {
 		$cpa = new CollectionPlaylistAsset;
 		$cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
 
+
+		$user =  User::find(Sentry::getUser()->id);
+
 		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
-		$data = array('cpas' => $cpa, 'unassignedAssets' => $unassignedAssets);
+		$data = array('cpas' => $cpa, 'unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections );
+		// return $user->collections->toArray();
 		return View::make('frontend.manage.collection', $data);
 
 	}
@@ -30,28 +34,33 @@ class ManageController extends BaseController {
 	{
 		$cpa = new CollectionPlaylistAsset;
 		$cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
+		// return json_encode($cpa);
+		$user =  User::find(Sentry::getUser()->id);
 
+		$playlists = array();
+		$assets = array();
 		foreach ($cpa as $key => $item) {
 			if ($id == $item->id) {
 					// $data = array('item' => $item, 'cpas' => $cpa, 'cpa_rows'=> $cpa_rows, 'unassignedAssets' => $unassignedAssets);
 
-				$playlists = array();
 				$count = 0;
+
 				for ($i=0; $i < count($cpa); $i+=2) {
 					array_push($playlists,array_slice($item->playlists, $count+$i, 2));
 				}
-				$data = array('item' => $item, 'playlists_group' => $playlists);
-					// return json_encode($data['item']);
-					// return $data['playlists_group'];
-					// return json_encode($data['playlists_group']);
-					// return json_encode($data['playlists_group'][0][0]->assets['1']->name);
-				return View::make('frontend.manage.collection-item', $data);
 			}
 		}
 
+		$data = array(
+			'item'=>$user->collections->find($id),
+			'playlists_group'=> $playlists,
+			'assets'=> $user->assets,
+			);
+		// return $data;
+		return View::make('frontend.manage.collection-item', $data);
 	}
 
-	
+
 	public function browse($id = null)
 	{
 		$user = User::find($id);
@@ -62,7 +71,7 @@ class ManageController extends BaseController {
 		}
 
 		$data = array('assets' => $assets );
-		
+
 		return View::make('frontend.manage.browse-assets', $data);
 
 
@@ -71,7 +80,6 @@ class ManageController extends BaseController {
 	public function context_menu($type=null)
 	{
 		return View::make('frontend.manage.context-menu');
-		
 	}
 
 
