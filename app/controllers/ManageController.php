@@ -17,17 +17,18 @@ class ManageController extends BaseController {
 	public function index(){
 
 		$user =  User::find(Sentry::getUser()->id);
-		$collection = Collection::find($user->collections->first()->id);
-		$playlists = $collection->playlists;
-		$assets = $collection->assets;
-
-
-
-
-		$user =  User::find(Sentry::getUser()->id);
+		$collections = $user->collections->first();
+		$collection = (Object) array();
+		if ($collections) {
+			$collection = Collection::find($collections->id);
+		}else{
+			
+			$collection->id = null;
+		}
+		// return $user->collections;
 
 		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
-		$data = array('collection' => $collection, 'unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections );
+		$data = array('unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections, 'collection' => $collection  );
 		// return $user->collections->toArray();
 		return View::make('frontend.manage.collection', $data);
 
