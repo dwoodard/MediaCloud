@@ -109,7 +109,7 @@ Route::filter('permissions', function(Illuminate\Routing\Route $route){
         return Redirect::route('admin');
     }
     else{
-        Session::flash('message', "yes permission - " . $permissionName );
+        // Session::flash('message', "yes permission - " . $permissionName );
     }
 
 });
