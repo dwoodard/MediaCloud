@@ -37,11 +37,6 @@ class ManageController extends BaseController {
 
 	public function collection($id = null)
 	{
-		// $cpa = new CollectionPlaylistAsset;
-		// $cpa = $cpa->get_cpa_by_user_id(Sentry::getUser()->id);
-		// return json_encode($cpa);
-
-
 		$user =  User::find(Sentry::getUser()->id);
 
 		$collection = Collection::find($user->collections->find($id)->id);
@@ -52,32 +47,50 @@ class ManageController extends BaseController {
 
 			$collection->playlists->merge($playlist->assets);
 		}
-		// return $collection;
+
 		$playlists_group = array();
 		$count = 0;
 		for ($i=0; $i < count($collection->playlists); $i+=2) {
 			array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 2));
 		}
-		// return $playlists;
-
-		// foreach ($playlists_group as $key => $playlists) {
-		// 	foreach ($playlists as $key => $playlist) {
-		// 			// var_dump($playlist);
-		// 		foreach ($playlist['assets'] as $key => $asset) {
-		// 			var_dump($asset);
-		// 		}
-		// 	}
-		// }
-		// die();
 
 		$data = array(
 			'collection'=>$collection,
 			'playlists_group'=> $playlists_group,
 			'assets'=> $user->assets,
 			);
-		// return $data;
+
 		return View::make('frontend.manage.collection-item', $data);
 	}
+
+	// public function playlist($id = null)
+	// {
+	// 	$user =  User::find(Sentry::getUser()->id);
+
+	// 	$collection = Collection::find($user->collections->find($id)->id);
+	// 	$collection->playlists;
+	// 	$collection->assets;
+
+	// 	foreach ($collection->playlists as $key => $playlist) {
+
+	// 		$collection->playlists->merge($playlist->assets);
+	// 	}
+
+	// 	$playlists_group = array();
+	// 	$count = 0;
+	// 	for ($i=0; $i < count($collection->playlists); $i+=4) {
+	// 		array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 4));
+	// 	}
+
+	// 	$data = array(
+	// 		'collection'=>$collection,
+	// 		'playlists_group'=> $playlists_group,
+	// 		'assets'=> $user->assets,
+	// 		);
+
+	// 	return View::make('frontend.manage.collection-item', $data);
+	// }
+
 
 
 	public function browse($id = null)

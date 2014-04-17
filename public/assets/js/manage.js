@@ -232,6 +232,8 @@ var Manage = {
 				dataType: "json"
 			}).done(function(data) {
 				console.log(data);
+				$(".app-folders-container").prepend('<div>playlist stuff</div>')
+
 				// $('#collections-list')
 				// .append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
 				// .find('[data-collection-id='+data.id+']')
