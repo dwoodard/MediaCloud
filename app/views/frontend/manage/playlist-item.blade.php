@@ -1,7 +1,7 @@
 @foreach($playlists_group as $key => $playlists)
 <div class="jaf-row jaf-container">
 	@foreach ($playlists as $key => $playlist)
-	<div class="folder" id="{{camel_case($playlist['name'])}}" style="opacity: 1;">
+	<div class="folder" id="{{camel_case($playlist['name'].$playlist['id'])}}" style="opacity: 1;">
 		<a href="">
 			<img src="/assets/img/collection-icon-close.png" alt="">
 			<p class="album-name">{{$playlist['name']}} </p>
@@ -11,7 +11,7 @@
 	<br class="clear">
 </div>
 @foreach ($playlists as $key => $playlist)
-<div class="folderContent {{camel_case($playlist['name'])}}" style="display: none; background-color: rgb(224, 232, 233);">
+<div class="folderContent {{camel_case($playlist['name'].$playlist['id'])}}" style="display: none; background-color: rgb(224, 232, 233);">
 	<div class="jaf-container">
 		<div class="row">
 			<div class="col-sm-12">

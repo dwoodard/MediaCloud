@@ -95,6 +95,28 @@ class ApiController extends BaseController {
         return $playlist;
     }
 
+    public function asset_add(){
+
+        $asset = new Asset;
+        $asset->name = Input::get('name');
+        $asset->save();
+
+        //attach to playlist or collection?
+        switch (Input::get('type')) {
+            case 'collection':
+                # code...
+                break;
+            case 'playlist':
+                # code...
+                break;
+            default:
+                # code...
+                break;
+        }
+        $asset->collections()->attach(Input::get('collection'));
+        return $asset;
+    }
+
     public function assets($id = null, $token = null){
         if($id==null){
            return Asset::all();

@@ -4,7 +4,7 @@ use MC\Exceptions\UploadException;
 use MC\Services\UploadCreatorService;
 
 
-class ManageController extends BaseController {
+class ManageController extends PermissionsController {
 
 	protected $asset;
 	protected $uploadCreator;
@@ -22,7 +22,7 @@ class ManageController extends BaseController {
 		if ($collections) {
 			$collection = Collection::find($collections->id);
 		}else{
-			
+
 			$collection->id = null;
 		}
 		// return $user->collections;
@@ -50,8 +50,8 @@ class ManageController extends BaseController {
 
 		$playlists_group = array();
 		$count = 0;
-		for ($i=0; $i < count($collection->playlists); $i+=2) {
-			array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 2));
+		for ($i=0; $i < count($collection->playlists); $i+=4) {
+			array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 4));
 		}
 
 		$data = array(
@@ -60,36 +60,34 @@ class ManageController extends BaseController {
 			'assets'=> $user->assets,
 			);
 
+		// return $data;
 		return View::make('frontend.manage.collection-item', $data);
 	}
 
-	// public function playlist($id = null)
-	// {
-	// 	$user =  User::find(Sentry::getUser()->id);
+	public function playlist($collection_id = null, $playlist_id = null)
+	{
+		$user =  User::find(Sentry::getUser()->id);
 
-	// 	$collection = Collection::find($user->collections->find($id)->id);
-	// 	$collection->playlists;
-	// 	$collection->assets;
+		$collection = Collection::find($user->collections->find($collection_id)->id);
+		$playlists = $collection->playlists->find($playlist_id);
+		$collection->assets;
 
-	// 	foreach ($collection->playlists as $key => $playlist) {
 
-	// 		$collection->playlists->merge($playlist->assets);
-	// 	}
 
-	// 	$playlists_group = array();
-	// 	$count = 0;
-	// 	for ($i=0; $i < count($collection->playlists); $i+=4) {
-	// 		array_push($playlists_group,array_slice($collection->playlists->toArray(), $count+$i, 4));
-	// 	}
+		foreach ($collection->playlists as $key => $playlist) {
+			$collection->playlists->merge($playlist->assets);
+		}
 
-	// 	$data = array(
-	// 		'collection'=>$collection,
-	// 		'playlists_group'=> $playlists_group,
-	// 		'assets'=> $user->assets,
-	// 		);
+		$playlists_group = array(array($collection->playlists->find($playlist_id)->toArray()));
 
-	// 	return View::make('frontend.manage.collection-item', $data);
-	// }
+		$data = array(
+			'collection'=>$collection,
+			'playlists_group'=> $playlists_group,
+			'assets'=> $user->assets,
+			);
+		// return $data;
+		return View::make('frontend.manage.playlist-item', $data);
+	}
 
 
 

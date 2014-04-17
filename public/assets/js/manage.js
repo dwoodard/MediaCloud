@@ -72,6 +72,7 @@ var Manage = {
 		});
 
 
+
 		// Toggle Navigation
 		$("#subnav-btn-collections, #subnav-btn-assets, #subnav-btn-browse")
 		.on("click",function(e) {
@@ -222,24 +223,46 @@ var Manage = {
 		$("#btn-save-new-playlist").on('click',function(e) {
 			$("#newPlaylist").hide()
 
+
+			var currentCollectionId = $("#current-collection").data("current-collection-id");
 			$.ajax({
 				type: "POST",
 				url:"v1/playlist/add",
 				data: {
 					name: $("#input-new-playlist").val(),
-					collection:$("#current-collection").data("current-collection-id")
+					collection: currentCollectionId
 				},
 				dataType: "json"
 			}).done(function(data) {
 				console.log(data);
-				$(".app-folders-container").prepend('<div>playlist stuff</div>')
 
-				// $('#collections-list')
-				// .append('<a class="loadCollection" data-collection-id="'+data.id+'" href="#">'+data.name+'</a>')
-				// .find('[data-collection-id='+data.id+']')
-				// .bind('click', function(e){
-				// 	Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
-				// })
+				$.ajax({
+					url: "/manage/playlists/"+currentCollectionId+"/"+data.id
+				}).done(function(result){
+
+					$(".app-folders-container")
+					 
+					.prepend(result)
+
+
+					$('.tmpPlaylistContainer').appFolders({
+						opacity:.5,
+						marginTopAdjust:true,
+						marginTopBase:0,
+						marginTopIncrement:0,
+						animationSpeed:200,
+						URLrewrite:true,
+						URLbase:"",
+						internalLinkSelector:".jaf-internal a",
+						instaSwitch:true
+					});
+
+
+
+
+				})
+
+
 
 			});
 
@@ -264,6 +287,7 @@ var Manage = {
 			$("#browse-view-container").html(data);
 			Manage.assetPlayerBtn();
 			Manage.browseDragAsset();
+
 		});
 
 	},
@@ -334,7 +358,7 @@ var Manage = {
 					data: data,
 					dataType: "json"
 				}).done(function(data) {
-					console.log("/v1/assets/"+data['asset_id']+"/asset")
+					// console.log("/v1/assets/"+data['asset_id']+"/asset")
 
 
 				});

@@ -19,7 +19,6 @@ class CreateAssetCollectionTable extends Migration {
 			$table->foreign('asset_id')->references('id')->on('assets')->onDelete('cascade');
 			$table->integer('collection_id')->unsigned()->index();
 			$table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');
-			$table->timestamps();
 		});
 	}
 

@@ -12,11 +12,17 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-	$user =  User::find(Sentry::getUser()->id);
-	$collection = Collection::find($user->collections->first()->id);
-	$playlists = $collection->playlists;
-	$assets = $collection->assets;
+	$collection = Collection::find(1);
+	return $collection->playlists;
 	return $collection;
+
+
+	// $user = User::find(Sentry::getUser()->id);
+	// $user->collections;
+	// $user->playlists;
+	// $user->assets;
+	// return $user;
+
 });
 
 
@@ -208,10 +214,12 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
 
 
 # Media Manager
-Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
+// 'before' => 'cas-login',
+Route::group(array( 'prefix' => 'manage'), function()
 {
 	Route::get('/', array('as' => 'manage', 'uses' => 'ManageController@index'));
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
+	Route::get('playlists/{collection_id}/{playlist_id}', array('as' => 'manage.playlists', 'uses' => 'ManageController@playlist'));
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 	Route::get('context-menu', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
@@ -276,7 +284,7 @@ Route::group(array('prefix' => 'v1'), function()
 
     Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection_add'));
     Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@playlist_add'));
-
+    Route::post('asset/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@asset_add'));
 
     /*
      *

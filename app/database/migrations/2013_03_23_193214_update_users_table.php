@@ -16,9 +16,6 @@ class UpdateUsersTable extends Migration {
 		{
 			$table->string('username');
 			$table->softDeletes();
-			$table->string('website')->nullable();
-			$table->string('country')->nullable();
-			$table->string('gravatar')->nullable();
 		});
 	}
 
@@ -32,7 +29,7 @@ class UpdateUsersTable extends Migration {
 		// Update the users table
 		Schema::table('users', function($table)
 		{
-			$table->dropColumn('username', 'deleted_at', 'website', 'country', 'gravatar');
+			$table->dropColumn('username', 'deleted_at');
 		});
 	}
 

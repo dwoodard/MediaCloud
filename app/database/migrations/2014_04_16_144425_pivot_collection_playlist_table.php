@@ -19,7 +19,6 @@ class PivotCollectionPlaylistTable extends Migration {
 			$table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');
 			$table->integer('playlist_id')->unsigned()->index();
 			$table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');
-			$table->timestamps();
 		});
 	}
 
