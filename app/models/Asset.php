@@ -94,26 +94,26 @@ class Asset extends Eloquent implements AssetRepository {
 
 	public function playlists()
 	{
-		return $this->belongsTo('Playlist', 'id');
+		return $this->belongsToMany('Playlist');
 	}
 
 	public function collections()
 	{
-		return $this->belongsTo('Collection', 'id');
-	}
-
-	public function cpa()
-	{
-		return $this->belongsTo('CollectionPlaylistAsset', 'id');
+		return $this->belongsToMany('Collection');
 	}
 
 	public static function unassigned($user_id)
 	{
-		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( (SELECT asset_id FROM collection_playlist_asset) ) AND user_id = ".$user_id. "))" );
+
+		$cpa_assets = array();
+		foreach (DB::select("SELECT asset_id FROM asset_collection UNION SELECT asset_id FROM  asset_playlist") as $key => $value) {
+			array_push($cpa_assets, $value->asset_id);
+		}
+
+		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( ".implode(',', $cpa_assets)." ) AND user_id = ".$user_id. "))" ); // return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( (SELECT asset_id FROM asset_playlist asset_collection) ) AND user_id = ".$user_id. "))" );
 	}
 
 }
 
 
 
-?>

@@ -53,7 +53,7 @@
 						@foreach ($collection->assets as $key => $asset)
 						<tr id="cpa-{{$collection->id}}-0-{{$asset->id}}" data-asset-id="{{$asset->id}}">
 							<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
-							<td class="col-md-4">{{$asset->name}}</td>
+							<td class="col-md-4">{{$asset->title}}</td>
 							<td>{{$asset->description}}</td>
 						</tr>
 						@endforeach

@@ -76,46 +76,8 @@ class ApiController extends BaseController {
         $cpa = new CollectionPlaylistAsset;
         return $cpa->get_cpa_by_user_id($id);
     }
-    public function collection_add(){
 
-        $collection = new Collection;
-        $collection->name = Input::get('name');
-        $collection->save();
-
-        $collection->users()->attach(Input::get('userId'));
-        return $collection;
-    }
-    public function playlist_add(){
-
-        $playlist = new Playlist;
-        $playlist->name = Input::get('name');
-        $playlist->save();
-
-        $playlist->collections()->attach(Input::get('collection'));
-        return $playlist;
-    }
-
-    public function asset_add(){
-
-        $asset = new Asset;
-        $asset->name = Input::get('name');
-        $asset->save();
-
-        //attach to playlist or collection?
-        switch (Input::get('type')) {
-            case 'collection':
-                # code...
-                break;
-            case 'playlist':
-                # code...
-                break;
-            default:
-                # code...
-                break;
-        }
-        $asset->collections()->attach(Input::get('collection'));
-        return $asset;
-    }
+    
 
     public function assets($id = null, $token = null){
         if($id==null){

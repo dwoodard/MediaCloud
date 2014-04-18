@@ -12,9 +12,10 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-	$collection = Collection::find(1);
-	return $collection->playlists;
-	return $collection;
+	return Asset::unassigned(1);
+	// $collection = Collection::find(1);
+	// return $collection->playlists;
+	// return $collection;
 
 
 	// $user = User::find(Sentry::getUser()->id);
@@ -196,18 +197,19 @@ Route::group(array('prefix' => 'collections'), function()
 {
 	Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
 	Route::post('store', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+	Route::post('add', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 
 });
 
-#CollectionsPlaylistAsset
-Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
-{
-	Route::get('/', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@index'));
-	Route::get('/{id}', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@show'));
-	Route::post('/update', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@update_order_by_cpa'));
-	Route::post('/add', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@add'));
+// #CollectionsPlaylistAsset
+// Route::group(array('before' => 'cas-login', 'prefix' => 'cpa'), function()
+// {
+// 	Route::get('/', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@index'));
+// 	Route::get('/{id}', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@show'));
+// 	Route::post('/update', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@update_order_by_cpa'));
+// 	Route::post('/add', array('before' => 'cas-auth', 'uses' => 'CollectionPlaylistAssetController@add'));
 
-});
+// });
 
 
 
@@ -223,6 +225,14 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 	Route::get('context-menu', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
+
+	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
+	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));
+	Route::post('asset/add', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_add'));
+
+
+
+
 });
 
 
@@ -282,9 +292,6 @@ Route::group(array('prefix' => 'v1'), function()
      */
     Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
 
-    Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection_add'));
-    Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@playlist_add'));
-    Route::post('asset/add', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@asset_add'));
 
     /*
      *

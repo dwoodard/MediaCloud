@@ -138,7 +138,7 @@ var Manage = {
 
 			$.ajax({
 				type: "POST",
-				url:"v1/collection/add",
+				url:"manage/collection/add",
 				data: {
 					name: $("#input-new-collection").val(),
 					userId: Manage.userId
@@ -211,7 +211,8 @@ var Manage = {
 	},
 	addPlaylist: function(){
 		$("#btn-new-playlist").bind("click", function(e){
-			console.log(e);
+			// console.log(e);
+			$('[href="#playlists-container"]').trigger('click');
 			$("#newPlaylist").show().find(':input').focus().select();
 		})
 
@@ -227,7 +228,7 @@ var Manage = {
 			var currentCollectionId = $("#current-collection").data("current-collection-id");
 			$.ajax({
 				type: "POST",
-				url:"v1/playlist/add",
+				url:"manage/playlist/add",
 				data: {
 					name: $("#input-new-playlist").val(),
 					collection: currentCollectionId
@@ -241,7 +242,7 @@ var Manage = {
 				}).done(function(result){
 
 					$(".app-folders-container")
-					 
+
 					.prepend(result)
 
 
@@ -343,18 +344,20 @@ var Manage = {
 			drop: function( e, ui ) {
 				console.log($(e.target).find('table'));
 				var draggedElm = $(ui)[0].draggable;
-				var draggedParent = $(draggedElm[0]).closest('li')[0]
-				var table = $(e.target).find('table')[0]
-				var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id),
+				var draggedParent = $(draggedElm[0]).closest('li')[0];
+				var table = $(e.target).find('table')[0];
+				var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id);
+				var type = Number(cp[2]) == 0 ? "collection" : "playlist";
 				data = {
 					'collection_id':Number(cp[1]),
 					'playlist_id':Number(cp[2]),
-					'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId')
+					'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId'),
+					type: type
 				};
 				console.log(data);
 				$.ajax({
 					type: "POST",
-					url:"/cpa/add",
+					url:"manage/asset/add",
 					data: data,
 					dataType: "json"
 				}).done(function(data) {

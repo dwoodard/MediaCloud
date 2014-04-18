@@ -37,12 +37,16 @@ class ManageController extends PermissionsController {
 
 	public function collection($id = null)
 	{
+		if ($id == "null" || $id == null) {
+				return array();
+		}
+
 		$user =  User::find(Sentry::getUser()->id);
 
 		$collection = Collection::find($user->collections->find($id)->id);
 		$collection->playlists;
 		$collection->assets;
-
+		// return $collection;
 		foreach ($collection->playlists as $key => $playlist) {
 
 			$collection->playlists->merge($playlist->assets);
@@ -60,7 +64,7 @@ class ManageController extends PermissionsController {
 			'assets'=> $user->assets,
 			);
 
-		// return $data;
+		// return $data['collection'];
 		return View::make('frontend.manage.collection-item', $data);
 	}
 
@@ -89,8 +93,6 @@ class ManageController extends PermissionsController {
 		return View::make('frontend.manage.playlist-item', $data);
 	}
 
-
-
 	public function browse($id = null)
 	{
 		$user = User::find($id);
@@ -113,13 +115,6 @@ class ManageController extends PermissionsController {
 	}
 
 
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		// return array(Input::get("userId"), Input::file('file'));
@@ -132,67 +127,72 @@ class ManageController extends PermissionsController {
 		}
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		return View::make('frontend.manage.show');
-	}
+    //manage/collection/add
+    public function collection_add(){
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		return View::make('frontend.manage.edit');
-	}
+        $collection = new Collection;
+        $collection->name = Input::get('name');
+        $collection->save();
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+        $collection->users()->attach(Input::get('userId'));
+        return $collection;
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    //manage/playlist/add
+    public function playlist_add(){
 
-	public function newCollection()
-	{
-		$collection =  new Collection;
+        $playlist = new Playlist;
+        $playlist->name = Input::get('name');
+        $playlist->save();
 
-		// Update the  collection data
-		$collection->name            = e(Input::get('name'));
-		$collection->description        = e(Input::get('description'));
+        $playlist->collections()->attach(Input::get('collection'));
+        return $playlist;
+    }
 
-		// Was the  collection created?
-		if($collection->save())
-		{
-			// Redirect to the new  collection page
-			return Redirect::to("admin/collections")->with('success', Lang::get('admin/blogs/message.create.success'));
-		}
+    //manage/asset/add
+    public function asset_add(){
+        $asset = Asset::find(Input::get('asset_id'));
 
-		// Redirect to the  collection create page
-		return Redirect::to('admin/collections')->with('error', Lang::get('Error Adding Collection'));
-	}
+        //attach to playlist or collection?
+        switch (Input::get('type')) {
+            case 'collection':
+                $asset->collections()->attach(Input::get('collection_id'));
+                break;
+            case 'playlist':
+                $asset->playlists()->attach(Input::get('playlist_id'));
+                break;
+
+        }
+        return $asset;
+    }
+
+    //manage/cpa/add
+    public function cpa_add($value='')
+    {
+    	throw new Exception("Error Processing Request", 1);
+
+    }
+
+    /**
+    *todo: I don't think this should be here?
+    */
+	// public function newCollection()
+	// {
+	// 	$collection =  new Collection;
+
+	// 	// Update the  collection data
+	// 	$collection->name            = Input::get('name');
+	// 	$collection->description        = Input::get('description');
+
+	// 	// Was the  collection created?
+	// 	if($collection->save())
+	// 	{
+	// 		// Redirect to the new  collection page
+	// 		return Redirect::to("admin/collections")->with('success', Lang::get('admin/blogs/message.create.success'));
+	// 	}
+
+	// 	// Redirect to the  collection create page
+	// 	return Redirect::to('admin/collections')->with('error', Lang::get('Error Adding Collection'));
+	// }
 
 }
