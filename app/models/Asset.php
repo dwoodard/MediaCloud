@@ -110,9 +110,10 @@ class Asset extends Eloquent implements AssetRepository {
 			array_push($cpa_assets, $value->asset_id);
 		}
 		if (empty($cpa_assets)) {
-		return array();
+			$cpa_assets = array('0');
 		}
-		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( ".implode(',', $cpa_assets)." ) AND user_id = ".$user_id. "))" ); // return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( (SELECT asset_id FROM asset_playlist asset_collection) ) AND user_id = ".$user_id. "))" );
+		return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( ".implode(',', $cpa_assets)." ) AND user_id = ".$user_id. "))" );
+		// return DB::select("SELECT * FROM assets WHERE id IN ((SELECT asset_id FROM asset_user WHERE asset_id NOT IN ( (SELECT asset_id FROM asset_playlist asset_collection) ) AND user_id = ".$user_id. "))" );
 	}
 
 }
