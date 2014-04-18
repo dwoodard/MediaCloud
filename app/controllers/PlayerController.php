@@ -9,25 +9,20 @@ class PlayerController extends BaseController {
 	 */
 		public function single($id)
 		{
-			// echo "hey";
-			// Show the page
-			 //    return Asset::find($id);
 			$asset = Asset::find($id);
 			return View::make('player.single')->with('asset', $asset);
-
-
-
-			return View::make('frontend/player/single');
 		}
 
 		public function playlist($id)
 		{
-			return View::make('frontend/player/playlist');
+			$playlist = Asset::find($id);
+			return View::make('player.single')->with('playlist', $playlist);
 		}
 
 	public function collection($id)
 		{
-			return View::make('frontend/player/collection');
+			$collection = Asset::find($id);
+			return View::make('player.single')->with('collection', $collection);
 		}
 
 

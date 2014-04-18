@@ -235,17 +235,13 @@ var Manage = {
 				},
 				dataType: "json"
 			}).done(function(data) {
-				console.log(data);
 
 				$.ajax({
 					url: "/manage/playlists/"+currentCollectionId+"/"+data.id
 				}).done(function(result){
 
 					$(".app-folders-container")
-
 					.prepend(result)
-
-
 					$('.tmpPlaylistContainer').appFolders({
 						opacity:.5,
 						marginTopAdjust:true,
@@ -257,10 +253,6 @@ var Manage = {
 						internalLinkSelector:".jaf-internal a",
 						instaSwitch:true
 					});
-
-
-
-
 				})
 
 
