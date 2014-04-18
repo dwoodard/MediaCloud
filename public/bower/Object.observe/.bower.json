@@ -1,0 +1,11 @@
+{
+  "name": "Object.observe",
+  "_cacheHeaders": {
+    "Content-Length": "12149",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/jdarling/Object.observe/master/Object.observe.poly.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/jdarling/Object.observe/master/Object.observe.poly.js"
+}

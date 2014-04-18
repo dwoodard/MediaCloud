@@ -17,16 +17,14 @@
   ],
   "dependencies": {
     "WOW": "0.1.6",
-    "angular": "1.2.14",
     "jquery": "2.1.0",
     "jquery-ui": "~1.10.4",
-    "angular-route": "1.2.14",
     "app-folders": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
     "bootstrap": "3.1.1",
     "hammer.js": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
+    "Object.observe": "https://raw.githubusercontent.com/jdarling/Object.observe/master/Object.observe.poly.js",
     "jquery.hammer.js": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
     "angular-resource": "~1.2.16",
-    "angular-xeditable": "~0.1.8",
     "jQuery.mmenu": "~4.2.5"
   }
 }

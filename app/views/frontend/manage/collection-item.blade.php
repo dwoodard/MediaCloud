@@ -1,7 +1,7 @@
 
-<div id="current-collection" data-current-collection-id="{{$collection->id}}">
+<div id="current-collection"  data-current-collection-id="{{$collection->id}}">
 	<header>
-		<h2>{{$collection->name}} </h2>
+		<h2><a id="CollectionName" data-editable-data="collection-{{$collection->id}}" data-name="name" href="#" class="editable" data-editable-type="text" >{{$collection->name}}</a></h2>
 
 		<button class="share btn btn-primary">Share ...</button>
 	</header>
@@ -53,7 +53,7 @@
 						@foreach ($collection->assets as $key => $asset)
 						<tr id="cpa-{{$collection->id}}-0-{{$asset->id}}" data-asset-id="{{$asset->id}}">
 							<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
-							<td class="col-md-4">{{$asset->title}}</td>
+							<td class="col-md-4"></td>
 							<td>{{$asset->description}}</td>
 						</tr>
 						@endforeach

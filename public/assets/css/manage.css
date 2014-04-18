@@ -71,6 +71,10 @@ position: absolute;
 #settings-container{}
 #deployments-container{}
 
+#filedrop{
+	height:600px;
+	overflow-y: scroll;
+}
 
 #upload-dropdown{
 width: 600px;
@@ -101,7 +105,10 @@ background: #189515;
 #btn-new-playlist{
 }
 
-
+#unassigned-assets-list{
+	height: 600px;
+	overflow-y: scroll;
+}
 
 /***************  App Folder ******************/
 .jaf-container{
@@ -554,8 +561,7 @@ left: 10px;
 /*******  xEditable Styles************/
 .editable-click, a.editable-click{
 text-decoration: none;
-color: white;
-border-bottom: dashed 1px #428bca;
+color: black;
 }
 
 .editable-input{

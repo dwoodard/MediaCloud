@@ -38,7 +38,7 @@ class ManageController extends PermissionsController {
 	public function collection($id = null)
 	{
 		if ($id == "null" || $id == null) {
-				return array();
+			return array();
 		}
 
 		$user =  User::find(Sentry::getUser()->id);
@@ -127,51 +127,149 @@ class ManageController extends PermissionsController {
 		}
 	}
 
+
+
+
+
+
+	/*
+	*ADD 
+	*/
+
     //manage/collection/add
-    public function collection_add(){
+	public function collection_add(){
 
-        $collection = new Collection;
-        $collection->name = Input::get('name');
-        $collection->save();
+		$collection = new Collection;
+		$collection->name = Input::get('name');
+		$collection->save();
 
-        $collection->users()->attach(Input::get('userId'));
-        return $collection;
-    }
+		$collection->users()->attach(Input::get('userId'));
+		return $collection;
+	}
 
     //manage/playlist/add
-    public function playlist_add(){
+	public function playlist_add(){
 
-        $playlist = new Playlist;
-        $playlist->name = Input::get('name');
-        $playlist->save();
+		$playlist = new Playlist;
+		$playlist->name = Input::get('name');
+		$playlist->save();
 
-        $playlist->collections()->attach(Input::get('collection'));
-        return $playlist;
-    }
+		$playlist->collections()->attach(Input::get('collection'));
+		return $playlist;
+	}
 
     //manage/asset/add
-    public function asset_add(){
-        $asset = Asset::find(Input::get('asset_id'));
+	public function asset_add(){
+		$asset = Asset::find(Input::get('asset_id'));
 
         //attach to playlist or collection?
-        switch (Input::get('type')) {
-            case 'collection':
-                $asset->collections()->attach(Input::get('collection_id'));
-                break;
-            case 'playlist':
-                $asset->playlists()->attach(Input::get('playlist_id'));
-                break;
+		switch (Input::get('type')) {
+			case 'collection':
+			$asset->collections()->attach(Input::get('collection_id'));
+			break;
+			case 'playlist':
+			$asset->playlists()->attach(Input::get('playlist_id'));
+			break;
 
-        }
-        return $asset;
-    }
+		}
+		return $asset;
+	}
 
-    //manage/cpa/add
-    public function cpa_add($value='')
-    {
-    	throw new Exception("Error Processing Request", 1);
 
-    }
+
+
+
+	public function postQuickUpdate()
+	{
+		$inputs = Input::all();
+
+		$serie = Serie::find($inputs['pk']);
+
+		$serie->$inputs['name'] = $inputs['value'];
+
+		return $serie->save();
+	}
+
+
+
+
+
+	/*
+	*UPDATE 
+	*/
+
+    //manage/collection/update
+	public function collection_update(){
+		$inputs = Input::all();
+		$collection = Collection::find($inputs['pk']);
+		$collection->$inputs['name'] = $inputs['value'];
+		$collection->save();
+	}
+
+    //manage/playlist/update
+	public function playlist_update(){
+		$inputs = Input::all();
+		$playlist = Playlist::find($inputs['pk']);
+		$playlist->$inputs['name'] = $inputs['value'];
+		$playlist->save();
+	}
+
+    //manage/asset/update
+	public function asset_update(){
+		$inputs = Input::all();
+		$asset = Asset::find($inputs['pk']);
+		$asset->$inputs['name'] = $inputs['value'];
+		$asset->save();
+	}
+
+	
+	/*
+	*DELETE 
+	*/
+
+    //manage/collection/delete
+	public function collection_delete($id){
+
+		$collection = Collection::find($id);
+		if ($collection->delete()) {
+			return array('result' => 'deleted');
+		}
+		
+
+		return $collection;
+	}
+
+    //manage/playlist/delete
+	public function playlist_delete($id){
+
+		$playlist = new Playlist;
+		if ($playlist->delete()) {
+			return array('result' => 'deleted');
+		}		
+		
+
+		return $playlist;
+	}
+
+    //manage/asset/delete
+	public function asset_delete($id){
+		$asset = Asset::find(Input::get('asset_id'));
+		$asset->delete();
+
+		return $asset;
+	}
+
+
+
+
+
+
+    // //manage/cpa/add
+    // public function cpa_add($value='')
+    // {
+    // 	throw new Exception("Error Processing Request", 1);
+
+    // }
 
     /**
     *todo: I don't think this should be here?

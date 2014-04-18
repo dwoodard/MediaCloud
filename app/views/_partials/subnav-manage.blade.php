@@ -111,7 +111,7 @@
 					<span class="badge">{{count($unassignedAssets)}}</span>
 					@endif
 				</a>
-				<ul class="dropdown-menu extended notification">
+				<ul class="dropdown-menu extended notification" id="unassigned-assets-list">
 					<li>
 						<p>You have {{count($unassignedAssets)}} Unassigned Assets</p>
 					</li>
@@ -131,7 +131,7 @@
 										<i class="fa fa-picture-o"></i>
 										@endif
 
-										{{ $asset->title }}
+										{{ Str::limit($asset->title, 25 ) }}
 
 
 									</span>

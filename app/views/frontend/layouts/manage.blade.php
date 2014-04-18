@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/bootstrap-editable.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style type="text/css" media="Screen">
 		@import url("/assets/css/master.css");
@@ -73,6 +75,7 @@
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 	<script src="/bower/hammer.js/index.js"></script>
 	<script src="/bower/jquery.hammer.js/index.js"></script>
 	<script src="/assets/js/dropzone.js"></script>

@@ -230,6 +230,14 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));
 	Route::post('asset/add', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_add'));
 
+	Route::post('collection/update', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_update'));
+	Route::post('playlist/update', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_update'));
+	Route::post('asset/update', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_update'));
+
+	Route::post('collection/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_delete'));
+	Route::post('playlist/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_delete'));
+	Route::post('asset/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_delete'));
+
 
 
 

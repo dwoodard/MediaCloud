@@ -9,7 +9,7 @@ var Manage = {
 		this.dropzoneInit();
 		this.menuEvents();
 		this.playListSettings();
-
+		this.textEdit();
 		this.getCollection(collectionId)
 
 		// console.log(this);
@@ -60,6 +60,8 @@ var Manage = {
 		$('.loadCollection').on("click",function(e) {
 			Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
 		});
+		Manage.textEdit();
+
 	},
 	menuEvents: function(){
 
@@ -205,6 +207,7 @@ var Manage = {
 			Manage.dragAsset();
 			Manage.assetPlayerBtn();
 			Manage.addPlaylist();
+			Manage.textEdit();
 
 		});
 
@@ -280,6 +283,7 @@ var Manage = {
 			$("#browse-view-container").html(data);
 			Manage.assetPlayerBtn();
 			Manage.browseDragAsset();
+			Manage.textEdit();
 
 		});
 
@@ -363,7 +367,7 @@ var Manage = {
 					dataType: "json"
 				}).done(function(result){
 					console.log(result);
-					$(table).find('tbody').append('<tr id="cpa-'+data['collection_id']+'-'+data['playlist_id']+'-'+data['asset_id']+'"> <td width="7px"><a class="asset-player-btn" data-asset-id="'+data["asset_id"]+'" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>'+result.title+'</td> <td>'+result.description+'</td> </tr>')
+					$(table).find('tbody').append('<tr id="cpa-'+data['collection_id']+'-'+data['playlist_id']+'-'+data['asset_id']+'"> <td width="7px"><a class="asset-player-btn" data-asset-id="'+data["asset_id"]+'" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>'+result.title+'</td> <td>'+result.description+'</td> <td></td> </tr>')
 
 					Manage.assetPlayerBtn();
 
@@ -380,6 +384,68 @@ contextMenu: function($type) {
 
 
 
+},
+textEdit: function(){
+	$.fn.editable.defaults.mode = 'inline';
+
+
+	$('.editable').each(function(i, elm){
+
+		//vars
+		var editableData = $(elm).closest('[data-editable-data]').data('editable-data');
+		editableData = /(\w+)-(\d+)/.exec(editableData);
+		var cpaType = editableData[1];
+		var pkId = editableData[2];
+
+		// console.log(editableData);
+
+		switch(cpaType){
+
+			case "collection":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/collection/update'				
+			})			
+			break;
+
+			case "playlist":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/playlist/update'				
+			})			
+			break;
+
+
+			case "asset":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/asset/update'				
+			})			
+			break;
+
+		}
+
+
+		
+	});
+
+
+
+
+
+// $($('.editable')[0]).closest('#current-collection')
+	// .editable({
+	//     type: 'text',
+	//     pk: 1,
+	//     url: 'manage/collection/add',
+	//     title: 'Enter New Collection Name'
+
+	// });
+
 }
+
 
 }
