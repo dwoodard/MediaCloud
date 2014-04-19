@@ -176,24 +176,6 @@ class ManageController extends PermissionsController {
 	}
 
 
-
-
-
-	public function postQuickUpdate()
-	{
-		$inputs = Input::all();
-
-		$serie = Serie::find($inputs['pk']);
-
-		$serie->$inputs['name'] = $inputs['value'];
-
-		return $serie->save();
-	}
-
-
-
-
-
 	/*
 	*UPDATE 
 	*/
