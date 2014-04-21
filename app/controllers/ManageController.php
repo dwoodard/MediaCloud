@@ -111,7 +111,8 @@ class ManageController extends PermissionsController {
 
 	public function context_menu($type=null)
 	{
-		return View::make('frontend.manage.context-menu');
+		$data = array('type' => $type);
+		return View::make('frontend.manage.context-menu',$data);
 	}
 
 
@@ -133,7 +134,7 @@ class ManageController extends PermissionsController {
 
 
 	/*
-	*ADD 
+	*ADD
 	*/
 
     //manage/collection/add
@@ -177,7 +178,7 @@ class ManageController extends PermissionsController {
 
 
 	/*
-	*UPDATE 
+	*UPDATE
 	*/
 
     //manage/collection/update
@@ -204,9 +205,9 @@ class ManageController extends PermissionsController {
 		$asset->save();
 	}
 
-	
+
 	/*
-	*DELETE 
+	*DELETE
 	*/
 
     //manage/collection/delete
@@ -216,7 +217,7 @@ class ManageController extends PermissionsController {
 		if ($collection->delete()) {
 			return array('result' => 'deleted');
 		}
-		
+
 
 		return $collection;
 	}
@@ -227,8 +228,8 @@ class ManageController extends PermissionsController {
 		$playlist = new Playlist;
 		if ($playlist->delete()) {
 			return array('result' => 'deleted');
-		}		
-		
+		}
+
 
 		return $playlist;
 	}
@@ -245,7 +246,7 @@ class ManageController extends PermissionsController {
 
 	public function update_order_by_cpa_type($type, $id)
 	{
-		
+
 	}
 
 

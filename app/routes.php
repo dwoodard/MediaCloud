@@ -224,7 +224,8 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::get('playlists/{collection_id}/{playlist_id}', array('as' => 'manage.playlists', 'uses' => 'ManageController@playlist'));
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
-	Route::get('context-menu', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
+	
+	Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 
 	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));

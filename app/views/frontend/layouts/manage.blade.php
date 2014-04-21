@@ -67,6 +67,11 @@
     </div>
 
     @yield('content')
+	
+
+    <div id="context-actions-container" class="context-menu"></div>
+    <div id="share-container" class="context-menu"></div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

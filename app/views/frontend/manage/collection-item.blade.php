@@ -4,6 +4,7 @@
 		<h2><a id="CollectionName" data-editable-data="collection-{{$collection->id}}" data-name="name" href="#" class="editable" data-editable-type="text" >{{$collection->name}}</a></h2>
 
 		<button class="share btn btn-primary">Share ...</button>
+		<button class="context-menu-btn btn btn-primary">...</button>
 	</header>
 
 
