@@ -11,6 +11,7 @@ var Manage = {
 		this.playListSettings();
 		this.textEdit();
 		this.getCollection(collectionId)
+		this.contextMenu()
 
 		// console.log(this);
 	},
@@ -397,14 +398,7 @@ dragAsset: function () {
 		}
 	});
 },
-contextMenu: function($type) {
-//type Collection/Playlist/Asset
 
-// place Menu x y
-
-
-
-},
 textEdit: function(){
 	$.fn.editable.defaults.mode = 'inline';
 
@@ -425,16 +419,16 @@ textEdit: function(){
 			$(elm).editable({
 				type: $(elm).data('editable-type'),
 				pk: pkId,
-				url: 'manage/collection/update'				
-			})			
+				url: 'manage/collection/update'
+			})
 			break;
 
 			case "playlist":
 			$(elm).editable({
 				type: $(elm).data('editable-type'),
 				pk: pkId,
-				url: 'manage/playlist/update'				
-			})			
+				url: 'manage/playlist/update'
+			})
 			break;
 
 
@@ -442,30 +436,25 @@ textEdit: function(){
 			$(elm).editable({
 				type: $(elm).data('editable-type'),
 				pk: pkId,
-				url: 'manage/asset/update'				
-			})			
+				url: 'manage/asset/update'
+			})
 			break;
 
 		}
-
-
-		
 	});
 
+},
+contextMenu: function() {
+	$('.context-menu').on('click',function () {
+		var type
+	});
+//type Collection/Playlist/Asset
+
+// place Menu x y
 
 
 
-
-// $($('.editable')[0]).closest('#current-collection')
-	// .editable({
-	//     type: 'text',
-	//     pk: 1,
-	//     url: 'manage/collection/add',
-	//     title: 'Enter New Collection Name'
-
-	// });
-
-}
+},
 
 
 }

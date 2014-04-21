@@ -34,7 +34,7 @@
 
 <nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
 	<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i> 
-		<h3>Assets</h3>
+		<h3>Player / Assets</h3>
 	</div>
 	<div id="asset-player"></div>
 </nav>

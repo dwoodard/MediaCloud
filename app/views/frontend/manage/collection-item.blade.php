@@ -2,7 +2,7 @@
 <div id="current-collection"  data-current-collection-id="{{$collection->id}}">
 	<header>
 		<h2><a id="CollectionName" data-editable-data="collection-{{$collection->id}}" data-name="name" href="#" class="editable" data-editable-type="text" >{{$collection->name}}</a></h2>
-		@if(isset($collection->description))
+		@if($collection->description)
 		<h3><a href="#" class="editable" data-name="description" data-editable-data="collection-{{$collection->id}}" data-editable-type="text">{{$collection->description}}</a></h3>
 		@else
 		<h3><a href="#" class="editable" data-name="description" data-editable-data="collection-{{$collection->id}}" data-editable-type="text">Add Description</a></h3>
@@ -11,7 +11,6 @@
 
 
 		<button class="share btn btn-primary">Share ...</button>
-		<button class="context-menu-btn btn btn-primary">...</button>
 	</header>
 
 
