@@ -373,8 +373,8 @@ var Manage = {
 
 				})
 
-				var unassignedCount = Number($('#unassigned_assets_count').text()-1)
-				$('#unassigned_assets_count').text(unassignedCount)
+				var unassignedCount = Number($('.unassigned_assets_count.badge').text()-1)
+				$('.unassigned_assets_count').text(unassignedCount)
 				if (unassignedCount == 0) {
 					$('#unassigned_assets_notify').find('.badge').remove()
 				}

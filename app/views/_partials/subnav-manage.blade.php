@@ -108,12 +108,12 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-warning"></i>
 					@if(count($unassignedAssets))
-					<span id="unassigned_assets_count" class="badge">{{count($unassignedAssets)}}</span>
+					<span class="unassigned_assets_count badge">{{count($unassignedAssets)}}</span>
 					@endif
 				</a>
 				<ul class="dropdown-menu extended notification" id="unassigned-assets-list">
 					<li>
-						<p>You have {{count($unassignedAssets)}} Unassigned Assets</p>
+						<p>You have <span class="unassigned_assets_count">{{count($unassignedAssets)}}</span> Unassigned Assets</p>
 					</li>
 					<li>
 						<ul class="dropdown-menu-list scroller" >
