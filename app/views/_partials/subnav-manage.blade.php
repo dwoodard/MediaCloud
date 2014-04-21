@@ -104,11 +104,11 @@
 
 		<ul class="nav navbar-nav pull-right">
 
-			<li class="dropdown keep-open" id="header_notification_bar">
+			<li class="dropdown keep-open" id="unassigned_assets_notify">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-warning"></i>
 					@if(count($unassignedAssets))
-					<span class="badge">{{count($unassignedAssets)}}</span>
+					<span id="unassigned_assets_count" class="badge">{{count($unassignedAssets)}}</span>
 					@endif
 				</a>
 				<ul class="dropdown-menu extended notification" id="unassigned-assets-list">
