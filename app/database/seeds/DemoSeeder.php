@@ -156,98 +156,90 @@ class DemoSeeder extends Seeder {
 
 //******************************************************
 
-        // Adding Collection - Department
-        $collection = new Collection;
-        $collection->name = 'Math Department';
-        $collection->save();
-        $user->collections()->attach($collection->id);
+		// Adding Collection - Department
+		$collection = new Collection;
+		$collection->name = 'Math Department';
+		$collection->save();
+		$user->collections()->attach($collection->id);
 
 
-        // Adding Playlists
-        $playlist = new Playlist;
-        $playlist->name = 'Playlist - Math Department 1';
-        $playlist->save();
-        $user->playlists()->attach($playlist->id);
+		// Adding Playlists
+		$playlist = new Playlist;
+		$playlist->name = 'Playlist - Math Department 1';
+		$playlist->save();
+		$user->playlists()->attach($playlist->id);
 
+		$collection->playlists()->attach($playlist->id);
+		$playlist = new Playlist;
+		$playlist->name = 'Playlist - Math Department 2';
+		$playlist->save();
 
-		$cpa = new CollectionPlaylistAsset;
-		$cpa->add($collection->id,$playlist->id,1);
-		$cpa->add($collection->id,$playlist->id,2);
-
-
-        $playlist = new Playlist;
-        $playlist->name = 'Playlist - Math Department 2';
-        $playlist->save();
-
-        $user->playlists()->attach($playlist->id);
-        $cpa->add($collection->id,$playlist->id,3);
+		$user->playlists()->attach($playlist->id);
+		$collection->playlists()->attach($playlist->id);
 
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - Math Department 3';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
-        $cpa->add($collection->id,$playlist->id,4);
+		$collection->playlists()->attach($playlist->id);
 
 
-        // Connect up pivot
-        $cpa->add($collection->id,0,10);
+		// Connect up pivot
+		// $cpa->add($collection->id,0,10);
 
-        $collection = new Collection;
+		$collection = new Collection;
 		$collection->name = 'WSU';
 		$collection->save();
-        $user->collections()->attach($collection->id);
+		$user->collections()->attach($collection->id);
 
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - WSU 1';
 		$playlist->save();
 
-        $user->playlists()->attach($playlist->id);
-		$cpa->add($collection->id,$playlist->id,11);
-        $cpa->add($collection->id,$playlist->id,12);
-        $cpa->add($collection->id,$playlist->id,13);
+		$user->playlists()->attach($playlist->id);
+		$collection->playlists()->attach($playlist->id);
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - WSU 2';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
 
 
-        $cpa->add($collection->id,0,14);
-        $cpa->add($collection->id,0,15);
-        $cpa->add($collection->id,0,16);
-        $cpa->add($collection->id,0,17);
+		// $cpa->add($collection->id,0,14);
+		// $cpa->add($collection->id,0,15);
+		// $cpa->add($collection->id,0,16);
+		// $cpa->add($collection->id,0,17);
 
 
 //******************************************************
 
 
-        // Adding Collection - Department
-        $collection = new Collection;
-        $collection->name = 'Health Department';
-        $collection->save();
-        $user->collections()->attach($collection->id);
+		// Adding Collection - Department
+		$collection = new Collection;
+		$collection->name = 'Health Department';
+		$collection->save();
+		$user->collections()->attach($collection->id);
 
-        // Adding Playlists
-        $playlist = new Playlist;
-        $playlist->name = 'Playlist - Health Department 1';
-        $playlist->save();
-        $user->playlists()->attach($playlist->id);
+		// Adding Playlists
+		$playlist = new Playlist;
+		$playlist->name = 'Playlist - Health Department 1';
+		$playlist->save();
+		$user->playlists()->attach($playlist->id);
 
-		$cpa->add($collection->id,$playlist->id,5);
-		$cpa->add($collection->id,$playlist->id,6);
+		$collection->playlists()->attach($playlist->id);
 
 
-        $playlist = new Playlist;
-        $playlist->name = 'Playlist - Health Department 2';
-        $playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$playlist = new Playlist;
+		$playlist->name = 'Playlist - Health Department 2';
+		$playlist->save();
+		$user->playlists()->attach($playlist->id);
 
-        // Connect up pivot
-        $cpa->add($collection->id,$playlist->id,7);
+		// Connect up pivot
+		$collection->playlists()->attach($playlist->id);
 
 
 //******************************************************
@@ -255,33 +247,28 @@ class DemoSeeder extends Seeder {
 		$collection = new Collection;
 		$collection->name = 'Science Department 101';
 		$collection->save();
-        $user->collections()->attach($collection->id);
+		$user->collections()->attach($collection->id);
 
 		// Adding Playlists
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - Science Department 1';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
-		$cpa->add($collection->id,$playlist->id,8);
-		$cpa->add($collection->id,$playlist->id,9);
-        // $cpa->add($collection->id,$playlist->id,13);
+		$collection->playlists()->attach($playlist->id);
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - Science Department 2';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - WSU 3';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
-        $cpa->add($collection->id,$playlist->id,18);
-        $cpa->add($collection->id,$playlist->id,19);
-        $cpa->add($collection->id,$playlist->id,20);
-
+		$collection->playlists()->attach($playlist->id);
 
 //******************************************************
 
@@ -290,33 +277,28 @@ class DemoSeeder extends Seeder {
 		$collection = new Collection;
 		$collection->name = 'Science Department 202';
 		$collection->save();
-        $user->collections()->attach($collection->id);
+		$user->collections()->attach($collection->id);
 
 		// Adding Playlists
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - Science Department 1';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
-		$cpa->add($collection->id,$playlist->id,8);
-		$cpa->add($collection->id,$playlist->id,9);
-        // $cpa->add($collection->id,$playlist->id,13);
+		$collection->playlists()->attach($playlist->id);
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - Science Department 2';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
 
 		$playlist = new Playlist;
 		$playlist->name = 'Playlist - WSU 3';
 		$playlist->save();
-        $user->playlists()->attach($playlist->id);
+		$user->playlists()->attach($playlist->id);
 
-        $cpa->add($collection->id,$playlist->id,18);
-        $cpa->add($collection->id,$playlist->id,19);
-        $cpa->add($collection->id,$playlist->id,20);
-
+		$collection->playlists()->attach($playlist->id);
 
 //******************************************************
 	}

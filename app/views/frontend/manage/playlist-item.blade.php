@@ -4,7 +4,7 @@
 	<div class="folder" id="{{camel_case($playlist['name'].$playlist['id'])}}" style="opacity: 1;">
 		<a href="">
 			<img src="/assets/img/collection-icon-close.png" alt="">
-			<p class="album-name">{{$playlist['name']}} </p>
+			<p class="album-name">{{Str::limit($playlist['name'], 18 )}} </p>
 		</a>
 	</div>
 	@endforeach

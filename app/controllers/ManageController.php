@@ -243,6 +243,11 @@ class ManageController extends PermissionsController {
 
 
 
+	public function update_order_by_cpa_type($type, $id)
+	{
+		
+	}
+
 
 
 

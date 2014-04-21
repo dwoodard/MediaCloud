@@ -559,9 +559,14 @@ left: 10px;
 }
 
 /*******  xEditable Styles************/
-.editable-click, a.editable-click{
+#current-collection .editable-click, a.editable-click{
 text-decoration: none;
-color: black;
+color: #000;
+}
+#current-collection header .editable-click,
+#current-collection header a.editable-click{
+text-decoration: none;
+color: #ccc;
 }
 
 .editable-input{
