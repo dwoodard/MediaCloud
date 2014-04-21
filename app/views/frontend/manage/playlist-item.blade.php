@@ -11,13 +11,18 @@
 	<br class="clear">
 </div>
 @foreach ($playlists as $key => $playlist)
-<div class="folderContent {{camel_case($playlist['name'].$playlist['id'])}}" style="display: none; background-color: rgb(224, 232, 233);">
+<div class="folderContent {{camel_case($playlist['name'].$playlist['id'])}}" style="display: none;">
 	<div class="jaf-container">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="assets row">
 					<div class="col-sm-9">
 						<h2><a href="#" class="editable" data-name="name" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">{{$playlist['name']}}</a></h2>
+						@if(isset($playlist['description']))
+						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">{{$playlist['description']}}</a></p>
+						@else
+						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">Add Description</a></p>
+						@endif
 
 						<div class="col-sm-9 ">
 							<table id="cp-{{$collection['id']}}-{{$playlist['id']}}" class="table table-striped">
@@ -38,7 +43,7 @@
 
 										<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset['description']}}</a></td>
 										@else
-											<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">Add Description</a></td>
+										<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">Add Description</a></td>
 										@endif
 										<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
 									</tr>
