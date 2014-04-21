@@ -122,8 +122,8 @@ Create a User ::
 						<legend>{{ $area }}</legend>
 
 						@foreach ($permissions as $permission)
-						<div class="control-group" style="margin-bottom: 50px;">
-							<label class="control-group" style="margin-bottom: 50px;">{{ $permission['label'] }}</label>
+						<div class="control-group">
+							<label class="control-group">{{ $permission['label'] }}</label>
 
 							<div class="radio inline" style="margin:20px;">
 								<label for="{{ $permission['permission'] }}_allow" onclick="">

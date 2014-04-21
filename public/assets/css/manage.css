@@ -12,11 +12,35 @@ html,body{
 	height: 160px;
 }
 
+
 #collection-view header h2{
-	font-size: 2em;
 	color: white;
-	padding: 15px;
+	padding: 30px 0px 0px 30px;
 }
+
+#collection-view header h2 a{
+	font-size: 2.5em;
+	color: white;
+}
+
+#collection-view header h3{
+	font-size: 1em;
+	padding-left: 30px;
+}
+
+#collection-view header h3 a{
+	color: white;
+}
+
+#collection-view header h2 a:hover{
+	color: gray;
+}
+
+#collection-view header h3 a:hover{
+	color: gray;
+}
+
+
 #collection-view header .share{
 	position: absolute;
 	bottom: 10px;
@@ -50,8 +74,8 @@ html,body{
 	color: #333
 
 }
-.folderContent{
-}
+.folderContent{}
+
 .folderContent h2{
 	font-size: 24px;
 	line-height: inherit;
@@ -68,6 +92,10 @@ html,body{
 
 #playlists-container{}
 #assets-container{}
+
+#assets-container .col-md-9{
+	height: 600px;
+}
 #settings-container{}
 #deployments-container{}
 
@@ -238,9 +266,9 @@ height: 400px
 	box-sizing: border-box;
 	min-width: 320px;
 	padding: 5px 0 0 10px;
-	background-color: #aaa;
 	border: 1px solid rgba(0,0,0,0.3);
 	border-width: 1px 0;
+	background: rgb(224, 232, 233);
 }
 
 .folderContent a:hover{
@@ -393,11 +421,12 @@ height: 400px
 	font-weight: 300;
 }
 
-
+.cbp-spmenu .browse-assets-container a{
+	color: black;
+}
 
 .cbp-spmenu a:hover{
-	background: #258ecd;
-}
+text-decoration: underline;}
 
 .cbp-spmenu a:active{
 	background: #afdefa;
@@ -581,10 +610,24 @@ li{
 
 
 .drag-to{
+	padding: 5px 0 0 10px;
+	background: lightgreen;
 	outline: 2px dashed #333;
+	-webkit-transition: all .25s ease-in;
+	-moz-transition: all .25s ease-in;
+	-ms-transition: all .25s ease-in;
+	-o-transition: all .25s ease-in;
+	transition: all .25s ease-in;
 }
 .drag-to-hover{
+	padding: 20px;
+	background: green;
 	outline: 2px dashed lightgreen;
+	-webkit-transition: all .25s ease-in;
+	-moz-transition: all .25s ease-in;
+	-ms-transition: all .25s ease-in;
+	-o-transition: all .25s ease-in;
+	transition: all .25s ease-in;
 }
 
 #browse-view-header{

@@ -2,6 +2,13 @@
 <div id="current-collection"  data-current-collection-id="{{$collection->id}}">
 	<header>
 		<h2><a id="CollectionName" data-editable-data="collection-{{$collection->id}}" data-name="name" href="#" class="editable" data-editable-type="text" >{{$collection->name}}</a></h2>
+		@if(isset($collection->description))
+		<h3><a href="#" class="editable" data-name="description" data-editable-data="collection-{{$collection->id}}" data-editable-type="text">{{$collection->description}}</a></h3>
+		@else
+		<h3><a href="#" class="editable" data-name="description" data-editable-data="collection-{{$collection->id}}" data-editable-type="text">Add Description</a></h3>
+		@endif
+		<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
+
 
 		<button class="share btn btn-primary">Share ...</button>
 		<button class="context-menu-btn btn btn-primary">...</button>
@@ -54,8 +61,13 @@
 						@foreach ($collection->assets as $key => $asset)
 						<tr id="cpa-{{$collection->id}}-0-{{$asset->id}}" data-asset-id="{{$asset->id}}">
 							<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
-							<td class="col-md-4"></td>
-							<td>{{$asset->description}}</td>
+							<td><a href="#" class="editable" data-name="title" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset->title}}</a></td>
+							@if(isset($asset->description))
+							<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset->description}}</a></td>
+							@else
+							<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">Add Description</a></td>
+							@endif
+							<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
 						</tr>
 						@endforeach
 					</tbody>
