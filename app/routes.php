@@ -9,13 +9,16 @@
 App::bind('AssetRepository', 'Asset');
 
 
+// Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
-Route::get('/test', function(){
 
-	// $collection = Collection::find(1);
+Route::post('/test/{$id}', function($id){
+
+	$collection = Collection::find($id);
+
+	return $collection;
+	// $assets = Asset::find($id);
 	// return $collection->assets()->get();
-
-
 	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
 	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
 	
@@ -234,9 +237,9 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::post('playlist/update', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_update'));
 	Route::post('asset/update', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_update'));
 
-	Route::post('collection/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_delete'));
-	Route::post('playlist/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_delete'));
-	Route::post('asset/delete', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_delete'));
+	Route::delete('collection/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_delete'));
+	Route::delete('playlist/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_delete'));
+	Route::delete('asset/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_delete'));
 });
 
 

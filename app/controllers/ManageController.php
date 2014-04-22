@@ -220,7 +220,6 @@ class ManageController extends PermissionsController {
 			return array('result' => 'deleted');
 		}
 
-
 		return $collection;
 	}
 

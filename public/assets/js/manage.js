@@ -10,8 +10,11 @@ var Manage = {
 		this.menuEvents();
 		this.playListSettings();
 		this.textEdit();
-		this.getCollection(collectionId)
-		this.contextMenu()
+		this.getCollection(collectionId);
+		this.contextMenu();
+		this.deleteCollection();
+
+
 
 		// console.log(this);
 	},
@@ -62,6 +65,7 @@ var Manage = {
 			Manage.getCollection($(e.currentTarget).data("collection-id"), e.currentTarget);
 		});
 		Manage.textEdit();
+		Manage.deleteCollection();
 
 	},
 	menuEvents: function(){
@@ -212,6 +216,7 @@ var Manage = {
 			Manage.assetPlayerBtn();
 			Manage.addPlaylist();
 			Manage.textEdit();
+			Manage.deleteCollection();
 
 		});
 
@@ -449,6 +454,21 @@ contextMenu: function() {
 
 
 },
+
+deleteCollection: function(id) {
+
+	$("#deleteCollection").on("click",function(e) {
+		$.ajax({
+			url: "/manage/collection/delete/"+id,
+			type: 'DELETE'
+
+		})
+		.done(function(){
+
+		});
+	});
+},
+
 
 
 }
