@@ -26,8 +26,7 @@ html,body{
 #collection-view header h3{
 	font-size: 1em;
 	padding-left: 30px;
-	margin-top: 5px;
-	margin-left: 2px;
+	margin: 5px 0 20px 2px;
 }
 
 #collection-view header h3 a{
@@ -43,10 +42,8 @@ html,body{
 }
 
 
-#collection-view header .share{
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
+#collection-toolbar{
+	margin-left: 30px;
 }
 
 #header_notification_bar{
@@ -667,8 +664,12 @@ height: 400px
 
 	/*context-menu*/
 	.popup-area{}
-	#context-actions-container{}
-	#share-container{}
+	#context-actions-container{
+		background: #333;
+	}
+	#share-container{
+		background: #333;
+	}
 
 	.context-menu-btn{}
 	.context-menu{
@@ -676,8 +677,6 @@ height: 400px
 		width: 220px;
 		border: 1px solid #ccc;
 		position: relative;
-		top: 342px;
-		left: 10px;
 		overflow: hidden;
 	}
 
@@ -685,6 +684,10 @@ height: 400px
 
 		/*left: 0px;*/
 		position: relative;
+	}
+	.context-menu header {
+		color: #888;
+		padding: 10px
 	}
 
 	.context-menu ul{
@@ -710,14 +713,18 @@ height: 400px
 
 
 	.context-menu .collection,
-	.context-menu .playlist {
+	.context-menu .playlist,
+	.context-menu .asset
+	{
 		position: absolute;
 		top: 0;
 		left: 220px;
 		width: 220px;
 	}
 	.context-menu .collection,
-	.context-menu .playlist {
+	.context-menu .playlist,
+	.context-menu .asset
+	{
 		left: 220px;
 	}
 
@@ -754,36 +761,6 @@ height: 400px
 	}
 
 
-
-	
-	.arrow_box {
-		position: relative;
-		background: #b0b0b0;
-		border: 4px solid #f5f5f5;
-	}
-	.arrow_box:after, .arrow_box:before {
-		bottom: 100%;
-		left: 50%;
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
-	}
-
-	.arrow_box:after {
-		border-color: rgba(176, 176, 176, 0);
-		border-bottom-color: #b0b0b0;
-		border-width: 20px;
-		margin-left: -20px;
-	}
-	.arrow_box:before {
-		border-color: rgba(245, 245, 245, 0);
-		border-bottom-color: #f5f5f5;
-		border-width: 26px;
-		margin-left: -26px;
-	}
 
 
 /*/context-menu*/

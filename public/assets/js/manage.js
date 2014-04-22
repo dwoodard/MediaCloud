@@ -11,9 +11,10 @@ var Manage = {
 		this.playListSettings();
 		this.textEdit();
 		this.getCollection(collectionId)
-		this.contextMenu()
+		this.contextMenuInit()
 
 		// console.log(this);
+
 	},
 	dropzoneInit:function  () {
 		function doComplete(){
@@ -51,7 +52,7 @@ var Manage = {
 				this.on("complete", function (file) {
 					completeFiles += 1;
 					if (completeFiles === totalFiles) {
-						doComplete();
+						location.reload();
 					}
 				});
 			}
@@ -212,41 +213,42 @@ var Manage = {
 			Manage.assetPlayerBtn();
 			Manage.addPlaylist();
 			Manage.textEdit();
+			Manage.contextMenuInit();
 
 		});
 
-},
-addPlaylist: function(){
-	$("#btn-new-playlist").bind("click", function(e){
+	},
+	addPlaylist: function(){
+		$("#btn-new-playlist").bind("click", function(e){
 			// console.log(e);
 			$('[href="#playlists-container"]').trigger('click');
 			$("#newPlaylist").show().find(':input').focus().select();
 		})
 
-	$("#btn-cancel-new-playlist").on('click',function(e) {
-		$("#input-new-playlist").val("Playlist Name")
-		$("#newPlaylist").hide()
-	});
+		$("#btn-cancel-new-playlist").on('click',function(e) {
+			$("#input-new-playlist").val("Playlist Name")
+			$("#newPlaylist").hide()
+		});
 
-	$("#btn-save-new-playlist").on('click',function(e) {
-		$("#newPlaylist")
-		.find("button, input").hide()
-		.end()
-		.append($('<div> <i class="fa fa-spinner fa-spin"></i> Creating Playlist </div>'))
+		$("#btn-save-new-playlist").on('click',function(e) {
+			$("#newPlaylist")
+			.find("button, input").hide()
+			.end()
+			.append($('<div> <i class="fa fa-spinner fa-spin"></i> Creating Playlist </div>'))
 
 
-		var currentCollectionId = $("#current-collection").data("current-collection-id");
-		$.ajax({
-			type: "POST",
-			url:"manage/playlist/add",
-			data: {
-				name: $("#input-new-playlist").val(),
-				collection: currentCollectionId
-			},
-			dataType: "json"
-		}).done(function(data) {
+			var currentCollectionId = $("#current-collection").data("current-collection-id");
+			$.ajax({
+				type: "POST",
+				url:"manage/playlist/add",
+				data: {
+					name: $("#input-new-playlist").val(),
+					collection: currentCollectionId
+				},
+				dataType: "json"
+			}).done(function(data) {
 
-			Manage.getCollection(currentCollectionId);
+				Manage.getCollection(currentCollectionId);
 			// $.ajax({
 			// 	url: "/manage/playlists/"+currentCollectionId+"/"+data.id
 			// }).done(function(result){
@@ -270,7 +272,7 @@ addPlaylist: function(){
 
 		});
 
-	})
+		})
 
 
 },
@@ -438,10 +440,51 @@ textEdit: function(){
 	});
 
 },
-contextMenu: function() {
-	$('.context-menu').on('click',function () {
-		var type
+contextMenuInit: function() {
+	$('.context-menu-btn').on('click',function (e) {
+		var pos = {
+			x:$(this).position().left,
+			y:($(this).position().top+$(this).offset().top)
+		}
+		var btnHeight = $(this).height();
+		var btnWidth = $(this).width();
+		var paddingTB = parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'));
+		console.log(paddingTB);
+		console.log(pos);
+
+
+		var type = $(e.currentTarget).data('type')
+		$.ajax({
+			url:"manage/context-menu/"+type,
+		}).done(function(data) {
+
+			console.log(type);
+			// console.log(data);
+			$('#context-actions-container')
+			.html(data)
+			.css({
+				left: pos.x+btnWidth,
+				top: (pos.y+btnHeight),
+				position:'absolute'})
+			
+			.find('.context-menu')
+			.addClass('open').end()
+
+			.find('.close')
+			.on('click', function(e){
+				$(this).closest('.context-menu')
+				.removeClass('open')
+			});
+
+			$('.context-menu')
+
+			$('#context-actions-container')
+
+
+		});
+
 	});
+
 //type Collection/Playlist/Asset
 
 // place Menu x y
