@@ -13,7 +13,7 @@
 
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
 			<button class="share btn btn-primary">Share ...</button>
-			<button class="btn"> <i class="context-menu-btn fa fa-ellipsis-h " data-type="collection"></i> </button>
+			<button class="btn context-menu-btn"> <i class="fa fa-ellipsis-h " data-type="collection"></i> </button>
 		</div>
 
 

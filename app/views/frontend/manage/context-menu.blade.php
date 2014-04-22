@@ -1,5 +1,7 @@
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
 
+
+
 <div class="context-menu-one box menu-1">
     <strong>left click me</strong>
 </div>

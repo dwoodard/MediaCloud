@@ -441,57 +441,66 @@ textEdit: function(){
 
 },
 contextMenuInit: function() {
-	$('.context-menu-btn').on('click',function (e) {
-		var pos = {
-			x:$(this).position().left,
-			y:($(this).position().top+$(this).offset().top)
-		}
-		var btnHeight = $(this).height();
-		var btnWidth = $(this).width();
-		var paddingTB = parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'));
-		console.log(paddingTB);
-		console.log(pos);
 
 
-		var type = $(e.currentTarget).data('type')
-		$.ajax({
-			url:"manage/context-menu/"+type,
-		}).done(function(data) {
+	
 
-			console.log(type);
-			// console.log(data);
-			$('#context-actions-container')
-			.html(data)
-			.css({
-				left: pos.x+btnWidth,
-				top: (pos.y+btnHeight),
-				position:'absolute'})
-			
-			.find('.context-menu')
-			.addClass('open').end()
-
-			.find('.close')
-			.on('click', function(e){
-				$(this).closest('.context-menu')
-				.removeClass('open')
-			});
-
-			$('.context-menu')
-
-			$('#context-actions-container')
+	// $.contextMenu({
+	// 	selector: '.context-menu-btn',
+	// 	trigger: 'left',
+	// 	items: $.contextMenu.fromMenu($('#context-menu-collection')),
+	// 	callback: function(key, options) {
+	// 		var m = "clicked: " + key;
+	// 		window.console && console.log(m) || alert(m);
+	// 	}
+	// });
+	// $.contextMenu("html5", true);
+	// $('.context-menu-btn').on('click',function (e) {
+	// 	var pos = {
+	// 		x:$(this).position().left,
+	// 		y:($(this).position().top+$(this).offset().top)
+	// 	}
+	// 	var btnHeight = $(this).height();
+	// 	var btnWidth = $(this).width();
+	// 	var paddingTB = parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'));
+	// 	console.log(paddingTB);
+	// 	console.log(pos);
 
 
-		});
+	// 	var type = $(e.currentTarget).data('type')
+	// 	$.ajax({
+	// 		url:"manage/context-menu/"+type,
+	// 	}).done(function(data) {
 
-	});
+	// 		console.log(type);
+	// 		// console.log(data);
+	// 		$('#context-actions-container')
+	// 		.html(data)
+	// 		.css({
+	// 			left: pos.x+btnWidth,
+	// 			top: (pos.y+btnHeight),
+	// 			position:'absolute'})
 
-//type Collection/Playlist/Asset
+	// 		.find('.context-menu')
+	// 		.addClass('open').end()
 
-// place Menu x y
+	// 		.find('.close')
+	// 		.on('click', function(e){
+	// 			$(this).closest('.context-menu')
+	// 			.removeClass('open')
+	// 		});
+
+	// 		$('.context-menu')
+
+	// 		$('#context-actions-container')
 
 
+	// 	});
 
-},
+	// });
+
+
+}
 
 
 }
