@@ -82,8 +82,10 @@ class ManageController extends PermissionsController {
 			$collection->playlists->merge($playlist->assets);
 		}
 
-		$playlists_group = array(array($collection->playlists->find($playlist_id)->toArray()));
+		// return $collection->playlists->find($playlist_id)->toArray();
 
+		$playlists_group = array(array($collection->playlists->find($playlist_id)->toArray()));
+		//return $playlists_group;
 		$data = array(
 			'collection'=>$collection,
 			'playlists_group'=> $playlists_group,
@@ -137,7 +139,7 @@ class ManageController extends PermissionsController {
 	*ADD
 	*/
 
-    //manage/collection/add
+	//manage/collection/add
 	public function collection_add(){
 
 		$collection = new Collection;
@@ -148,7 +150,7 @@ class ManageController extends PermissionsController {
 		return $collection;
 	}
 
-    //manage/playlist/add
+	//manage/playlist/add
 	public function playlist_add(){
 
 		$playlist = new Playlist;
@@ -159,11 +161,11 @@ class ManageController extends PermissionsController {
 		return $playlist;
 	}
 
-    //manage/asset/add
+	//manage/asset/add
 	public function asset_add(){
 		$asset = Asset::find(Input::get('asset_id'));
 
-        //attach to playlist or collection?
+		//attach to playlist or collection?
 		switch (Input::get('type')) {
 			case 'collection':
 			$asset->collections()->attach(Input::get('collection_id'));
@@ -181,7 +183,7 @@ class ManageController extends PermissionsController {
 	*UPDATE
 	*/
 
-    //manage/collection/update
+	//manage/collection/update
 	public function collection_update(){
 		$inputs = Input::all();
 		$collection = Collection::find($inputs['pk']);
@@ -189,7 +191,7 @@ class ManageController extends PermissionsController {
 		$collection->save();
 	}
 
-    //manage/playlist/update
+	//manage/playlist/update
 	public function playlist_update(){
 		$inputs = Input::all();
 		$playlist = Playlist::find($inputs['pk']);
@@ -197,7 +199,7 @@ class ManageController extends PermissionsController {
 		$playlist->save();
 	}
 
-    //manage/asset/update
+	//manage/asset/update
 	public function asset_update(){
 		$inputs = Input::all();
 		$asset = Asset::find($inputs['pk']);
@@ -210,7 +212,7 @@ class ManageController extends PermissionsController {
 	*DELETE
 	*/
 
-    //manage/collection/delete
+	//manage/collection/delete
 	public function collection_delete($id){
 
 		$collection = Collection::find($id);
@@ -222,7 +224,7 @@ class ManageController extends PermissionsController {
 		return $collection;
 	}
 
-    //manage/playlist/delete
+	//manage/playlist/delete
 	public function playlist_delete($id){
 
 		$playlist = new Playlist;
@@ -234,7 +236,7 @@ class ManageController extends PermissionsController {
 		return $playlist;
 	}
 
-    //manage/asset/delete
+	//manage/asset/delete
 	public function asset_delete($id){
 		$asset = Asset::find(Input::get('asset_id'));
 		$asset->delete();
@@ -244,24 +246,43 @@ class ManageController extends PermissionsController {
 
 
 
-	public function update_order_by_cpa_type($type, $id)
+	public function update_order_by_type()
 	{
 
+		switch (Input::get('type')) {
+			case 'collection':
+				$result = DB::table('asset_playlist')
+				->where('playlist_id', Input::get('collection_id'))
+				->where('asset_id', Input::get('asset_id'))
+				->update(array('asset_order' => Input::get('asset_order')));
+			break;
+			case 'playlist':
+				$result = DB::table('asset_playlist')
+				->where('playlist_id', Input::get('playlist_id'))
+				->where('asset_id', Input::get('asset_id'))
+				->update(array('asset_order' => Input::get('asset_order')));
+			break;
+
+			default:
+			break;
+		}
+
+		return  Input::get('asset_order');
 	}
 
 
 
 
-    // //manage/cpa/add
-    // public function cpa_add($value='')
-    // {
-    // 	throw new Exception("Error Processing Request", 1);
+	// //manage/cpa/add
+	// public function cpa_add($value='')
+	// {
+	// 	throw new Exception("Error Processing Request", 1);
 
-    // }
+	// }
 
-    /**
-    *todo: I don't think this should be here?
-    */
+	/**
+	*todo: I don't think this should be here?
+	*/
 	// public function newCollection()
 	// {
 	// 	$collection =  new Collection;

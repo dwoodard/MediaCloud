@@ -12,17 +12,13 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-	return Asset::unassigned(1);
 	// $collection = Collection::find(1);
-	// return $collection->playlists;
-	// return $collection;
+	// return $collection->assets()->get();
 
 
-	// $user = User::find(Sentry::getUser()->id);
-	// $user->collections;
-	// $user->playlists;
-	// $user->assets;
-	// return $user;
+	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
+	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
+	
 
 });
 
@@ -226,6 +222,9 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 	
 	Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
+
+	Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));
+
 
 	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));

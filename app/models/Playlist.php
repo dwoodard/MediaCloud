@@ -19,6 +19,8 @@ class Playlist extends Eloquent {
 	public function assets()
 	{
 		return $this->belongsToMany('Asset');
+		// return $this->belongsToMany('Asset','asset_playlist', 'asset_order')->withPivot('asset_order');
+		// return $this->belongsToMany('Asset','asset_playlist', 'asset_order')->withPivot('asset_order');
 	}
 	public function collections()
 	{

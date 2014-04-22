@@ -179,34 +179,24 @@ var Manage = {
 					console.log($(this));
 
 
-
 					$.each(data, function(i,v){
-						// console.log(i,v)
+						console.log(i,v)
 
-						var cpa = /cpa-(\d+)-(\d+)-(\d+)/g.exec(v),
-						data = {
-							'collection_id':cpa[1],
-							'playlist_id':cpa[2],
-							'asset_id':cpa[3],
-							'asset_order':i
-						};
-
-						var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id);
-						var type = Number(cp[2]) == 0 ? "collection" : "playlist";
+						var cpa = /cpa-(\d+)-(\d+)-(\d+)/g.exec(v);
+						var type = Number(cpa[2]) == 0 ? "collection" : "playlist";
 						data = {
 							'collection_id':Number(cpa[1]),
 							'playlist_id':Number(cpa[2]),
-							'asset_id':$($(ui)[0].draggable).closest('[data-asset-id]').data('assetId'),
-							type: type,
+							'asset_id':cpa[3],
+							'type': type,
 							'asset_order':i
 						};
 
 
 
-						console.log(data);
 						$.ajax({
 							type: "POST",
-							url:"/cpa/update",
+							url:"/manage/sort/update",
 							data: data,
 							dataType: "json"
 						}).done(function(data) {
@@ -217,13 +207,13 @@ var Manage = {
 					})
 				}
 			});
-Manage.addFolderInit();
-Manage.dragAsset();
-Manage.assetPlayerBtn();
-Manage.addPlaylist();
-Manage.textEdit();
+			Manage.addFolderInit();
+			Manage.dragAsset();
+			Manage.assetPlayerBtn();
+			Manage.addPlaylist();
+			Manage.textEdit();
 
-});
+		});
 
 },
 addPlaylist: function(){
@@ -239,7 +229,10 @@ addPlaylist: function(){
 	});
 
 	$("#btn-save-new-playlist").on('click',function(e) {
-		$("#newPlaylist").hide()
+		$("#newPlaylist")
+		.find("button, input").hide()
+		.end()
+		.append($('<div> <i class="fa fa-spinner fa-spin"></i> Creating Playlist </div>'))
 
 
 		var currentCollectionId = $("#current-collection").data("current-collection-id");
@@ -253,24 +246,25 @@ addPlaylist: function(){
 			dataType: "json"
 		}).done(function(data) {
 
-			$.ajax({
-				url: "/manage/playlists/"+currentCollectionId+"/"+data.id
-			}).done(function(result){
+			Manage.getCollection(currentCollectionId);
+			// $.ajax({
+			// 	url: "/manage/playlists/"+currentCollectionId+"/"+data.id
+			// }).done(function(result){
 
-				$(".app-folders-container")
-				.prepend(result)
-				$('.tmpPlaylistContainer').appFolders({
-					opacity:.5,
-					marginTopAdjust:true,
-					marginTopBase:0,
-					marginTopIncrement:0,
-					animationSpeed:200,
-					URLrewrite:true,
-					URLbase:"",
-					internalLinkSelector:".jaf-internal a",
-					instaSwitch:true
-				});
-			})
+			// 	$(".app-folders-container")
+			// 	.prepend(result)
+			// 	$('.tmpPlaylistContainer').appFolders({
+			// 		opacity:.5,
+			// 		marginTopAdjust:true,
+			// 		marginTopBase:0,
+			// 		marginTopIncrement:0,
+			// 		animationSpeed:200,
+			// 		URLrewrite:true,
+			// 		URLbase:"",
+			// 		internalLinkSelector:".jaf-internal a",
+			// 		instaSwitch:true
+			// 	});
+			// })
 
 
 

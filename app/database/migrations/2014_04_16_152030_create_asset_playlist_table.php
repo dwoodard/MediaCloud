@@ -19,6 +19,7 @@ class CreateAssetPlaylistTable extends Migration {
 			$table->foreign('asset_id')->references('id')->on('assets')->onDelete('cascade');
 			$table->integer('playlist_id')->unsigned()->index();
 			$table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');
+			$table->integer('asset_order');
 		});
 	}
 
