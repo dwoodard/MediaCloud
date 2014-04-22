@@ -9,8 +9,14 @@
 		@endif
 		<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
 
+		
 
-		<button class="share btn btn-primary">Share ...</button>
+		<div id="collection-toolbar" class="btn-group " role="toolbar">
+			<button class="share btn btn-primary">Share ...</button>
+			<button class="btn"> <i class="context-menu-btn fa fa-ellipsis-h " data-type="collection"></i> </button>
+		</div>
+
+
 	</header>
 
 
@@ -66,7 +72,9 @@
 							@else
 							<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">Add Description</a></td>
 							@endif
-							<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
+							<td> 
+								<button class="btn"> <i class="context-menu-btn fa fa-ellipsis-h " data-type="asset"></i> </button>
+							</td>
 						</tr>
 						@endforeach
 					</tbody>

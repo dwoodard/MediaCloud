@@ -21,7 +21,7 @@ Route::post('/test/{$id}', function($id){
 	// return $collection->assets()->get();
 	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
 	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
-	
+
 
 });
 
@@ -223,7 +223,7 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::get('playlists/{collection_id}/{playlist_id}', array('as' => 'manage.playlists', 'uses' => 'ManageController@playlist'));
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
-	
+
 	Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 
 	Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));

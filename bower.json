@@ -25,6 +25,7 @@
     "Object.observe": "https://raw.githubusercontent.com/jdarling/Object.observe/master/Object.observe.poly.js",
     "jquery.hammer.js": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
     "angular-resource": "~1.2.16",
-    "jQuery.mmenu": "~4.2.5"
+    "jQuery.mmenu": "~4.2.5",
+    "jQuery-contextMenu": "~1.6.5"
   }
 }
