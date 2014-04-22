@@ -123,6 +123,8 @@ height: 400px
 .asset-player-btn{
 }
 .draggable-asset.ui-draggable-dragging{
+	overflow:visible;
+
 }
 
 #newPlaylist{
@@ -133,8 +135,8 @@ height: 400px
 }
 
 #unassigned-assets-list{
-	height: 600px;
-	overflow-y: scroll;
+	/*height: 600px;*/
+	/*overflow-y: scroll;*/
 }
 
 /***************  App Folder ******************/
