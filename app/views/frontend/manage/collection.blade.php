@@ -23,6 +23,8 @@
 
 
 
+
+
 		@foreach($user_collections as $user_collection)
 		<a class="loadCollection" data-collection-id="{{$user_collection->id}}" href="#">{{$user_collection->name}}</a>
 		@endforeach
@@ -33,14 +35,14 @@
 </div>
 
 <nav id="asset-view" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
-	<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i> 
+	<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i>
 		<h3>Player / Assets</h3>
 	</div>
 	<div id="asset-player"></div>
 </nav>
 
 <nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
-	<div id="browse-view-header"><i class="close fa fa-times-circle-o fa-2x"></i> 
+	<div id="browse-view-header"><i class="close fa fa-times-circle-o fa-2x"></i>
 		<h3>Browse Assets</h3>
 	</div>
 

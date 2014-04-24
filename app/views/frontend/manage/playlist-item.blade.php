@@ -54,11 +54,25 @@
 												@else
 												Add Description
 												@endif
-
 											</a>
 										</td>
 
-										<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border"></i></a> </td>
+										<td>
+
+											<!-- ContextMenu -->
+											<div class="context-menu-container dropdown keep-open pull-right">
+
+												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-ellipsis-h"></i>
+												</button>
+												<ul class="dropdown-menu">
+													<li>
+														@include('frontend.manage.context-menu')
+													</li>
+												</ul>
+
+											</div>
+										</td>
 
 									</tr>
 									@endforeach

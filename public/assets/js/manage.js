@@ -75,10 +75,26 @@ var Manage = {
 		Manage.loadCollection();
 
 		$('.dropdown.keep-open').on({
-			"shown.bs.dropdown": function() { $(this).data('closable', false); },
-			"click":             function() { $(this).data('closable', true);  },
-			"hide.bs.dropdown":  function() { return $(this).data('closable'); }
+			"shown.bs.dropdown": function() {$(this).data('closable', false); },
+			"click":             function() {$(this).data('closable', true);  },
+			"hide.bs.dropdown":  function() {return $(this).data('closable'); }
 		});
+
+
+		// $('html').on({
+		// 	"shown.bs.dropdown": function() {$(this).find('.context-menu-container').data('closable', false); },
+		// 	"click":             function() {$(this).find('.context-menu-container').data('closable', true);  },
+		// 	"hide.bs.dropdown":  function() {return $(this).find('.context-menu-container').data('closable'); }
+		// });
+
+		// $('.dropdown.keep-open').on({
+
+		// 	"shown.bs.dropdown": function() {console.log($(this)); $(this).data('closable', false); },
+		// 	"click":             function() {console.log($(this)); $(this).data('closable', false);  },
+		// 	"hide.bs.dropdown":  function() {console.log($(this)); return $(this).data('closable'); }
+		// });
+
+
 
 
 
@@ -223,38 +239,38 @@ var Manage = {
 
 		});
 
-	},
-	addPlaylist: function(){
-		$("#btn-new-playlist").bind("click", function(e){
+},
+addPlaylist: function(){
+	$("#btn-new-playlist").bind("click", function(e){
 			// console.log(e);
 			$('[href="#playlists-container"]').trigger('click');
 			$("#newPlaylist").show().find(':input').focus().select();
 		})
 
-		$("#btn-cancel-new-playlist").on('click',function(e) {
-			$("#input-new-playlist").val("Playlist Name")
-			$("#newPlaylist").hide()
-		});
+	$("#btn-cancel-new-playlist").on('click',function(e) {
+		$("#input-new-playlist").val("Playlist Name")
+		$("#newPlaylist").hide()
+	});
 
-		$("#btn-save-new-playlist").on('click',function(e) {
-			$("#newPlaylist")
-			.find("button, input").hide()
-			.end()
-			.append($('<div> <i class="fa fa-spinner fa-spin"></i> Creating Playlist </div>'))
+	$("#btn-save-new-playlist").on('click',function(e) {
+		$("#newPlaylist")
+		.find("button, input").hide()
+		.end()
+		.append($('<div> <i class="fa fa-spinner fa-spin"></i> Creating Playlist </div>'))
 
 
-			var currentCollectionId = $("#current-collection").data("current-collection-id");
-			$.ajax({
-				type: "POST",
-				url:"manage/playlist/add",
-				data: {
-					name: $("#input-new-playlist").val(),
-					collection: currentCollectionId
-				},
-				dataType: "json"
-			}).done(function(data) {
+		var currentCollectionId = $("#current-collection").data("current-collection-id");
+		$.ajax({
+			type: "POST",
+			url:"manage/playlist/add",
+			data: {
+				name: $("#input-new-playlist").val(),
+				collection: currentCollectionId
+			},
+			dataType: "json"
+		}).done(function(data) {
 
-				Manage.getCollection(currentCollectionId);
+			Manage.getCollection(currentCollectionId);
 			// $.ajax({
 			// 	url: "/manage/playlists/"+currentCollectionId+"/"+data.id
 			// }).done(function(result){
@@ -276,9 +292,9 @@ var Manage = {
 
 
 
-		});
+	});
 
-		})
+	})
 
 
 },

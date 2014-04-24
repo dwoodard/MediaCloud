@@ -664,3 +664,40 @@ height: 400px
 		/*padding: 2px 0px*/
 	}
 
+/*context-menu*/
+
+
+
+
+
+#context-menu ul{
+margin: 0;
+padding: 0;
+}
+#context-menu ul li{
+margin: 0;
+padding: 2px 15px 0px;
+}
+
+#context-menu ul li:hover{
+background: rgba(0,0,0,.15);
+}
+
+.slide-submenu > a:after {
+display: block;
+content: " ";
+float: right;
+width: 0;
+height: 0;
+border-color: transparent;
+border-style: solid;
+border-width: 5px 0 5px 5px;
+border-left-color: #252526;
+margin-top: 7px;
+margin-right: -7px;
+}
+
+
+
+
+/*/context-menu*/

@@ -15,6 +15,7 @@
 
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
 			<button class="share btn btn-primary">Share ...</button>
+			<!-- ContextMenu -->
 			<button class="btn context-menu-btn"> <i class="fa fa-ellipsis-h " data-type="collection"></i> </button>
 		</div>
 
@@ -86,6 +87,7 @@
 								</td>
 
 								<td>
+									<!-- ContextMenu -->
 									<a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a>
 								</td>
 							</tr>
