@@ -614,11 +614,11 @@ height: 400px
 		padding: 5px 0 0 10px;
 		background: lightgreen;
 		outline: 2px dashed #333;
-		-webkit-transition: all .25s ease-in;
-		-moz-transition: all .25s ease-in;
-		-ms-transition: all .25s ease-in;
-		-o-transition: all .25s ease-in;
-		transition: all .25s ease-in;
+		-webkit-transition: all .15s ease-in;
+		-moz-transition: all .15s ease-in;
+		-ms-transition: all .15s ease-in;
+		-o-transition: all .15s ease-in;
+		transition: all .15s ease-in;
 	}
 	.drag-to-hover{
 		padding: 20px;
@@ -664,105 +664,3 @@ height: 400px
 		/*padding: 2px 0px*/
 	}
 
-	/*context-menu*/
-	.popup-area{}
-	#context-actions-container{
-		background: #333;
-	}
-	#share-container{
-		background: #333;
-	}
-
-	.context-menu-btn{}
-	.context-menu{
-		display: none;
-		width: 220px;
-		border: 1px solid #ccc;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.context-menu .wrapper{
-
-		/*left: 0px;*/
-		position: relative;
-	}
-	.context-menu header {
-		color: #888;
-		padding: 10px
-	}
-
-	.context-menu ul{
-		background: #e1e1e1;
-		padding: 0;
-		margin: 0;
-	}
-	.context-menu ul li{
-		padding:0;
-		padding: 2px 5px;
-	}
-	.context-menu ul li:hover{
-		background: #eee;
-	}
-	.context-menu ul li a{
-		padding: 2px 0px;
-		display: block;
-		color: #333;
-		text-decoration: none;
-
-
-	}
-
-
-	.context-menu .collection,
-	.context-menu .playlist,
-	.context-menu .asset
-	{
-		position: absolute;
-		top: 0;
-		left: 220px;
-		width: 220px;
-	}
-	.context-menu .collection,
-	.context-menu .playlist,
-	.context-menu .asset
-	{
-		left: 220px;
-	}
-
-	.context-menu.open{
-		display: block
-	}
-
-	.context-menu .dropdown-submenu > a:after {
-		display: block;
-		content: " ";
-		float: right;
-		width: 0;
-		height: 0;
-		border-color: transparent;
-		border-style: solid;
-		border-width: 5px 0 5px 5px;
-		border-left-color: #252526;
-		margin-top: 7px;
-		margin-right: 10px;
-	}
-
-	.context-menu .dropdown-submenu:hover > a:after {
-		display: block;
-		content: " ";
-		float: right;
-		width: 0;
-		height: 0;
-		border-color: transparent;
-		border-style: solid;
-		border-width: 5px 0 5px 5px;
-		border-left-color: #666;
-		margin-top: 7px;
-		margin-right: 10px;
-	}
-
-
-
-
-/*/context-menu*/

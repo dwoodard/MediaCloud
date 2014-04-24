@@ -68,7 +68,7 @@
 											<div class="form-group">
 												<label class="col-md-4 control-label"></label>
 												<div class="col-md-4">
-												<button type="submit" class="btn btn-success">I Agree</button>
+													<button type="submit" class="btn btn-success">I Agree</button>
 												</div>
 											</div>
 
@@ -121,7 +121,7 @@
 							@foreach ($unassignedAssets as $asset)
 							<li data-asset-id="{{$asset->id}}">
 								<a class="draggable-asset" href="#" >
-									<i class="fa fa-ellipsis-v "></i>
+
 									<span class="label label-sm label-icon label-success">
 										@if ($asset->type === 'video')
 										<i class="fa fa-video-camera"></i>
@@ -137,8 +137,11 @@
 									</span>
 								</a>
 								<div class="pull-right">
-									<a href="#" class="asset-player-btn"><i class="fa fa-play-circle"></i></a>
-									<a href="#" class=""><i class="fa fa-ellipsis-h"></i></a>
+									@if($asset->status == "transcoded:complete")
+									<a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a>
+									@else
+									<i class="fa fa-clock-o spin"></i>
+									@endif
 								</div>
 
 

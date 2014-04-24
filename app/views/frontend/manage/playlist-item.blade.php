@@ -18,12 +18,13 @@
 				<div class="assets row">
 					<div class="col-sm-9">
 						<h2><a href="#" class="editable" data-name="name" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">{{$playlist['name']}}</a></h2>
-						@if(isset($playlist['description']))
-						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">{{$playlist['description']}}</a></p>
-						@else
-						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">Add Description</a></p>
-						@endif
-
+						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">
+							@if(isset($playlist['description']))
+							{{$playlist['description']}}
+							@else
+							Add Description
+							@endif
+						</a></p>
 						<div class="col-sm-9 ">
 							<table id="cp-{{$collection['id']}}-{{$playlist['id']}}" class="table table-striped">
 								<thead>
@@ -37,15 +38,28 @@
 								<tbody class="sortable">
 									@foreach ($playlist['assets'] as $key => $asset)
 									<tr id="cpa-{{$collection['id']}}-{{$playlist['id']}}-{{$asset['id']}}" data-asset-id="{{$asset['id']}}">
-										<td width="7px"><a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a></td>
+										<td width="7px">
+											@if($asset['status'] == "transcoded:complete")
+											<a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a>
+											@else
+											<i class="fa fa-clock-o fa-spin"></i>
+											@endif
+										</td>
 										<td><a href="#" class="editable" data-name="title" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset['title']}}</a></td>
-										@if(isset($asset->description))
 
-										<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset['description']}}</a></td>
-										@else
-										<td><a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">Add Description</a></td>
-										@endif
-										<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a> </td>
+										<td>
+											<a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">
+												@if(isset($asset->description))
+												{{$asset['description']}}
+												@else
+												Add Description
+												@endif
+
+											</a>
+										</td>
+
+										<td> <a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border"></i></a> </td>
+
 									</tr>
 									@endforeach
 								</tbody>

@@ -72,12 +72,12 @@
 
 
 <!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Launch demo modal
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ --><!-- Modal -->
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,7 +94,7 @@
     </div>
   </div>
 </div>
-
+ -->
 
 <!-- <menu id="context-menu-collection" type="context" style="display:none" class="showcase">
 	
