@@ -14,7 +14,7 @@
 
 
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
-			<button class="share btn btn-primary">Share ...</button>
+			<button class="share btn btn-primary">Share Collection ...</button>
 			<!-- ContextMenu -->
 			<button class="btn context-menu-btn"> <i class="fa fa-ellipsis-h " data-type="collection"></i> </button>
 		</div>
@@ -87,8 +87,21 @@
 								</td>
 
 								<td>
-									<!-- ContextMenu -->
-									<a href="#" class="context-menu" data-type="asset"><i class="fa fa-ellipsis-h fa-border pull-right"></i></a>
+
+									<div class="context-menu-container dropdown keep-open pull-right">
+
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-ellipsis-h"></i>
+										</button>
+										<ul class="dropdown-menu">
+											<li>
+												@include('frontend.manage.context-menu')
+											</li>
+										</ul>
+
+									</div>
+
+
 								</td>
 							</tr>
 							@endforeach
