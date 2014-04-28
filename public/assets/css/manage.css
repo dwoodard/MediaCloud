@@ -6,7 +6,7 @@ html,body{
 
 
 #collection-view{}
-#collection-view header{
+#current-collection>header{
 	position: relative;
 	background: #404040;
 	height: 160px;
@@ -575,15 +575,11 @@ height: 400px
 	/* iPads (landscape) ----------- */
 	@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
 		/* Styles */
-		#collection-view header{
-			background: grey;
-			height: 90px
+		#current-collection>header{
+			height: 150px
 		}
 
-		#collection-view header .share{
-			position: absolute;
-			bottom: 10px;
-			left: 10px;
+		#current-collection>header .share{
 		}
 
 	}
@@ -668,22 +664,40 @@ height: 400px
 
 
 
-
-
-#context-menu ul{
+.context-menu-container{}
+.context-menu-container ul.dropdown-menu{
 margin: 0;
 padding: 0;
 }
-#context-menu ul li{
+.context-menu{
+height: 200px
+}
+
+.context-menu ul{
+margin: 0;
+padding: 0;
+}
+.context-menu ul li{
 margin: 0;
 padding: 2px 15px 0px;
 }
 
-#context-menu ul li:hover{
+.context-menu ul li:hover{
 background: rgba(0,0,0,.15);
 }
 
-.slide-submenu > a:after {
+.context-menu .item .back{}
+
+.context-menu .item>header{
+background: #333;
+padding: 10px;
+height: 40px;
+}
+.context-menu .item header a.back{
+cursor: pointer;
+}
+
+.context-menu .slide-submenu > a:after {
 display: block;
 content: " ";
 float: right;

@@ -5,20 +5,20 @@
 <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
  -->
 
+<?php // $key=1; ?>
 
-<div id="context-menu" class="carousel slide bs-docs-carousel-example">
+<div id="context-menu-{{$key}}" class="context-menu carousel slide">
 	<div class="carousel-inner">
 		<div class="item active">
 			<ul id="menu-collection">
 				<li><a href="#" id="share">Share...</a></li>
 				<li><a href="#" id="play">Play</a></li>
 				<li class="slide-submenu">
-					<a href="#" id="rename" data-target="#context-menu" data-slide-to="2"> Rename </a>
+					<a href="#" id="rename" data-target="#context-menu-{{$key}}" data-slide-to="2"> Rename </a>
 				</li>
 				<li class="slide-submenu">
-					<a data-target="#context-menu" data-slide-to="1">
-						<span id="collection-label">Add to...</span>
-						<span id="collection-check"></span>
+					<a href="#" id="add-to" data-target="#context-menu-{{$key}}" data-slide-to="1">
+						Add to...
 					</a>
 				</li>
 				<li><a href="#" id="publish">Make public</a></li>
@@ -28,34 +28,21 @@
 		</div>
 
 		<div class="item">
-			<div class="playlist">
-				<a data-target="#context-menu" data-slide-to="0">Back</a>
-				<div>Add to...</div>
-			</div>
+			<header>
+				<a class="back" data-target="#context-menu-{{$key}}" data-slide-to="0"> <i class="fa fa-arrow-circle-o-left"></i> Back</a>
+			</header>
+
+			<div>Add to...</div>
+
 		</div>
 
 		<div class="item">
-			<a data-target="#context-menu" data-slide-to="0">Back</a>
+			<header>
+				<a class="back" data-target="#context-menu-{{$key}}" data-slide-to="0"> <i class="fa fa-arrow-circle-o-left"></i> Back</a>
+			</header>
+
 			<div>Rename</div>
 		</div>
 
 	</div>
 </div>
-
-<!--
-<script>
-
-$('.carousel').carousel({
-  interval: 2000
-})
-
-$('#myCarousel').on('slide.bs.carousel', function () {
-  console.log('slide.bs.carousel')
-})
-$('#myCarousel').on('slid.bs.carousel', function () {
-  console.log('slid.bs.carousel')
-})
-
-
-</script>
- -->

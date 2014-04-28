@@ -62,8 +62,6 @@
 <script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
-<script src="/bower/jQuery-contextMenu/src/jquery.contextMenu.js"></script>
-<script src="/bower/jQuery-contextMenu/src/jquery.ui.position.js"></script>
 
 
 <script type="text/javascript">
@@ -78,6 +76,5 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/dropzone.css" rel="stylesheet" type="text/css"/>
 <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
-<link href="/bower/jQuery-contextMenu/src/jquery.contextMenu.css" rel="stylesheet">
 
 @stop
