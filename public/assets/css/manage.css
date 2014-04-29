@@ -3,7 +3,9 @@ html,body{
 	height: 100%;
 }
 
-
+#logo-brand{
+	width:45%;
+}
 
 #collection-view{}
 #current-collection>header{

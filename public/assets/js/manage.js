@@ -415,7 +415,7 @@ textEdit: function(){
 },
 contextMenuInit: function() {
 
-	$('[id^="context-menu-"]').carousel('pause')
+	// $('[id^="context-menu-"]').carousel('pause')
 
 	$('.context-menu-container.dropdown.keep-open').on({
 
@@ -441,7 +441,7 @@ contextMenuInit: function() {
 	$('[id^="context-menu-"]').on('click', function(e) {
 		var assetId = $(e.currentTarget).closest('[data-asset-id]').data('asset-id');
 		console.log(assetId);
-		
+
 		switch(e.toElement.id){
 			case "share":
 			break;

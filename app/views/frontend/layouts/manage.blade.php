@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 	<title>MediaCloud</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,8 @@
             <i class="fa fa-bars"></i>
         </button> -->
         <a class="navbar-brand navbar-brand-size" href="/">
-        	<img width="45%"src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
-        	<!-- <img width="50%"src="assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span> -->
+        	<img id="logo-brand" src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
+        	
         </a>
     </div>
 

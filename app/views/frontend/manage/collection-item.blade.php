@@ -72,68 +72,70 @@
 								@if($asset->status == "transcoded:complete")
 								<a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a>
 								@else
-								<i class="fa fa-clock-o fa-spin">
+								<i class="fa fa-clock-o fa-spin"></i>
+								@endif
+							</td>
+							<td><a href="#" class="editable" data-name="title" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset->title}}</a></td>
+							<td>
+								<a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">
+									@if(isset($asset->description))
+									{{$asset->description}}
+									@else
+									Add Description
 									@endif
-								</td>
-								<td><a href="#" class="editable" data-name="title" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">{{$asset->title}}</a></td>
-								<td>
-									<a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">
-										@if(isset($asset->description))
-										{{$asset->description}}
-										@else
-										Add Description
-										@endif
-									</a>
-								</td>
+								</a>
+							</td>
 
-								<td>
+							<td>
 
-									<div class="context-menu-container dropdown keep-open pull-right">
+								<!--  ContextMenu -->
+								<div class="context-menu-container dropdown keep-open pull-right">
 
-										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-ellipsis-h"></i>
-										</button>
-										<ul class="dropdown-menu">
-											<li>
-												@include('frontend.manage.context-menu')
-											</li>
-										</ul>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-ellipsis-h"></i>
+									</button>
+									<ul class="dropdown-menu">
+										<li>
+											@include('frontend.manage.context-menu')
+										</li>
+									</ul>
 
-									</div>
+								</div>
+								<!-- / ContextMenu -->
 
 
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-
-				@else
-
-				<div class="col-md-9">
-					<table id="cp-{{$collection->id}}-0" class="table table-striped">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Title</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody class="sortable">
-						</tbody>
-					</table>
-				</div>
-
-				@endif
-
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 
-			<div class="tab-pane" id="settings-container">Settings</div>
+			@else
 
-			<div class="tab-pane" id="deployments-container">Deployments</div>
+			<div class="col-md-9">
+				<table id="cp-{{$collection->id}}-0" class="table table-striped">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Title</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody class="sortable">
+					</tbody>
+				</table>
+			</div>
+
+			@endif
 
 		</div>
 
+		<div class="tab-pane" id="settings-container">Settings</div>
+
+		<div class="tab-pane" id="deployments-container">Deployments</div>
+
 	</div>
+
+</div>
 
