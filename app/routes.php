@@ -12,22 +12,8 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 
-Route::get('/test', function(){
+Route::get('/test/{id}', function($id){
 
-for ($i=0; $i < 10; $i++) { 
-	  
-	 var_dump(uniqid());
-		
-}
-
-
-	// $collection = Collection::find($id);
-
-	// return $collection;
-	// $assets = Asset::find($id);
-	// return $collection->assets()->get();
-	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
-	// return $users = DB::table('asset_playlist')->where('playlist_id', 1)->get();
 
 
 });

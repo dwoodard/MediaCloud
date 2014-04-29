@@ -695,6 +695,9 @@ padding: 2px 15px 0px;
 .context-menu ul li:hover{
 background: rgba(0,0,0,.15);
 }
+.context-menu ul li a{
+display: block;
+}
 
 .context-menu .item .back{}
 

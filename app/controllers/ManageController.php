@@ -216,6 +216,34 @@ class ManageController extends PermissionsController {
 	public function collection_delete($id){
 
 		$collection = Collection::find($id);
+
+		/*Detach  Playlist with Assets*/
+		$playlists = $collection->playlists->lists('id');
+		foreach ($playlists as $key => $id) {
+
+			$playlist = Playlist::find($id);
+			$assets = $playlist->assets->lists('id');
+			foreach ($assets as $assetId) {
+				$playlist->assets()->detach($assetId);
+			}
+
+			$collection->playlists()->detach($id);
+		}
+
+		/*Detach  Assets*/
+		$assets = $collection->assets->lists('id');
+		foreach ($assets as $key => $id) {
+			$collection->assets()->detach($id);
+		}
+
+		/*Detach User*/
+		$users = $collection->users->lists('id');
+		foreach ($users as $key => $id) {
+			$collection->users()->detach($id);
+		}
+
+
+
 		if ($collection->delete()) {
 			return array('result' => 'deleted');
 		}
@@ -225,8 +253,13 @@ class ManageController extends PermissionsController {
 
 	//manage/playlist/delete
 	public function playlist_delete($id){
+		$playlist = Playlist::find($id);
+		$assets = $playlist->assets->lists('id');
 
-		$playlist = new Playlist;
+		foreach ($assets as $assetId) {
+			$playlist->assets()->detach($assetId);
+		}
+
 		if ($playlist->delete()) {
 			return array('result' => 'deleted');
 		}
@@ -235,13 +268,70 @@ class ManageController extends PermissionsController {
 		return $playlist;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//manage/asset/delete
 	public function asset_delete($id){
-		$asset = Asset::find(Input::get('asset_id'));
-		$asset->delete();
+		$asset = Asset::find($id);
+
+		/*Detach  Playlist with Assets*/
+		$playlists = $asset->playlists->lists('id');
+		foreach ($playlists as $key => $id) {
+
+			$playlist = Playlist::find($id);
+			$assets = $playlist->assets->lists('id');
+			foreach ($assets as $assetId) {
+				$playlist->assets()->detach($assetId);
+			}
+
+			$asset->playlists()->detach($id);
+		}
+
+		/*Detach Collection with Assets*/
+		$collection = $asset->collections->lists('id');
+		foreach ($collection as $key => $id) {
+			$asset->collections()->detach($id);
+		}
+
+
+		// $asset->playlist->detach($id);
+		// if ($asset->delete()) {
+		// 	return array('result' => 'deleted');
+		// }
 
 		return $asset;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -250,16 +340,16 @@ class ManageController extends PermissionsController {
 
 		switch (Input::get('type')) {
 			case 'collection':
-				$result = DB::table('asset_playlist')
-				->where('playlist_id', Input::get('collection_id'))
-				->where('asset_id', Input::get('asset_id'))
-				->update(array('asset_order' => Input::get('asset_order')));
+			$result = DB::table('asset_playlist')
+			->where('playlist_id', Input::get('collection_id'))
+			->where('asset_id', Input::get('asset_id'))
+			->update(array('asset_order' => Input::get('asset_order')));
 			break;
 			case 'playlist':
-				$result = DB::table('asset_playlist')
-				->where('playlist_id', Input::get('playlist_id'))
-				->where('asset_id', Input::get('asset_id'))
-				->update(array('asset_order' => Input::get('asset_order')));
+			$result = DB::table('asset_playlist')
+			->where('playlist_id', Input::get('playlist_id'))
+			->where('asset_id', Input::get('asset_id'))
+			->update(array('asset_order' => Input::get('asset_order')));
 			break;
 
 			default:
