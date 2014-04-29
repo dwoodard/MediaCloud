@@ -1,11 +1,11 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="/assets/css/manage.css" rel="stylesheet">
 <script src="/bower/jquery/dist/jquery.min.js"></script>
 <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+ -->
 
-
-<?php  $key=1; ?>
+<?php  //$key=1; ?>
 
 <div id="context-menu-{{$key}}" class="context-menu carousel slide">
 	<div class="carousel-inner">

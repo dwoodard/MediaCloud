@@ -49,7 +49,7 @@
 
 										<td>
 											<a href="#" class="editable" data-name="description" data-editable-data="asset-{{$asset['id']}}" data-editable-type="text">
-												@if(isset($asset->description))
+												@if(isset($asset['description']))
 												{{$asset['description']}}
 												@else
 												Add Description
