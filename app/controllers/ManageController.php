@@ -284,20 +284,9 @@ class ManageController extends PermissionsController {
 				$playlist->assets()->detach($assetId);
 			}
 
-			
+
 		}
 
-		/*Detach Collection with Assets*/
-		// $collection = $asset->collections->lists('id');
-		// foreach ($collection as $key => $id) {
-		// 	$asset->collections()->detach($id);
-		// }
-
-
-		// $asset->playlist->detach($id);
-		// if ($asset->delete()) {
-		// 	return array('result' => 'deleted');
-		// }
 
 		return $asset;
 	}

@@ -708,7 +708,7 @@ height: 400px
 		padding: 0;
 	}
 	.context-menu{
-		height: 200px
+		height: 250px
 	}
 
 	.context-menu ul{
@@ -728,6 +728,9 @@ height: 400px
 	}
 
 	.context-menu .item .back{}
+	.context-menu .item div{
+		padding: 10px
+	}
 
 	.context-menu .item>header{
 		background: #333;

@@ -25,7 +25,9 @@
 				</li>
 				<li><a href="#" id="publish">Make public</a></li>
 				<li><a href="#" id="copy-url">Copy URL<span></span></a></li>
-				<li><a href="#" id="delete-item">Delete<span class="delete-check"></span></a></li>
+				<li class="slide-submenu">
+					<a href="#" data-target="#context-menu-{{$key}}" data-slide-to="4">Remove...</a>
+				</li>
 			</ul>
 		</div>
 
@@ -52,6 +54,19 @@
 			</header>
 
 			<div>Share</div>
+		</div>
+
+		<div class="item">
+			<header>
+				<a class="back" data-target="#context-menu-{{$key}}" data-slide-to="0"> <i class="fa fa-arrow-circle-o-left"></i> Back</a>
+			</header>
+
+			<div>
+				<p>This will not delete the file(s) completely, but assets will be removed from collections or playlist</p>
+				<p>
+					<a href="#" id="delete-item" class="btn btn-default"> <i class="fa fa-trash-o"></i> Remove<span class="delete-check"></span></a>
+				</p>
+			</div>
 		</div>
 
 	</div>

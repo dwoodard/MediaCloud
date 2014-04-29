@@ -456,13 +456,13 @@ var Manage = {
 			case "copy-url":
 				break;
 			case "delete-item":
-				Manage.deleteItem(type, typeId);
+				Manage.deleteItem(type, typeId, e.toElement );
 				break;
 			}
 		})
 	},
 
-	deleteItem: function (type, id) {
+	deleteItem: function (type, id, elm) {
 
 		console.log('delete ' + type + ' start');
 
@@ -473,7 +473,12 @@ var Manage = {
 		})
 			.done(function (data) {
 				console.log(data);
-				
+				switch(type){
+					case "playlist_asset":
+						console.log(type, id, $(elm));
+						$(elm).closest('tr').remove();
+					break;
+				}
 				// location.reload();
 			});
 	}
