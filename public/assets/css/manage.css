@@ -48,6 +48,14 @@ html,body{
 	margin-left: 30px;
 }
 
+#playlist-toolbar{
+
+}
+
+.playlist-description-container{
+	margin-bottom: 15px;
+}
+
 #header_notification_bar{
 	z-index: 9999
 }

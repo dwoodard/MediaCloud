@@ -440,7 +440,9 @@ contextMenuInit: function() {
 
 	$('[id^="context-menu-"]').on('click', function(e) {
 		var assetId = $(e.currentTarget).closest('[data-asset-id]').data('asset-id');
-		console.log(assetId);
+		console.log('context-menu', $(e.toElement).closest('[data-context-data]').data('context-data'), assetId);
+
+
 
 		switch(e.toElement.id){
 			case "share":

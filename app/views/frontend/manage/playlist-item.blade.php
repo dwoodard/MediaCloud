@@ -18,13 +18,34 @@
 				<div class="assets row">
 					<div class="col-sm-9">
 						<h2><a href="#" class="editable" data-name="name" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">{{$playlist['name']}}</a></h2>
-						<p><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">
+						<div class="playlist-description-container"><a href="#" class="editable" data-name="description" data-editable-data="playlist-{{$playlist['id']}}" data-editable-type="text">
 							@if(isset($playlist['description']))
 							{{$playlist['description']}}
 							@else
 							Add Description
 							@endif
-						</a></p>
+						</a></div>
+
+						<div id="playlist-toolbar"  role="toolbar">
+							<div class="btn-group ">
+								<button class="share btn btn-primary">Share Playlist ...</button>
+								<!-- ContextMenu -->
+								<div class="context-menu-container dropdown keep-open pull-right">
+
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-ellipsis-h"></i>
+									</button>
+									<ul class="dropdown-menu">
+										<li data-context-data="playlist-{{$playlist['id']}}">
+											@include('frontend.manage.context-menu')
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- / ContextMenu -->
+						</div>
+
+
 						<div class="col-sm-9 ">
 							<table id="cp-{{$collection['id']}}-{{$playlist['id']}}" class="table table-striped">
 								<thead>
@@ -66,7 +87,7 @@
 													<i class="fa fa-ellipsis-h"></i>
 												</button>
 												<ul class="dropdown-menu">
-													<li>
+													<li data-context-data="asset-{{$asset['id']}}">
 														@include('frontend.manage.context-menu')
 													</li>
 												</ul>

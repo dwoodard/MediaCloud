@@ -5,8 +5,8 @@
 <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
  -->
 
-<?php  //$key=1; ?>
-
+<?php $key=uniqid(); ?>
+	
 <div id="context-menu-{{$key}}" class="context-menu carousel slide">
 	<div class="carousel-inner">
 		<div class="item active">

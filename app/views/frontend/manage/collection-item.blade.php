@@ -16,7 +16,19 @@
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
 			<button class="share btn btn-primary">Share Collection ...</button>
 			<!-- ContextMenu -->
-			<button class="btn context-menu-btn"> <i class="fa fa-ellipsis-h " data-type="collection"></i> </button>
+			<div class="context-menu-container dropdown keep-open pull-right">
+
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-ellipsis-h"></i>
+				</button>
+				<ul class="dropdown-menu">
+					<li data-context-data="collection-{{$collection['id']}}">
+						@include('frontend.manage.context-menu')
+					</li>
+				</ul>
+
+			</div>
+			<!-- / ContextMenu -->
 		</div>
 
 
