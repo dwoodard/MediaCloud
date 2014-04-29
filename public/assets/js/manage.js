@@ -12,7 +12,7 @@ var Manage = {
 		this.textEdit();
 		this.getCollection(collectionId);
 		this.deleteCollection();
-
+		this.tagAsset();
 
 		this.getCollection(collectionId)
 		this.contextMenuInit()
@@ -295,6 +295,7 @@ getAssetPlayer:function(id) {
 		$("#asset-player").html(data);
 		$("#asset-view").addClass("cbp-spmenu-open")
 
+		.Manage.tagAsset();
 	});
 
 },
@@ -480,6 +481,10 @@ deleteCollection: function(id) {
 	});
 },
 
+tagAsset: function(id) {
+
+$("#myTags").tagit("createTag", "brand-new-tag");
+}
 
 
 }

@@ -1,9 +1,11 @@
 {
   "name": "app-folders",
   "_cacheHeaders": {
+    "ETag": "\"670b1d6a58c659827222ef275685a5ae7a8632e5\"",
     "Content-Length": "8317",
-    "Content-Type": "text/plain"
+    "Content-Type": "text/plain; charset=utf-8"
   },
+  "_release": "e-tag:670b1d6a5",
   "main": "index.js",
   "_source": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
   "_target": "*",

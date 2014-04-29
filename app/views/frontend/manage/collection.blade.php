@@ -38,7 +38,16 @@
 	<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i>
 		<h3>Player / Assets</h3>
 	</div>
-	<div id="asset-player"></div>
+	<div id="asset-player">
+		<div class="asset-editor">
+		  <input type="text" class="form-control"> 
+		  <ul id="myTags">
+		  	<li>Tag 1</li>
+		  	<li>Tag 2</li>
+		  	<li>Tag 3</li>
+		  </ul>
+		</div>
+	</div>
 </nav>
 
 <nav id="browse-view" class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom">
@@ -53,6 +62,13 @@
 <div id="collection-view"></div>
 
 <!-- /app -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#myTags").tagit();
+    });
+</script>
+
+
 
 @stop
 

@@ -1,9 +1,11 @@
 {
-  "name": "hammer.min.js",
+  "name": "hammer.js",
   "_cacheHeaders": {
-    "Content-Length": "14002",
+    "ETag": "\"32a076f2c23e40b4730fbfb74d2f3009eec9528d\"",
+    "Content-Length": "13745",
     "Content-Type": "text/plain; charset=utf-8"
   },
+  "_release": "e-tag:32a076f2c",
   "main": "index.js",
   "_source": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
   "_target": "*",

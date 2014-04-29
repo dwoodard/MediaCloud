@@ -1,9 +1,11 @@
 {
   "name": "jquery.hammer.js",
   "_cacheHeaders": {
+    "ETag": "\"e19c78e9d65bcb00c9bbb5a8fb739946f748da24\"",
     "Content-Length": "1134",
     "Content-Type": "text/plain; charset=utf-8"
   },
+  "_release": "e-tag:e19c78e9d",
   "main": "index.js",
   "_source": "https://raw.githubusercontent.com/EightMedia/jquery.hammer.js/1.0.6/jquery.hammer.min.js",
   "_target": "*",
