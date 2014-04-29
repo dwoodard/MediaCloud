@@ -270,7 +270,37 @@ class ManageController extends PermissionsController {
 
 
 
+	//manage/asset/delete
+	public function playlist_asset_delete($id){
+		$asset = Asset::find($id);
 
+		/*Detach  Playlist with Assets*/
+		$playlists = $asset->playlists->lists('id');
+		foreach ($playlists as $key => $id) {
+
+			$playlist = Playlist::find($id);
+			$assets = $playlist->assets->lists('id');
+			foreach ($assets as $assetId) {
+				$playlist->assets()->detach($assetId);
+			}
+
+			
+		}
+
+		/*Detach Collection with Assets*/
+		// $collection = $asset->collections->lists('id');
+		// foreach ($collection as $key => $id) {
+		// 	$asset->collections()->detach($id);
+		// }
+
+
+		// $asset->playlist->detach($id);
+		// if ($asset->delete()) {
+		// 	return array('result' => 'deleted');
+		// }
+
+		return $asset;
+	}
 
 
 
@@ -288,18 +318,18 @@ class ManageController extends PermissionsController {
 	public function asset_delete($id){
 		$asset = Asset::find($id);
 
-		/*Detach  Playlist with Assets*/
-		$playlists = $asset->playlists->lists('id');
-		foreach ($playlists as $key => $id) {
+		// /*Detach  Playlist with Assets*/
+		// $playlists = $asset->playlists->lists('id');
+		// foreach ($playlists as $key => $id) {
 
-			$playlist = Playlist::find($id);
-			$assets = $playlist->assets->lists('id');
-			foreach ($assets as $assetId) {
-				$playlist->assets()->detach($assetId);
-			}
+		// 	$playlist = Playlist::find($id);
+		// 	$assets = $playlist->assets->lists('id');
+		// 	foreach ($assets as $assetId) {
+		// 		$playlist->assets()->detach($assetId);
+		// 	}
 
-			$asset->playlists()->detach($id);
-		}
+		// 	$asset->playlists()->detach($id);
+		// }
 
 		/*Detach Collection with Assets*/
 		$collection = $asset->collections->lists('id');
