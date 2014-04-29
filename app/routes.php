@@ -12,8 +12,13 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 
-Route::get('/test/{id}', function($id){
+Route::get('/test', function(){
 
+	$tag = new Tag;
+	$tag->name = 'myAwesomeTag';
+	$tag->save();
+
+	$tag->assets()->attach(1);
 
 
 });

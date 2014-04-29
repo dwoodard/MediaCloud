@@ -122,12 +122,15 @@ height: 400px
 }*/
 
 
-#asset-view{
-	width: 300px;
-}
+
 
 #asset-player{
 	height: 135px;
+}
+#asset-toolbar{
+	height: 25px;
+	background: #333;
+	
 }
 
 .asset-player-btn{
@@ -148,6 +151,19 @@ height: 400px
 	/*height: 600px;*/
 	/*overflow-y: scroll;*/
 }
+
+
+#asset-editor{}
+#asset-editor h4{}
+#asset-editor h4 a{
+	color:#afdefa;
+}
+
+#asset-editor .panel-default>.panel-heading{
+	background: #0d77b6;
+}
+
+
 
 /***************  App Folder ******************/
 .jaf-container{
@@ -426,10 +442,7 @@ height: 400px
 }
 
 .cbp-spmenu a{
-	display: block;
-	color: #fff;
-	font-size: 1.1em;
-	font-weight: 300;
+	
 }
 
 .cbp-spmenu .browse-assets-container a{
@@ -445,19 +458,34 @@ height: 400px
 	}
 
 	/* Orientation-dependent styles for the content of the menu */
-
-	.cbp-spmenu-vertical{
+	
+	#collections-list{
 		width: 240px;
+	}
+
+	#asset-view{
+		width: 300px;
+	}
+
+	#collections-list,
+	#asset-view{
 		height: 100%;
 		top: 101px;
 		z-index: 1;
 	}
+	
 
+	#collections-list a{
+		display: block;
+		color: #fff;
+		font-size: 1.1em;
+		font-weight: 300;
 
-	.cbp-spmenu-vertical a{
 		border-bottom: 1px solid #258ecd;
 		padding: 1em;
 	}
+
+	
 
 	.cbp-spmenu-horizontal{
 		width: 100%;
@@ -670,59 +698,59 @@ height: 400px
 		/*padding: 2px 0px*/
 	}
 
-/*context-menu*/
+	/*context-menu*/
 
 
 
-.context-menu-container{}
-.context-menu-container ul.dropdown-menu{
-margin: 0;
-padding: 0;
-}
-.context-menu{
-height: 200px
-}
+	.context-menu-container{}
+	.context-menu-container ul.dropdown-menu{
+		margin: 0;
+		padding: 0;
+	}
+	.context-menu{
+		height: 200px
+	}
 
-.context-menu ul{
-margin: 0;
-padding: 0;
-}
-.context-menu ul li{
-margin: 0;
-padding: 2px 15px 0px;
-}
+	.context-menu ul{
+		margin: 0;
+		padding: 0;
+	}
+	.context-menu ul li{
+		margin: 0;
+		padding: 2px 15px 0px;
+	}
 
-.context-menu ul li:hover{
-background: rgba(0,0,0,.15);
-}
-.context-menu ul li a{
-display: block;
-}
+	.context-menu ul li:hover{
+		background: rgba(0,0,0,.15);
+	}
+	.context-menu ul li a{
+		display: block;
+	}
 
-.context-menu .item .back{}
+	.context-menu .item .back{}
 
-.context-menu .item>header{
-background: #333;
-padding: 10px;
-height: 40px;
-}
-.context-menu .item header a.back{
-cursor: pointer;
-}
+	.context-menu .item>header{
+		background: #333;
+		padding: 10px;
+		height: 40px;
+	}
+	.context-menu .item header a.back{
+		cursor: pointer;
+	}
 
-.context-menu .slide-submenu > a:after {
-display: block;
-content: " ";
-float: right;
-width: 0;
-height: 0;
-border-color: transparent;
-border-style: solid;
-border-width: 5px 0 5px 5px;
-border-left-color: #252526;
-margin-top: 7px;
-margin-right: -7px;
-}
+	.context-menu .slide-submenu > a:after {
+		display: block;
+		content: " ";
+		float: right;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 5px 0 5px 5px;
+		border-left-color: #252526;
+		margin-top: 7px;
+		margin-right: -7px;
+	}
 
 
 

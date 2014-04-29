@@ -92,6 +92,11 @@ class Asset extends Eloquent implements AssetRepository {
 		return $this->belongsToMany('User');
 	}
 
+	public function tags()
+	{
+		return $this->belongsToMany('Tag');
+	}
+
 	public function playlists()
 	{
 		return $this->belongsToMany('Playlist');
