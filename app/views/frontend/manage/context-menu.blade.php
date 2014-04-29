@@ -25,7 +25,7 @@
 				</li>
 				<li><a href="#" id="publish">Make public</a></li>
 				<li><a href="#" id="copy-url">Copy URL<span></span></a></li>
-				<li><a href="#" id="delete-collection">Delete<span class="delete-check"></span></a></li>
+				<li><a href="#" id="delete-item">Delete<span class="delete-check"></span></a></li>
 			</ul>
 		</div>
 

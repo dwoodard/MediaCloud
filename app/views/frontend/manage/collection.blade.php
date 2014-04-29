@@ -62,11 +62,7 @@
 <div id="collection-view"></div>
 
 <!-- /app -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#myTags").tagit();
-    });
-</script>
+
 
 
 
@@ -75,6 +71,7 @@
 @section('scripts')
 <script src="/bower/app-folders/index.js"></script>
 <script src="/bower/angular/angular.js"></script>
+<script src="/bower/tag-it/js/tag-it.min.js"></script>
 <script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>

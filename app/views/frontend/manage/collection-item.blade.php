@@ -107,7 +107,7 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</button>
 									<ul class="dropdown-menu">
-										<li>
+										<li data-context-data="asset-{{$asset->id}}">
 											@include('frontend.manage.context-menu')
 										</li>
 									</ul>
