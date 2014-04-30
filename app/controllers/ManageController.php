@@ -271,22 +271,10 @@ class ManageController extends PermissionsController {
 
 
 	//manage/asset/delete
-	public function playlist_asset_delete($id){
-		$asset = Asset::find($id);
-
+	public function playlist_asset_delete($playlistId,$assetId){
 		/*Detach  Playlist with Assets*/
-		$playlists = $asset->playlists->lists('id');
-		foreach ($playlists as $key => $id) {
-
-			$playlist = Playlist::find($id);
-			$assets = $playlist->assets->lists('id');
-			foreach ($assets as $assetId) {
-				$playlist->assets()->detach($assetId);
-			}
-
-
-		}
-
+		$asset = Asset::find($assetId);
+		$playlists = $asset->playlists()->detach($playlistId);
 
 		return $asset;
 	}

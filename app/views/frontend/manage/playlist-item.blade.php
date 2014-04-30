@@ -29,7 +29,7 @@
 						<div id="playlist-toolbar"  role="toolbar">
 							<div class="btn-group ">
 								<button class="share btn btn-primary">Share Playlist ...</button>
-								<!-- ContextMenu -->
+								<!-- Playlist Settings ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
 
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -42,7 +42,7 @@
 									</ul>
 								</div>
 							</div>
-							<!-- / ContextMenu -->
+							<!-- / Playlist ContextMenu -->
 						</div>
 
 
@@ -80,14 +80,14 @@
 
 										<td>
 
-											<!-- ContextMenu -->
+											<!-- Playlist Assets ContextMenu -->
 											<div class="context-menu-container dropdown keep-open pull-right">
 
-												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+												<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 													<i class="fa fa-ellipsis-h"></i>
 												</button>
 												<ul class="dropdown-menu">
-													<li data-context-data="playlist_asset-{{$asset['id']}}">
+													<li data-context-data="playlist_asset-{{$playlist['id']}}_{{$asset['id']}}">
 														@include('frontend.manage.context-menu')
 													</li>
 												</ul>

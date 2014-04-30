@@ -237,7 +237,7 @@ Route::group(array( 'prefix' => 'manage'), function()
 
 	Route::delete('collection/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_delete'));
 	Route::delete('playlist/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_delete'));
-	Route::delete('playlist_asset/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_asset_delete'));
+	Route::delete('playlist_asset/delete/{playlistId}/{assetId}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_asset_delete'));
 	Route::delete('asset/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_delete'));
 });
 

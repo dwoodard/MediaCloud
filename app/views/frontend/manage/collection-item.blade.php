@@ -100,10 +100,10 @@
 
 							<td>
 
-								<!--  ContextMenu -->
+								<!-- Collection Assets ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
 
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 										<i class="fa fa-ellipsis-h"></i>
 									</button>
 									<ul class="dropdown-menu">
