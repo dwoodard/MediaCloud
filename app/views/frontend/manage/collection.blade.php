@@ -68,8 +68,7 @@
 					</h4>
 				</div>
 				<div id="tags-tab" class="panel-collapse collapse">
-					<div class="panel-body" id="myTags">
-					</div>
+					<ul class="panel-body" id="assetTags"> </ul>
 				</div>
 			</div>
 			<div class="panel panel-default">

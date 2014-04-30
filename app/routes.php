@@ -14,7 +14,8 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-
+$asset = Asset::find(1);
+return $asset->tags->lists('name');
 
 
 });
@@ -221,7 +222,9 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 
 	Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));
 
+	Route::get('tags/{id}', array('uses' => 'ManageController@tags'));
 	Route::post('tag/add', array('uses' => 'ManageController@tag_add'));
+	Route::delete('tag/delete/{playlistId}/{assetId}', array('uses' => 'ManageController@tag_delete'));
 
 	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));
