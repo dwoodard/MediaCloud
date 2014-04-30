@@ -22,7 +22,7 @@
 					<i class="fa fa-ellipsis-h"></i>
 				</button>
 				<ul class="dropdown-menu">
-					<li data-context-data="collection-{{$collection['id']}}">
+					<li>
 						@include('frontend.manage.context-menu')
 					</li>
 				</ul>
@@ -107,7 +107,7 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</button>
 									<ul class="dropdown-menu">
-										<li data-context-data="asset-{{$asset->id}}">
+										<li>
 											@include('frontend.manage.context-menu')
 										</li>
 									</ul>

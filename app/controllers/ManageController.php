@@ -31,12 +31,10 @@ class ManageController extends PermissionsController {
 		$data = array('unassignedAssets' => $unassignedAssets, 'user_collections' => $user->collections, 'collection' => $collection  );
 		// return $user->collections->toArray();
 		return View::make('frontend.manage.collection', $data);
-
 	}
 
 
-	public function collection($id = null)
-	{
+	public function collection($id = null){
 		if ($id == "null" || $id == null) {
 			return array();
 		}
@@ -68,8 +66,7 @@ class ManageController extends PermissionsController {
 		return View::make('frontend.manage.collection-item', $data);
 	}
 
-	public function playlist($collection_id = null, $playlist_id = null)
-	{
+	public function playlist($collection_id = null, $playlist_id = null){
 		$user =  User::find(Sentry::getUser()->id);
 
 		$collection = Collection::find($user->collections->find($collection_id)->id);
@@ -95,8 +92,7 @@ class ManageController extends PermissionsController {
 		return View::make('frontend.manage.playlist-item', $data);
 	}
 
-	public function browse($id = null)
-	{
+	public function browse($id = null){
 		$user = User::find($id);
 		$assets = array();
 		foreach ($user->assets as $key => $asset)
@@ -107,19 +103,14 @@ class ManageController extends PermissionsController {
 		$data = array('assets' => $assets );
 
 		return View::make('frontend.manage.browse-assets', $data);
-
-
 	}
 
-	public function context_menu($type=null)
-	{
+	public function context_menu($type=null){
 		$data = array('type' => $type);
 		return View::make('frontend.manage.context-menu',$data);
 	}
 
-
-	public function store()
-	{
+	public function store(){
 		// return array(Input::get("userId"), Input::file('file'));
 		// return Input::all();
 		try{
@@ -129,11 +120,6 @@ class ManageController extends PermissionsController {
 			return $e;
 		}
 	}
-
-
-
-
-
 
 	/*
 	*ADD
@@ -268,8 +254,6 @@ class ManageController extends PermissionsController {
 		return $playlist;
 	}
 
-
-
 	//manage/asset/delete
 	public function playlist_asset_delete($playlistId,$assetId){
 		/*Detach  Playlist with Assets*/
@@ -279,46 +263,15 @@ class ManageController extends PermissionsController {
 		return $asset;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
 	//manage/asset/delete
 	public function asset_delete($id){
 		$asset = Asset::find($id);
-
-		// /*Detach  Playlist with Assets*/
-		// $playlists = $asset->playlists->lists('id');
-		// foreach ($playlists as $key => $id) {
-
-		// 	$playlist = Playlist::find($id);
-		// 	$assets = $playlist->assets->lists('id');
-		// 	foreach ($assets as $assetId) {
-		// 		$playlist->assets()->detach($assetId);
-		// 	}
-
-		// 	$asset->playlists()->detach($id);
-		// }
 
 		/*Detach Collection with Assets*/
 		$collection = $asset->collections->lists('id');
 		foreach ($collection as $key => $id) {
 			$asset->collections()->detach($id);
 		}
-
-
-		// $asset->playlist->detach($id);
-		// if ($asset->delete()) {
-		// 	return array('result' => 'deleted');
-		// }
 
 		return $asset;
 	}
@@ -374,37 +327,5 @@ class ManageController extends PermissionsController {
 
 		return  Input::get('asset_order');
 	}
-
-
-
-
-	// //manage/cpa/add
-	// public function cpa_add($value='')
-	// {
-	// 	throw new Exception("Error Processing Request", 1);
-
-	// }
-
-	/**
-	*todo: I don't think this should be here?
-	*/
-	// public function newCollection()
-	// {
-	// 	$collection =  new Collection;
-
-	// 	// Update the  collection data
-	// 	$collection->name            = Input::get('name');
-	// 	$collection->description        = Input::get('description');
-
-	// 	// Was the  collection created?
-	// 	if($collection->save())
-	// 	{
-	// 		// Redirect to the new  collection page
-	// 		return Redirect::to("admin/collections")->with('success', Lang::get('admin/blogs/message.create.success'));
-	// 	}
-
-	// 	// Redirect to the  collection create page
-	// 	return Redirect::to('admin/collections')->with('error', Lang::get('Error Adding Collection'));
-	// }
 
 }

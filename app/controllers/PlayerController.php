@@ -7,23 +7,20 @@ class PlayerController extends BaseController {
 	 *
 	 * @return View
 	 */
-		public function single($id)
-		{
-			$asset = Asset::find($id);
-			return View::make('player.single')->with('asset', $asset);
-		}
+	public function single($id){
+		$asset = Asset::find($id);
+		return View::make('player.single')->with('asset', $asset);
+	}
 
-		public function playlist($id)
-		{
-			$playlist = Asset::find($id);
-			return View::make('player.single')->with('playlist', $playlist);
-		}
+	public function playlist($id){
+		$playlist = Asset::find($id);
+		return View::make('player.playlist')->with('playlist', $playlist);
+	}
 
-	public function collection($id)
-		{
-			$collection = Asset::find($id);
-			return View::make('player.single')->with('collection', $collection);
-		}
+	public function collection($id){
+		$collection = Asset::find($id);
+		return View::make('player.collection')->with('collection', $collection);
+	}
 
 
 

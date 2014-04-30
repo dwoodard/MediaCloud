@@ -11,7 +11,7 @@
 	<br class="clear">
 </div>
 @foreach ($playlists as $key => $playlist)
-<div class="folderContent {{camel_case($playlist['name'].$playlist['id'])}}" style="display: none;">
+<div id="playlistId-{{$playlist['id']}}" class="folderContent {{camel_case($playlist['name'].$playlist['id'])}}" style="display: none;">
 	<div class="jaf-container">
 		<div class="row">
 			<div class="col-sm-12">
@@ -36,7 +36,7 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</button>
 									<ul class="dropdown-menu">
-										<li data-context-data="playlist-{{$playlist['id']}}">
+										<li>
 											@include('frontend.manage.context-menu')
 										</li>
 									</ul>
@@ -87,7 +87,7 @@
 													<i class="fa fa-ellipsis-h"></i>
 												</button>
 												<ul class="dropdown-menu">
-													<li data-context-data="playlist_asset-{{$playlist['id']}}_{{$asset['id']}}">
+													<li>
 														@include('frontend.manage.context-menu')
 													</li>
 												</ul>
