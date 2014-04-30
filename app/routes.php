@@ -213,8 +213,7 @@ Route::group(array('prefix' => 'collections'), function()
 
 
 # Media Manager
-// 'before' => 'cas-login',
-Route::group(array( 'prefix' => 'manage'), function()
+Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 {
 	Route::get('/', array('as' => 'manage', 'uses' => 'ManageController@index'));
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
@@ -225,7 +224,6 @@ Route::group(array( 'prefix' => 'manage'), function()
 	Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 
 	Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));
-
 
 	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));
@@ -297,11 +295,4 @@ Route::group(array('prefix' => 'v1'), function()
      * cas-auth Apis
      */
     Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
-
-
-    /*
-     *
-     */
-    Route::get('test', array('uses' => 'Controllers\Api\V1\ApiController@test'));
-    Route::get('vstest', array('uses' => 'Controllers\Api\V1\ApiController@test'));
 });
