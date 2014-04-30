@@ -327,7 +327,16 @@ class ManageController extends PermissionsController {
 
 
 
+	public function tag_add()
+	{
 
+
+		$tag = new Tag;
+		$tag->name =Input::get('name');
+		$tag->save();
+		$tag->assets()->attach(1);
+
+	}
 
 
 

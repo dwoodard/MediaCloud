@@ -14,11 +14,7 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-	$tag = new Tag;
-	$tag->name = 'myAwesomeTag';
-	$tag->save();
 
-	$tag->assets()->attach(1);
 
 
 });
@@ -226,6 +222,7 @@ Route::group(array( 'prefix' => 'manage'), function()
 
 	Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));
 
+	Route::post('tag/add', array('uses' => 'ManageController@tag_add'));
 
 	Route::post('collection/add', array('before' => 'cas-auth', 'uses' => 'ManageController@collection_add'));
 	Route::post('playlist/add', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_add'));

@@ -124,6 +124,8 @@
     <script src="/bower/hammer.js/index.js"></script>
     <script src="/bower/jquery.hammer.js/index.js"></script>
     <script src="/assets/js/dropzone.js"></script>
+    <script src="/bower/tag-it/js/tag-it.min.js"></script>
+
 
 
     @yield('scripts')

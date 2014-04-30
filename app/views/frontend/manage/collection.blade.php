@@ -68,9 +68,7 @@
 					</h4>
 				</div>
 				<div id="tags-tab" class="panel-collapse collapse">
-					<div class="panel-body">
-						<p>tag </p>
-						<p>tag stuff</p>
+					<div class="panel-body" id="myTags">
 					</div>
 				</div>
 			</div>
@@ -122,7 +120,6 @@
 @section('scripts')
 <script src="/bower/app-folders/index.js"></script>
 <script src="/bower/angular/angular.js"></script>
-<script src="/bower/tag-it/js/tag-it.min.js"></script>
 <script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
