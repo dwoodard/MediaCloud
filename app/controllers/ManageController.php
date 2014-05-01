@@ -277,16 +277,19 @@ class ManageController extends PermissionsController {
 	}
 
 
-	public function tags()
+	public function tags($assetId=null)
 	{
-		# code...
+
+		if ($assetId == null) {
+			return Tag::all()->lists('name');
+		}
+		$asset = Asset::find($assetId);
+		return $asset->tags->lists('name');
 	}
 
 
 	public function tag_add()
 	{
-
-
 		$tag = new Tag;
 		$tag->name =Input::get('name');
 		$tag->save();
@@ -295,13 +298,18 @@ class ManageController extends PermissionsController {
 		return array("tag" => $tag->toArray(), "asset" => $tag->assets->toArray());
 	}
 
-	public function tag_delete($tagId,$assetId)
+	public function tag_delete($tagName,$assetId)
 	{
 
+		$tag = Tag::where('name', '=', $tagName)->get()->first();
+		$assets = $tag->assets->lists('id');
 
-		$tag = Tag::find($tagId);
-		$tag->assets()->detach($assetId);
-
+		foreach ($assets as $assetId) {
+			$tag->assets()->detach($assetId);
+		}
+		return $tag;
+		// $tag = Tag::find();
+		// $tag->assets()->detach($assetId);
 	}
 
 
