@@ -1,4 +1,4 @@
-// manage.js
+/* manage.js*/
 var Manage = {
 	data: {},
 	userId: "",
@@ -11,7 +11,7 @@ var Manage = {
 		this.textEdit();
 		this.getCollection(collectionId);
 		this.contextMenuInit()
-		// this.tagAsset();
+		/* this.tagAsset();*/
 	},
 
 	dropzoneInit: function () {
@@ -134,6 +134,7 @@ var Manage = {
 
 		})
 	},
+
 	submitNewCollection: function () {
 		$("#newCollection").hide();
 		$.ajax({
@@ -154,14 +155,14 @@ var Manage = {
 
 		});
 	},
+
 	getCollection: function (id, elm) {
 
 		$(elm).append(' <i class="fa fa-spinner fa-spin"></i>')
 
 		$.ajax({
 			url: "/manage/collections/" + id
-		})
-		.done(function (data) {
+		}).done(function (data) {
 			$("#collection-view").html(data);
 
 			$(elm).find('i.fa-spinner').remove();
@@ -201,7 +202,7 @@ var Manage = {
 
 	addPlaylist: function () {
 		$("#btn-new-playlist").bind("click", function (e) {
-			// console.log(e);
+			/* console.log(e);*/
 			$('[href="#playlists-container"]').trigger('click');
 			$("#newPlaylist").show().find(':input').focus().select();
 		})
@@ -220,9 +221,8 @@ var Manage = {
 				Manage.submitNewPlaylist();
 			}
 		});
-
-
 	},
+
 	submitNewPlaylist: function () {
 		$("#newPlaylist")
 		.find("button, input").hide()
@@ -243,10 +243,12 @@ var Manage = {
 
 		});
 	},
+
 	assetPlayerBtn: function () {
 		$('.asset-player-btn').on("click", function (e) {
-			// console.log($(e.currentTarget).closest("[data-asset-id]").data('asset-id'));
-			Manage.getAssetPlayer($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
+
+			Manage.setCurrentAssetView($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
+
 		});
 	},
 
@@ -266,67 +268,83 @@ var Manage = {
 
 	addFolderInit: function () {
 		$('.app-folders-container').appFolders({
-			opacity: .5, // Opacity of non-selected items
-			marginTopAdjust: true, // Adjust the margin-top for the folder area based on row selected?
-			marginTopBase: 0, // If margin-top-adjust is "true", the natural margin-top for the area
-			marginTopIncrement: 0, // If margin-top-adjust is "true", the absolute value of the increment of margin-top per row
-			animationSpeed: 200, // Time (in ms) for transitions
-			URLrewrite: true, // Use URL rewriting?
-			URLbase: "", // If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes):"/services/"
-			internalLinkSelector: ".jaf-internal a", // a jQuery selector containing links to content within a jQuery App Folder
+			opacity: .5,
+			marginTopAdjust: true,
+			marginTopBase: 0,
+			marginTopIncrement: 0,
+			animationSpeed: 200,
+			URLrewrite: true,
+			URLbase: "",
+			internalLinkSelector: ".jaf-internal a",
 			instaSwitch: true
 		});
 	},
 
-	getAssetPlayer: function (id) {
+	setCurrentAssetView: function (id) {
 
-	//Set asset-view current id
-	$("#asset-view").data('current-asset-id', id)
-	Manage.loadTags()
-	$.ajax({
-		url: "/player/single/" + id
-	}).done(function (data) {
-		$("#asset-player").html(data);
-		$("#asset-view").addClass("cbp-spmenu-open")
+		$.ajax({
+			url: "/v1/assets/" + id + "/asset"
+		}).done(function (data) {
+			Manage.data = data;
+			$("#asset-view").data('current-asset-id', id)
 
-	});
-},
+			$("#current-asset-id").html(id)
+			$("#current-asset-title").html(data.title)
 
-playListSettings: function () {
-	$('.nav.nav-tabs a').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-},
+			Manage.loadTags()
 
-browseDragAsset: function () {
-	$(".draggable-asset").draggable({
-		revert: "invalid"
-	});
-},
+			$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>')
 
-dragAsset: function () {
-	$(".draggable-asset").draggable({
-		revert: "invalid"
-	});
-	$('.folderContent, #assets-container').droppable({
-		accept: ".draggable-asset",
-		activeClass: "drag-to",
-		hoverClass: "drag-to-hover",
-		drop: function (e, ui) {
-				// console.log($(e.target).find('table'));
+			$.ajax({
+				url: "/player/single/" + id
+			}).done(function (data) {
+				$("#asset-player").html(data);
+				$("#asset-view").addClass("cbp-spmenu-open")
+
+			});
+		})
+
+		
+	},
+
+	playListSettings: function () {
+		$('.nav.nav-tabs a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	},
+
+	browseDragAsset: function () {
+		$(".draggable-asset").draggable({
+			revert: "invalid"
+		});
+	},
+
+	dragAsset: function () {
+
+		$(".draggable-asset").draggable({
+			revert: "invalid"
+		});
+
+		$('.folderContent, #assets-container').droppable({
+			accept: ".draggable-asset",
+			activeClass: "drag-to",
+			hoverClass: "drag-to-hover",
+			drop: function (e, ui) {
+				/* console.log($(e.target).find('table'));*/
 				var draggedElm = $(ui)[0].draggable;
 				var draggedParent = $(draggedElm[0]).closest('li')[0];
 				var table = $(e.target).find('table')[0];
 				var cp = /cp-(\d+)-(\d+)/g.exec($(e.target).find('table')[0].id);
 				var type = Number(cp[2]) == 0 ? "collection" : "playlist";
+
 				data = {
 					'collection_id': Number(cp[1]),
 					'playlist_id': Number(cp[2]),
 					'asset_id': $($(ui)[0].draggable).closest('[data-asset-id]').data('assetId'),
 					type: type
 				};
-				// console.log(data);
+
 				$.ajax({
 					type: "POST",
 					url: "manage/asset/add",
@@ -338,19 +356,22 @@ dragAsset: function () {
 					url: "/v1/assets/" + data['asset_id'] + "/asset",
 					dataType: "json"
 				}).done(function (result) {
-					// console.log(result);
+					/* console.log(result);*/
+
 					$(table).find('tbody')
 					.append('<tr id="cpa-' + data['collection_id'] + '-' + data['playlist_id'] + '-' + data['asset_id'] + '"> <td width="7px"><a class="asset-player-btn" data-asset-id="' + data["asset_id"] + '" href="#"><i class="fa fa-play-circle-o"></i></a></td> <td>' + result.title + '</td> <td>' + result.description + '</td> <td></td> </tr>')
 
 					Manage.assetPlayerBtn();
-
 				})
 
 				var unassignedCount = Number($('.unassigned_assets_count.badge').text() - 1)
-				$('.unassigned_assets_count').text(unassignedCount)
+
+				$('.unassigned_assets_count').text(unassignedCount);
+
 				if (unassignedCount == 0) {
-					$('#unassigned_assets_notify').find('.badge').remove()
+					$('#unassigned_assets_notify').find('.badge').remove();
 				}
+
 				$(draggedParent).remove();
 			}
 		});
@@ -360,43 +381,44 @@ textEdit: function () {
 	$.fn.editable.defaults.mode = 'inline';
 	$('.editable').each(function (i, elm) {
 
-			//vars
-			var editableData = $(elm).closest('[data-editable-data]').data('editable-data');
-			editableData = /(\w+)-(\d+)/.exec(editableData);
-			var cpaType = editableData[1];
-			var pkId = editableData[2];
+		/*vars*/
+		var editableData = $(elm).closest('[data-editable-data]').data('editable-data');
+		editableData = /(\w+)-(\d+)/.exec(editableData);
+		var cpaType = editableData[1];
+		var pkId = editableData[2];
 
-			// console.log(editableData);
+		/* console.log(editableData);*/
 
-			switch (cpaType) {
+		switch (cpaType) {
 
-				case "collection":
-				$(elm).editable({
-					type: $(elm).data('editable-type'),
-					pk: pkId,
-					url: 'manage/collection/update'
-				})
-				break;
+			case "collection":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/collection/update'
+			})
+			break;
 
-				case "playlist":
-				$(elm).editable({
-					type: $(elm).data('editable-type'),
-					pk: pkId,
-					url: 'manage/playlist/update'
-				})
-				break;
-				case "asset":
-				$(elm).editable({
-					type: $(elm).data('editable-type'),
-					pk: pkId,
-					url: 'manage/asset/update'
-				})
-				break;
+			case "playlist":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/playlist/update'
+			})
+			break;
+			case "asset":
+			$(elm).editable({
+				type: $(elm).data('editable-type'),
+				pk: pkId,
+				url: 'manage/asset/update'
+			})
+			break;
 
-			}
-		});
+		}
+	});
 },
-cpa:function(elm) {
+
+cpa: function (elm) {
 	var collectionId = $(elm).closest('[data-current-collection-id]').data('current-collection-id');
 	var playlistId = Number($(elm).closest('[id^="playlistId-"]').length ? /playlistId-(.*)/.exec($(elm).closest('[id^="playlistId"]')[0].id)[1] : 0);
 	var assetId = $(elm).closest('[id^="cpa-"]').length ? Number(/cpa-(\d+)-(\d+)-(\d+)/.exec($(elm).closest('[id^="cpa-"]')[0].id)[3]) : 0;
@@ -447,7 +469,7 @@ contextMenuInit: function () {
 			switch (Manage.cpa(e.toElement)) {
 				case "playlist_asset":
 				case "asset":
-				Manage.getAssetPlayer(Manage.cpa(e.toElement).assetId)
+				Manage.setCurrentAssetView(Manage.cpa(e.toElement).assetId)
 				break;
 			}
 
@@ -511,39 +533,43 @@ deleteItem: function (type, elm) {
 	});
 },
 
-loadTags:function() {
+loadTags: function () {
 	$.ajax({
 		type: "GET",
-		url: "manage/tags/"+$('#asset-view').data('current-asset-id')
+		url: "manage/tags/" + $('#asset-view').data('current-asset-id')
 	}).done(function (data) {
 		$("#assetTags").tagit('removeAll')
 
-		$.each(data, function(i,value) {
+		$.each(data, function (i, value) {
 			$("#assetTags").tagit('createTag', value)
 		})
 
-		// console.log(data,$("#assetTags").tagit("assignedTags"));
+		/* console.log(data,$("#assetTags").tagit("assignedTags"));*/
 
 	})
 },
 
-tagAsset: function (){
+tagAsset: function () {
+	// var tags;
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: "manage/tags",
+	// }).done(function (data) {
+	// 	tags = data;
+	// });
 
-	var tags;
-	$.ajax({
-		type: "GET",
-		url: "manage/tags",
-	}).done(function(data) {
-		tags = data;
-	});
+	// console.log(tags);
 
 	$("#assetTags").tagit({
-		autocomplete: {delay: 0, minLength: 2},
+		autocomplete: {
+			delay: 0,
+			minLength: 2
+		},
 		showAutocompleteOnFocus: true,
-		availableTags: tags,
+		// tagSource: tags,
 		fieldName: "name",
-		afterTagAdded: function(event, ui) {
-			console.log(event,ui);
+		afterTagAdded: function (event, ui) {
+			console.log(event, ui);
 
 			$.ajax({
 				type: "POST",
@@ -552,24 +578,21 @@ tagAsset: function (){
 					name: ui.tagLabel,
 					asset: $(event.target).closest('#asset-view').data('current-asset-id')
 				}
-			}).done(function(data) {
+			}).done(function (data) {
 				console.log(data);
 			});
 		},
-		afterTagRemoved: function(event, ui) {
-			console.log(event,ui);
+		afterTagRemoved: function (event, ui) {
+			console.log(event, ui);
 			name = ui.tagLabel;
 			$.ajax({
 				type: "DELETE",
-				url: "manage/tag/delete/"+ name +"/"+$(event.target).closest('#asset-view').data('current-asset-id')
-			}).done(function(data) {
+				url: "manage/tag/delete/" + name + "/" + $(event.target).closest('#asset-view').data('current-asset-id')
+			}).done(function (data) {
 				console.log(data);
 			});
 		}
 	});
-
-
-
 },
 
 }

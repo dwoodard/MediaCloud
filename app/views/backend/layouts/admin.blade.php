@@ -498,7 +498,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <script src="/_admin/assets/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
    <!-- END PAGE LEVEL PLUGINS -->
    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-   <script src="/_admin/assets/scripts/app.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/index.js" type="text/javascript"></script>
    <script src="/_admin/assets/scripts/tasks.js" type="text/javascript"></script>
    <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js" type="text/javascript"></script>
