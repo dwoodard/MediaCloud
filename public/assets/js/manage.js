@@ -428,25 +428,22 @@ contextMenuInit: function () {
 		},
 
 		"click": function (e) {
-			if ($(e.target).parent().hasClass('slide-submenu') ||
-				$(e.target).hasClass('back')) {
+
+			if ($(e.target).parent().hasClass('slide-submenu') || $(e.target).hasClass('back')) {
 				return $(this).data('closable', false);
-		} else {
-			return $(this).data('closable', true);
+			} else {
+				return $(this).data('closable', true);
+			}
+		},
+
+		"hide.bs.dropdown": function () {
+			return $(this).data('closable');
 		}
-	},
-	"hide.bs.dropdown": function () {
-		return $(this).data('closable');
-	}
-});
+	});
 
 	$('[id^="context-menu-"]').on('click', function (e) {
-
 		switch (e.toElement.id) {
-
 			case "play":
-
-
 			switch (Manage.cpa(e.toElement)) {
 				case "playlist_asset":
 				case "asset":
@@ -517,10 +514,10 @@ deleteItem: function (type, elm) {
 loadTags:function() {
 	$.ajax({
 		type: "GET",
-		url: "manage/tags/"+$('#asset-view').data('currentAssetId')
+		url: "manage/tags/"+$('#asset-view').data('current-asset-id')
 	}).done(function (data) {
 		$("#assetTags").tagit('removeAll')
-		
+
 		$.each(data, function(i,value) {
 			$("#assetTags").tagit('createTag', value)
 		})
@@ -541,7 +538,8 @@ tagAsset: function (){
 	});
 
 	$("#assetTags").tagit({
-		// autocomplete: {delay: 0, minLength: 2},
+		autocomplete: {delay: 0, minLength: 2},
+		showAutocompleteOnFocus: true,
 		availableTags: tags,
 		fieldName: "name",
 		afterTagAdded: function(event, ui) {
@@ -552,8 +550,10 @@ tagAsset: function (){
 				url: "manage/tag/add",
 				data: {
 					name: ui.tagLabel,
-					asset: $(event.target).closest('#asset-view').data('currentAssetId')
+					asset: $(event.target).closest('#asset-view').data('current-asset-id')
 				}
+			}).done(function(data) {
+				console.log(data);
 			});
 		},
 		afterTagRemoved: function(event, ui) {
@@ -561,7 +561,7 @@ tagAsset: function (){
 			name = ui.tagLabel;
 			$.ajax({
 				type: "DELETE",
-				url: "manage/tag/delete/"+ name +"/"+$(event.target).closest('#asset-view').data('currentAssetId')
+				url: "manage/tag/delete/"+ name +"/"+$(event.target).closest('#asset-view').data('current-asset-id')
 			}).done(function(data) {
 				console.log(data);
 			});
