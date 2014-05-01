@@ -43,7 +43,7 @@
 	<div id="asset-editor">
 		<!-- <input type="text" class="form-control"> -->
 		<header>
-			<!-- <span id="current-asset-id"></span> -->
+			<span id="current-asset-id"></span>
 			<span id="current-asset-title"></span>
 		</header>
 
@@ -112,7 +112,6 @@
 @section('scripts')
 <script src="/bower/app-folders/index.js"></script>
 <script src="/assets/js/manage.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
 <script src="/bower/tag-it/js/tag-it.min.js"></script>
 <script src="/bower/underscore/underscore.js"></script>
 

@@ -7,15 +7,14 @@ class TagSeeder extends Seeder {
 
 
 		// Initialize empty array
-		$tags = array(
-			array('name' => 'Dumb'),
-			array('name' => 'Educational'),
-			array('name' => 'Weber'),
-			);
+		// $tags = array(
+		// 	// array('name' => 'Educational'),
+		// 	// array('name' => 'Weber'),
+		// 	);
 
 
 		// Insert tags
-		Tag::insert($tags);
+		// Tag::insert($tags);
 	}
 
 }

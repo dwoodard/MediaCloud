@@ -291,19 +291,21 @@ class ManageController extends PermissionsController {
 	public function tag_add()
 	{
 
-			$tag = Tag::where('name', '=', Input::get('name'))->get();
+		$tag = Tag::where('name', '=', Input::get('name'))->get();
 
-			if($tag->count() == 0){
-				$tag = new Tag;
-				$tag->name = Input::get('name');
-				$tag->save();
+		if($tag->count() == 0){
+			$tag = new Tag;
+			$tag->name = Input::get('name');
+			$tag->save();
 
-				$tag->assets()->attach(Input::get('asset'));
-				return $tag;
-			}
-				$attach = $tag->first()->assets()->attach(Input::get('asset'));
+			$tag->assets()->attach(Input::get('asset'));
+			return $tag;
+		}
+		
+		//needs an if statment to prevent duplicates
+		$attach;// = $tag->first()->assets()->attach(Input::get('asset'));
 
-			return array('tag' => $tag->toArray(), 'attach' => $attach);
+		return array('tag' => $tag->toArray(), 'attach' => $attach);
 	}
 
 	public function tag_delete($tagName,$assetId)
