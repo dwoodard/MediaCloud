@@ -8118,6 +8118,19 @@ namespace {
 		 }
 
 		/**
+		 * Delete a message from the Beanstalk queue.
+		 *
+		 * @param string  $queue
+		 * @param string  $id
+		 * @return void
+		 * @static 
+		 */
+		 public static function deleteMessage($queue, $id){
+			//Method inherited from \Illuminate\Queue\BeanstalkdQueue
+			 \Illuminate\Queue\BeanstalkdQueue::deleteMessage($queue, $id);
+		 }
+
+		/**
 		 * Get the queue or return the default.
 		 *
 		 * @param string|null  $queue

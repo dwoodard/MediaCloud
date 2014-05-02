@@ -300,10 +300,11 @@ class ManageController extends PermissionsController {
 
 			$tag->assets()->attach(Input::get('asset'));
 			return $tag;
+		}else{
+			//needs an if statment to prevent duplicates
+			$attach = $tag->first()->assets()->attach(Input::get('asset'));
 		}
-		
-		//needs an if statment to prevent duplicates
-		$attach;// = $tag->first()->assets()->attach(Input::get('asset'));
+
 
 		return array('tag' => $tag->toArray(), 'attach' => $attach);
 	}
@@ -314,16 +315,6 @@ class ManageController extends PermissionsController {
 		$detach = $tag->assets()->detach($assetId);
 		return array('tag' => $tag->toArray(), 'detached' => $detach);
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 

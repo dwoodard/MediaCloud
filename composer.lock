@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "dde53a39385435649ab42626d21cde9a4c1e85fd"
+                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/dde53a39385435649ab42626d21cde9a4c1e85fd",
-                "reference": "dde53a39385435649ab42626d21cde9a4c1e85fd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
+                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
                 "shasum": ""
             },
             "require": {
@@ -749,7 +749,7 @@
                     "name": "Taylor Otwell",
                     "email": "taylorotwell@gmail.com",
                     "homepage": "https://github.com/taylorotwell",
-                    "role": "Developer"
+                    "role": "Creator of Laravel"
                 }
             ],
             "description": "The Laravel Framework.",
@@ -757,7 +757,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-04-29 23:26:59"
+            "time": "2014-05-02 14:16:09"
         },
         {
             "name": "monolog/monolog",
@@ -2294,7 +2294,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2530,12 +2530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "5c54cfdab2908e0a5bcb57f530c1d1060d6cf429"
+                "reference": "bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5c54cfdab2908e0a5bcb57f530c1d1060d6cf429",
-                "reference": "5c54cfdab2908e0a5bcb57f530c1d1060d6cf429",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e",
+                "reference": "bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e",
                 "shasum": ""
             },
             "require": {
@@ -2543,7 +2543,7 @@
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*",
+                "phpunit/phpunit": "4.0.*",
                 "symfony/console": "2.*"
             },
             "suggest": {
@@ -2593,7 +2593,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-05-01 02:21:58"
+            "time": "2014-05-02 06:46:45"
         },
         {
             "name": "doctrine/inflector",
@@ -2730,12 +2730,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "09cad223615eac9e229837c9d44792f393529328"
+                "reference": "715721895260a951d9cb9c2b9269d5333fb37a5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/09cad223615eac9e229837c9d44792f393529328",
-                "reference": "09cad223615eac9e229837c9d44792f393529328",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/715721895260a951d9cb9c2b9269d5333fb37a5e",
+                "reference": "715721895260a951d9cb9c2b9269d5333fb37a5e",
                 "shasum": ""
             },
             "require": {
@@ -2788,7 +2788,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-04-25 09:53:30"
+            "time": "2014-05-02 12:25:43"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

@@ -304,7 +304,7 @@ var Manage = {
 			});
 		})
 
-		
+
 	},
 
 	playListSettings: function () {
@@ -534,11 +534,12 @@ deleteItem: function (type, elm) {
 },
 
 loadTags: function () {
+	$(".tagit-choice").remove();
+
 	$.ajax({
 		type: "GET",
 		url: "manage/tags/" + $('#asset-view').data('current-asset-id')
 	}).done(function (data) {
-		$("#assetTags").tagit('removeAll')
 
 		$.each(data, function (i, value) {
 			$("#assetTags").tagit('createTag', value)
@@ -570,7 +571,6 @@ tagAsset: function () {
 		fieldName: "name",
 		afterTagAdded: function (event, ui) {
 			console.log(event, ui);
-
 			$.ajax({
 				type: "POST",
 				url: "manage/tag/add",
