@@ -54,7 +54,7 @@
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion" href="#tags-tab">
-							Tags
+							Tags (<span id="current-tags-total"></span>)
 						</a>
 					</h4>
 				</div>

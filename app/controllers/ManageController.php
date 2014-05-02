@@ -300,13 +300,14 @@ class ManageController extends PermissionsController {
 
 			$tag->assets()->attach(Input::get('asset'));
 			return $tag;
-		}else{
-			//needs an if statment to prevent duplicates
-			$attach = $tag->first()->assets()->attach(Input::get('asset'));
 		}
 
+		if ( !$tag->first()->assets->contains( Input::get('asset')) ) {
+			$attach = $tag->first()->assets()->attach( Input::get('asset') );
+			return array('tag' => !$tag->first()->assets->contains( Input::get('asset')));
+		}
 
-		return array('tag' => $tag->toArray(), 'attach' => $attach);
+		return array('tag' => $tag->first()->assets->contains( Input::get('asset')));
 	}
 
 	public function tag_delete($tagName,$assetId)

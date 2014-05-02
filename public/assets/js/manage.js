@@ -11,7 +11,7 @@ var Manage = {
 		this.textEdit();
 		this.getCollection(collectionId);
 		this.contextMenuInit()
-		/* this.tagAsset();*/
+
 	},
 
 	dropzoneInit: function () {
@@ -190,6 +190,8 @@ var Manage = {
 					})
 				}
 			});
+
+
 			Manage.addFolderInit();
 			Manage.dragAsset();
 			Manage.assetPlayerBtn();
@@ -290,6 +292,7 @@ var Manage = {
 
 			$("#current-asset-id").html(id)
 			$("#current-asset-title").html(data.title)
+
 
 			Manage.loadTags()
 
@@ -466,9 +469,13 @@ contextMenuInit: function () {
 	$('[id^="context-menu-"]').on('click', function (e) {
 		switch (e.toElement.id) {
 			case "play":
-			switch (Manage.cpa(e.toElement)) {
+
+
+
+			switch (Manage.cpa(e.toElement).name) {
 				case "playlist_asset":
 				case "asset":
+				console.log('play', Manage.cpa(e.toElement).name, Manage.cpa(e.toElement).assetId)
 				Manage.setCurrentAssetView(Manage.cpa(e.toElement).assetId)
 				break;
 			}
@@ -536,11 +543,14 @@ deleteItem: function (type, elm) {
 loadTags: function () {
 	$(".tagit-choice").remove();
 
+
+
 	$.ajax({
 		type: "GET",
 		url: "manage/tags/" + $('#asset-view').data('current-asset-id')
 	}).done(function (data) {
 
+		$('#current-tags-total').html(data.length)
 		$.each(data, function (i, value) {
 			$("#assetTags").tagit('createTag', value)
 		})
@@ -551,48 +561,57 @@ loadTags: function () {
 },
 
 tagAsset: function () {
-	// var tags;
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: "manage/tags",
-	// }).done(function (data) {
-	// 	tags = data;
-	// });
 
-	// console.log(tags);
 
-	$("#assetTags").tagit({
-		autocomplete: {
-			delay: 0,
-			minLength: 2
-		},
-		showAutocompleteOnFocus: true,
-		// tagSource: tags,
-		fieldName: "name",
-		afterTagAdded: function (event, ui) {
-			console.log(event, ui);
-			$.ajax({
-				type: "POST",
-				url: "manage/tag/add",
-				data: {
-					name: ui.tagLabel,
-					asset: $(event.target).closest('#asset-view').data('current-asset-id')
-				}
-			}).done(function (data) {
-				console.log(data);
-			});
-		},
-		afterTagRemoved: function (event, ui) {
-			console.log(event, ui);
-			name = ui.tagLabel;
-			$.ajax({
-				type: "DELETE",
-				url: "manage/tag/delete/" + name + "/" + $(event.target).closest('#asset-view').data('current-asset-id')
-			}).done(function (data) {
-				console.log(data);
-			});
-		}
+	var tags;
+	$.ajax({
+		type: "GET",
+		url: "/manage/tags",
+	}).done(function (data) {
+		tags = data;
+		$("#assetTags").tagit({
+			autocomplete: {
+				delay: 0,
+				minLength: 2
+			},
+			showAutocompleteOnFocus: true,
+			tagSource: tags,
+			fieldName: "name",
+			afterTagAdded: function (event, ui) {
+				$.ajax({
+					type: "POST",
+					url: "manage/tag/add",
+					data: {
+						name: ui.tagLabel,
+						asset: $(event.target).closest('#asset-view').data('current-asset-id')
+					}
+				}).done(function (data) {
+					// console.log(data);
+					// console.log(event, ui);
+
+
+
+				});
+			},
+			afterTagRemoved: function (event, ui) {
+				// console.log(event, ui);
+				name = ui.tagLabel;
+				$.ajax({
+					type: "DELETE",
+					url: "manage/tag/delete/" + name + "/" + $(event.target).closest('#asset-view').data('current-asset-id')
+				}).done(function (data) {
+					// console.log(data);
+
+				});
+			}
+		});
+
+
+
+
 	});
+
+
 },
 
 }
