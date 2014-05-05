@@ -3,57 +3,8 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "46ecab33f5dd4f09f39ffa3e5d78459b",
+    "hash": "2411e89773524b2fd58e26543a75f093",
     "packages": [
-        {
-            "name": "anahkiasen/underscore-php",
-            "version": "1.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Anahkiasen/underscore-php.git",
-                "reference": "c5d2900e7eea6b22ba266e3bcd19d290f9075f5f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/underscore-php/zipball/c5d2900e7eea6b22ba266e3bcd19d290f9075f5f",
-                "reference": "c5d2900e7eea6b22ba266e3bcd19d290f9075f5f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~4",
-                "patchwork/utf8": "1.1.*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Underscore\\": [
-                        "src",
-                        "tests"
-                    ]
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxime Fabre",
-                    "email": "ehtnam6@gmail.com"
-                }
-            ],
-            "description": "A redacted port of Underscore.js for PHP",
-            "keywords": [
-                "internals",
-                "laravel",
-                "toolkit"
-            ],
-            "time": "2014-03-13 10:45:40"
-        },
         {
             "name": "cartalyst/sentry",
             "version": "v2.1.0",
@@ -649,12 +600,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c"
+                "reference": "ff2f1fdc2ce49b83645ef045691c2514b9b6d5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
-                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ff2f1fdc2ce49b83645ef045691c2514b9b6d5ed",
+                "reference": "ff2f1fdc2ce49b83645ef045691c2514b9b6d5ed",
                 "shasum": ""
             },
             "require": {
@@ -681,7 +632,7 @@
                 "symfony/http-kernel": "2.4.*",
                 "symfony/process": "2.4.*",
                 "symfony/routing": "2.4.*",
-                "symfony/security": "2.4.*",
+                "symfony/security-core": "2.4.*",
                 "symfony/translation": "2.4.*"
             },
             "replace": {
@@ -757,7 +708,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-05-02 14:16:09"
+            "time": "2014-05-04 15:13:30"
         },
         {
             "name": "monolog/monolog",
@@ -1025,12 +976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "431e3a04c73c72b516b6b11bd23d93c36115f01d"
+                "reference": "4fd72af3a288e21ab715bdde0277a1364279b132"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/431e3a04c73c72b516b6b11bd23d93c36115f01d",
-                "reference": "431e3a04c73c72b516b6b11bd23d93c36115f01d",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/4fd72af3a288e21ab715bdde0277a1364279b132",
+                "reference": "4fd72af3a288e21ab715bdde0277a1364279b132",
                 "shasum": ""
             },
             "require": {
@@ -1114,7 +1065,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-04-29 14:32:49"
+            "time": "2014-05-05 09:34:16"
         },
         {
             "name": "predis/predis",
@@ -1262,19 +1213,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "bcb025ef81285d0a2ee8c65352c4e5a3359185ca"
+                "reference": "8443b5ca82b360a62c0c8ba04598e476076bbe2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/bcb025ef81285d0a2ee8c65352c4e5a3359185ca",
-                "reference": "bcb025ef81285d0a2ee8c65352c4e5a3359185ca",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8443b5ca82b360a62c0c8ba04598e476076bbe2d",
+                "reference": "8443b5ca82b360a62c0c8ba04598e476076bbe2d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9@dev"
+                "mockery/mockery": "~0.9.1"
             },
             "type": "library",
             "extra": {
@@ -1308,7 +1259,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-05-01 06:41:55"
+            "time": "2014-05-05 09:37:46"
         },
         {
             "name": "symfony/browser-kit",
@@ -1996,12 +1947,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Security.git",
-                "reference": "1f2b6d8dfea39071748becf040c8d8a23288e725"
+                "reference": "cfe0fa933ce71c14fa0675af131a3797e4a88045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Security/zipball/1f2b6d8dfea39071748becf040c8d8a23288e725",
-                "reference": "1f2b6d8dfea39071748becf040c8d8a23288e725",
+                "url": "https://api.github.com/repos/symfony/Security/zipball/cfe0fa933ce71c14fa0675af131a3797e4a88045",
+                "reference": "cfe0fa933ce71c14fa0675af131a3797e4a88045",
                 "shasum": ""
             },
             "require": {
@@ -2063,7 +2014,7 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-25 07:06:20"
+            "time": "2014-05-02 13:46:37"
         },
         {
             "name": "symfony/translation",
@@ -2121,6 +2072,42 @@
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
             "time": "2014-04-18 21:02:05"
+        },
+        {
+            "name": "underscore/underscore.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ActiveObject/Underscore.php.git",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ActiveObject/Underscore.php/zipball/1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "underscore.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Underscore.php is a PHP port of Underscore.js.",
+            "homepage": "http://brianhaveri.github.com/Underscore.php",
+            "keywords": [
+                "functional",
+                "underscore",
+                "util"
+            ],
+            "time": "2012-05-08 22:12:27"
         }
     ],
     "packages-dev": [
@@ -2530,12 +2517,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e"
+                "reference": "4a7ff71ec3b57af7d70f1180897502f8a156d59b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e",
-                "reference": "bb0b46858795bcc2c9ccf1c2d67ac7951a8cee4e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/4a7ff71ec3b57af7d70f1180897502f8a156d59b",
+                "reference": "4a7ff71ec3b57af7d70f1180897502f8a156d59b",
                 "shasum": ""
             },
             "require": {
@@ -2593,7 +2580,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-05-02 06:46:45"
+            "time": "2014-05-05 13:42:28"
         },
         {
             "name": "doctrine/inflector",
@@ -3367,6 +3354,7 @@
     "stability-flags": {
         "dwoodard/phpcas": 20,
         "pda/pheanstalk": 20,
+        "underscore/underscore.php": 20,
         "mockery/mockery": 20,
         "phpunit/phpunit": 20,
         "way/generators": 20

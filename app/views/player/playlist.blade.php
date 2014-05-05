@@ -54,7 +54,10 @@
     </video>
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
-
+    <script src="/bower/underscore/underscore.js"></script>
+    <script type="text/javascript" src="/assets/js/player.js"></script>
+    <script type="text/javascript">
+    var player = new Player('videosrc')
+    </script>
 </body>
 </html>

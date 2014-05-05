@@ -1,14 +1,19 @@
 //http://www.w3.org/2010/05/video/script.js
 
 var Player = (function() {
-  Player.video = {};
+	Player.video = {};
 
-  function Player(video) {
-    this.video = video;
-    console.log(this.video);
-  }
+	function Player() {
+		this.video
+		console.log(this.video);
+	}
 
-  return Player;
+	Player.changeVideo =  function (url) {
+		console.log(url)
+	}
+
+
+	return Player;
 
 })();
 
