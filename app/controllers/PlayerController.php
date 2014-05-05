@@ -15,7 +15,7 @@ class PlayerController extends BaseController {
 	public function playlist($id){
 		$playlist = Playlist::find($id);
 		$playlist->assets;
-		return $playlist;
+		// return $playlist;
 		return View::make('player.playlist')->with('playlist', $playlist);
 	}
 

@@ -14,8 +14,11 @@ App::bind('AssetRepository', 'Asset');
 
 Route::get('/test', function(){
 
-$asset = Asset::find(1);
-return $asset->tags->lists('name');
+
+// __::sortBy(array(1, 2, 3), function($n) { return -$n; });
+
+// $asset = Asset::find(1);
+// return $asset->tags->lists('name');
 
 
 });

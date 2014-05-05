@@ -62,7 +62,7 @@ class ManageController extends PermissionsController {
 			'assets'=> $user->assets,
 			);
 
-		// return $data['collection'];
+		// return $data['playlists_group'];
 		return View::make('frontend.manage.collection-item', $data);
 	}
 

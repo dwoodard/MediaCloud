@@ -12,7 +12,7 @@
 		"iron-io/iron_mq": "1.4.8",
 		"codescale/ffmpeg-php": "2.7.0",
 		"pda/pheanstalk": "dev-master",
-		"anahkiasen/underscore-php": "1.2.3"
+		"underscore/underscore.php": "dev-master"
 	},
 	"require-dev": {
 		"mockery/mockery": "dev-master",
@@ -32,7 +32,8 @@
 			"app/tests/TestCase.php"
 		],
         "files": [
-            "vendor/dwoodard/phpcas/CAS.php"
+            "vendor/dwoodard/phpcas/CAS.php",
+            "vendor/underscore/underscore.php/underscore.php"
         ],
         "psr-0": {"MC":"app/"}
 	},
