@@ -28,7 +28,9 @@
     transition: 0.4s ease-in-out left;
 }
 
-
+.modal-dialog{
+	left:0;
+}
 /*Bootstrap Clean*/
 
 

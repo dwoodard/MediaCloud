@@ -15,6 +15,10 @@ App::bind('AssetRepository', 'Asset');
 Route::get('/test', function(){
 
 
+var_dump(URL::to('/')); 
+
+echo URL::to('/');
+
 // __::sortBy(array(1, 2, 3), function($n) { return -$n; });
 
 // $asset = Asset::find(1);

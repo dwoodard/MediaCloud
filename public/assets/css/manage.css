@@ -138,8 +138,7 @@ height: 400px
 	color: #fff;
 }
 
-.asset-player-btn{
-}
+
 .draggable-asset.ui-draggable-dragging{
 	overflow:visible;
 
@@ -156,6 +155,34 @@ height: 400px
 	/*height: 600px;*/
 	/*overflow-y: scroll;*/
 }
+
+/*Active Asset*/
+
+.active-asset td
+{
+	background: #258ecd !important;
+	
+}
+
+.active-asset .asset-player-btn i{
+	color: #e1e1e1;
+}
+.active-asset .asset-player-btn:hover i{
+	color: white;
+}
+
+.active-asset td a{
+	color:  #e1e1e1 !important;
+}
+
+.active-asset a,
+.active-asset a i,
+
+{
+	
+}
+
+/**/
 
 
 #asset-editor{}

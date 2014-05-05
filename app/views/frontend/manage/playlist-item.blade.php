@@ -28,7 +28,34 @@
 
 						<div id="playlist-toolbar"  role="toolbar">
 							<div class="btn-group ">
-								<button class="share btn btn-primary">Share Playlist ...</button>
+								<button class="share btn btn-primary shareItem data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
+
+								<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+											</div>
+											<div class="modal-body">
+
+												<p>Hit <strong>CTRL+C</strong> to copy the link to your clipboard!</p>
+
+												<br>
+												<input class="form-control shareItem" type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
+												<br>
+
+												<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}"> Preview Here</a> 
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+											</div>
+										</div>
+									</div>
+								</div>
+
 								<!-- Playlist Settings ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
 
