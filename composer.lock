@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d548fa805876b6b4646623770195587110077a8b"
+                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d548fa805876b6b4646623770195587110077a8b",
-                "reference": "d548fa805876b6b4646623770195587110077a8b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
+                "reference": "55e4d2fd7a01b17cac40f1ac3b69ef813b6fc15c",
                 "shasum": ""
             },
             "require": {
@@ -757,7 +757,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-05-02 16:56:16"
+            "time": "2014-05-02 14:16:09"
         },
         {
             "name": "monolog/monolog",
@@ -1996,12 +1996,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Security.git",
-                "reference": "cfe0fa933ce71c14fa0675af131a3797e4a88045"
+                "reference": "1f2b6d8dfea39071748becf040c8d8a23288e725"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Security/zipball/cfe0fa933ce71c14fa0675af131a3797e4a88045",
-                "reference": "cfe0fa933ce71c14fa0675af131a3797e4a88045",
+                "url": "https://api.github.com/repos/symfony/Security/zipball/1f2b6d8dfea39071748becf040c8d8a23288e725",
+                "reference": "1f2b6d8dfea39071748becf040c8d8a23288e725",
                 "shasum": ""
             },
             "require": {
@@ -2063,7 +2063,7 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-02 13:46:37"
+            "time": "2014-04-25 07:06:20"
         },
         {
             "name": "symfony/translation",
@@ -2294,7 +2294,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
