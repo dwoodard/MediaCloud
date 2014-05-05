@@ -277,31 +277,42 @@ class ManageController extends PermissionsController {
 	}
 
 
-	public function tags()
+	public function tags($assetId=null)
 	{
-		# code...
+
+		if ($assetId == null) {
+			return Tag::all()->lists('name');
+		}
+		$asset = Asset::find($assetId);
+		return $asset->tags->lists('name');
 	}
 
 
 	public function tag_add()
 	{
 
+		$tag = Tag::where('name', '=', Input::get('name'))->get();
 
-		$tag = new Tag;
-		$tag->name =Input::get('name');
-		$tag->save();
-		$tag->assets()->attach(Input::get('asset'));
+		if($tag->count() == 0){
+			$tag = new Tag;
+			$tag->name = Input::get('name');
+			$tag->save();
 
-		return array("tag" => $tag->toArray(), "asset" => $tag->assets->toArray());
+			$tag->assets()->attach(Input::get('asset'));
+			return $tag;
+		}
+		
+		//needs an if statment to prevent duplicates
+		$attach;// = $tag->first()->assets()->attach(Input::get('asset'));
+
+		return array('tag' => $tag->toArray(), 'attach' => $attach);
 	}
 
-	public function tag_delete($tagId,$assetId)
+	public function tag_delete($tagName,$assetId)
 	{
-
-
-		$tag = Tag::find($tagId);
-		$tag->assets()->detach($assetId);
-
+		$tag = Tag::where('name', '=', $tagName)->get()->first();
+		$detach = $tag->assets()->detach($assetId);
+		return array('tag' => $tag->toArray(), 'detached' => $detach);
 	}
 
 

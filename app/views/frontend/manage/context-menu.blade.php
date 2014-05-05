@@ -33,7 +33,7 @@
 			<div>
 				<p>This will not delete the file(s) completely, but assets will be removed from collections or playlist</p>
 				<p>
-					<a href="#" id="delete-item" class="btn btn-default"> <i class="fa fa-trash-o"></i> Remove<span class="delete-check"></span></a>
+					<a href="#" id="delete-item" class="btn btn-danger"> <i class="fa fa-trash-o"></i> Remove<span class="delete-check"></span></a>
 				</p>
 			</div>
 		</div>

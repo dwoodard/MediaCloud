@@ -1,9 +1,11 @@
 {
   "name": "Object.observe",
   "_cacheHeaders": {
+    "ETag": "\"e1a27546d5f249e3c38246b30fa7552115ff1af3\"",
     "Content-Length": "12149",
     "Content-Type": "text/plain; charset=utf-8"
   },
+  "_release": "e-tag:e1a27546d",
   "main": "index.js",
   "_source": "https://raw.githubusercontent.com/jdarling/Object.observe/master/Object.observe.poly.js",
   "_target": "*",

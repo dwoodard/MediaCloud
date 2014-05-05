@@ -127,10 +127,15 @@ height: 400px
 #asset-player{
 	height: 135px;
 }
+
 #asset-toolbar{
 	height: 25px;
 	background: #333;
-	
+
+}
+#asset-editor header{
+	padding: 10px;
+	color: #fff;
 }
 
 .asset-player-btn{
@@ -442,7 +447,7 @@ height: 400px
 }
 
 .cbp-spmenu a{
-	
+
 }
 
 .cbp-spmenu .browse-assets-container a{
@@ -458,7 +463,7 @@ height: 400px
 	}
 
 	/* Orientation-dependent styles for the content of the menu */
-	
+
 	#collections-list{
 		width: 240px;
 	}
@@ -473,7 +478,7 @@ height: 400px
 		top: 101px;
 		z-index: 1;
 	}
-	
+
 
 	#collections-list a{
 		display: block;
@@ -485,7 +490,7 @@ height: 400px
 		padding: 1em;
 	}
 
-	
+
 
 	.cbp-spmenu-horizontal{
 		width: 100%;

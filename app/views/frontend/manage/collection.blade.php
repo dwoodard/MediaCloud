@@ -42,23 +42,14 @@
 	<div id="asset-toolbar"></div>
 	<div id="asset-editor">
 		<!-- <input type="text" class="form-control"> -->
-
+		<header>
+			<span id="current-asset-id"></span>
+			<span id="current-asset-title"></span>
+		</header>
 
 		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#general-tab">
-							General 
-						</a>
-					</h4>
-				</div>
-				<div id="general-tab" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<p>General Stuff</p>
-					</div>
-				</div>
-			</div>
+
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
@@ -67,15 +58,16 @@
 						</a>
 					</h4>
 				</div>
-				<div id="tags-tab" class="panel-collapse collapse">
+				<div id="tags-tab" class="panel-collapse collapse in">
 					<ul class="panel-body" id="assetTags"> </ul>
 				</div>
 			</div>
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-							Permissions 
+							Permissions
 						</a>
 					</h4>
 				</div>
@@ -85,6 +77,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 
 
@@ -118,10 +111,9 @@
 
 @section('scripts')
 <script src="/bower/app-folders/index.js"></script>
-<script src="/bower/angular/angular.js"></script>
-<script src="/bower/angular-resource/angular-resource.min.js"></script>
 <script src="/assets/js/manage.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+<script src="/bower/tag-it/js/tag-it.min.js"></script>
+<script src="/bower/underscore/underscore.js"></script>
 
 
 <script type="text/javascript">
@@ -136,5 +128,6 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/dropzone.css" rel="stylesheet" type="text/css"/>
 <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
+<link href="/bower/tag-it/css/jquery.tagit.css" rel="stylesheet" type="text/css"/>
 
 @stop

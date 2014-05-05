@@ -1,17 +1,46 @@
 var
-  gulp  = require('gulp'),
-  growl = require('gulp-notify-growl')
-;
+gulp  = require('gulp')
+, minifyCSS = require('gulp-minify-css')
+, concat = require('gulp-concat')
+, uglify  = require('gulp-uglify')
 
-// Initialize the notifier
-var growlNotifier = growl({
-  hostname : 'localhost' // IP or Hostname to notify, default to localhost
+
+gulp.task('manage-css', function() {
+	return gulp.src([
+		"public/bower/bootstrap/dist/css/bootstrap.min.css",
+		"public/_frontend/assets/css/style.css",
+		"public/assets/css/bootstrap-editable.css",
+		"public/assets/css/manage.css",
+		"public/bower/tag-it/css/jquery.tagit.css"
+		])
+	.pipe(minifyCSS())
+	.pipe(concat("all.css"))
+	.pipe(gulp.dest('public/assets/'));
 });
 
-gulp.task('default', function() {
-  gulp.src('./package.json')
-  .pipe(growlNotifier({
-    title: 'Done.',
-    message: 'Done something with the package.json'
-  }));
+
+
+// Handle Javascript compilation
+gulp.task('manage-js', function () {
+	return gulp.src([
+		"public/bower/jquery/dist/jquery.min.js",
+		"public/bower/bootstrap/dist/js/bootstrap.min.js",
+		"public/bower/hammer.js/index.js",
+		"public/assets/js/manage.js",
+		"public/bower/jquery.hammer.js/index.js",
+		"public/assets/js/dropzone.js",
+		"public/bower/app-folders/index.js",
+		"public/bower/tag-it/js/tag-it.min.js",
+		"public/bower/underscore/underscore.js"
+		]) .pipe(uglify())
+	.pipe(concat('all.js'))
+	.pipe(gulp.dest('public/assets/'));
 });
+
+gulp.task('watch', function () {
+    gulp.watch(sassDir + '/**/*.sass', ['manage-css']);
+    gulp.watch(coffeeDir + '/**/*.coffee', ['manage-js']);
+    gulp.watch('app/**/*.php', ['phpunit']);
+});
+
+gulp.task('default', ['manage-css', 'manage-js', 'watch']);

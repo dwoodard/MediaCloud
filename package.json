@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.6.2",
+    "gulp-uglify": "~0.2.1",
+    "gulp-concat": "~2.2.0",
+    "sys": "0.0.1"
+  }
+}
