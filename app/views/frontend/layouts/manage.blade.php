@@ -32,7 +32,7 @@
         </button> -->
         <a class="navbar-brand navbar-brand-size" href="/">
         	<img id="logo-brand" src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
-        	
+
         </a>
     </div>
 
@@ -97,7 +97,7 @@
  -->
 
 <!-- <menu id="context-menu-collection" type="context" style="display:none" class="showcase">
-	
+
 	<command label="play"  onclick="" > </command>
 	<command label="resize" onclick="" icon="images/door.png"></command>
 	<menu label="share">
