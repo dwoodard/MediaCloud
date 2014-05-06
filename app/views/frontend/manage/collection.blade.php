@@ -39,7 +39,12 @@
 		<h3>Player / Assets</h3>
 	</div>
 	<div id="asset-player"></div>
-	<div id="asset-toolbar"></div>
+	<div id="asset-toolbar">
+		
+			<button class="share btn btn-primary" data-toggle="modal" data-target="#collectionShare">Share Collection ...</button>
+
+
+	</div>
 	<div id="asset-editor">
 		<!-- <input type="text" class="form-control"> -->
 		<header>

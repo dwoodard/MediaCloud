@@ -90,6 +90,11 @@ var Manage = {
 				$("#srch-term")[0].focus();
 			}, 0);
 		});
+			$(".shareItem").on("click", function (e) {
+			setTimeout(function () {
+				$(".shareItem")[0].focus();
+			}, 0);
+		});
 		$(".close").on("click", function (e) {
 			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
 			switch (cbp_menu.id) {
@@ -100,6 +105,7 @@ var Manage = {
 
 				case "asset-view":
 				$("#asset-player").html("");
+                $('.active-asset').removeClass('active-asset');
 				break;
 
 				case "browse-view":
@@ -249,6 +255,8 @@ var Manage = {
 	assetPlayerBtn: function () {
 		$('.asset-player-btn').on("click", function (e) {
 
+            $('.active-asset').removeClass('active-asset')
+			$(e.currentTarget).closest("tr").addClass('active-asset')
 			Manage.setCurrentAssetView($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
 
 		});
@@ -613,5 +621,6 @@ tagAsset: function () {
 
 
 },
+
 
 }

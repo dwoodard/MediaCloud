@@ -14,7 +14,32 @@
 
 
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
-			<button class="share btn btn-primary">Share Collection ...</button>
+			<button class="share btn btn-primary" data-toggle="modal" data-target="#collectionShare">Share Collection ...</button>
+
+<div class="modal fade" class="shareItem" id="collectionShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Share This Collection</h4>
+      </div>
+      <div class="modal-body">
+      <p>Hit <strong>CTRL+C</strong> to copy the link to your clipboard!</p>
+      <br>
+      <input class="form-control shareItem" type="text" value="{{URL::to('/').'/player/collection/'.$collection->id }}">
+      <br>
+      <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}"> Preview Here</a> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 			<!-- ContextMenu -->
 			<div class="context-menu-container dropdown keep-open pull-right">
 
