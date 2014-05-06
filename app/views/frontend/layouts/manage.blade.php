@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
 	<link rel="stylesheet" href="/assets/css/bootstrap-editable.css">
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style type="text/css" media="Screen">
 		@import url("/assets/css/master.css");
