@@ -12,7 +12,6 @@
 			@endif
 		</a></h3>
 
-
 		<div id="collection-toolbar" class="btn-group " role="toolbar">
 			<button class="share btn btn-primary" data-toggle="modal" data-target="#collectionShare">Share Collection ...</button>
 
@@ -27,6 +26,10 @@
       <p>Hit <strong>CTRL+C</strong> to copy the link to your clipboard!</p>
       <br>
       <input class="form-control shareItem" type="text" value="{{URL::to('/').'/player/collection/'.$collection->id }}">
+      <br>
+      <p>Embed This Collection on your webpage!</p>
+      <br>
+      <input class="form-control shareItem" type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/collection/'.$collection->id }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
       <br>
       <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}"> Preview Here</a> 
       </div>
