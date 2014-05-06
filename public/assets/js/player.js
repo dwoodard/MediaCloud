@@ -4,9 +4,9 @@ var Player;
 
 Player = (function() {
 	function Player(playerElm,menuElm) {
-		this.video = playerElm;
+		this.video = playerElm[0];
 		this.menu = menuElm;
-		
+
 	}
 
 	Player.prototype.video = "";
@@ -17,15 +17,15 @@ Player = (function() {
 	}
 
 	Player.prototype.nextAsset = function() {
-		console.log();
+		return 1
 	}
 
 	Player.prototype.prevAsset = function() {
-		console.log();
+		return 1
 	}
 
 
-	console.log(Player.video);
+
 	return Player;
 
 })();
