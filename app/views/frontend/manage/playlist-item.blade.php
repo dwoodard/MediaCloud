@@ -25,10 +25,9 @@
 							Add Description
 							@endif
 						</a></div>
-
 						<div id="playlist-toolbar"  role="toolbar">
 							<div class="btn-group ">
-								<button class="share btn btn-primary shareItem data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
+								<button class="share btn btn-primary shareItem" data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
 
 								<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
@@ -44,9 +43,12 @@
 												<br>
 												<input class="form-control shareItem" type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
 												<br>
-
+												<p>Embed this playlist on your webpage!</p>
+												<br>
+												<input class="form-control shareItem" type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
+												<br>
 												<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}"> Preview Here</a> 
-
+												
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
