@@ -1,18 +1,31 @@
 //http://www.w3.org/2010/05/video/script.js
 
-var Player = (function() {
-	Player.video = {};
+var Player;
 
-	function Player() {
-		this.video
-		console.log(this.video);
+Player = (function() {
+	function Player(playerElm,menuElm) {
+		this.video = playerElm;
+		this.menu = menuElm;
+		
 	}
 
-	Player.changeVideo =  function (url) {
-		console.log(url)
+	Player.prototype.video = "";
+	Player.prototype.menu = "";
+
+	Player.prototype.changeVideo = function(url) {
+		console.log(url);
+	}
+
+	Player.prototype.nextAsset = function() {
+		console.log();
+	}
+
+	Player.prototype.prevAsset = function() {
+		console.log();
 	}
 
 
+	console.log(Player.video);
 	return Player;
 
 })();
