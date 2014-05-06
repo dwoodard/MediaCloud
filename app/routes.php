@@ -15,14 +15,8 @@ App::bind('AssetRepository', 'Asset');
 Route::get('/test', function(){
 
 
-var_dump(URL::to('/')); 
+// return Collection::collection_playlist_asset(1);
 
-echo URL::to('/');
-
-// __::sortBy(array(1, 2, 3), function($n) { return -$n; });
-
-// $asset = Asset::find(1);
-// return $asset->tags->lists('name');
 
 
 });
@@ -308,10 +302,12 @@ Route::group(array('prefix' => 'v1'), function()
      */
     Route::get('users/{id?}', array('before' => 'admin-auth', 'uses' => 'Controllers\Api\V1\ApiController@users'));
     Route::post('user/tos', array('uses' => 'Controllers\Api\V1\ApiController@tos'));
-    Route::get('assets/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@assets'));
 
     /*
      * cas-auth Apis
      */
-    Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
+    Route::get('assets/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@assets'));
+    Route::get('collection/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection'));
+    // Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
+    Route::get('test', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@test'));
 });

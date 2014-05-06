@@ -11,11 +11,11 @@ module( "Player" );
 var video = $('<video id="video-player">');
 var player = new Player(video)
 
-test( "Init", function() {
+test( "Does Player Init", function() {
 	ok(player, "Passed!" );
 	ok(player.data, 'Has player.data');
 	ok(player.video, 'Has player.video');
-	equal(player.video.id, 'video-player', 'player.video.id is good');
+	equal(player.video.id, 'video-player', 'Has player.video.id');
 });
 
 test( "Controllers", function() {
