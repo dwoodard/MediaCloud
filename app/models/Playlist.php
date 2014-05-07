@@ -18,13 +18,21 @@ class Playlist extends Eloquent {
 
 	public function assets()
 	{
-		return $this->belongsToMany('Asset');
-		// return $this->belongsToMany('Asset','asset_playlist', 'asset_order')->withPivot('asset_order');
-		// return $this->belongsToMany('Asset','asset_playlist', 'asset_order')->withPivot('asset_order');
+		return $this
+		->belongsToMany('Asset')
+		->withPivot('asset_order')
+		->orderBy('pivot_asset_order', 'asc');
 	}
 	public function collections()
 	{
 		return $this->belongsToMany('Collection');
+	}
+	public static function playlist_asset($id)
+	{
+
+		$playlist = Playlist::find($id);
+		$playlist->assets;
+		return $playlist;
 	}
 
 }

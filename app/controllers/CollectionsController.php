@@ -9,25 +9,36 @@ class CollectionsController extends PermissionsController {
 	 *
 	 * @return View
 	 */
-	public function index($id = null)
+	public function index($id = null, $cpa = null)
 	{
-		// Sentry::getUser()->id;
 		$user = User::find(Sentry::getUser()->id);
-		return $user->collections()->get();
-		// return json_encode($user->collections());
+		// return $user->collections()->get();
+		// return array(Request::segment(1),Request::segment(2),Request::segment(3));
 
-		// return Collection::all();
-		// Grab all the collections
-		if (Request::ajax()) {
-			if (is_numeric($id)) {
-				return Collection::find($id);
-			}else{
-				return Collection::all();
-			}
+		// /collections/null/null
+		if (Request::segment(1) == 'collections' && Request::segment(2) == null && Request::segment(3) == null) {
+			return $user->collections()->get();
 		}
 
-		// Show the page
-		// return View::make('backend/collections/index', compact('collections'));
+		if (Request::segment(2) == $id && Request::segment(3) == null) {
+			return Collection::find($id);
+		}
+
+		// /collections/1/cpa
+		if (Request::segment(3) == 'cpa') {
+
+			return Collection::collection_playlist_asset($id);
+			// $collection = Collection::find($id);
+			// $collection->playlists;
+			// $collection->assets;
+			// foreach ($collection->playlists as $key => $playlist) {
+
+			// 	$collection->playlists->merge($playlist->assets);
+			// }
+			// return $collection;
+		}
+
+
 	}
 
 

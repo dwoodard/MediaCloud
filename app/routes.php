@@ -15,7 +15,7 @@ App::bind('AssetRepository', 'Asset');
 Route::get('/test', function(){
 
 
-// return Collection::collection_playlist_asset(1);
+return Playlist::playlist_asset(1);
 
 
 
@@ -200,9 +200,19 @@ Route::group(array('prefix' => 'asset'), function()
 #Collections
 Route::group(array('prefix' => 'collections'), function()
 {
-	Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
+	// Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
+	Route::get('/{id?}/{cpa?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
 	Route::post('store', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 	Route::post('add', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+
+});
+#Playlists
+Route::group(array('prefix' => 'playlists'), function()
+{
+	// Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
+	Route::get('/{id?}/{pa?}', array('as' => 'collection.index', 'uses' => 'PlaylistsController@index'));
+	// Route::post('store', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
+	// Route::post('add', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 
 });
 
@@ -221,7 +231,8 @@ Route::group(array('prefix' => 'collections'), function()
 
 
 # Media Manager
-Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
+//'before' => 'cas-login',
+Route::group(array( 'prefix' => 'manage'), function()
 {
 	Route::get('/', array('as' => 'manage', 'uses' => 'ManageController@index'));
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));

@@ -19,7 +19,6 @@
     "jquery-ui": "~1.10.4",
     "app-folders": "https://raw.githubusercontent.com/spsaucier/App-Folders/master/jquery.app-folders.js",
     "bootstrap": "3.1.1",
-    "hammer.js": "https://raw.githubusercontent.com/EightMedia/hammer.js/master/hammer.min.js",
     "tag-it": "https://github.com/aehlke/tag-it.git",
     "underscore": "~1.6.0",
     "webshim": "~1.12.7"

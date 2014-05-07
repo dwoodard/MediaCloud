@@ -332,26 +332,34 @@ class ManageController extends PermissionsController {
 
 	public function update_order_by_type()
 	{
+		$result = array();
+		$sorts =  Input::get('sorts');
+		foreach ($sorts as $key => $sort) {
 
-		switch (Input::get('type')) {
-			case 'collection':
-			$result = DB::table('asset_playlist')
-			->where('playlist_id', Input::get('collection_id'))
-			->where('asset_id', Input::get('asset_id'))
-			->update(array('asset_order' => Input::get('asset_order')));
-			break;
-			case 'playlist':
-			$result = DB::table('asset_playlist')
-			->where('playlist_id', Input::get('playlist_id'))
-			->where('asset_id', Input::get('asset_id'))
-			->update(array('asset_order' => Input::get('asset_order')));
-			break;
+			// array_push($result, array($sorts[$key]));
+			
+			switch ($sort['type']) {
+				case 'collection':
+				$result = DB::table('asset_playlist')
+				->where('playlist_id', $sort['collection_id'])
+				->where('asset_id', $sort['asset_id'])
+				->update(array('asset_order' => $sort['asset_order']));
+				break;
+				case 'playlist':
+				$result = DB::table('asset_playlist')
+				->where('playlist_id', $sort['playlist_id'])
+				->where('asset_id', $sort['asset_id'])
+				->update(array('asset_order' => $sort['asset_order']));
+				break;
 
-			default:
-			break;
+				default:
+				break;
+			}
+
 		}
 
-		return  Input::get('asset_order');
+
+		return  array('sorts:' => $sorts);
 	}
 
 }

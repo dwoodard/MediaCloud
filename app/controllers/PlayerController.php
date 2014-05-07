@@ -20,7 +20,7 @@ class PlayerController extends BaseController {
 	}
 
 	public function collection($id){
-		$collection = Collection::find($id);
+		$collection = Collection::collection_playlist_asset($id);
 		return $collection;
 		return View::make('player.collection')->with('collection', $collection);
 	}

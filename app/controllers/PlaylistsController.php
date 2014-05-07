@@ -7,21 +7,28 @@ class PlaylistsController extends PermissionsController {
 	 *
 	 * @return View
 	 */
-	public function getIndex()
+	public function index($id = null, $pa = null)
 	{
+		$user = User::find(Sentry::getUser()->id);
 
-// Grab all the playlists
+		// /collections/null/null
+		if (Request::segment(1) == 'playlists' && Request::segment(2) == null && Request::segment(3) == null) {
+			return $user->collections()->get();
+		}
 
-		$playlists = Playlist::all();
 
-		// Show the page
-		return View::make('backend/playlists/index', compact('playlists'));
+		// /collections/$id/null
+		if (Request::segment(2) == $id && Request::segment(3) == null) {
+			return Collection::find($id);
+		}
+
+
+		// /collections/1/pa
+		if (Request::segment(3) == 'pa') {
+
+			return Playlist::playlist_asset($id);
+		}
 	}
-
-	public function postIndex()
-	{
-	}
-
 
 	public function create()
 	{
@@ -30,15 +37,15 @@ class PlaylistsController extends PermissionsController {
 	}
 
 
-public function store()
-		{
+	public function store()
+	{
 // Create a new Playlist
 		$playlist =  new Playlist;
 
 		// Update the blog playlist data
 		$playlist->name            = e(Input::get('name'));
 		$playlist->description        = e(Input::get('description'));
-	
+
 
 		// Was the blog playlist created?
 		if($playlist->save())
@@ -71,9 +78,9 @@ public function store()
 
 
 
-public function update($id)
-{
-	
+	public function update($id)
+	{
+
 
 
 	// Check if the assets exists

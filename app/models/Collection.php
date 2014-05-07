@@ -19,7 +19,10 @@ class Collection extends Eloquent {
 
 	public function assets()
 	{
-		return $this->belongsToMany('Asset');
+		return $this
+		->belongsToMany('Asset')
+		->withPivot('asset_order')
+		->orderBy('pivot_asset_order', 'asc');
 	}
 
 	public function playlists()
@@ -31,26 +34,21 @@ class Collection extends Eloquent {
 	{
 		return $this->belongsToMany('User');
 	}
+	public function cpa($collection_id)
+	{
+		return $collection_id;
+	}
 	public static function collection_playlist_asset($id)
 	{
 
-		$collection = array();
-		$playlists = array();
-		$assets = User::find($id)->assets()->get();
-		foreach ($assets as $asset) {
-			foreach ($asset->playlists()->get() as $playlist) {
-				$playlists[$playlist->id] = $asset->toArray();
+		$collection = Collection::find($id);
+		$collection->playlists;
+		$collection->assets;
+		foreach ($collection->playlists as $key => $playlist) {
 
-			}
-
-
-			// $collection[] = $playlist->collections();
+			$collection->playlists->merge($playlist->assets);
 		}
-
-
-		// var_dump($playlists);
-
-		return $playlists;
+		return $collection;
 	}
 
 }
