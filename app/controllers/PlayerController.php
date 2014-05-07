@@ -7,9 +7,9 @@ class PlayerController extends BaseController {
 	 *
 	 * @return View
 	 */
-	public function single($id){
+	public function asset($id){
 		$asset = Asset::find($id);
-		return View::make('player.single')->with('asset', $asset);
+		return View::make('player.asset')->with('asset', $asset);
 	}
 
 	public function playlist($id){

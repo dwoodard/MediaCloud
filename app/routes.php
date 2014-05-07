@@ -15,7 +15,10 @@ App::bind('AssetRepository', 'Asset');
 Route::get('/test', function(){
 
 
-return Playlist::playlist_asset(1);
+echo "<iframe width='800px' height='600px' src='http://localhost:8080/player/asset/2 frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+
+
+// return Playlist::playlist_asset(1);
 
 
 
@@ -184,7 +187,7 @@ Route::get('capture', array('as' => 'single', 'uses' => 'CaptureController@index
 # Media Player
 Route::group(array('prefix' => 'player'), function()
 {
-	Route::get('single/{id}', array('as' => 'single', 'uses' => 'PlayerController@single'));
+	Route::get('asset/{id}', array('as' => 'asset', 'uses' => 'PlayerController@asset'));
 	Route::get('playlist/{id}', array('as' => 'playlist', 'uses' => 'PlayerController@playlist'));
 	Route::get('collection/{id}', array('as' => 'collection', 'uses' => 'PlayerController@collection'));
 

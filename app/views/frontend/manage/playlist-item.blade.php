@@ -27,7 +27,7 @@
 						</a></div>
 						<div id="playlist-toolbar"  role="toolbar">
 							<div class="btn-group ">
-								<button class="share btn btn-primary shareItem" data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
+								<button class="share-select btn btn-primary " data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
 
 								<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
@@ -38,14 +38,14 @@
 											</div>
 											<div class="modal-body">
 
-												<p>Hit <strong>CTRL+C</strong> to copy the link to your clipboard!</p>
+												<p>Hit <strong>(CTRL/CMD)+C</strong> to copy the link to your clipboard!</p>
 
 												<br>
-												<input class="form-control shareItem" type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
+												<input id="current-playlist-direct-link" class="form-control share-select " type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
 												<br>
 												<p>Embed this playlist on your webpage!</p>
 												<br>
-												<input class="form-control shareItem" type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
+												<input id="current-playlist-embed-link" class="form-control share-select" type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
 												<br>
 												<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}"> Preview Here</a> 
 												

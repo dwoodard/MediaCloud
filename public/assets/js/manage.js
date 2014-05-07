@@ -64,6 +64,25 @@ var Manage = {
 		Manage.textEdit();
 	},
 
+	shareSelect: function  () {
+		$(".share-select").on("click", function (e) {
+			
+			if ($(e.currentTarget).data("target")){
+				var input = $($($(e.currentTarget).data("target"))[0]).find("[id$=direct-link]")
+
+				setTimeout(function() {
+					input.focus().select()
+				},1000)
+			};
+
+			if ($(e.currentTarget).is("input")) {
+				var input = $(e.currentTarget)
+				input.focus().select()
+				// console.log('ive been clicked');
+			};
+		});
+	},
+
 	menuEvents: function () {
 
 		Manage.loadCollection();
@@ -90,11 +109,7 @@ var Manage = {
 				$("#srch-term")[0].focus();
 			}, 0);
 		});
-		$(".shareItem").on("click", function (e) {
-			setTimeout(function () {
-				$(".shareItem")[0].focus();
-			}, 0);
-		});
+
 		$(".close").on("click", function (e) {
 			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
 			switch (cbp_menu.id) {
@@ -216,6 +231,7 @@ var Manage = {
 			Manage.textEdit();
 			Manage.contextMenuInit();
 			Manage.tagAsset();
+			Manage.shareSelect();
 		});
 },
 
@@ -311,18 +327,21 @@ setCurrentAssetView: function (id) {
 
 		$("#current-asset-id").html(id)
 		$("#current-asset-title").html(data.title)
+		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
+		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/player/asset/" + id + " frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
 
-
-		Manage.loadTags()
+		// {{URL::to('/').'/player/playlist/'.$playlist['id'] }}
+// <iframe width='100%' height='100%' src='http://localhost:8080'/player/asset/'2' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		Manage.loadTags();
+		Manage.shareSelect();
 
 		$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>')
 
 		$.ajax({
-			url: "/player/single/" + id
+			url: "/player/asset/" + id
 		}).done(function (data) {
 			$("#asset-player").html(data);
 			$("#asset-view").addClass("cbp-spmenu-open")
-
 		});
 	})
 
