@@ -110,7 +110,7 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 
 
 	Route::get('settings', array('as' => 'settings', 'uses' => 'SettingsController@getIndex'));
-	Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@getIndex'));
+	Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
 	Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@getIndex'));
 	Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
 	Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));
@@ -210,7 +210,7 @@ Route::group(array('prefix' => 'collections'), function()
 Route::group(array('prefix' => 'playlists'), function()
 {
 	// Route::get('/{id?}', array('as' => 'collection.index', 'uses' => 'CollectionsController@index'));
-	Route::get('/{id?}/{pa?}', array('as' => 'collection.index', 'uses' => 'PlaylistsController@index'));
+	Route::get('/{id?}/{cpa?}', array('as' => 'collection.index', 'uses' => 'PlaylistsController@index'));
 	// Route::post('store', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 	// Route::post('add', array('as' => 'collection.store', 'uses' => 'CollectionsController@store'));
 

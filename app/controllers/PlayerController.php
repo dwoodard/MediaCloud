@@ -13,15 +13,12 @@ class PlayerController extends BaseController {
 	}
 
 	public function playlist($id){
-		$playlist = Playlist::find($id);
-		$playlist->assets;
-		// return $playlist;
+		$playlist = Playlist::playlist_asset($id);
 		return View::make('player.playlist')->with('playlist', $playlist);
 	}
 
 	public function collection($id){
 		$collection = Collection::collection_playlist_asset($id);
-		return $collection;
 		return View::make('player.collection')->with('collection', $collection);
 	}
 

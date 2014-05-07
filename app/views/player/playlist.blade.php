@@ -10,12 +10,13 @@
 <body>
 
 
-	<div id="mediaplayer-wrapper" >
+	<div id="mediaplayer-wrapper" data-type="playlists-{{$playlist->id}}">
 		<div id="video-player-wrapper">
 			<video id="video-player">Your browser does not support the video tag.</video>
 		</div>
 		<div id="meida-menu"></div>
 	</div>
+
 
 
 
@@ -27,6 +28,10 @@
 
 	<script type="text/javascript">
 		player = new Player($("#video-player"));
+
+
+
+
 	</script>
 
 </body>
