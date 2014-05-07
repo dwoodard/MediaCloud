@@ -110,7 +110,7 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 
 
 	Route::get('settings', array('as' => 'settings', 'uses' => 'SettingsController@getIndex'));
-	Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@getIndex'));
+	Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
 	Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@getIndex'));
 	Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
 	Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));

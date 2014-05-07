@@ -318,18 +318,6 @@ class ManageController extends PermissionsController {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 	public function update_order_by_type()
 	{
 		$result = array();
@@ -337,7 +325,7 @@ class ManageController extends PermissionsController {
 		foreach ($sorts as $key => $sort) {
 
 			// array_push($result, array($sorts[$key]));
-			
+
 			switch ($sort['type']) {
 				case 'collection':
 				$result = DB::table('asset_playlist')
@@ -357,7 +345,6 @@ class ManageController extends PermissionsController {
 			}
 
 		}
-
 
 		return  array('sorts:' => $sorts);
 	}

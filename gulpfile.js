@@ -25,9 +25,7 @@ gulp.task('manage-js', function () {
 	return gulp.src([
 		"public/bower/jquery/dist/jquery.min.js",
 		"public/bower/bootstrap/dist/js/bootstrap.min.js",
-		"public/bower/hammer.js/index.js",
 		"public/assets/js/manage.js",
-		"public/bower/jquery.hammer.js/index.js",
 		"public/assets/js/dropzone.js",
 		"public/bower/app-folders/index.js",
 		"public/bower/tag-it/js/tag-it.min.js",

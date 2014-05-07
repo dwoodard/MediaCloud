@@ -51,16 +51,24 @@ var Player;
 
 Player = (function() {
 	function Player(playerElm,menuElm) {
-		this.video = playerElm[0];
-		this.data = $.getJSON('/v1/assets/1')
-		this.menu = menuElm;
-		this.deferreds = [];
-		this.init();
 
+		this.video = playerElm[0];
+		this.data = function() {
+			var re = /(.*)-(\d+)/.exec($(this.video).closest('[data-type]').data('type'))
+			data = $.getJSON('/'+re[1] +'/'+ re[2] + '/cpa');
+			return data.responseJSON
+		};
+		this.menu = menuElm;
+
+		this.init();
 	}
 	Player.prototype.init = function() {
 
-		$.when()
+		$.when(this.data()).then( function(data) {
+			console.log('done',this.data)
+		}, function() {
+			console.log('failed')
+		} );
 
 	};
 
@@ -76,7 +84,7 @@ Player = (function() {
 	}
 
 	Player.prototype.prevAsset = function() {
-		return 1
+		return false
 	}
 
 

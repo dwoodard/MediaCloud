@@ -7,7 +7,7 @@ class PlaylistsController extends PermissionsController {
 	 *
 	 * @return View
 	 */
-	public function index($id = null, $pa = null)
+	public function index($id = null, $cpa = null)
 	{
 		$user = User::find(Sentry::getUser()->id);
 
@@ -24,7 +24,7 @@ class PlaylistsController extends PermissionsController {
 
 
 		// /collections/1/pa
-		if (Request::segment(3) == 'pa') {
+		if (Request::segment(3) == 'cpa') {
 
 			return Playlist::playlist_asset($id);
 		}

@@ -26,16 +26,7 @@ class CollectionsController extends PermissionsController {
 
 		// /collections/1/cpa
 		if (Request::segment(3) == 'cpa') {
-
 			return Collection::collection_playlist_asset($id);
-			// $collection = Collection::find($id);
-			// $collection->playlists;
-			// $collection->assets;
-			// foreach ($collection->playlists as $key => $playlist) {
-
-			// 	$collection->playlists->merge($playlist->assets);
-			// }
-			// return $collection;
 		}
 
 
