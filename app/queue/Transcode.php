@@ -34,6 +34,7 @@ class Transcode {
 				exec("sudo ffmpeg -i $original -ss 5 $mediaPath/$filenameThumb", $out, $return);
 
 				 switch($asset->original_ext){
+					case 'm4v':
 					case 'mp4':
 						exec("sudo cp $original $mediaPath/$filename.mp4", $out, $return);
 					break;

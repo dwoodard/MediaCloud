@@ -66,8 +66,8 @@
 
 
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#playlists-container" data-toggle="tab">Playlists</a></li>
-		<li><a href="#assets-container" data-toggle="tab">Assets</a></li>
+		<li class="active"><a href="#playlists-container" data-toggle="tab">Playlists (<span>{{count($collection->playlists)}}</span>)</a></li>
+		<li><a href="#assets-container" data-toggle="tab">Assets (<span>{{count($collection->assets)}}</span>)</a></li>
 		<li><a href="#settings-container" data-toggle="tab">Settings</a></li>
 		<li><a href="#deployments-container" data-toggle="tab">Deployments</a></li>
 		<li class="pull-right">

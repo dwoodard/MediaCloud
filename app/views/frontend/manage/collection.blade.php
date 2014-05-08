@@ -78,7 +78,7 @@
 				</div>
 				<div id="collapseThree" class="panel-collapse collapse">
 					<div class="panel-body">
-						<p>Permissions Stuff</p>
+						<p>Permissions soon to come</p>
 					</div>
 				</div>
 			</div>
