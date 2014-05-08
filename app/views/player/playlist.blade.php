@@ -10,11 +10,11 @@
 <body>
 
 
-	<div id="mediaplayer-wrapper" data-type="playlists-{{$playlist->id}}">
-		<div id="video-player-wrapper">
-			<video id="video-player">Your browser does not support the video tag.</video>
+	<div id="mediaplayer-wrapper">
+		<div id="player-video-wrapper">
+			<video id="player-video">Your browser does not support the video tag.</video>
 		</div>
-		<div id="meida-menu"></div>
+		<div id="player-menu"></div>
 	</div>
 
 
@@ -27,11 +27,10 @@
 	<script type="text/javascript" src="/assets/js/player.js"></script>
 
 	<script type="text/javascript">
-		player = new Player($("#video-player"));
-
-
-
-
+		player = new Player({
+			dataURL: "/playlists/{{$playlist->id}}/cpa",
+			type: "playlists"
+ 		});
 	</script>
 
 </body>

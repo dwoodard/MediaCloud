@@ -1,49 +1,109 @@
-//http://www.w3.org/2010/05/video/script.js
 
-var Player;
+var Player = (function(opts) {
 
-Player = (function() {
-	function Player(playerElm,menuElm) {
+	function Player(opts) {
 
-		this.video = playerElm[0];
-		this.data = function() {
-			var re = /(.*)-(\d+)/.exec($(this.video).closest('[data-type]').data('type'))
-			dataDef = $.getJSON('/'+re[1] +'/'+ re[2] + '/cpa');
-			return data.promise()
-		};
-		this.menu = menuElm;
+		this.options = $.extend({
+			video:$("#player-video")[0],
+			menu:$("#player-menu")[0],
+			type:undefined,
+			data:undefined,
+			dataURL:undefined, /* /playlists/1/cpa */
+		}, opts);
 
-		this.init();
-	}
-	Player.prototype.init = function() {
-
-		$(data).done(function(e){
-			console.log(e);
-
-		})
-
+		this.video = this.options.video;
+		this.menu = this.options.menu;
+		this.data = this.getData(this.options.dataURL);
 	};
 
-	Player.prototype.video = "";
-	Player.prototype.menu = "";
+	Player.prototype.getData = function(url) {
+		var that = this;
 
+		var def = $.getJSON(url);
+		def.done(function(data) {
+			that.data = data;
+			console.log(that);
+		})
+	};
+
+	/*Controls*/
+	Player.prototype.play = function() {
+		console.log(this)
+		this.video.play()
+	};
+	Player.prototype.pause = function() {
+		this.video.pause()
+	};
 	Player.prototype.changeVideo = function(url) {
-		console.log(url);
-	}
-
+		this.video.src = url;
+	};
 	Player.prototype.nextAsset = function() {
-		return false
-	}
+		return 'nextAsset';
+	};
 
 	Player.prototype.prevAsset = function() {
-		return false
-	}
+		return 'prevAsset';
+	};
+
+	return new Player(opts);
+});
 
 
 
-	return Player;
 
-})();
+
+// var player = new function() {
+
+// 	this.video = "";
+// 	this.menu = "";
+
+// 	this.data = "";
+
+// 	this.getData = function() {};
+// };
+
+
+// var Player = (function() {
+// 	function Player(playerElm,menuElm) {
+
+// 		this.video = playerElm[0];
+// 		this.data = function() {
+// 			var re = /(.*)-(\d+)/.exec($(this.video).closest('[data-type]').data('type'))
+// 			dataDef = $.getJSON('/'+re[1] +'/'+ re[2] + '/cpa');
+// 			return data.promise()
+// 		};
+// 		this.menu = menuElm;
+
+// 		this.init();
+// 	}
+// 	Player.prototype.init = function() {
+
+// 		$(data).done(function(e){
+// 			console.log(e);
+// 		})
+
+// 	};
+
+// 	Player.prototype.video = "";
+// 	Player.prototype.menu = "";
+
+// 	Player.prototype.changeVideo = function(url) {
+// 		console.log(url);
+// 	}
+
+// 	Player.prototype.nextAsset = function() {
+// 		return false
+// 	}
+
+// 	Player.prototype.prevAsset = function() {
+// 		return false
+// 	}
+
+
+
+// 	return Player;
+
+// })();
 
 
 

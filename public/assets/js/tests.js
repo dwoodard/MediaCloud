@@ -1,92 +1,57 @@
 
-
-/*
-|***************
-| Player
-|****************
-*/
-
 module( "Player" );
+var video = $('<video id="player-video">');
+var menu = $('<div id="player-menu">');
 
-var video = $('<video id="video-player">');
-var player = new Player(video)
-
-test( "Does Player Init", function() {
-	ok(player, "Passed!" );
-	ok(player.data, 'Has player.data');
-	ok(player.video, 'Has player.video');
-	equal(player.video.id, 'video-player', 'Has player.video.id');
+player = new Player({
+	video: video[0] ,
+	menu: menu[0] ,
+	dataURL: "http://localhost:8080/playlists/1/cpa",
+	type: "playlists"
 });
 
-test( "Controllers", function() {
 
-	ok( player.nextAsset(), "next video!" );
-	ok( player.prevAsset(), "prev video!" );
+test( "Player Init", function() {
+	ok(player, "player" );
+	ok(player, "player" );
+	ok(player.menu, 'player.menu');
+	ok(player.video, 'player.video');
+	ok(player.options.dataURL, "/playlists/1/cpa");
+	equal(player.video.id, 'player-video', 'player.video.id');
+
+
+
+});
+
+
+
+
+
+
+test( "Controllers", function() {
+	// player.video.changeVideo('http://localhost:8080/asset/10')
+	ok( player, "player");
+	ok( player.play(), "play()");
+	ok( player.pause(), "pause()");
+	ok( player.nextAsset(), "next() video!" );
+	ok( player.prevAsset(), "prev() video!" );
 
 });
 
 test( "Menu", function() {
 
-	ok( player.menu, "Menu" );
+	ok( player.menu, "player menu elment");
+
+	var obj = { foo: "bar" };
+
+	deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
 
 });
 
 
+module( "Async Tests" );
 
-/*
-|***************
-| Other
-|****************
-*/
-module( "Other" );
-
-// test( "propEqual test", function() {
-//   function Foo( x, y, z ) {
-//     this.x = x;
-//     this.y = y;
-//     this.z = z;
-//   }
-//   Foo.prototype.doA = function () {};
-//   Foo.prototype.doB = function () {};
-//   Foo.prototype.bar = 'prototype';
-
-//   var foo = new Foo( 1, "2", [] );
-//   var bar = {
-//     x : 1,
-//     y : "2",
-//     z : []
-//   };
-//   propEqual( foo, bar, "Strictly the same properties without comparing objects constructors." );
-// });
-
-
-
-// test( "a test", 2, function() {
-//   function calc( x, operation ) {
-//     return operation( x );
-//   }
-
-//   var result = calc( 2, function( x ) {
-//     ok( true, "calc() calls operation function" );
-//     return x * x;
-//   });
-
-//   equal( result, 4, "2 squared equals 4" );
-// });
-
-
-/*
-|***************
-| async tests
-|****************
-*/
-
-
-// asyncTest( "asynchronous test: one second later!", function() {
-//   expect( 1 );
-
-//   setTimeout(function() {
-//     ok( true, "Passed and ready to resume!" );
-//     start();
-//   }, 1000);
+// test( "notDeepEqual test", function() {
+//   var obj = { foo: "bar" };
+//   notDeepEqual( obj, { foo: "bla" }, "Different object, same key, different value, not equal" );
 // });

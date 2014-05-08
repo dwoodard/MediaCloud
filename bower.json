@@ -24,6 +24,7 @@
     "webshim": "~1.12.7"
   },
   "devDependencies": {
-    "QUnit": "~1.11.0"
+    "QUnit": "~1.11.0",
+    "jquery-mockjax": "~1.5.3"
   }
 }

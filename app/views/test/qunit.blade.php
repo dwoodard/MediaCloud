@@ -14,6 +14,7 @@
 	<script src="/bower/webshim/js-webshim/minified/polyfiller.js"></script>
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower/jquery-mockjax/jquery.mockjax.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/assets/js/player.js"></script>
 
