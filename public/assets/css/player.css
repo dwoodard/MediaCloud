@@ -3,6 +3,7 @@ html,body{
 	background: #000;
 }
 
+body{min-width: 300px}
 body.push-menu{}
 
 #player-menu-nav{
@@ -13,10 +14,10 @@ body.push-menu{}
 	position: fixed;
 	overflow-y: auto;
 
-	width: 300px;
+	width: 25%;
 	height: 100%;
 	top: 0;
-	right: -300px;
+	right: -25%;
 
 	background: #5a9cdd; /* Old browsers */
 	background: -moz-linear-gradient(top,  #5a9cdd 0%, #356aa0 100%); /* FF3.6+ */
@@ -26,16 +27,39 @@ body.push-menu{}
 	background: -ms-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #5a9cdd 0%,#356aa0 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a9cdd', endColorstr='#356aa0',GradientType=0 ); /* IE6-9 */
-
-
-
-}
-#player-menu-nav.push-menu-open{
-	right: 0px;
 }
 
+body.push-menu-open #player-menu-nav{
+	right: 0px !important;
+}
+
+body #player-video{
+	width:100% !important;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+body.push-menu-open #player-video{
+	width:75% !important;
+}
 
 #mediaplayer-wrapper{}
-#player-video{}
-#player-video{}
+#player-video{
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	height: inherit !important;
+}
+
 #player-menu{}
+
+
+.vjs-control-bar{
+	display: block !important;
+}
+
+.vjs-fade-in,.vjs-fade-out {
+/*visibility: visible !important;
+opacity: .5 !important;
+transition-duration: 1s!important;*/
+}

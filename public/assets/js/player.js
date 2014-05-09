@@ -35,20 +35,6 @@ var Player = (function(opts) {
 
 	Player.prototype.setMenuView = function() {
 		console.log("setMenuView",this.type, this);
-		// $("#menuTitle").html(this.data.name)
-		// var playlists = $("#playlists");
-		// $.each(this.data.playlists,function  (i,val) {
-		// 	playlists.append("<li>"+i+" "+val.name+"</li>")
-		// })
-		// $("#menuTitle").html(this.data.name)
-		// menuTitle
-		// playlists
-		// assets
-
-
-
-
-
 	};
 
 	Player.prototype.loadVideo = function() {
@@ -76,12 +62,12 @@ var Player = (function(opts) {
 	Player.prototype.changeVideo = function(url) {
 		this.video.src = url;
 	};
-	Player.prototype.nextAsset = function() {
-		return 'nextAsset';
+	Player.prototype.playNext = function() {
+		return 'playNext';
 	};
 
-	Player.prototype.prevAsset = function() {
-		return 'prevAsset';
+	Player.prototype.playPrev = function() {
+		return 'playPrev';
 	};
 
 	return new Player(opts);

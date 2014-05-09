@@ -1,31 +1,69 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-  <title>Video.js | HTML5 Video Player</title>
+    <link href="http://vjs.zencdn.net/4.1.0/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/4.1.0/video.js"></script>
+    <!-- For the twitter icon. -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-  <!-- Chang URLs to wherever Video.js files will be hosted -->
-  <link href="video-js.css" rel="stylesheet" type="text/css">
-  <!-- video.js must be in the <head> for older IEs to work. -->
-  <script src="video.js"></script>
-
-  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
-  <script>
-    videojs.options.flash.swf = "video-js.swf";
-  </script>
-
-
+    <style>
+        .vjs-control.vjs-tweet-button:before {
+            /*font-family: FontAwesome;*/
+            content: "MENU";
+        }
+    </style>
 </head>
-<body>
 
-  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
-      poster="http://video-js.zencoder.com/oceans-clip.png"
-      data-setup="{}">
-    <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-    <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
-    <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
-  </video>
+<body>
+    <video id="example_video_1" class="video-js vjs-default-skin" width="640" height="480" controls>
+        <source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4">
+            <source type="video/webm" src="http://video-js.zencoder.com/oceans-clip.webm">
+    </video>
+
+
+
+    <script>
+        videojs.Tweet = videojs.Button.extend({
+            init: function (player, options) {
+                videojs.Button.call(this, player, options);
+                this.on('click', this.onClick);
+            }
+        });
+
+        videojs.Tweet.prototype.onClick = function () {
+            console.log("TWEET!");
+        };
+
+        var createTweetButton = function () {
+            var props = {
+                className: 'vjs-tweet-button vjs-control',
+                innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text">' + ('Tweet') + '</span></div>',
+                role: 'button',
+                'aria-live': 'polite',
+                tabIndex: 0
+            };
+            return videojs.Component.prototype.createEl(null, props);
+        };
+
+        var tweet;
+        videojs.plugin('tweet', function () {
+            var options = {
+                'el': createTweetButton()
+            };
+            tweet = new videojs.Tweet(this, options);
+            this.controlBar.el().appendChild(tweet.el());
+        });
+
+        var vid = videojs("example_video_1", {
+            plugins: {
+                tweet: {}
+            }
+        });
+    </script>
+
+
+
 
 </body>
+
 </html>

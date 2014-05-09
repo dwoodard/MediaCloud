@@ -13,14 +13,10 @@ player = new Player({
 
 test( "Player Init", function() {
 	ok(player, "player" );
-	ok(player, "player" );
 	ok(player.menu, 'player.menu');
 	ok(player.video, 'player.video');
 	ok(player.options.dataURL, "/playlists/1/cpa");
 	equal(player.video.id, 'player-video', 'player.video.id');
-
-
-
 });
 
 
@@ -31,22 +27,22 @@ test( "Player Init", function() {
 test( "Controllers", function() {
 	// player.video.changeVideo('http://localhost:8080/asset/10')
 	ok( player, "player");
-	ok( player.play(), "play()");
-	ok( player.pause(), "pause()");
-	ok( player.nextAsset(), "next() video!" );
-	ok( player.prevAsset(), "prev() video!" );
+	// ok( player.play(), "play()");
+	// ok( player.pause(), "pause()");
+	ok( player.playNext(), "next video!" );
+	ok( player.playPrev(), "prev video!" );
 
 });
 
-test( "Menu", function() {
+// test( "Menu", function() {
 
-	ok( player.menu, "player menu elment");
+// 	ok( player.menu, "player menu elment");
 
-	var obj = { foo: "bar" };
+// 	var obj = { foo: "bar" };
 
-	deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
+// 	deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
 
-});
+// });
 
 
 module( "Async Tests" );
