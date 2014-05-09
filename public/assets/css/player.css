@@ -1,4 +1,40 @@
 /*player.css*/
+html,body{
+	background: #000;
+}
+
+body.push-menu{}
+
+#player-menu-nav{
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+
+	position: fixed;
+	overflow-y: auto;
+
+	width: 300px;
+	height: 100%;
+	top: 0;
+	right: -300px;
+
+	background: #5a9cdd; /* Old browsers */
+	background: -moz-linear-gradient(top,  #5a9cdd 0%, #356aa0 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a9cdd), color-stop(100%,#356aa0)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #5a9cdd 0%,#356aa0 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a9cdd', endColorstr='#356aa0',GradientType=0 ); /* IE6-9 */
+
+
+
+}
+#player-menu-nav.push-menu-open{
+	right: 0px;
+}
+
+
 #mediaplayer-wrapper{}
 #player-video{}
 #player-video{}
