@@ -2,28 +2,67 @@
 var Player = (function(opts) {
 
 	function Player(opts) {
-
-		this.options = $.extend({
+		var p = this
+		p.options = $.extend({
 			video:$("#player-video")[0],
 			menu:$("#player-menu")[0],
 			type:undefined,
-			data:undefined,
 			dataURL:undefined, /* /playlists/1/cpa */
 		}, opts);
 
-		this.video = this.options.video;
-		this.menu = this.options.menu;
-		this.data = this.getData(this.options.dataURL);
+
+		p.video = p.options.video;
+		p.menu = p.options.menu;
+		p.type = p.options.type;
+		p.deferreds = {};
+		p.data = p.getData(p.options.dataURL);
+
+		p.deferreds.defGetData.progress(function(data) {
+			console.log("progress", data);
+		})
+
+		p.deferreds.defGetData.done(function(data) {
+			p.data = data;
+			p.init();
+		})
+
+		p.init = function  () {
+			p.setMenuView();
+			p.loadVideo();
+		}
+
+	};
+
+	Player.prototype.setMenuView = function() {
+		console.log("setMenuView",this.type, this);
+		// $("#menuTitle").html(this.data.name)
+		// var playlists = $("#playlists");
+		// $.each(this.data.playlists,function  (i,val) {
+		// 	playlists.append("<li>"+i+" "+val.name+"</li>")
+		// })
+		// $("#menuTitle").html(this.data.name)
+		// menuTitle
+		// playlists
+		// assets
+
+
+
+
+
+	};
+
+	Player.prototype.loadVideo = function() {
+		console.log("loadVideo", this);
+		player.data
 	};
 
 	Player.prototype.getData = function(url) {
 		var that = this;
 
-		var def = $.getJSON(url);
-		def.done(function(data) {
-			that.data = data;
-			console.log(that);
-		})
+		this.deferreds.defGetData = $.getJSON(url);
+		that.deferreds.defGetData.progress(function(data) {
+			console.log('progress', data)
+		});
 	};
 
 	/*Controls*/

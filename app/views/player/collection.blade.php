@@ -9,15 +9,21 @@
 </head>
 <body>
 
-
+{{--@include('_partials/player-cpa'); --}}
 	<div id="mediaplayer-wrapper">
 		<div id="player-video-wrapper">
 			<video id="player-video">Your browser does not support the video tag.</video>
 		</div>
-		<div id="player-menu"></div>
+		<div id="player-menu">
+			<header id="menuTitle">menuTitle</header>
+			<ul id="playlists">
+				playlists
+			</ul>
+			<ul id="assets">
+				assets
+			</ul>
+		</div>
 	</div>
-
-
 
 	<script src="/bower/webshim/js-webshim/minified/polyfiller.js"></script>
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
@@ -29,8 +35,8 @@
 		player = new Player({
 			dataURL: "/collections/{{$collection->id}}/cpa",
 			type: "collections"
- 		});
-		
+		});
+
 	</script>
 
 </body>
