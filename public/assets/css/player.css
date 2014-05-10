@@ -19,14 +19,25 @@ body.push-menu{}
 	top: 0;
 	right: -25%;
 
-	background: #5a9cdd; /* Old browsers */
-	background: -moz-linear-gradient(top,  #5a9cdd 0%, #356aa0 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a9cdd), color-stop(100%,#356aa0)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #5a9cdd 0%,#356aa0 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #5a9cdd 0%,#356aa0 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a9cdd', endColorstr='#356aa0',GradientType=0 ); /* IE6-9 */
+	background: #333;
+
+}
+#player-menu-nav .panel-body{margin: 0; padding: 0;}
+#player-menu-nav ul{margin: 0; padding: 0; list-style: none;}
+#player-menu-nav ul li{
+	margin: 0 0px;
+}
+#player-menu-nav ul li a{}
+
+#player-menu-nav ul li a:hover{}
+
+#mediaplayer-wrapper .panel-group .panel{
+	border-radius: 0;
+	margin:0 0 1px 0;
+}
+
+#mediaplayer-wrapper [data-toggle="collapse"]{
+	display: block;
 }
 
 body.push-menu-open #player-menu-nav{
@@ -51,8 +62,67 @@ body.push-menu-open #player-video{
 	height: inherit !important;
 }
 
-#player-menu{}
+#player-menu{
+	background: #555555; /* Old browsers */
+	background: -moz-linear-gradient(top,  #555555 0%, #222222 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#555555), color-stop(100%,#222222)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #555555 0%,#222222 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #555555 0%,#222222 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #555555 0%,#222222 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #555555 0%,#222222 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#555555', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
 
+}
+#player-menu-nav .item header
+{
+	background: #666666; /* Old browsers */
+	background: -moz-linear-gradient(top,  #666666 0%, #333333 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#333333)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #666666 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #666666 0%,#333333 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #666666 0%,#333333 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #666666 0%,#333333 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#333333',GradientType=0 ); /* IE6-9 */
+
+	color:#f3f3f3;
+	position: relative;
+	padding: 10px;
+}
+#player-menu-nav header #menuTitle .title{
+
+}
+
+#player-menu-nav .toolbar {text-align: right}
+#player-menu-nav header .toolbar {}
+#player-menu-nav header .toolbar a{
+	color: #e1e1e1;
+	margin: 0;
+	padding: 0;
+}
+#player-menu-nav header .toolbar a:hover{
+	color: #fff;
+	background: none;
+}
+
+
+#player-menu-nav .menuSection{
+	background: #e1e1e1;
+	color: #aaa;
+	padding: 0px 3px;
+	font-size: 12px;
+}
+
+#settings-panel{
+	background: #e1e1e1;
+}
+
+.back{
+cursor: pointer;
+color: #e1e1e1;
+}
+.back:hover{
+color: #fff;
+}
 
 .vjs-control-bar{
 	display: block !important;
