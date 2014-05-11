@@ -46,7 +46,11 @@ class Collection extends Eloquent {
 		$collection->assets;
 		foreach ($collection->playlists as $key => $playlist) {
 
-			$collection->playlists->merge($playlist->assets);
+			$assets = $playlist->assets;
+			// var_dump($assets->toArray());
+			// die();
+
+			$collection->playlists->merge($assets);
 		}
 		return $collection;
 	}

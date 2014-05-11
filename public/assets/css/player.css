@@ -36,6 +36,8 @@ body.push-menu{}
 	margin:0 0 1px 0;
 }
 
+.panel-group ul{}
+
 #mediaplayer-wrapper [data-toggle="collapse"]{
 	display: block;
 }
@@ -88,8 +90,8 @@ body.push-menu-open #player-video{
 	position: relative;
 	padding: 10px;
 }
-#player-menu-nav header #menuTitle .title{
-
+#player-menu-nav header .title{
+	font-size: 25px;
 }
 
 #player-menu-nav .toolbar {text-align: right}
@@ -103,7 +105,7 @@ body.push-menu-open #player-video{
 	color: #fff;
 	background: none;
 }
-
+.playlist-title{text-transform: capitalize;}
 
 #player-menu-nav .menuSection{
 	background: #e1e1e1;
@@ -117,11 +119,11 @@ body.push-menu-open #player-video{
 }
 
 .back{
-cursor: pointer;
-color: #e1e1e1;
+	cursor: pointer;
+	color: #e1e1e1;
 }
 .back:hover{
-color: #fff;
+	color: #fff;
 }
 
 .vjs-control-bar{

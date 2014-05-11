@@ -39,7 +39,7 @@
 			<div class="carousel-inner">
 				<!-- Main Menu -->
 				<div id="player-menu" class="item active">
-					<header id="menuTitle" class="row">
+					<header class="row">
 						<div class="title col-md-8">{{$collection->name}}</div>
 						<div class="toolbar col-md-4">
 							<a href="#" id="btn-settings" data-target="#menu-container" data-slide-to="1">
@@ -155,7 +155,8 @@
 	$(document).ready(function() {
 		player = new Player({
 			dataURL: "/{{$type}}/{{$collection->id}}/cpa",
-			type: "{{$type}}"
+			type: "{{$type}}",
+			data: {{$collection}}
 		});
 
 
@@ -172,13 +173,12 @@
 
 	videojs.Menu.prototype.onClick = function() {
 		$("body").toggleClass('push-menu-open')
-		console.log("Menu!");
 	};
 
 	var createMenuButton = function() {
 		var props = {
 			className: 'vjs-vidMenu-button vjs-control',
-			innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text"> ' + ('Menu') + '</span></div>',
+			innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text"> ' + ('Menu what is this') + '</span></div>',
 			role: 'button',
 			'aria-live': 'polite',
 			tabIndex: 0
