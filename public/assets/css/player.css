@@ -102,6 +102,17 @@ body.push-menu-open #player-video{
 	margin: 0;
 	padding: 0;
 }
+#player-menu-nav .video_play{
+	cursor: pointer;
+}
+
+#playrate-slider{margin-top: 12px;}
+
+
+
+
+
+
 #player-menu-nav header .toolbar a:hover{
 	color: #fff;
 	background: none;
@@ -116,7 +127,8 @@ body.push-menu-open #player-video{
 }
 
 #settings-panel{
-	background: #e1e1e1;
+	background: #fff;
+	padding: 20px;
 }
 
 .back{

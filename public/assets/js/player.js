@@ -15,16 +15,24 @@ var Player = (function(opts) {
 		p.type = p.options.type;
 		p.data = p.options.data
 		p.init(p.data)
+		$(p.video).on('click',function(e) {
+			console.log('click video', this, e)
 
+			if (this.paused) {
+				this.play()
+			}
+			else{
+				this.pause()
+			};
+		})
 	};
 
 	Player.prototype.init = function(data) {
+		videojsInit();
+		menuInit();
+
 		console.log(data);
 	};
-	// function init(data) {
-	// 	console.log(data)
-	// 	videojsInit()
-	// };
 
 	function videojsInit() {
 		videojs.Menu = videojs.Button.extend({
@@ -61,31 +69,90 @@ var Player = (function(opts) {
 		});
 	};
 
+	function menuInit() {
+		/*Player*/
+		$(".video_play").on("click", function(e) {
+			e.preventDefault();
+			console.log(this,$(this).data('asset-id'))
+			player.loadVideo($(this).data('asset-id'))
+		});
 
-	Player.prototype.loadVideo = function() {
-		console.log("loadVideo", this);
-		player.data
-	};
+		// $(player.video).on('click',function(e) {
+		// 	console.log('click', e)
+		// })
+
+/*Settings*/
+$( "#video_playrate_reset").on("click",function(e) {
+	e.preventDefault()
+	$("#playrate-slider").slider({value:100})
+	$("#video_playrate_val").html(1);
+})
+
+$( "#playrate-slider" ).slider({
+	min:50,
+	max:300,
+	value: 100,
+	step: 10,
+	change: function( event, ui ) {
+		player.playbackRate(ui.value/100)
+	},
+	slide: function( event, ui ) {
+				// console.log(event,ui);
+				$("#video_playrate_val").html(ui.value/100)
+				player.playbackRate(ui.value/100)
+			}
+		});
 
 
-	/*Controls*/
-	Player.prototype.play = function() {
-		console.log(this);
-		this.video.play();
-	};
-	Player.prototype.pause = function() {
-		this.video.pause()
-	};
-	Player.prototype.changeVideo = function(url) {
-		this.video.src = url;
-	};
-	Player.prototype.playNext = function() {
-		return 'playNext';
-	};
 
-	Player.prototype.playPrev = function() {
-		return 'playPrev';
-	};
+};
 
-	return new Player(opts);
+Player.prototype.loadVideo = function(assetId) {
+	url = window.location.origin+"/asset/"+assetId
+
+	// if any thing comes back bad don't change
+	if (true) {
+		this.changeVideo(url);
+	}else{
+		//what happend;
+	};
+}
+
+
+/*Controls*/
+Player.prototype.play = function() {
+	this.video.play();
+};
+Player.prototype.playbackRate = function(val) {
+	player.video.playbackRate = val
+};
+
+Player.prototype.pause = function() {
+	this.video.pause()
+};
+
+Player.prototype.changeVideo = function (url) {
+	this.video.src = url;
+	this.video.play()
+};
+
+Player.prototype.playNext = function() {
+	return 'playNext';
+};
+
+Player.prototype.playPrev = function() {
+	return 'playPrev';
+};
+
+// Event
+Player.prototype.onEnd = function() {
+	//do on video end stuff
+};
+Player.prototype.onStart = function() {
+	//do on video end stuff
+};
+
+
+
+return new Player(opts);
 });

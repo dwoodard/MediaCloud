@@ -6,13 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="/bower/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
 	<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
 	<link href="http://vjs.zencdn.net/4.1.0/video-js.css" rel="stylesheet">
 
 	<link href="/assets/css/player.css" rel="stylesheet">
 
 	<style>
-		
+
 
 
 	</style>
@@ -23,7 +24,6 @@
 	<div id="mediaplayer-wrapper">
 		<div id="player-video-wrapper">
 			<video id="player-video"
-			controls
 			src=""
 			poster=""
 			class="video-js vjs-default-skin"
@@ -61,12 +61,15 @@
 									</a>
 								</h4>
 							</div>
-							<div id="PLAYLIST_ID_{{$key}}" class="panel-collapse collapse in">
+							<div id="PLAYLIST_ID_{{$key}}" data-type="playlists" class="panel-collapse collapse @if($key == 0)in@endif ">
+
 								<div class="panel-body">
 									<ul class="">
 										@foreach ($playlist->assets as $key =>$asset)
 										<li class="row">
-											<div class="col-md-10"><a href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a></div>
+											<div class="col-md-10">
+												<a class="video_play" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
+											</div>
 											<div class="toolbar col-md-2">
 												<a href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
@@ -89,13 +92,15 @@
 									</a>
 								</h4>
 							</div>
-							<div id="ASSET_ID_{{$key}}" class="panel-collapse collapse">
+							<div id="ASSET_ID_{{$key}}" data-type="assets" class="panel-collapse collapse">
 								<div class="panel-body">
 									<ul class="">
 
 										@foreach ($collection->assets as $asset)
 										<li class="row">
-											<div class="col-md-8"><a href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a></div>
+											<div class="col-md-8">
+												<a class="video_play" href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
+											</div>
 											<div class="toolbar col-md-4">
 												<a href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
@@ -124,13 +129,19 @@
 
 					<div class="menuSection">Video Settings</div>
 					<div id="settings-panel">
-						<p>Put settings here</p>
-							<div id="slider"></div>
 
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-md-4 control-label">Video Playrate </label>
+								<div class="col-md-6">
 
-
-						<?php // var_dump($collection->toArray()) ?>
-
+									<div id="playrate-slider"></div><span id="video_playrate_val"></span>
+								</div>
+								<div class="col-md-2">
+									<a id="video_playrate_reset" href="" > <i class="fa fa-reply"></i> </a>
+								</div>
+							</div>
+						</form>
 
 
 					</div>
@@ -146,8 +157,9 @@
 
 <script src="/bower/webshim/js-webshim/minified/polyfiller.js"></script>
 <script src="/bower/jquery/dist/jquery.min.js"></script>
+<script src="/bower/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="/bower/underscore/underscore.js"></script>
 <script type="text/javascript" src="/assets/js/player.js"></script>
 
 <script src="http://vjs.zencdn.net/4.1.0/video.js"></script>
@@ -158,15 +170,14 @@
 			type: "{{$type}}",
 			data: {{$collection}}
 		});
-
-
-		
 		$('#menu-container').carousel(0).carousel('pause');
-    	$( "#slider" ).slider();
+
+
+
 	})
 
 
-	
+
 </script>
 
 
