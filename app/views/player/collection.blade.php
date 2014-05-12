@@ -125,6 +125,8 @@
 					<div class="menuSection">Video Settings</div>
 					<div id="settings-panel">
 						<p>Put settings here</p>
+							<div id="slider"></div>
+
 
 
 						<?php // var_dump($collection->toArray()) ?>
@@ -158,13 +160,14 @@
 		});
 
 
+		
 		$('#menu-container').carousel(0).carousel('pause');
+    	$( "#slider" ).slider();
 	})
 
 
 	
 </script>
-
 
 
 </body>
