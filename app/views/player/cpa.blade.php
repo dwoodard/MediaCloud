@@ -125,8 +125,8 @@
 
 					<div class="menuSection">Video Settings</div>
 					<div id="settings-panel">
+						<div id="slider"></div>
 						<p>Put settings here</p>
-
 
 						<?php // var_dump($collection->toArray()) ?>
 
@@ -155,12 +155,13 @@
 	$(document).ready(function() {
 		player = new Player({
 			dataURL: "/{{$type}}/{{$collection->id}}/cpa",
-			type: "{{$type}}"
+			type: "{{$type}}",
 		});
 
 
 		$('#menu-container').carousel(0).carousel('pause');
 	})
+	 
 
 
 	videojs.Menu = videojs.Button.extend({
@@ -196,6 +197,7 @@
 	var vid = videojs("player-video", {
 		plugins : { vidMenu : {} }
 	});
+		
 </script>
 
 
