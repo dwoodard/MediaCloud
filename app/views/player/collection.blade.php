@@ -12,10 +12,9 @@
 	<link href="/assets/css/player.css" rel="stylesheet">
 
 	<style>
-		.vjs-control.vjs-vidMenu-button:before {
-			font-family: verdana;
-			content: "MENU";
-		}
+		
+
+
 	</style>
 
 </head>
@@ -154,7 +153,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		player = new Player({
-			dataURL: "/{{$type}}/{{$collection->id}}/cpa",
 			type: "{{$type}}",
 			data: {{$collection}}
 		});
@@ -164,94 +162,10 @@
 	})
 
 
-	videojs.Menu = videojs.Button.extend({
-		init: function(player, options){
-			videojs.Button.call(this, player, options);
-			this.on('click', this.onClick);
-		}
-	});
-
-	videojs.Menu.prototype.onClick = function() {
-		$("body").toggleClass('push-menu-open')
-	};
-
-	var createMenuButton = function() {
-		var props = {
-			className: 'vjs-vidMenu-button vjs-control',
-			innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text"> ' + ('Menu what is this') + '</span></div>',
-			role: 'button',
-			'aria-live': 'polite',
-			tabIndex: 0
-		};
-		return videojs.Component.prototype.createEl(null, props);
-	};
-
-	var vidMenu;
-	videojs.plugin('vidMenu', function() {
-		var options = { 'el' : createMenuButton() };
-		vidMenu = new videojs.Menu(this, options);
-		this.controlBar.el().appendChild(vidMenu.el());
-	});
-
-	var vid = videojs("player-video", {
-		plugins : { vidMenu : {} }
-	});
+	
 </script>
 
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-<div id="menu-container" class="context-menu carousel slide">
-	<div class="carousel-inner">
-
-		<div class="item active">
-			<ul id="menu-collection">
-				<li><a href="#" id="play">Play</a></li>
-				<li class="slide-submenu">
-					<a href="#" id="settings" data-target="menu-container" data-slide-to="2">
-						Add to...
-					</a>
-				</li>
-				<li><a href="#" id="publish">Make public</a></li>
-				<li class="slide-submenu">
-					<a href="#" data-target="menu-container" data-slide-to="1">Remove...</a>
-				</li>
-			</ul>
-		</div>
-
-		<div class="item">
-			<header>
-				<a class="back" data-target="menu-container" data-slide-to="0"> <i class="fa fa-arrow-circle-o-left"></i> Back</a>
-			</header>
-
-			<div>
-				<p>Put settings here</p>
-				<p>
-					<a href="#" id="delete-item" class="btn btn-danger"> <i class="fa fa-trash-o"></i> Remove<span class="delete-check"></span></a>
-				</p>
-			</div>
-		</div>
-	</div>
-</div> -->

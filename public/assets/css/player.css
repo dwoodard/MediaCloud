@@ -22,6 +22,7 @@ body.push-menu{}
 	background: #333;
 
 }
+#player-menu-nav .panel-heading:hover{background: #ADD9FF;}
 #player-menu-nav .panel-body{margin: 0; padding: 0;}
 #player-menu-nav ul{margin: 0; padding: 0; list-style: none;}
 #player-menu-nav ul li{
@@ -126,12 +127,37 @@ body.push-menu-open #player-video{
 	color: #fff;
 }
 
+
+
+/*Video Player CSS*/
+
+
+
 .vjs-control-bar{
 	display: block !important;
 }
 
-.vjs-fade-in,.vjs-fade-out {
-/*visibility: visible !important;
-opacity: .5 !important;
-transition-duration: 1s!important;*/
+.vjs-control.vjs-vidMenu-button:before {
+	font-family: verdana;
+	content: "MENU";
+}
+
+.vjs-default-skin {
+	color: #dedede
+}
+
+.vjs-play-progress, .vjs-volume-level {
+	background-color: #501794 !important;
+}
+
+.vjs-control-bar, .vjs-big-play-button {
+	background: rgba(97, 97, 97, 0.7)
+}
+
+.vjs-slider {
+	background: rgba(97, 97, 97, 0.2333333333333333)
+}
+
+.vjs-control-bar {
+	font-size: 100%
 }
