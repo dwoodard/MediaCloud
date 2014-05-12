@@ -15,67 +15,75 @@ var Player = (function(opts) {
 		p.type = p.options.type;
 		p.data = p.options.data
 		p.init(p.data)
-		$(p.video).on('click',function(e) {
-			console.log('click video', this, e)
+		// $(p.video).on('click',function(e) {
+		// 	console.log('click video', this, e)
 
-			if (this.paused) {
-				this.play()
-			}
-			else{
-				this.pause()
-			};
-		})
+		// 	if (this.paused) {
+		// 		this.play()
+		// 	}
+		// 	else{
+		// 		this.pause()
+		// 	};
+		// })
+};
+
+Player.prototype.init = function(data) {
+	videojsInit();
+	menuInit();
+
+	console.log(data);
+};
+
+function videojsInit() {
+	videojs.Menu = videojs.Button.extend({
+		init: function(player, options){
+			videojs.Button.call(this, player, options);
+			this.on('click', this.onClick);
+		}
+	});
+
+	videojs.Menu.prototype.onClick = function() {
+		$("body").toggleClass('push-menu-open')
 	};
 
-	Player.prototype.init = function(data) {
-		videojsInit();
-		menuInit();
-
-		console.log(data);
-	};
-
-	function videojsInit() {
-		videojs.Menu = videojs.Button.extend({
-			init: function(player, options){
-				videojs.Button.call(this, player, options);
-				this.on('click', this.onClick);
-			}
-		});
-
-		videojs.Menu.prototype.onClick = function() {
-			$("body").toggleClass('push-menu-open')
+	var createMenuButton = function() {
+		var props = {
+			className: 'vjs-vidMenu-button vjs-control',
+			innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text"> ' + ('Menu what is this') + '</span></div>',
+			role: 'button',
+			'aria-live': 'polite',
+			tabIndex: 0
 		};
-
-		var createMenuButton = function() {
-			var props = {
-				className: 'vjs-vidMenu-button vjs-control',
-				innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text"> ' + ('Menu what is this') + '</span></div>',
-				role: 'button',
-				'aria-live': 'polite',
-				tabIndex: 0
-			};
-			return videojs.Component.prototype.createEl(null, props);
-		};
-
-		var vidMenu;
-		videojs.plugin('vidMenu', function() {
-			var options = { 'el' : createMenuButton() };
-			vidMenu = new videojs.Menu(this, options);
-			this.controlBar.el().appendChild(vidMenu.el());
-		});
-
-		var vid = videojs("player-video", {
-			plugins : { vidMenu : {} }
-		});
+		return videojs.Component.prototype.createEl(null, props);
 	};
 
-	function menuInit() {
-		/*Player*/
-		$(".video_play").on("click", function(e) {
-			e.preventDefault();
-			console.log(this,$(this).data('asset-id'))
-			player.loadVideo($(this).data('asset-id'))
-		});
+	var vidMenu;
+	videojs.plugin('vidMenu', function() {
+		var options = { 'el' : createMenuButton() };
+		vidMenu = new videojs.Menu(this, options);
+		this.controlBar.el().appendChild(vidMenu.el());
+	});
+
+	var vid = videojs("player-video", {
+		plugins : { vidMenu : {} }
+	});
+};
+
+function menuInit() {
+	/*Player*/
+	$(".video_play").on("click", function(e) {
+		e.preventDefault();
+		console.log(this,$(this).data('asset-id'))
+		player.loadVideo($(this).data('asset-id'))
+	});
+
+	$(".download_asset").on("click", function(e) {
+		e.preventDefault();
+		id = $(this).closest(".row").find('[data-asset-id]').data('asset-id');
+		window.open(window.location.origin + '/asset/' + id + "/download", '_blank');
+	});
+
+
 
 		// $(player.video).on('click',function(e) {
 		// 	console.log('click', e)

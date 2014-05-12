@@ -71,7 +71,7 @@
 												<a class="video_play" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
 											</div>
 											<div class="toolbar col-md-2">
-												<a href=""> <i class="fa fa-cloud-download"></i> </a>
+												<a class="download_asset" href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
 										</li>
 										@endforeach
@@ -102,7 +102,7 @@
 												<a class="video_play" href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
 											</div>
 											<div class="toolbar col-md-4">
-												<a href=""> <i class="fa fa-cloud-download"></i> </a>
+												<a class="download_asset" href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
 										</li>
 										@endforeach
