@@ -67,7 +67,7 @@
 									<ul class="">
 										@foreach ($playlist->assets as $key =>$asset)
 										<li class="row">
-											<div class="col-md-10"><a href="">{{$asset->title}}</a></div>
+											<div class="col-md-10"><a href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a></div>
 											<div class="toolbar col-md-2">
 												<a href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
@@ -94,9 +94,9 @@
 								<div class="panel-body">
 									<ul class="">
 
-										@foreach ($collection->playlists as $playlist)
+										@foreach ($collection->assets as $asset)
 										<li class="row">
-											<div class="col-md-8"><a href="">Video 1</a></div>
+											<div class="col-md-8"><a href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a></div>
 											<div class="toolbar col-md-4">
 												<a href=""> <i class="fa fa-cloud-download"></i> </a>
 											</div>
