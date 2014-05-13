@@ -248,15 +248,18 @@ class AssetsController extends PermissionsController{
 
 	public function file($id=null, $token=null)
 	{
-		// echo '?good permissions?<br>';
-
-
 
 		if (is_numeric($id)) {
 			$asset = Asset::where('id', '=', $id)->firstOrFail();
 		}
 		else{
 			$asset = Asset::where('alphaID', '=', $id)->firstOrFail();
+		}
+		$permissions = json_decode($asset->permissions);
+
+
+		if ($permissions->public == 0) {
+			return;
 		}
 
 		$path = Config::get('settings.media-path');
@@ -281,9 +284,15 @@ class AssetsController extends PermissionsController{
 		}
 
 		if($id && $token == "download"){
+
+
+			if ($permissions->can_download == 0) {
+				return View::make('player.no_download');
+			}
+
 			header("Content-Type: application/octet-stream");
 			header("Content-Transfer-Encoding: Binary");
-			header("Content-disposition: attachment; filename=" . Str::snake(Str::camel($asset->title)).  '.' . $ext); 
+			header("Content-disposition: attachment; filename=" . Str::snake(Str::lower($asset->title)).  '.' . $ext);
 			echo readfile($file);
 			return;
 		}

@@ -73,6 +73,7 @@ class UploadCreatorService {
             $asset->type           = $attributes['type'];
             $asset->filesize       = $attributes['filesize'];
             $asset->status         = "uploaded";
+            $asset->permissions    = json_encode(array("can_download" => 1, "public" => 1));
             $asset->save();
             $assetId = $asset->id;
 

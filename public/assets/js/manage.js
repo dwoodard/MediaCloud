@@ -66,7 +66,7 @@ var Manage = {
 
 	shareSelect: function  () {
 		$(".share-select").on("click", function (e) {
-			
+
 			if ($(e.currentTarget).data("target")){
 				var input = $($($(e.currentTarget).data("target"))[0]).find("[id$=direct-link]")
 
@@ -104,6 +104,9 @@ var Manage = {
 				break;
 			}
 		})
+
+
+
 		$("#search_bar a").on("click", function (e) {
 			setTimeout(function () {
 				$("#srch-term")[0].focus();
@@ -223,7 +226,6 @@ var Manage = {
 				}
 			});
 
-
 			Manage.addFolderInit();
 			Manage.dragAsset();
 			Manage.assetPlayerBtn();
@@ -282,8 +284,10 @@ submitNewPlaylist: function () {
 assetPlayerBtn: function () {
 	$('.asset-player-btn').on("click", function (e) {
 
+
 		$('.active-asset').removeClass('active-asset')
 		$(e.currentTarget).closest("tr").addClass('active-asset')
+
 		Manage.setCurrentAssetView($(e.currentTarget).closest("[data-asset-id]").data('asset-id'))
 
 	});
@@ -329,9 +333,36 @@ setCurrentAssetView: function (id) {
 		$("#current-asset-title").html(data.title)
 		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
 		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/player/asset/" + id + " frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
+		permissions = JSON.parse(data.permissions);
 
-		// {{URL::to('/').'/player/playlist/'.$playlist['id'] }}
-// <iframe width='100%' height='100%' src='http://localhost:8080'/player/asset/'2' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+		// textEdit()
+		$('#current-asset-can-download').data("editable-data", "asset-"+id)
+		$('#current-asset-public').data("editable-data", "asset-"+id)
+
+
+		$("#current-asset-can-download").editable({
+			type: 'checklist',
+			url: 'manage/asset/update',
+			pk: id,
+			placement: 'right',
+			title: 'Can Download',
+			source: {'1': 'Yes'},
+			emptytext: 'No'
+		})
+		$('#current-asset-public').editable({
+			type: 'checklist',
+			url: 'manage/asset/update',
+			pk: id,
+			placement: 'right',
+			title: 'Public can view',
+			source: {'1': 'Yes'},
+			emptytext: 'No'
+		});
+
+		// $("#current-asset-can-download").prop('checked', permissions.can_download);
+		// $("#current-asset-public").prop('checked', permissions.public);
+
 		Manage.loadTags();
 		Manage.shareSelect();
 

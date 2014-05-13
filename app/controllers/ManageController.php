@@ -189,7 +189,26 @@ class ManageController extends PermissionsController {
 	public function asset_update(){
 		$inputs = Input::all();
 		$asset = Asset::find($inputs['pk']);
-		$asset->$inputs['name'] = $inputs['value'];
+
+		$permissions = json_decode($asset->permissions);
+				// return $inputs['value'];
+				// return $asset->permissions;
+		switch ($inputs['name']) {
+
+			case 'can_download':
+				 $permissions->can_download = (int) $inputs['value'];
+				$asset->permissions =  json_encode($permissions);
+			break;
+			case 'public':
+				 $permissions->public = (int) $inputs['value'];
+				$asset->permissions =  json_encode($permissions);
+			break;
+
+			default:
+			$asset->$inputs['name'] = $inputs['value'];
+			break;
+		}
+		
 		$asset->save();
 	}
 

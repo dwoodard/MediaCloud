@@ -457,13 +457,6 @@ height: 400px
 }
 .cbp-spmenu .toolbar li a{}
 
-.cbp-spmenu input{
-	color: #333;
-	padding: 3px 4px;
-	font-size: 15px;
-	width: 64%;
-	margin-top: -5px;
-}
 
 .cbp-spmenu h3{
 	color: #afdefa;

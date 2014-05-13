@@ -66,14 +66,20 @@
 								<div class="panel-body">
 									<ul class="">
 										@foreach ($playlist->assets as $key =>$asset)
+										<?php $permissions = json_decode($asset->permissions); ?>
+										@if($permissions->public)
 										<li class="row">
 											<div class="col-md-10">
 												<a class="video_play" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
 											</div>
 											<div class="toolbar col-md-2">
+												@if($permissions->can_download)
 												<a class="download_asset" href=""> <i class="fa fa-cloud-download"></i> </a>
+												@endif
+
 											</div>
 										</li>
+										@endif
 										@endforeach
 									</ul>
 								</div>
@@ -87,12 +93,12 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#ASSET_ID_{{$key}}">
+									<a data-toggle="collapse" data-parent="#accordion" href="#ASSET_ID">
 										Assets
 									</a>
 								</h4>
 							</div>
-							<div id="ASSET_ID_{{$key}}" data-type="assets" class="panel-collapse collapse">
+							<div id="ASSET_ID" data-type="assets" class="panel-collapse collapse">
 								<div class="panel-body">
 									<ul class="">
 

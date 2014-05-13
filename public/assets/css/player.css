@@ -108,7 +108,10 @@ body.push-menu-open #player-video{
 
 #playrate-slider{margin-top: 12px;}
 
+ul li.row:hover{
+background: #ADD9FF;
 
+}
 
 
 
