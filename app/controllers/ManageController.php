@@ -208,7 +208,7 @@ class ManageController extends PermissionsController {
 			$asset->$inputs['name'] = $inputs['value'];
 			break;
 		}
-		
+
 		$asset->save();
 	}
 

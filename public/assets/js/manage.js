@@ -11,7 +11,6 @@ var Manage = {
 		this.textEdit();
 		this.getCollection(collectionId);
 		this.contextMenuInit()
-
 	},
 
 	dropzoneInit: function () {
@@ -341,24 +340,87 @@ setCurrentAssetView: function (id) {
 		$('#current-asset-public').data("editable-data", "asset-"+id)
 
 
-		$("#current-asset-can-download").editable({
+		// $("#current-asset-can-download").editable({
+		// 	type: 'checklist',
+		// 	url: 'manage/asset/update',
+		// 	pk: id,
+		// 	placement: 'right',
+		// 	title: 'Can Download',
+		// 	source: {'1': 'Yes'},
+		// 	emptytext: 'No'
+		// });
+
+
+
+
+		$('#current-asset-permissions').editable({
 			type: 'checklist',
-			url: 'manage/asset/update',
+			ajaxOptions: {
+				 dataType: 'json'
+			},
+			source:{"can_download":1,"public":1},
+			// source: 'manage/asset/update',
+			url: function(params) {
+				return 'manage/asset/update';
+			},
 			pk: id,
+			title: 'Select Permissions',
 			placement: 'right',
-			title: 'Can Download',
-			source: {'1': 'Yes'},
-			emptytext: 'No'
-		})
-		$('#current-asset-public').editable({
-			type: 'checklist',
-			url: 'manage/asset/update',
-			pk: id,
-			placement: 'right',
-			title: 'Public can view',
-			source: {'1': 'Yes'},
-			emptytext: 'No'
+			send:function(a,b,c) {
+				console.log("send",a,b,c)
+			},
+			display: function(value, sourceData) {
+
+				var $el = $('#permissions-list'),
+				checked, html = '';
+				if(!value) {
+					$el.empty();
+					return;
+				}
+
+				checked = $.grep(sourceData, function(o){
+					return $.grep(value, function(v){
+						return v == o.value;
+					}).length;
+				});
+
+				 
+
+				$.each(checked, function(i, v) {
+					html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
+				});
+				if(html) html = '<ul>'+html+'</ul>';
+				$el.html(html);
+
+			},
+
+			// display: function(value, sourceData) {
+			// 	console.log(value,sourceData);
+			// var $el = $('#permissions-list'),
+			// 	checked, html = '';
+			// 	if(!value) {
+			// 		$el.empty();
+			// 		return;
+			// 	}
+
+			// 	checked = $.grep(sourceData, function(o){
+			// 		return $.grep(value, function(v){
+			// 			return v == o.value;
+			// 		}).length;
+			// 	});
+
+			// 	$.each(checked, function(i, v) {
+			// 		html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
+			// 	});
+			// 	if(html) html = '<ul>'+html+'</ul>';
+			// 	$el.html(html);
+			// }
 		});
+
+
+
+
+
 
 		// $("#current-asset-can-download").prop('checked', permissions.can_download);
 		// $("#current-asset-public").prop('checked', permissions.public);
@@ -375,8 +437,6 @@ setCurrentAssetView: function (id) {
 			$("#asset-view").addClass("cbp-spmenu-open")
 		});
 	})
-
-
 },
 
 playListSettings: function () {

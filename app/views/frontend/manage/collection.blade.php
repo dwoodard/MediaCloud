@@ -81,12 +81,10 @@
 
 
 						<div style="">
-							Can Download: <a id="current-asset-can-download" data-name="can_download"  data-editable-data="" href="#" ></a>
+							<a id="current-asset-permissions" data-name="permissions"  data-editable-data="" href="#" >Edit Permissions</a>
+							<div id="permissions-list"></div>
 						</div>
 
-						<div style="">
-							Public can view: <a id="current-asset-public" data-name="public"  data-editable-data="" href="#" ></a>
-						</div>
 
 					</div>
 				</div>
