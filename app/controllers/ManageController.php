@@ -191,23 +191,10 @@ class ManageController extends PermissionsController {
 		$asset = Asset::find($inputs['pk']);
 
 		$permissions = json_decode($asset->permissions);
+				// return $inputs;
 				// return $inputs['value'];
 				// return $asset->permissions;
-		switch ($inputs['name']) {
-
-			case 'can_download':
-				 $permissions->can_download = (int) $inputs['value'];
-				$asset->permissions =  json_encode($permissions);
-			break;
-			case 'public':
-				 $permissions->public = (int) $inputs['value'];
-				$asset->permissions =  json_encode($permissions);
-			break;
-
-			default:
-			$asset->$inputs['name'] = $inputs['value'];
-			break;
-		}
+		$asset->$inputs['name'] = $inputs['value'];
 
 		$asset->save();
 	}

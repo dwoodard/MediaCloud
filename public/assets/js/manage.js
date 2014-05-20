@@ -332,7 +332,6 @@ setCurrentAssetView: function (id) {
 		$("#current-asset-title").html(data.title)
 		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
 		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/player/asset/" + id + " frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
-		permissions = JSON.parse(data.permissions);
 
 
 		// textEdit()
@@ -352,16 +351,45 @@ setCurrentAssetView: function (id) {
 
 
 
-
+		var def;
+		var permissions = JSON.parse(Manage.data.permissions);
+		var source = _.keys(permissions)
 		$('#current-asset-permissions').editable({
 			type: 'checklist',
-			ajaxOptions: {
-				 dataType: 'json'
-			},
-			source:{"can_download":1,"public":1},
-			// source: 'manage/asset/update',
+			source:source,
 			url: function(params) {
-				return 'manage/asset/update';
+				var oldParamsValue = params.value
+
+				//update params.value
+				newParams = {};
+
+				for (var i = 0; i < source.length; i++) {
+					console.log("FOR", oldParamsValue, source[i])
+					newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
+				};
+
+
+				// $.each(source,function(i,val){
+				// 	console.log(i,val)
+				// 	newParams[val] = _.contains(source, 3) ? "yes" : "no"
+				// 	// newParams[val] = _.contains(source, 3);"1:0"
+				// })
+
+				params.value = JSON.stringify(newParams)
+
+				console.log("PARAMS",source, oldParamsValue, params.value)
+
+				def = $.ajax({
+					url: 'manage/asset/update',
+					type: "POST",
+					data: params
+				})
+
+
+				def.done(function() {
+					console.log('Im done')
+				})
+
 			},
 			pk: id,
 			title: 'Select Permissions',
@@ -370,7 +398,6 @@ setCurrentAssetView: function (id) {
 				console.log("send",a,b,c)
 			},
 			display: function(value, sourceData) {
-
 				var $el = $('#permissions-list'),
 				checked, html = '';
 				if(!value) {
@@ -384,7 +411,7 @@ setCurrentAssetView: function (id) {
 					}).length;
 				});
 
-				 
+
 
 				$.each(checked, function(i, v) {
 					html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
@@ -393,31 +420,11 @@ setCurrentAssetView: function (id) {
 				$el.html(html);
 
 			},
-
-			// display: function(value, sourceData) {
-			// 	console.log(value,sourceData);
-			// var $el = $('#permissions-list'),
-			// 	checked, html = '';
-			// 	if(!value) {
-			// 		$el.empty();
-			// 		return;
-			// 	}
-
-			// 	checked = $.grep(sourceData, function(o){
-			// 		return $.grep(value, function(v){
-			// 			return v == o.value;
-			// 		}).length;
-			// 	});
-
-			// 	$.each(checked, function(i, v) {
-			// 		html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
-			// 	});
-			// 	if(html) html = '<ul>'+html+'</ul>';
-			// 	$el.html(html);
-			// }
 		});
 
-
+$('#current-asset-permissions').on('submit', function(e, params) {
+    console.log('Saved value: ' + params.newValue);
+});
 
 
 

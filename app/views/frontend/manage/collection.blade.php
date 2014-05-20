@@ -82,7 +82,9 @@
 
 						<div style="">
 							<a id="current-asset-permissions" data-name="permissions"  data-editable-data="" href="#" >Edit Permissions</a>
-							<div id="permissions-list"></div>
+							<div id="permissions-list">
+								
+							</div>
 						</div>
 
 
