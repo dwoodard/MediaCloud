@@ -97,10 +97,19 @@ html,body{
 	position: absolute;
 }
 
-
+#progress-bar-container{}
+.progress-bar-status{
+	display: block;
+	background: green;
+	height: 2px;
+	width: 0%
+}
 
 #playlists-container{}
 #assets-container{}
+
+
+
 
 #assets-container .col-md-9{
 	height: 600px;
@@ -493,6 +502,11 @@ height: 400px
 		width: 300px;
 	}
 
+	#asset-view #permissions-list{}
+	#asset-view #permissions-list ul{}
+	#asset-view #permissions-list ul li{ color:#333;}
+
+
 	#collections-list,
 	#asset-view{
 		height: 100%;
@@ -782,6 +796,9 @@ height: 400px
 	}
 
 
-
+	.play-icon{
+		font-size: 20px;
+		line-height: 24px;
+	}
 
 /*/context-menu*/

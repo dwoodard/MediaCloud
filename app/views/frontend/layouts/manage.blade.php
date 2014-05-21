@@ -32,7 +32,6 @@
         </button> -->
         <a class="navbar-brand navbar-brand-size" href="/">
         	<img id="logo-brand" src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
-
         </a>
     </div>
 

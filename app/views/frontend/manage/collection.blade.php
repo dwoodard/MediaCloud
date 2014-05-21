@@ -134,7 +134,7 @@
 				<br>
 				<input id="current-asset-embed-link" class="form-control share-select" type="text" value="">
 				<br>
-				<i class="fa fa-external-link-square"></i><a href=""> Preview Here</a>
+				<i class="fa fa-external-link-square"></i><a id="current-asset-share-preview" href="" target="_blank"> Preview Here</a>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

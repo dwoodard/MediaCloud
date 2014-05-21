@@ -158,4 +158,9 @@
 		</ul>
 
 	</div>
+
+	<div id="progress-bar-container">
+		<div class="progress-bar-status"></div>
+	</div>
+
 </div>

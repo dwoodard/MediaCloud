@@ -110,7 +110,7 @@
 						<tr id="cpa-{{$collection->id}}-0-{{$asset->id}}" data-asset-id="{{$asset->id}}">
 							<td width="7px">
 								@if($asset->status == "transcoded:complete")
-								<a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o"></i></a>
+								<a class="asset-player-btn" href="#"><i class="fa fa-play-circle-o play-icon"></i></a>
 								@else
 								<i class="fa fa-clock-o fa-spin"></i>
 								@endif

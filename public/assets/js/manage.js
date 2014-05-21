@@ -27,7 +27,9 @@ var Manage = {
 				myDropzone = this;
 
 				var totalFiles = 0,
-				completeFiles = 0;
+				completeFiles = 0,
+				totalFileProgress = 0,
+				completeFileProgress =0;
 
 				this.on("sending", function (file, xhr, formData) {
 					formData.append("userId", $("#userId").val());
@@ -35,6 +37,11 @@ var Manage = {
 				});
 				this.on("addedfile", function (file, xhr, formData) {
 					totalFiles += 1;
+				});
+
+				this.on('uploadprogress', function (file, progress) {
+					console.log('progress', completeFiles / totalFiles);
+					$(".progress-bar-status").css('width', ((completeFiles / totalFiles) * 100) + "%")
 				});
 
 				this.on("error", function (file) {
@@ -46,8 +53,10 @@ var Manage = {
 				this.on("removed file", function (file, xhr, formData) {
 					totalFiles -= 1;
 				});
+
 				this.on("complete", function (file) {
 					completeFiles += 1;
+					$(".progress-bar-status").css('width', "0%")
 					if (completeFiles === totalFiles) {
 						location.reload();
 					}
@@ -322,6 +331,7 @@ addFolderInit: function () {
 
 setCurrentAssetView: function (id) {
 
+
 	$.ajax({
 		url: "/v1/assets/" + id + "/asset"
 	}).done(function (data) {
@@ -332,6 +342,7 @@ setCurrentAssetView: function (id) {
 		$("#current-asset-title").html(data.title)
 		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
 		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/player/asset/" + id + " frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
+		$("#current-asset-share-preview").attr("href", "/player/asset/"+id)
 
 
 		// textEdit()
@@ -339,24 +350,19 @@ setCurrentAssetView: function (id) {
 		$('#current-asset-public').data("editable-data", "asset-"+id)
 
 
-		// $("#current-asset-can-download").editable({
-		// 	type: 'checklist',
-		// 	url: 'manage/asset/update',
-		// 	pk: id,
-		// 	placement: 'right',
-		// 	title: 'Can Download',
-		// 	source: {'1': 'Yes'},
-		// 	emptytext: 'No'
-		// });
 
-
-
-		var def;
 		var permissions = JSON.parse(Manage.data.permissions);
-		var source = _.keys(permissions)
+		var source = $.map(JSON.parse(Manage.data.permissions),function(elementOfArray, indexInArray){return [{value: elementOfArray, text: indexInArray}]})
+		
+		//look at http://jsfiddle.net/tt9MC/
+
 		$('#current-asset-permissions').editable({
 			type: 'checklist',
 			source:source,
+			value: {
+				text: source.text,
+				value: source.value
+			},
 			url: function(params) {
 				var oldParamsValue = params.value
 
@@ -368,35 +374,20 @@ setCurrentAssetView: function (id) {
 					newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
 				};
 
-
-				// $.each(source,function(i,val){
-				// 	console.log(i,val)
-				// 	newParams[val] = _.contains(source, 3) ? "yes" : "no"
-				// 	// newParams[val] = _.contains(source, 3);"1:0"
-				// })
-
 				params.value = JSON.stringify(newParams)
 
-				console.log("PARAMS",source, oldParamsValue, params.value)
+				console.log("PARAMS",source, oldParamsValue)
 
-				def = $.ajax({
+				$.ajax({
 					url: 'manage/asset/update',
 					type: "POST",
 					data: params
-				})
-
-
-				def.done(function() {
-					console.log('Im done')
 				})
 
 			},
 			pk: id,
 			title: 'Select Permissions',
 			placement: 'right',
-			send:function(a,b,c) {
-				console.log("send",a,b,c)
-			},
 			display: function(value, sourceData) {
 				var $el = $('#permissions-list'),
 				checked, html = '';
@@ -423,7 +414,7 @@ setCurrentAssetView: function (id) {
 		});
 
 $('#current-asset-permissions').on('submit', function(e, params) {
-    console.log('Saved value: ' + params.newValue);
+	console.log('Saved value: ' + params.newValue);
 });
 
 
