@@ -101,8 +101,13 @@ html,body{
 .progress-bar-status{
 	display: block;
 	background: green;
-	height: 2px;
-	width: 0%
+	height: 10px;
+	width: 0%;
+	-webkit-transition: all .15s ease-in;
+	-moz-transition: all .15s ease-in;
+	-ms-transition: all .15s ease-in;
+	-o-transition: all .15s ease-in;
+	transition: all .15s ease-in;
 }
 
 #playlists-container{}
@@ -161,8 +166,8 @@ height: 400px
 }
 
 #unassigned-assets-list{
-	/*height: 600px;*/
-	/*overflow-y: scroll;*/
+	overflow-y: scroll;
+	height: 300px;
 }
 
 /*Active Asset*/
@@ -801,4 +806,10 @@ height: 400px
 		line-height: 24px;
 	}
 
-/*/context-menu*/
+	/*/context-menu*/
+
+
+/*
+overflow-y: scroll;
+height: 300px;
+*/

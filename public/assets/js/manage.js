@@ -28,8 +28,7 @@ var Manage = {
 
 				var totalFiles = 0,
 				completeFiles = 0,
-				totalFileProgress = 0,
-				completeFileProgress =0;
+				filesProgress = 0;
 
 				this.on("sending", function (file, xhr, formData) {
 					formData.append("userId", $("#userId").val());
@@ -40,8 +39,16 @@ var Manage = {
 				});
 
 				this.on('uploadprogress', function (file, progress) {
-					console.log('progress', completeFiles / totalFiles);
-					$(".progress-bar-status").css('width', ((completeFiles / totalFiles) * 100) + "%")
+					var progressTotals = _.map(_.pluck(myDropzone.files, 'upload'),function(i){return i.progress})
+					var progressTotal = 0;
+
+					$.each(progressTotals, function() {
+
+						progressTotal += this;
+					})
+					filesProgress = progressTotal/progressTotals.length
+					console.log('progress', progressTotal/progressTotals.length);
+					$(".progress-bar-status").css('width', (filesProgress) + "%")
 				});
 
 				this.on("error", function (file) {
@@ -56,7 +63,7 @@ var Manage = {
 
 				this.on("complete", function (file) {
 					completeFiles += 1;
-					$(".progress-bar-status").css('width', "0%")
+					// $(".progress-bar-status").css('width', "0%")
 					if (completeFiles === totalFiles) {
 						location.reload();
 					}
@@ -353,16 +360,12 @@ setCurrentAssetView: function (id) {
 
 		var permissions = JSON.parse(Manage.data.permissions);
 		var source = $.map(JSON.parse(Manage.data.permissions),function(elementOfArray, indexInArray){return [{value: elementOfArray, text: indexInArray}]})
-		
+
 		//look at http://jsfiddle.net/tt9MC/
 
 		$('#current-asset-permissions').editable({
 			type: 'checklist',
 			source:source,
-			value: {
-				text: source.text,
-				value: source.value
-			},
 			url: function(params) {
 				var oldParamsValue = params.value
 
@@ -387,30 +390,7 @@ setCurrentAssetView: function (id) {
 			},
 			pk: id,
 			title: 'Select Permissions',
-			placement: 'right',
-			display: function(value, sourceData) {
-				var $el = $('#permissions-list'),
-				checked, html = '';
-				if(!value) {
-					$el.empty();
-					return;
-				}
-
-				checked = $.grep(sourceData, function(o){
-					return $.grep(value, function(v){
-						return v == o.value;
-					}).length;
-				});
-
-
-
-				$.each(checked, function(i, v) {
-					html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
-				});
-				if(html) html = '<ul>'+html+'</ul>';
-				$el.html(html);
-
-			},
+			placement: 'left'
 		});
 
 $('#current-asset-permissions').on('submit', function(e, params) {
