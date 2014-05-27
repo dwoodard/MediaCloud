@@ -361,37 +361,87 @@ setCurrentAssetView: function (id) {
 		var permissions = JSON.parse(Manage.data.permissions);
 		var source = $.map(JSON.parse(Manage.data.permissions),function(elementOfArray, indexInArray){return [{value: elementOfArray, text: indexInArray}]})
 
-		//look at http://jsfiddle.net/tt9MC/
-
 		$('#current-asset-permissions').editable({
-			type: 'checklist',
-			source:source,
-			url: function(params) {
-				var oldParamsValue = params.value
-
-				//update params.value
-				newParams = {};
-
-				for (var i = 0; i < source.length; i++) {
-					console.log("FOR", oldParamsValue, source[i])
-					newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
-				};
-
-				params.value = JSON.stringify(newParams)
-
-				console.log("PARAMS",source, oldParamsValue)
-
-				$.ajax({
-					url: 'manage/asset/update',
-					type: "POST",
-					data: params
-				})
-
-			},
+			type:'checklist',
+			placement: 'left',
+			// source:source,
 			pk: id,
-			title: 'Select Permissions',
-			placement: 'left'
-		});
+			value: [1, 2, 3],
+			source: function(data) {
+				console.log(data)
+			};
+			display: function(data) {
+				console.log(data)
+			},
+			url:function(data) {
+				console.log(data)
+			}
+			// url: function(params) {
+			// 	var oldParamsValue = params.value
+
+
+			// 	newParams = {};
+
+			// 	for (var i = 0; i < source.length; i++) {
+			// 		console.log("FOR", oldParamsValue, source[i])
+			// 		newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
+			// 	};
+
+			// 	params.value = JSON.stringify(newParams)
+
+			// 	console.log("PARAMS",source, oldParamsValue)
+
+			// 	$.ajax({
+			// 		url: 'manage/asset/update',
+			// 		type: "POST",
+			// 		data: params
+			// 	})
+			// }
+		})
+
+		// $('#current-asset-permissions').editable({
+		// 	type: 'checklist',
+		// 	value: [1, 0],
+		// 	source:source,
+		// 	display: function(value, sourceData) {
+		// 		console.log("DISPLAY",value, sourceData)
+		// 		//display checklist as comma-separated values
+		// 		var html = [],
+		// 		checked = $.fn.editableutils.itemsByValue(value, sourceData);
+
+		// 		if(checked.length) {
+		// 		$.each(checked, function(i, v) { html.push($.fn.editableutils.escape(v.text)); });
+		// 		$(this).html(html.join(', '));
+		// 		} else {
+		// 		$(this).empty();
+		// 		}
+		// 	},
+		// 	url: function(params) {
+		// 		var oldParamsValue = params.value
+
+		// 		//update params.value
+		// 		// newParams = {};
+
+		// 		// for (var i = 0; i < source.length; i++) {
+		// 		// 	console.log("FOR", oldParamsValue, source[i])
+		// 		// 	newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
+		// 		// };
+
+		// 		// params.value = JSON.stringify(newParams)
+
+		// 		console.log("PARAMS",source, oldParamsValue)
+
+		// 		// $.ajax({
+		// 		// 	url: 'manage/asset/update',
+		// 		// 	type: "POST",
+		// 		// 	data: params
+		// 		// })
+
+		// 	},
+		// 	pk: id,
+		// 	title: 'Select Permissions',
+		// 	placement: 'left'
+		// });
 
 $('#current-asset-permissions').on('submit', function(e, params) {
 	console.log('Saved value: ' + params.newValue);
