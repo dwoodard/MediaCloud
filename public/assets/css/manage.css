@@ -72,6 +72,23 @@ html,body{
 	font-weight: bold;
 }
 
+
+#current-asset-id{
+	display: block
+}
+#current-asset-title{}
+#current-asset-permissions-container{}
+#current-asset-permissions-container .editableform{
+	margin-top: 30px;
+}
+#current-asset-permissions{
+	color:white;
+	margin-top: 30px;
+}
+#current-asset-direct-link{}
+#current-asset-embed-link{}
+#current-asset-share-preview{}
+
 #collection-view table tbody{
 	background: whitesmoke;
 }

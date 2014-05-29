@@ -5,6 +5,7 @@ namespace MC\Services;
 use Asset;
 
 use Config;
+use Carbon;
 use User;
 use Mimes;
 use Queue;
@@ -55,12 +56,12 @@ class UploadCreatorService {
             "status" => "uploaded"
         );
 
-
+        $dateDir = Carbon::today()->format('m') . "-" .  Carbon::today()->format('Y');
         // If not a video or audio no need to transcode or save original out again.
         if($attributes['type'] == "video" || $attributes['type'] == "audio"){
-            $destinationPath =  base_path(). "/" . Config::get('settings.media-path-original');
+            $destinationPath =  base_path(). "/" . Config::get('settings.media-path-original') . "/" . $dateDir;
         }else{
-            $destinationPath =  base_path(). "/" . Config::get('settings.media-path');
+            $destinationPath =  base_path(). "/" . Config::get('settings.media-path') . "/" . $dateDir;
         }
 
         // Save Asset if valid

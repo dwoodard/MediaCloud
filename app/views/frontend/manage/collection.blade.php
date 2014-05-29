@@ -80,11 +80,13 @@
 					<div class="panel-body">
 
 
-						<div style="">
-							<a id="current-asset-permissions" data-type="checklist" data-name="permissions" data-value="2"  data-editable-data="" href="#" >Edit Permissions</a>
+						<div id="current-asset-permissions-container">
+
 							<div id="permissions-list">
-								
+
 							</div>
+
+							<a id="current-asset-permissions" class="btn btn-primary" data-type="checklist" data-name="permissions"  data-editable-data="" href="#" >Edit Permissions</a>
 						</div>
 
 

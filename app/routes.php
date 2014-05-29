@@ -13,16 +13,9 @@ App::bind('AssetRepository', 'Asset');
 
 
 Route::get('/test', function(){
+$asset = Asset::find(1);
 
-// $type = Request::segment(1);
-// echo Str::plural(Request::segment(1));
-// echo "<iframe width='800px' height='600px' src='http://localhost:8080/player/asset/2 frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
-
-
-// return Playlist::playlist_asset(1);
-
-
-return View::make('test.dummypage');
+return base_path(). "/" . Config::get('settings.media-path') ."/". Carbon::createFromTimestamp(strtotime($asset->created_at))->format('m-Y');
 });
 
 

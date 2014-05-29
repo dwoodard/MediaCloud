@@ -352,76 +352,71 @@ setCurrentAssetView: function (id) {
 		$("#current-asset-share-preview").attr("href", "/player/asset/"+id)
 
 
-		// textEdit()
+		/* textEdit() */
 		$('#current-asset-can-download').data("editable-data", "asset-"+id)
 		$('#current-asset-public').data("editable-data", "asset-"+id)
 
 
-
+		/* permissions */
 		var permissions = JSON.parse(Manage.data.permissions);
-		var source = $.map(JSON.parse(Manage.data.permissions), function(elementOfArray, indexInArray){
-			console.log("map",elementOfArray, indexInArray)
-			return [{value: elementOfArray, text: indexInArray}]
-		})
+		var keys = _.keys(permissions);
+		var source = [];
+		for (var i = 0; i < keys.length; i++) {
+			source.push({"value":i, "text": keys[i], "can":permissions[keys[i]]})
+		};
+
+		var value =_.map(_.filter(source, function(item){ return item.can; }), function(i){return i.value })
+
+
 
 		$('#current-asset-permissions').editable({
 			type:'checklist',
 			pk: id,
+			value: value,
 			placement: 'left',
 			source: source,
-			url:function(params) {
-				console.log("url",params)
-
-				// $.ajax({
-				// 	url: 'manage/asset/update',
-				// 	type: "POST",
-				// 	data: params
-				// })
-
-			},
 			display: function(value, sourceData) {
-				var $el = $('#list'),
+				var $el = $('#permissions-list'),
 				checked, html = '';
 				if(!value) {
 					$el.empty();
 					return;
-				}            
-				
+				}
+
 				checked = $.grep(sourceData, function(o){
-					return $.grep(value, function(v){ 
-						return v == o.value; 
+					return $.grep(value, function(v){
+						return v == o.value;
 					}).length;
 				});
-				
-				$.each(checked, function(i, v) { 
+
+				$.each(checked, function(i, v) {
 					html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
 				});
 				if(html) html = '<ul>'+html+'</ul>';
 				$el.html(html);
+			},
+			url: function(params) {
+				var oldParamsValue = _.map(params.value, function(i){return parseInt(i)})
+
+
+				newParams = {};
+
+				for (var i = 0; i < source.length; i++) {
+					console.log("FOR", oldParamsValue, source[i].value)
+					newParams[source[i].text] = _.contains(oldParamsValue, source[i].value) ? 1 : 0
+				};
+
+				params.value = JSON.stringify(newParams)
+				console.log("URL PARAMS",source, oldParamsValue, params);
+
+
+				$.ajax({
+					url: 'manage/asset/update',
+					type: "POST",
+					data: params
+				})
 			}
-			// url: function(params) {
-			// 	var oldParamsValue = params.value
-
-
-			// 	newParams = {};
-
-			// 	for (var i = 0; i < source.length; i++) {
-			// 		console.log("FOR", oldParamsValue, source[i])
-			// 		newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
-			// 	};
-
-			// 	params.value = JSON.stringify(newParams)
-
-			// 	console.log("PARAMS",source, oldParamsValue)
-
-			// 	$.ajax({
-			// 		url: 'manage/asset/update',
-			// 		type: "POST",
-			// 		data: params
-			// 	})
-			// }
-		})
-
+		});
 
 
 $('#current-asset-permissions').on('submit', function(e, params) {
@@ -431,21 +426,21 @@ $('#current-asset-permissions').on('submit', function(e, params) {
 
 
 
-		// $("#current-asset-can-download").prop('checked', permissions.can_download);
-		// $("#current-asset-public").prop('checked', permissions.public);
+/* $("#current-asset-can-download").prop('checked', permissions.can_download); */
+/* $("#current-asset-public").prop('checked', permissions.public); */
 
-		Manage.loadTags();
-		Manage.shareSelect();
+Manage.loadTags();
+Manage.shareSelect();
 
-		$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>')
+$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>')
 
-		$.ajax({
-			url: "/player/asset/" + id
-		}).done(function (data) {
-			$("#asset-player").html(data);
-			$("#asset-view").addClass("cbp-spmenu-open")
-		});
-	})
+$.ajax({
+	url: "/player/asset/" + id
+}).done(function (data) {
+	$("#asset-player").html(data);
+	$("#asset-view").addClass("cbp-spmenu-open")
+});
+})
 },
 
 playListSettings: function () {

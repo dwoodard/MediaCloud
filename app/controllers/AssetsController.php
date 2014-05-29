@@ -275,7 +275,7 @@ class AssetsController extends PermissionsController{
 			$ext = $asset->original_ext;
 			break;
 		}
-		$file = base_path() . "/" . $path . "/" . $asset->alphaID.  '.' . $ext;
+		$file = base_path() . "/" . $asset->alphaID.  '.' . $ext;
 		$mime = Mimes::getMimes($ext);
 
 
