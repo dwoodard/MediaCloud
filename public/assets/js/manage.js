@@ -359,22 +359,45 @@ setCurrentAssetView: function (id) {
 
 
 		var permissions = JSON.parse(Manage.data.permissions);
-		var source = $.map(JSON.parse(Manage.data.permissions),function(elementOfArray, indexInArray){return [{value: elementOfArray, text: indexInArray}]})
+		var source = $.map(JSON.parse(Manage.data.permissions), function(elementOfArray, indexInArray){
+			console.log("map",elementOfArray, indexInArray)
+			return [{value: elementOfArray, text: indexInArray}]
+		})
 
 		$('#current-asset-permissions').editable({
 			type:'checklist',
-			placement: 'left',
-			// source:source,
 			pk: id,
-			value: [1, 2, 3],
-			source: function(data) {
-				console.log(data)
-			};
-			display: function(data) {
-				console.log(data)
+			placement: 'left',
+			source: source,
+			url:function(params) {
+				console.log("url",params)
+
+				// $.ajax({
+				// 	url: 'manage/asset/update',
+				// 	type: "POST",
+				// 	data: params
+				// })
+
 			},
-			url:function(data) {
-				console.log(data)
+			display: function(value, sourceData) {
+				var $el = $('#list'),
+				checked, html = '';
+				if(!value) {
+					$el.empty();
+					return;
+				}            
+				
+				checked = $.grep(sourceData, function(o){
+					return $.grep(value, function(v){ 
+						return v == o.value; 
+					}).length;
+				});
+				
+				$.each(checked, function(i, v) { 
+					html+= '<li>'+$.fn.editableutils.escape(v.text)+'</li>';
+				});
+				if(html) html = '<ul>'+html+'</ul>';
+				$el.html(html);
 			}
 			// url: function(params) {
 			// 	var oldParamsValue = params.value
@@ -399,49 +422,7 @@ setCurrentAssetView: function (id) {
 			// }
 		})
 
-		// $('#current-asset-permissions').editable({
-		// 	type: 'checklist',
-		// 	value: [1, 0],
-		// 	source:source,
-		// 	display: function(value, sourceData) {
-		// 		console.log("DISPLAY",value, sourceData)
-		// 		//display checklist as comma-separated values
-		// 		var html = [],
-		// 		checked = $.fn.editableutils.itemsByValue(value, sourceData);
 
-		// 		if(checked.length) {
-		// 		$.each(checked, function(i, v) { html.push($.fn.editableutils.escape(v.text)); });
-		// 		$(this).html(html.join(', '));
-		// 		} else {
-		// 		$(this).empty();
-		// 		}
-		// 	},
-		// 	url: function(params) {
-		// 		var oldParamsValue = params.value
-
-		// 		//update params.value
-		// 		// newParams = {};
-
-		// 		// for (var i = 0; i < source.length; i++) {
-		// 		// 	console.log("FOR", oldParamsValue, source[i])
-		// 		// 	newParams[source[i]] = _.contains(oldParamsValue, source[i]) ? 1 : 0
-		// 		// };
-
-		// 		// params.value = JSON.stringify(newParams)
-
-		// 		console.log("PARAMS",source, oldParamsValue)
-
-		// 		// $.ajax({
-		// 		// 	url: 'manage/asset/update',
-		// 		// 	type: "POST",
-		// 		// 	data: params
-		// 		// })
-
-		// 	},
-		// 	pk: id,
-		// 	title: 'Select Permissions',
-		// 	placement: 'left'
-		// });
 
 $('#current-asset-permissions').on('submit', function(e, params) {
 	console.log('Saved value: ' + params.newValue);
