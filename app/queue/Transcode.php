@@ -11,23 +11,19 @@ class Transcode {
 		$filename =  $asset->alphaID;
 		$filenameThumb =  $asset->alphaID."-thumb.jpg";
 
-		$dateDir = Carbon::today()->format('m') . "-" .  Carbon::today()->format('Y');
-
-		$mediaPathOriginal = base_path(). "/" . Config::get('settings.media-path-original') . "/" . $dateDir;
-		$mediaPath = base_path(). "/" . Config::get('settings.media-path') . "/" . $dateDir;
-
-		if (!file_exists($mediaPath)) {
-			mkdir($mediaPath, 0777, true);
-		}
-
+		$mediaPathOriginal = base_path(). "/" . Config::get('settings.media-path-original');
+		$mediaPath = base_path(). "/" . Config::get('settings.media-path');
 
 		$original = "$mediaPathOriginal/$originalFilename";
 
 
-		File::append(storage_path() . '/logs/queue.txt', $asset->id . "--". $mediaPath . '--' . $asset->type .'--' . $original .'--' . "$mediaPath/$filenameThumb" .'--' . "$mediaPath/$filename.mp4" . PHP_EOL);
+
+		File::append(storage_path() . '/logs/queue.txt', $asset->id . '--' . $asset->type .'--' . $original .'--' . "$mediaPath/$filenameThumb" .'--' . "$mediaPath/$filename.mp4" . PHP_EOL);
 
 
-		$asset->filepath = $mediaPath;
+
+
+
 		$asset->status = "transcoded:start";
 		$asset->save();
 
