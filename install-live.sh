@@ -139,7 +139,7 @@ minfds=1024                  ; (min. avail startup file descriptors;default 1024
 minprocs=200                 ; (min. avail process descriptors;default 200)
 
 [program:laravel]
-command=php artisan queue:listen --timeout=14400
+command=sudo php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
 numprocs=2
 numprocs_start=2
