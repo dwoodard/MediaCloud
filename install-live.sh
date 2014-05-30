@@ -170,3 +170,8 @@ sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
+
+sudo chmod 777 /opt/MediaCloud/public/app/config
+sudo chmod 777 /opt/MediaCloud/public/app/config/app.php
+sudo chmod 777 /opt/MediaCloud/public/app/storage/*
+sudo chmod 777 /opt/MediaCloud/public/app/storage
