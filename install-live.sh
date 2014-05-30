@@ -105,7 +105,6 @@ echo "------------------ Composer is the future. But you knew that did you Nice 
 sudo curl -sS https://getcomposer.org/installer | sudo php
 sudo mv composer.phar /usr/local/bin/composer
 
-sudo composer install
 
 echo "------------------ FFMPEG  ------------------"
 sudo apt-get install -y ffmpeg
@@ -175,3 +174,4 @@ sudo chmod 777 /opt/MediaCloud/public/app/config
 sudo chmod 777 /opt/MediaCloud/public/app/config/app.php
 sudo chmod 777 /opt/MediaCloud/public/app/storage/*
 sudo chmod 777 /opt/MediaCloud/public/app/storage
+sudo chown -R www-data:www-data /opt/MediaCloud
