@@ -102,9 +102,10 @@ echo "------------------ Restarting Apache ------------------"
 sudo service apache2 restart
 
 echo "------------------ Composer is the future. But you knew that did you Nice job. ------------------"
-curl -sS https://getcomposer.org/installer | php
+sudo curl -sS https://getcomposer.org/installer | sudo php
 sudo mv composer.phar /usr/local/bin/composer
 
+sudo composer install
 
 echo "------------------ FFMPEG  ------------------"
 sudo apt-get install -y ffmpeg
