@@ -56,7 +56,12 @@ sudo invoke-rc.d apache reload
 #:
 
 
+echo "------------------ Git Clone ------------------"
+sudo git clone https://github.com/dwoodard/MediaCloud.git
+
+
 echo "------------------ Set DocumentRoot to public ------------------"
+sudo sed -i "s#<Directory /var/www#<Directory /opt/MediaCloud/public#" /etc/apache2/apache2.conf
 sudo sed -i "s#.*DocumentRoot /var/www/html#\tDocumentRoot /opt/MediaCloud/public#" /etc/apache2/sites-enabled/000-default.conf
 sudo sed -i "s#\#ServerName www.example.com#ServerName localhost#" /etc/apache2/sites-enabled/000-default.conf
 
