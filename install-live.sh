@@ -143,7 +143,7 @@ command=sudo php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
 numprocs=2
 numprocs_start=2
-directory=/vagrant
+directory=/opt/MediaCloud/
 autostart=true
 autorestart=true
 exitcodes=2
