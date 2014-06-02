@@ -98,6 +98,7 @@ Create a User ::
 					<legend>Groups</legend>
 					<div class="controls">
 						<select name="groups[]" id="groups[]">
+						<option value=""></option>
 							@foreach ($groups as $group)
 							<option value="{{ $group->id }}"{{ (in_array($group->id, $selectedGroups) ? ' selected="selected"' : '') }}>{{ $group->name }}</option>
 							@endforeach
