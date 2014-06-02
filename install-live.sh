@@ -180,4 +180,6 @@ sudo chown -R www-data:www-data /opt/MediaCloud
 
 
 sudo service supervisord start
+sudo service supervisord restart
+
 
