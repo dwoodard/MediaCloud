@@ -55,10 +55,10 @@ Create a User ::
 								{{ $errors->first('last_name', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
-					</div>             
+					</div>
 				</div><!--/row-->
 				<div class="row">
-					
+
 					<div class="col-md-6">
 						<div class="form-group control-group {{ $errors->has('email') ? 'error' : '' }}">
 							<label class="control-label col-md-3">Email</label>
@@ -67,6 +67,16 @@ Create a User ::
 								{{ $errors->first('email', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group control-group {{ $errors->has('email') ? 'error' : '' }}">
+							<label class="control-label col-md-3">Username</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="username" id="username" value="{{ Input::old('username') }}">
+								{{ $errors->first('username', '<span class="help-inline">:message</span>') }}
+							</div>
+						</div>
+
 					</div>
 
 
@@ -94,11 +104,12 @@ Create a User ::
 				</div><!--/row-->
 			</div><!--/form-body-->
 			<div class="row">
+
 				<div class="control-group col-md-6 {{ $errors->has('groups') ? 'error' : '' }}">
 					<legend>Groups</legend>
 					<div class="controls">
 						<select name="groups[]" id="groups[]">
-						<option value=""></option>
+							<option value=""></option>
 							@foreach ($groups as $group)
 							<option value="{{ $group->id }}"{{ (in_array($group->id, $selectedGroups) ? ' selected="selected"' : '') }}>{{ $group->name }}</option>
 							@endforeach
@@ -109,6 +120,20 @@ Create a User ::
 						</span>
 					</div>
 				</div>
+
+
+				<div class="control-group col-md-6" style="margin-bottom:80px;">
+					<legend>User Activated</legend>
+					<div class="controls">
+						<select name="activated" id="activated">
+							<option value="1">Yes</option>
+							<option value="0">No</option>
+						</select>
+
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 

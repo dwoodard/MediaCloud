@@ -375,6 +375,7 @@ setCurrentAssetView: function (id) {
 			value: value,
 			placement: 'left',
 			source: source,
+			sourceCache:false,
 			display: function(value, sourceData) {
 				var $el = $('#permissions-list'),
 				checked, html = '';

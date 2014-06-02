@@ -35,20 +35,20 @@ User Update ::
 	<!-- CSRF Token -->
 	{{Form::token()}}
 
-<!-- Tabs Content -->
-<div class="tab-content">
+	<!-- Tabs Content -->
+	<div class="tab-content">
 
-	<!-- General tab -->
-	<div class="tab-pane active" id="tab-general">
+		<!-- General tab -->
+		<div class="tab-pane active" id="tab-general">
 			<div class="form-body">
 				<div class="row">
 					<div class="col-md-6">
 						<!-- First Name -->
-					<div class="form-group control-group {{ $errors->has('first_name') ? 'error' : '' }} ">
+						<div class="form-group control-group {{ $errors->has('first_name') ? 'error' : '' }} ">
 							<label class="control-label col-md-3">First Name</label>
 							<div class="col-md-9">
 								<input class="form-control" type="text" name="first_name" id="first_name" value="{{ Input::old('first_name', $user->first_name) }} " />
-									{{ $errors->first('first_name', '<span class="help-inline">:message</span>') }}
+								{{ $errors->first('first_name', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
 					</div>
@@ -79,7 +79,7 @@ User Update ::
 							<label class="control-label col-md-3">Password</label>
 							<div class="col-md-9">
 								<input type="password" name="password" id="password" value="" class="form-control" >
-									{{ $errors->first('password', '<span class="help-inline">:message</span>') }}
+								{{ $errors->first('password', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
 					</div>
@@ -88,7 +88,7 @@ User Update ::
 							<label class="control-label col-md-3">Confirm Password</label>
 							<div class="col-md-9">
 								<input class="form-control" type="password" name="password_confirm" id="password_confirm" value="">
-									{{ $errors->first('password_confirm', '<span class="help-inline">:message</span>') }}
+								{{ $errors->first('password_confirm', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
 					</div>
@@ -110,9 +110,9 @@ User Update ::
 					</div>
 				</div>
 				<div class="control-group col-md-6 {{ $errors->has('activated') ? 'error' : '' }}" style="margin-bottom:80px;">
-				<legend>User Activated</legend>
-				<div class="controls">
-					<select{{ ($user->id === Sentry::getId() ? ' disabled="disabled"' : '') }} name="activated" id="activated">
+					<legend>User Activated</legend>
+					<div class="controls">
+						<select{{ ($user->id === Sentry::getId() ? ' disabled="disabled"' : '') }} name="activated" id="activated">
 						<option value="1"{{ ($user->isActivated() ? ' selected="selected"' : '') }}>@lang('general.yes')</option>
 						<option value="0"{{ ( ! $user->isActivated() ? ' selected="selected"' : '') }}>@lang('general.no')</option>
 					</select>
@@ -169,14 +169,14 @@ User Update ::
 	</div>
 </div>
 
-	<!-- Form Actions -->
-	<div class="control-group">
-		<div class="controls">
+<!-- Form Actions -->
+<div class="control-group">
+	<div class="controls">
 
 
-			<button type="submit" class="btn btn-success">Update User</button>
-			<a class="btn btn-link" href="{{ route('users') }}">Cancel</a>
-		</div>
+		<button type="submit" class="btn btn-success">Update User</button>
+		<a class="btn btn-link" href="{{ route('users') }}">Cancel</a>
 	</div>
+</div>
 </form>
 @stop

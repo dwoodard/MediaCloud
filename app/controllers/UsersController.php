@@ -72,6 +72,7 @@ class UsersController extends PermissionsController{
 		$this->encodePermissions($selectedPermissions);
 
 		// Show the page
+
 		return View::make('backend/users/create', compact('groups', 'selectedGroups', 'permissions', 'selectedPermissions'));
 	}
 
