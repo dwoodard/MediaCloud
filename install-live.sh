@@ -172,10 +172,12 @@ sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/
 sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
-sudo service supervisord start
-
 sudo chmod 777 /opt/MediaCloud/app/config
 sudo chmod 777 /opt/MediaCloud/app/config/app.php
 sudo chmod 777 /opt/MediaCloud/app/storage/*
 sudo chmod 777 /opt/MediaCloud/app/storage
 sudo chown -R www-data:www-data /opt/MediaCloud
+
+
+sudo service supervisord start
+
