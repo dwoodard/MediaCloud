@@ -72,6 +72,16 @@ User Update ::
 							</div>
 						</div>
 					</div>
+					<div class="col-md-6">
+						<div class="form-group control-group {{ $errors->has('email') ? 'error' : '' }}">
+							<label class="control-label col-md-3">Username</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="username" id="username" disabled="disabled" value="{{ $user->username }}">
+								{{ $errors->first('username', '<span class="help-inline">:message</span>') }}
+							</div>
+						</div>
+
+					</div>
 				</div><!--/row-->
 				<div class="row">
 					<div class="col-md-6">
@@ -99,6 +109,7 @@ User Update ::
 					<legend>Groups</legend>
 					<div class="controls">
 						<select class="" name="groups[]" id="groups[]" >
+							<option value=""></option>
 							@foreach ($groups as $group)
 							<option value="{{ $group->id }}"{{ (array_key_exists($group->id, $userGroups) ? ' selected="selected"' : '') }}>{{ $group->name }}</option>
 							@endforeach
