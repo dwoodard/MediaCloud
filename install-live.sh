@@ -161,6 +161,10 @@ exitcodes=2
 user=root
 SUPERVISORD
 
+sudo a2enmod ssl
+sudo sed -i "s#.*DocumentRoot /var/www/html#\tDocumentRoot /opt/MediaCloud/public#" /etc/apache2/sites-available/default-ssl.conf
+sudo a2ensite default-ssl.conf
+sudo service apache2 reload
 
 sudo wget -O /etc/init.d/beanstalkd https://gist.github.com/dwoodard/8257582/raw/73ece556fa468d4ac05deb75b0246c3cfa00abcb/beanstalkd.init.sh
 sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/master/etc-init.d-supervisord
@@ -168,10 +172,14 @@ sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/
 sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
-sudo service supervisord start
-
-sudo chmod 777 /opt/MediaCloud/public/app/config
-sudo chmod 777 /opt/MediaCloud/public/app/config/app.php
-sudo chmod 777 /opt/MediaCloud/public/app/storage/*
-sudo chmod 777 /opt/MediaCloud/public/app/storage
+sudo chmod 777 /opt/MediaCloud/app/config
+sudo chmod 777 /opt/MediaCloud/app/config/app.php
+sudo chmod 777 /opt/MediaCloud/app/storage/*
+sudo chmod 777 /opt/MediaCloud/app/storage
 sudo chown -R www-data:www-data /opt/MediaCloud
+
+
+sudo service supervisord start
+sudo service supervisord restart
+
+
