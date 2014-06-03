@@ -13,9 +13,7 @@ App::bind('AssetRepository', 'Asset');
 
 
 Route::get('/test', function(){
-$asset = Asset::find(1);
-
-return base_path(). "/" . Config::get('settings.media-path') ."/". Carbon::createFromTimestamp(strtotime($asset->created_at))->format('m-Y');
+return $_SERVER['HTTP_USER_AGENT'];
 });
 
 

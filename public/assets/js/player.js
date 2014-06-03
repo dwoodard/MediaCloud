@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 var Player = (function(opts) {
 
 	function Player(opts) {
@@ -134,14 +122,7 @@ var Player = (function(opts) {
 	};
 
 	Player.prototype.loadVideo = function(assetId) {
-		url = window.location.origin+"/asset/"+assetId
-
-		/* if any thing comes back bad don't change*/
-		if (true) {
-			this.changeVideo(url);
-		}else{
-			/*what happend;*/
-		};
+		this.changeVideo( window.location.origin+"/asset/"+assetId );
 	}
 
 
