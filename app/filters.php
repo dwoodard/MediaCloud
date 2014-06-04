@@ -156,8 +156,8 @@ Route::filter('cas-login', function(){
 
 		$cas_data = phpCAS::getAttributes();
 
-		// var_dump($cas_data['email']);
-
+		var_dump($cas_data['email']);
+return;
 		//Is user in the database? if not put them in
 		if (count(User::where('username', '=', phpCAS::getUser())->first()) == 0) {
 
