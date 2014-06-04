@@ -69,7 +69,7 @@ class User extends SentryUserModel {
 	 */
 	public function group()
 	{
-		return $this->belongsTo('Group');
+		return $this->hasMany('Group');
 	}
 
 	public function assets()
