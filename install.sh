@@ -2,11 +2,11 @@
 
 echo "------------------ Good morning, Let's get to work. Installing now. ------------------"
 
-
-
+echo "------------------ Make CERT. ------------------"
+sudo openssl req -new -newkey rsa:4096 -days 3652 -nodes -x509 -subj "/C=US/ST=UT/L=Ogden/O=IT/CN=mediacloud.localhost.com" -keyout /var/www/server.pem  -out /var/www/server.cert
 
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ MySQL time ------------------"
 #USERNAME
@@ -15,22 +15,22 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 echo "------------------ Installing base packages ------------------"
-sudo apt-get install -y vim curl wget python-software-properties unzip
+sudo apt-get install -y vim curl wget python-software-properties unzip >> /tmp/install.log 2>&1
 
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ We want the bleeding edge of PHP, right ------------------"
 sudo add-apt-repository -y ppa:ondrej/php5
 
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ Installing PHP-specific packages ------------------"
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core
+sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core >> /tmp/install.log 2>&1
 
 echo "------------------ Installing and configuring Xdebug ------------------"
-sudo apt-get install -y php5-xdebug
+sudo apt-get install -y php5-xdebug >> /tmp/install.log 2>&1
 
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
 xdebug.scream=1
@@ -44,8 +44,8 @@ sudo a2enmod rewrite
 
 
 echo "------------------ Enabling mod-xsendfile ------------------"
-sudo apt-get update
-sudo apt-get install libapache2-mod-xsendfile
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install libapache2-mod-xsendfile >> /tmp/install.log 2>&1
 sudo a2enmod xsendfile
 sudo invoke-rc.d apache reload
 
@@ -64,10 +64,15 @@ echo "------------------ What developer codes without errors turned on? Not you 
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 
-sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+echo "------------------ permissions ------------------"
+# sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=vagrant/" /etc/apache2/envvars
+# sed -i "s/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=vagrant/" /etc/apache2/envvars
+
+
+sudo sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 echo "------------------ You like to tinker, don't you ------------------"
-sed -i "s/disable_functions = .*/disable_functions = /" /etc/php5/cli/php.ini
+sudo sed -i "s/disable_functions = .*/disable_functions = /" /etc/php5/cli/php.ini
 
 
 echo "------------------ Set up php.ini (both cli and apache2) ------------------"
@@ -96,15 +101,15 @@ echo "------------------ Restarting Apache ------------------"
 sudo service apache2 restart
 
 echo "------------------ Composer is the future. But you knew that did you Nice job. ------------------"
-curl -sS https://getcomposer.org/installer | php
+sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 
 echo "------------------ FFMPEG  ------------------"
-sudo apt-get install -y ffmpeg
-sudo apt-get update
-sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
-sudo apt-get install -y libavcodec-extra-53
+sudo apt-get install -y ffmpeg >> /tmp/install.log 2>&1
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0 >> /tmp/install.log 2>&1
+sudo apt-get install -y libavcodec-extra-53 >> /tmp/install.log 2>&1
 
 echo "------------------ Correct Time  ------------------"
 echo "America/Denver" | sudo tee /etc/timezone
@@ -112,13 +117,13 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 echo "------------------ INSTALL BEANSTALKD  ------------------"
 echo "------------------ INSTALL SUPERVISORD  ------------------"
-sudo apt-get update
-sudo apt-get install -y beanstalkd
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install -y beanstalkd >> /tmp/install.log 2>&1
 sudo sed -i "s/.*#START.*/START yes/" /etc/default/beanstalkd
 
-sudo apt-get install -y python-setuptools
+sudo apt-get install -y python-setuptools >> /tmp/install.log 2>&1
 sudo easy_install supervisor
-sudo apt-get install -y supervisord
+sudo apt-get install -y supervisord >> /tmp/install.log 2>&1
 
 
 sudo tee -a /etc/supervisord.conf <<SUPERVISORD
@@ -155,6 +160,34 @@ exitcodes=2
 user=root
 SUPERVISORD
 
+
+echo "------------------ Vagrant VirtualHost. ------------------"
+sudo tee -a /etc/apache2/sites-available/mediacloud.conf <<VIRTUALHOST
+<VirtualHost *:80>
+	ServerName mediacloud.localhost.com
+	DocumentRoot "/var/www/public"
+	<Directory "/var/www/public">
+		AllowOverride all
+	</Directory>
+</VirtualHost>
+
+<VirtualHost *:443>
+	ServerName mediacloud.localhost.com
+	DocumentRoot "/var/www/public"
+	<Directory "/var/www/public">
+		AllowOverride all
+	</Directory>
+
+	SSLEngine on
+	SSLCertificateFile /var/www/server.cert
+	SSLCertificateKeyFile /var/www/server.pem
+</VirtualHost>
+VIRTUALHOST
+
+sudo a2ensite mediacloud.conf
+
+echo "------------------ Set SSL  ------------------"
+sudo a2enmod ssl >> /tmp/install.log 2>&1
 
 sudo wget -O /etc/init.d/beanstalkd https://gist.github.com/dwoodard/8257582/raw/73ece556fa468d4ac05deb75b0246c3cfa00abcb/beanstalkd.init.sh
 sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/master/etc-init.d-supervisord

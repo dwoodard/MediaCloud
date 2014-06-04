@@ -15,3 +15,5 @@ composer.lock
 /vendor
 /uploads
 /media
+/server.pem
+/server.cert
