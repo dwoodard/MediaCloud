@@ -156,7 +156,7 @@ Route::filter('cas-login', function(){
 
 		$cas_data = phpCAS::getAttributes();
 
-		File::append(storage_path() . '/logs/login.txt', $cas_data['email'] . PHP_EOL);
+		File::append(storage_path() . '/logs/login.txt', print_r($cas_data) . PHP_EOL);
 
 		//Is user in the database? if not put them in
 		if (count(User::where('username', '=', phpCAS::getUser())->first()) == 0) {
