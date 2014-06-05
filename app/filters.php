@@ -135,12 +135,6 @@ Route::filter('cas-login', function(){
 
 			$user = Sentry::authenticate($data, false);
 
-
-
-
-			// Auth::loginUsingId($user->id);
-			// var_dump(Auth::check());
-			// var_dump(Auth::user()->id);
 			Session::flash('info', "Logged in admin for testing");
 		} else {
 			Session::flash('info', "No Users in database");

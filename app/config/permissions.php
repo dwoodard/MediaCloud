@@ -3,63 +3,67 @@
 return [
 
 	'Admin' => [
-		[
+			[
 			'permission' => 'admin',
 			'label'      => 'Admin Rights',
 			],
 		],
 	'Manage' => [
-		[
+			[
 			'permission' => 'manage',
 			'label'      => 'Manage Rights',
 			],
+			[
+			'permission' => 'upload',
+			'label'      => 'Upload Rights',
+			],
 		],
 	'Terms of Services Agreed' => [
-		[
+			[
 			'permission' => 'tos',
 			'label'      => 'Terms of Services',
 			],
 		],
 	'Frontend Admin' => [
 		[
-			'permission' => 'superuser',
-			'label'      => 'Superuser Rights',
-			],
+		'permission' => 'superuser',
+		'label'      => 'Superuser Rights',
 		],
+	],
 
-	'User' => [
-		[
+		'User' => [
+			[
 			'permission' => 'UsersController@getIndex',
 			'label'      => 'User Index',
 			],
-		[
+			[
 			'permission' => 'UsersController@getCreate',
 			'label'      => 'User Create',
 			],
-		[
+			[
 			'permission' => 'UsersController@postCreate',
 			'label'      => 'User Store',
 			],
-		[
+			[
 			'permission' => 'UsersController@getEdit',
 			'label'      => 'User Show',
 			],
-		[
+			[
 			'permission' => 'UsersController@postEdit',
 			'label'      => 'User Edit',
 			],
-		[
+			[
 			'permission' => 'UsersController@getDelete',
 			'label'      => 'User Delete',
 			],
-		[
+			[
 			'permission' => 'UsersController@getRestore',
 			'label'      => 'User Restore',
 			],
 		],
 
 	'Admin Asset' => [
-		[
+			[
 			'permission' => 'AssetsController@index',
 			'label'      => 'Asset Index',
 			],

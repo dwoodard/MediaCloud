@@ -12,9 +12,7 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 Route::get('/test', function(){
-$group = Group::where("name", "=", "student")->get()->first();
- // $group = Group::where("name", "=", "faculty")->get()->first();
-return $group->id;
+
 });
 
 

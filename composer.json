@@ -8,6 +8,7 @@
 		"edvinaskrucas/notification": "1.*",
 		"cartalyst/sentry": "v2.1.0",
 		"dwoodard/phpcas": "dev-master",
+		"dwoodard/kaltura": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "~2.1.0",
 		"iron-io/iron_mq": "1.4.8",
 		"codescale/ffmpeg-php": "2.7.0",
