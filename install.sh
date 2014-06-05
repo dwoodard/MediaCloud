@@ -3,7 +3,7 @@
 echo "------------------ Good morning, Let's get to work. Installing now. ------------------"
 
 echo "------------------ Make CERT. ------------------"
-sudo openssl req -new -newkey rsa:4096 -days 3652 -nodes -x509 -subj "/C=US/ST=UT/L=Ogden/O=IT/CN=mediacloud.localhost.com" -keyout /var/www/server.pem  -out /var/www/server.cert
+sudo openssl req -new -newkey rsa:4096 -days 3652 -nodes -x509 -subj "/C=US/ST=UT/L=Ogden/O=IT/CN=dev.media.weber.edu" -keyout /var/www/server.pem  -out /var/www/server.cert
 
 echo "------------------ Updating packages list ------------------"
 sudo apt-get update >> /tmp/install.log 2>&1
@@ -64,7 +64,7 @@ echo "------------------ What developer codes without errors turned on? Not you 
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 
-echo "------------------ permissions ------------------"
+# echo "------------------ permissions ------------------"
 # sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=vagrant/" /etc/apache2/envvars
 # sed -i "s/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=vagrant/" /etc/apache2/envvars
 

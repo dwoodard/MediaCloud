@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('r2d2', 'c3po', 'Woodards-PC', 'precise32'),
-	'dev' => array(''),
+	'dev' => array('mediacloud-vm'),
 	'production' => array(''),
 
 ));

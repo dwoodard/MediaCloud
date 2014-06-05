@@ -39,7 +39,7 @@ Route::filter('auth.admin', function()
 	if ( ! Sentry::check())
 	{
 
-		return Redirect::route('admin.login'); 
+		return Redirect::route('admin.login');
 	}
 });
 
@@ -101,16 +101,16 @@ Route::filter('admin-auth', function()
 
 
 Route::filter('permissions', function(Illuminate\Routing\Route $route){
-    $permissionName =$route->getActionName();
+	$permissionName =$route->getActionName();
 
 
-    if (!Sentry::getUser()->hasAccess($permissionName)) {
-        Session::flash('error', Lang::get('admin/permissions/message.no_permission') . " - " . $permissionName);
-        return Redirect::route('admin');
-    }
-    else{
+	if (!Sentry::getUser()->hasAccess($permissionName)) {
+		Session::flash('error', Lang::get('admin/permissions/message.no_permission') . " - " . $permissionName);
+		return Redirect::route('admin');
+	}
+	else{
         // Session::flash('message', "yes permission - " . $permissionName );
-    }
+	}
 
 });
 
@@ -156,7 +156,7 @@ Route::filter('cas-login', function(){
 
 		$cas_data = phpCAS::getAttributes();
 
-		File::append(storage_path() . '/logs/login.txt', print_r($cas_data) . PHP_EOL);
+
 
 		//Is user in the database? if not put them in
 		if (count(User::where('username', '=', phpCAS::getUser())->first()) == 0) {
@@ -168,16 +168,34 @@ Route::filter('cas-login', function(){
 					'username' => phpCAS::getUser(),
 					'activated'=> 1
 					));
+
+			/**
+			* MAJOR HACK $cas_data['email']
+			* Weber uses CAS and the only thing that can tell what group they are in
+			* is the email.
+			**/
+
+
+			/* @weber.edu = Faculty/Employee */
+			/* @mail.weber.edu = students */
+			$isFaculty = preg_match("/.*@weber.edu/", $cas_data['email'], $emailOut);
+
+
+			if ($isFaculty) {
+				$group = Group::where("name", "=", "faculty")->get()->first();
+				$group = Sentry::getGroupProvider()->findById($group->id);
+				$user->addGroup($group);
+			}
+			else{
+				$group = Group::where("name", "=", "student")->get()->first();
+				$group = Sentry::getGroupProvider()->findById($group->id);
+				$user->addGroup($group);
+			}
 		}
 		else{
 			$users = User::where('username','=', phpCAS::getUser())->get();
 			$user = $users[0];
 		}
-
-		if(Sentry::check()){
-			// Auth::loginUsingId($user->id);
-		}
-
 
 		try
 		{
@@ -208,8 +226,6 @@ Route::filter('cas-login', function(){
 		{
 			echo 'User is banned.';
 		}
-
-		//    return Redirect::to('/');
 	}
 });
 
@@ -220,14 +236,14 @@ Route::filter('cas-logout', function () {
 	//logout of Sentry
 	Sentry::logout();
 
-	// if you are logged into CAS log out of it
+	// if you are logged in into CAS log out of it
 	$cas = Config::get('cas');
 	phpCAS::client($cas['version'], $cas['cas_host'], $cas['cas_port'], $cas['cas_context']);
 	phpCAS::setNoCasServerValidation();
 	phpCAS::setCasServerCACert($cas['cas_server_ca_cert_path']);
 	if (phpCAS::isAuthenticated()) {
 		// phpCAS::forceAuthentication();
-		phpCAS::logout(array('service' => URL::to('/')));
+		phpCAS::logout(array('service' => URL::to('/logout')));
 
 	}
 
@@ -236,15 +252,6 @@ Route::filter('cas-logout', function () {
 
 	}
 
-	// if(App::environment() == "dev" || App::environment() == "production"){
-
-	// 	$cas = Config::get('cas');
-	// 	phpCAS::client($cas['version'], $cas['cas_host'], $cas['cas_port'], $cas['cas_context']);
-	// 	phpCAS::setNoCasServerValidation();
-	// 	phpCAS::setCasServerCACert($cas['cas_server_ca_cert_path']);
-	// 	phpCAS::forceAuthentication();
-	// 	phpCAS::logout(array('service' => URL::to('/')));
-	// }
 });
 
 
