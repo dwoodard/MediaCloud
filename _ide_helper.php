@@ -730,12 +730,12 @@ namespace {
 		 * @param string               $abstract
 		 * @param Closure|string|null  $concrete
 		 * @param bool                 $shared
-		 * @return bool
+		 * @return void
 		 * @static 
 		 */
 		 public static function bindIf($abstract, $concrete = null, $shared = false){
 			//Method inherited from \Illuminate\Container\Container
-			return \Illuminate\Foundation\Application::bindIf($abstract, $concrete, $shared);
+			 \Illuminate\Foundation\Application::bindIf($abstract, $concrete, $shared);
 		 }
 
 		/**
@@ -1141,7 +1141,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @throws \Exception When doRun returns Exception
 		 * @api 
 		 * @static 
@@ -1156,7 +1156,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @static 
 		 */
 		 public static function doRun($input, $output){
@@ -1225,7 +1225,7 @@ namespace {
 		/**
 		 * Sets whether to catch exceptions or not during commands execution.
 		 *
-		 * @param bool    $boolean Whether to catch exceptions or not during commands execution
+		 * @param bool $boolean Whether to catch exceptions or not during commands execution
 		 * @api 
 		 * @static 
 		 */
@@ -1337,7 +1337,7 @@ namespace {
 		 * Returns true if the command exists, false otherwise.
 		 *
 		 * @param string $name The command name or alias
-		 * @return bool    true if the command exists, false otherwise
+		 * @return bool true if the command exists, false otherwise
 		 * @api 
 		 * @static 
 		 */
@@ -1419,8 +1419,8 @@ namespace {
 		/**
 		 * Returns a text representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $raw       Whether to return raw command list
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $raw       Whether to return raw command list
 		 * @return string A string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -1433,8 +1433,8 @@ namespace {
 		/**
 		 * Returns an XML representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $asDom     Whether to return a DOM or an XML string
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $asDom     Whether to return a DOM or an XML string
 		 * @return string|\DOMDocument An XML string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -4210,13 +4210,13 @@ namespace {
 		/**
 		 * Retrieve the "count" result of the query.
 		 *
-		 * @param string  $column
+		 * @param string  $columns
 		 * @return int
 		 * @static 
 		 */
-		 public static function count($column = '*'){
+		 public static function count($columns = '*'){
 			//Method inherited from \Illuminate\Database\Query\Builder
-			return \Illuminate\Database\Query\Builder::count($column);
+			return \Illuminate\Database\Query\Builder::count($columns);
 		 }
 
 		/**
@@ -5144,12 +5144,13 @@ namespace {
 		 * @param string  $name
 		 * @param string  $selected
 		 * @param array   $options
+		 * @param string  $format
 		 * @return string
 		 * @static 
 		 */
-		 public static function selectMonth($name, $selected = null, $options = array()){
+		 public static function selectMonth($name, $selected = null, $options = array(), $format = '%B'){
 			//Method inherited from \Illuminate\Html\FormBuilder
-			return \Illuminate\Html\FormBuilder::selectMonth($name, $selected, $options);
+			return \Illuminate\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
 		 }
 
 		/**
@@ -10315,6 +10316,18 @@ namespace {
 		 }
 
 		/**
+		 * Alias for the "currentRouteNamed" method.
+		 *
+		 * @param dynamic  string
+		 * @return bool
+		 * @static 
+		 */
+		 public static function is(){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::is();
+		 }
+
+		/**
 		 * Determine if the current route matches a given name.
 		 *
 		 * @param string  $name
@@ -10335,6 +10348,18 @@ namespace {
 		 public static function currentRouteAction(){
 			//Method inherited from \Illuminate\Routing\Router
 			return \Illuminate\Routing\Router::currentRouteAction();
+		 }
+
+		/**
+		 * Alias for the "currentRouteUses" method.
+		 *
+		 * @param dynamic  string
+		 * @return bool
+		 * @static 
+		 */
+		 public static function isAction(){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::isAction();
 		 }
 
 		/**

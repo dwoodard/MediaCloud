@@ -1,4 +1,26 @@
 
+<!-- vendor/dwoodard/kaltura/KalturaClient.php -->
+<?php
+// include Kaltura Client Library
+require '../vendor/dwoodard/kaltura/KalturaClient.php';
+
+
+//define constants
+define("KALTURA_PARTNER_ID", 1533221);
+define("KALTURA_PARTNER_SERVICE_SECRET", "ccef132ea9f35904042aec252330a080");
+$uiconfId = 16215081; // integer
+// Auth::loginUsingId($user->id);
+$partnerUserId = Sentry::getUser()->email;
+
+
+
+// prepare KS
+$config = new KalturaConfiguration(KALTURA_PARTNER_ID);
+$client = new KalturaClient($config);
+
+$ks = $client->generateSession(KALTURA_PARTNER_SERVICE_SECRET, $partnerUserId, KalturaSessionType::USER, KALTURA_PARTNER_ID);
+?>
+
 <div id="subnav-container" class="navbar navbar-default navbar-fixed-top">
 	<div class="container subnav">
 

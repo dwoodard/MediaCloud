@@ -34,6 +34,7 @@
 		],
         "files": [
             "vendor/dwoodard/phpcas/CAS.php",
+            "vendor/dwoodard/kaltura/KalturaClient.php",
             "vendor/underscore/underscore.php/underscore.php"
         ],
         "psr-0": {"MC":"app/"}
