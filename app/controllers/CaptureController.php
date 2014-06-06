@@ -1,9 +1,15 @@
 <?php
 use Illuminate\Filesystem\Filesystem;
+use MC\Exceptions\UploadException;
+use MC\Services\UploadCreatorService;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CaptureController extends BaseController {
 
-    protected $layout = 'frontend.layouts.default';
+    public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
+        $this->asset = $asset;
+        $this->uploadCreator = $uploadCreator;
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -64,8 +70,28 @@ class CaptureController extends BaseController {
     }
 
     public function kaltura($token, $entryId){
-        define('SITE_URL', $_SERVER['REQUEST_SCHEME']. "://" . $_SERVER['HTTP_HOST']);
-        File::append(storage_path() . '/logs/kaltura_capture.txt', "kaltura" . " - " .SITE_URL. " - " . $token ." ". $entryId . PHP_EOL);
+
+        $filePath =  public_path() . "/kaltura/";
+        $fileName = "$token.mp4";
+        $file = $filePath.$fileName;
+        // echo $file; // /vagrant/public/kaltura/539235f81cc12.mp4
+        // return;
+        echo $filePath.$fileName;
+        return;
+        $user = User::where("username","=", $entryId)->get()->first();
+
+
+        $uploadedFile = new UploadedFile($filePath,$fileName);
+
+
+        File::append(storage_path() . '/logs/kaltura_capture.txt', "kaltura" . " - " . $token ." ". $entryId . PHP_EOL);
+        try{
+            $this->uploadCreator->make($user->id, $uploadedFile);
+        }
+        catch(\MC\Exceptions\ValidationException $e){
+            return $e;
+        }
+
         return;
 
     }
