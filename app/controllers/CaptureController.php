@@ -11,6 +11,9 @@ class CaptureController extends BaseController {
 	 */
 	public function index()
 	{
+
+        return "index";
+
         // if(!Auth::check())
         // {
         //     return URL::to('/login');
@@ -57,15 +60,17 @@ class CaptureController extends BaseController {
         $data->captureId = $captureId;
         $data->duration = $capture->duration;
         $data->userId = $capture->userId;
-
-
-
         echo json_encode((object) $data);
     }
 
-    public function post_job($id){
-        $this->layout = "";
+    public function kaltura($token, $entryId){
+        define('SITE_URL', $_SERVER['REQUEST_SCHEME']. "://" . $_SERVER['HTTP_HOST']);
+        File::append(storage_path() . '/logs/kaltura_capture.txt', "kaltura" . " - " .SITE_URL. " - " . $token ." ". $entryId . PHP_EOL);
+        return;
 
+    }
+
+    public function job($id){
         $capture = Capture::find($id);
         $jobs_path = public_path() . '/jobs/';
         $jobs_url = URL::to('/') . '/jobs/';
@@ -73,8 +78,8 @@ class CaptureController extends BaseController {
         $file_path = $jobs_path . $id . '.webm';
         $file_url = $jobs_url . $id . '.webm';
 
-//        echo $file_path;
-//        die();
+       // echo $file_path;
+       // die();
 //        echo $file_url;
 
         if(!$user->username){
@@ -101,7 +106,7 @@ class CaptureController extends BaseController {
 
         $asset = new Asset();
         $asset->user_id = $user->id;
-        $asset->filepath = $file_path;  //$path_to_user . 'jobs/' . $capture->id . '.webm'; //May no be needed
+        $asset->filepath = $file_path;  //$path_to_user . 'jobs/' . $capture->id . '.webm'; //May not be needed
         $asset->filename = $filename.'.mp4';
         $asset->type= 'video';
         $asset->save();

@@ -1,25 +1,68 @@
 
-<!-- vendor/dwoodard/kaltura/KalturaClient.php -->
+<!-- Kaltura Capture Hack -->
+
 <?php
 // include Kaltura Client Library
 require '../vendor/dwoodard/kaltura/KalturaClient.php';
 
 
-//define constants
+/*define constants*/
 define("KALTURA_PARTNER_ID", 1533221);
 define("KALTURA_PARTNER_SERVICE_SECRET", "ccef132ea9f35904042aec252330a080");
 $uiconfId = 16215081; // integer
-// Auth::loginUsingId($user->id);
 $partnerUserId = Sentry::getUser()->email;
 
 
 
-// prepare KS
+/*prepare KS*/
 $config = new KalturaConfiguration(KALTURA_PARTNER_ID);
 $client = new KalturaClient($config);
 
 $ks = $client->generateSession(KALTURA_PARTNER_SERVICE_SECRET, $partnerUserId, KalturaSessionType::USER, KALTURA_PARTNER_ID);
 ?>
+
+
+<script type="text/javascript" src=" https://www.kaltura.com/p/<?php echo KALTURA_PARTNER_ID; ?>/sp/<?php echo KALTURA_PARTNER_ID; ?>/ksr/uiconfId/<?php echo $uiconfId; ?> "></script>
+<script type="text/javascript">
+	function removeDescAndTags(objOptions){
+		console.log("object before change");
+		console.log(objOptions);
+		objOptions['kaltura.server'] = 'http://dev.media.weber.edu';
+		objOptions['kaltura.submit.description.enabled'] = false;
+		objOptions['kaltura.submit.tags.enabled'] = false;
+		objOptions['kaltura.submit.title.enabled'] = false;
+		objOptions['kaltura.submit.title.value'] = '<?php echo Sentry::getUser()->username ?>';
+		console.log("object after change");
+		console.log(objOptions);
+		return objOptions;
+	}
+
+
+
+	/*setting callback to override some kaltura options*/
+
+	kalturaScreenRecord.setModifyKalturaOptionsCallback(removeDescAndTags);
+
+	kalturaScreenRecord.startCallBack = function(result) {
+		console.log(result);
+	}
+
+	kalturaScreenRecord.downloadCallBack = function(percent){
+		console.log(percent);
+	}
+
+	kalturaScreenRecord.UploadCompleteCallBack = function(entryId) {
+		console.log("Kaltura KSR uploadCompleteCallBack: created entry with ID ["+entryId+"]");
+	}
+
+
+
+</script>
+<!-- Kaltura Capture Hack -->
+
+
+
+
 
 <div id="subnav-container" class="navbar navbar-default navbar-fixed-top">
 	<div class="container subnav">
@@ -120,7 +163,7 @@ $ks = $client->generateSession(KALTURA_PARTNER_SERVICE_SECRET, $partnerUserId, K
 				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
 			</li>
 			<li>
-				<a id="subnav-btn-capture" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
+				<a id="subnav-btn-capture" href="#" onclick="kalturaScreenRecord.startKsr(<?php echo KALTURA_PARTNER_ID;?>, '<?php echo $ks; ?>', false);"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
 			</li>
 		</ul>
 

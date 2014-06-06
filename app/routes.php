@@ -12,7 +12,10 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 Route::get('/test', function(){
-
+	// https://dev.media.weber.edu
+	define('SITE_URL', $_SERVER['REQUEST_SCHEME']. "://" . $_SERVER['HTTP_HOST']);
+	echo SITE_URL;
+var_dump($_SERVER);
 });
 
 
@@ -108,7 +111,6 @@ Route::group(array('before' => 'admin-auth|permissions','prefix' => 'admin'), fu
 	Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@getIndex'));
 	Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
 	Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));
-	Route::get('capture', array('as' => 'capture', 'uses' => 'CaptureController@index'));
 	Route::get('reports', array('as' => 'reports', 'uses' => 'ReportsController@index'));
 	Route::get('help', array('as' => 'help', function() {return View::make("backend.pages.help"); }));
 });
@@ -172,8 +174,12 @@ Route::post('contact-us', 'ContactUsController@postIndex');
 
 
 # Capture
-Route::get('capture', array('as' => 'single', 'uses' => 'CaptureController@index'));
-
+Route::group(array('prefix' => 'capture'), function()
+{
+	Route::get('/', array('as' => 'asset', 'uses' => 'CaptureController@index'));
+	Route::post('/kaltura/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@kaltura'));
+	Route::post('/job/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@job'));
+});
 
 # Media Player
 Route::group(array('prefix' => 'player'), function()
