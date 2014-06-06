@@ -17,3 +17,4 @@ composer.lock
 /media
 /server.pem
 /server.cert
+/public/jobs/*
