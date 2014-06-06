@@ -43,7 +43,7 @@ if ($_REQUEST['service'] == 'uploadtoken' && $_REQUEST['action'] == 'upload') {
 	$token = $_REQUEST['uploadTokenId'];
 
 	$data = file_get_contents($_FILES['fileData']['tmp_name']);
-	file_put_contents("$publicDir/jobs/".$token.".mp4", $data, FILE_APPEND);
+	file_put_contents("$publicDir/kaltura/".$token.".mp4", $data, FILE_APPEND);
 
 	header('Content-type: text/xml');
 	echo '<?xml version="1.0" encoding="utf-8"?><xml><result><objectType>KalturaUploadToken</objectType><id>'.$token.'</id><partnerId>1533221</partnerId><userId>media@weber.edu</userId><status>1</status><fileName>kaltura.encode.mp4</fileName><fileSize>281632</fileSize><uploadedFileSize>100000</uploadedFileSize><createdAt>'.time().'</createdAt><updatedAt>'.time().'</updatedAt></result><executionTime>0.063082933425903</executionTime></xml>';

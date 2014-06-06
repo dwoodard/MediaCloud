@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/_frontend/assets/css/style.css">
 	<link rel="stylesheet" href="/assets/css/bootstrap-editable.css">
-	
+
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style type="text/css" media="Screen">
 		@import url("/assets/css/master.css");
@@ -121,6 +121,76 @@
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="/assets/js/dropzone.js"></script>
+
+
+
+
+<!-- Kaltura Capture Hack -->
+
+    <?php
+    /* include Kaltura Client Library*/
+    require '../vendor/dwoodard/kaltura/KalturaClient.php';
+
+
+    /*define constants*/
+    define("KALTURA_PARTNER_ID", 1533221);
+    define("KALTURA_PARTNER_SERVICE_SECRET", "ccef132ea9f35904042aec252330a080");
+    $uiconfId = 16215081;
+    $partnerUserId = Sentry::getUser()->email;
+
+
+
+    /*prepare KS*/
+    $config = new KalturaConfiguration(KALTURA_PARTNER_ID);
+    $client = new KalturaClient($config);
+
+    $ks = $client->generateSession(KALTURA_PARTNER_SERVICE_SECRET, $partnerUserId, KalturaSessionType::USER, KALTURA_PARTNER_ID);
+    ?>
+
+
+    <script type="text/javascript" src=" https://www.kaltura.com/p/<?php echo KALTURA_PARTNER_ID; ?>/sp/<?php echo KALTURA_PARTNER_ID; ?>/ksr/uiconfId/<?php echo $uiconfId; ?> "></script>
+    <script type="text/javascript">
+        function removeDescAndTags(objOptions){
+            console.log("object before change");
+            console.log(objOptions);
+            objOptions['kaltura.server'] = 'http://dev.media.weber.edu';
+            objOptions['kaltura.submit.description.enabled'] = false;
+            objOptions['kaltura.submit.tags.enabled'] = false;
+            objOptions['kaltura.submit.title.enabled'] = false;
+            objOptions['kaltura.submit.title.value'] = '<?php echo Sentry::getUser()->username ?>';
+            console.log("object after change");
+            console.log(objOptions);
+            return objOptions;
+        }
+
+
+
+        /*setting callback to override some kaltura options*/
+
+        kalturaScreenRecord.setModifyKalturaOptionsCallback(removeDescAndTags);
+         $("#subnav-btn-capture").click(function(){
+            kalturaScreenRecord.startKsr(<?php echo KALTURA_PARTNER_ID;?>, '<?php echo $ks; ?>', false);
+
+         })
+
+        kalturaScreenRecord.startCallBack = function(result) {
+            console.log(result);
+            $("#subnav-btn-capture").addClass('capture_on')
+        }
+
+        kalturaScreenRecord.downloadCallBack = function(percent){
+            console.log(percent);
+        }
+
+        kalturaScreenRecord.UploadCompleteCallBack = function(entryId) {
+            console.log("Kaltura KSR uploadCompleteCallBack: created entry with ID ["+entryId+"]");
+            $("#subnav-btn-capture").removeClass('capture_on')
+        }
+
+
+
+    </script>
+<!-- Kaltura Capture Hack -->
 
 
 
