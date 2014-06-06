@@ -76,11 +76,8 @@ class CaptureController extends BaseController {
         $file = $filePath.$fileName;
         // echo $file; // /vagrant/public/kaltura/539235f81cc12.mp4
         // return;
-        echo $filePath.$fileName;
-        return;
+        
         $user = User::where("username","=", $entryId)->get()->first();
-
-
         $uploadedFile = new UploadedFile($filePath,$fileName);
 
 
