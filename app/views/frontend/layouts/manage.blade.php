@@ -153,7 +153,7 @@
         function removeDescAndTags(objOptions){
             console.log("object before change");
             console.log(objOptions);
-            objOptions['kaltura.server'] = 'http://dev.media.weber.edu';
+            objOptions['kaltura.server'] = window.location.origin;
             objOptions['kaltura.submit.description.enabled'] = false;
             objOptions['kaltura.submit.tags.enabled'] = false;
             objOptions['kaltura.submit.title.enabled'] = false;
