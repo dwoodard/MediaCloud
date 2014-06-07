@@ -24,11 +24,7 @@ class UploadCreatorService {
 
     public function __construct(UploadValidator $validator){
         $this->validator = $validator;
-
     }
-
-
-
 
     public function make($userId, UploadedFile $file){
 
@@ -39,11 +35,6 @@ class UploadCreatorService {
 
         $filesize = $file->getClientSize();
         $filetype = Mimes::getMimes(strtolower($extension));
-
-
-
-
-
 
         $assetId = "";
         $attributes = array(
@@ -103,7 +94,6 @@ class UploadCreatorService {
         $user->assets()->attach($assetId);
 
         echo json_encode(array('user'=>$user->toArray(), 'asset'=>$asset->toArray()));
-
     }
 
 
