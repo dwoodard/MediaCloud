@@ -86,9 +86,9 @@ User Management ::
 				<?php $groups = $user->getGroups()->toArray() ?>
 				@if (count($groups))
 					@foreach ($groups as $group)
-					<span>{{$group['name']}}</span> 
+					<span>{{$group['name']}}</span>
 					@endforeach
-				
+
 				@endif
 			</td>
 			<td>@lang('general.' . ($user->isActivated() ? 'yes' : 'no'))</td>

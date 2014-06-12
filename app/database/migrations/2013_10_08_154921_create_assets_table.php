@@ -24,6 +24,7 @@ class CreateAssetsTable extends Migration {
             $table->string('filepath');
             $table->text('permissions');
 			$table->datetime('last_viewed');
+			$table->integer('views');
 			$table->timestamps();
 		});
 	}

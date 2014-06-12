@@ -100,6 +100,9 @@
 			<li>
 				<a id="subnav-btn-capture" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
 			</li>
+			<li>
+				<a id="subnav-btn-capture" href="/manage/files"><i class="fa fa-files-o"></i> <span class="nav-text">Files</span></a>
+			</li>
 		</ul>
 
 		<ul class="nav navbar-nav pull-right">

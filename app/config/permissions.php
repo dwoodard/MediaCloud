@@ -3,11 +3,11 @@
 return [
 
 	'Admin' => [
-			[
-			'permission' => 'admin',
-			'label'      => 'Admin Rights',
-			],
-		],
+		[
+		'permission' => 'admin',
+		'label'      => 'Admin Rights',
+		]
+	],
 	'Manage' => [
 			[
 			'permission' => 'manage',
@@ -31,7 +31,7 @@ return [
 		],
 	],
 
-		'User' => [
+	'User' => [
 			[
 			'permission' => 'UsersController@getIndex',
 			'label'      => 'User Index',
@@ -60,6 +60,48 @@ return [
 			'permission' => 'UsersController@getRestore',
 			'label'      => 'User Restore',
 			],
+		],
+
+
+	'Collections' => [
+			[
+			'permission' => 'CollectionsController@index',
+			'label'      => 'Collections Index Rights',
+			],
+			[
+			'permission' => 'CollectionsController@create',
+			'label'      => 'Collections Create Rights',
+			],
+			[
+			'permission' => 'CollectionsController@store',
+			'label'      => 'Collections Store Rights',
+			],
+			[
+			'permission' => 'CollectionsController@edit',
+			'label'      => 'Collections Edit Rights',
+			],
+			[
+			'permission' => 'CollectionsController@update',
+			'label'      => 'Collections Update Rights',
+			],
+			[
+			'permission' => 'CollectionsController@destroy',
+			'label'      => 'Collections Destroy Rights',
+			],
+		],
+
+	'Queue' => [
+			[
+			'permission' => 'QueuesController@index',
+			'label'      => 'Queue Rights',
+			]
+		],
+
+	'History' => [
+			[
+			'permission' => 'HistoryController@index',
+			'label'      => 'History Rights',
+			]
 		],
 
 	'Admin Asset' => [

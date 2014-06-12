@@ -12,10 +12,9 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 Route::get('/test', function(){
-	// https://dev.media.weber.edu
-	define('SITE_URL', $_SERVER['REQUEST_SCHEME']. "://" . $_SERVER['HTTP_HOST']);
-	echo SITE_URL;
-var_dump($_SERVER);
+	
+
+
 });
 
 
@@ -238,7 +237,10 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 	Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
 	Route::get('playlists/{collection_id}/{playlist_id}', array('as' => 'manage.playlists', 'uses' => 'ManageController@playlist'));
 	Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
+	Route::get('files', array('as' => 'manage.browse', 'uses' => 'ManageController@files'));
 	Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
+
+	Route::get('data/user_assets', array('uses' => 'ManageController@user_assets'));
 
 	Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 
@@ -261,6 +263,9 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function()
 	Route::delete('playlist/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_delete'));
 	Route::delete('playlist_asset/delete/{playlistId}/{assetId}', array('before' => 'cas-auth', 'uses' => 'ManageController@playlist_asset_delete'));
 	Route::delete('asset/delete/{id}', array('before' => 'cas-auth', 'uses' => 'ManageController@asset_delete'));
+
+	Route::delete('asset/destroy/{id}', array('before' => 'cas-auth', 'uses' => 'AssetsController@destroy'));
+
 });
 
 

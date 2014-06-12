@@ -174,6 +174,17 @@ class AppInstallCommand extends Command {
                         'AssetsController@update' => 1,
                         'AssetsController@destroy' => 1,
 
+                        'CollectionsController@index' => 1,
+                        'CollectionsController@create' => 1,
+                        'CollectionsController@store' => 1,
+                        'CollectionsController@edit' => 1,
+                        'CollectionsController@update' => 1,
+                        'CollectionsController@destroy' => 1,
+
+                        'QueuesController@index' => 1,
+
+                        'HistoryController@index' => 1,
+
                         'GroupsController@getIndex' => 1,
                         'GroupsController@getCreate' => 1,
                         'GroupsController@postCreate' => 1,

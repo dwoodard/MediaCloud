@@ -29,7 +29,7 @@ User Management ::
 						}
 					}
 				});
-			} 
+			}
 		});
 
 		})
@@ -83,7 +83,7 @@ User Management ::
 					<td>
 						@foreach ($asset['users'] as $user)
 
-						<a href="/admin/users/{{$user->id}}/edit">{{{ $user->username}}}</a> 
+						<a href="/admin/users/{{$user->id}}/edit">{{{ $user->username}}}</a>
 
 						@endforeach
 					</td>

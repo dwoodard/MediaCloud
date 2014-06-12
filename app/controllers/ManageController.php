@@ -105,6 +105,35 @@ class ManageController extends PermissionsController {
 		return View::make('frontend.manage.browse-assets', $data);
 	}
 
+	public function files(){
+		$user = Sentry::getUser();
+		$assets = array();
+		foreach ($user->assets as $key => $asset)
+		{
+			array_push($assets, $asset);
+		}
+		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
+		$data = array('assets' => $assets, 'unassignedAssets' => $unassignedAssets );
+
+		return View::make('frontend.manage.files', $data);
+	}
+	public function user_assets(){
+		$user = Sentry::getUser();
+		$assets = array();
+		$table = new stdClass();
+		$table->data = array();
+
+		foreach ($user->assets as $key => $asset)
+		{
+			// var_dump($asset->created_at->toDateTimeString());
+			$asset->users;
+			array_push($table->data, $asset->toArray());
+		}
+
+		// var_dump($table);
+		return json_encode($table);
+	}
+
 	public function context_menu($type=null){
 		$data = array('type' => $type);
 		return View::make('frontend.manage.context-menu',$data);

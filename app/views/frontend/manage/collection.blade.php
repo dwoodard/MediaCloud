@@ -21,16 +21,9 @@
 			<button id="btn-cancel-new-collection"><i class="fa fa-times"></i> </button>
 		</div>
 
-
-
-
-
 		@foreach($user_collections as $user_collection)
 		<a class="loadCollection" data-collection-id="{{$user_collection->id}}" href="#">{{$user_collection->name}}</a>
 		@endforeach
-
-
-
 	</nav>
 </div>
 
@@ -38,13 +31,13 @@
 	<div id="asset-view-header"><i class="close fa fa-times-circle-o fa-2x"></i>
 		<h3>Player / Assets</h3>
 	</div>
+
 	<div id="asset-player"></div>
+
 	<div id="asset-toolbar">
-
 		<button class="share-select btn btn-primary btn-xs " data-toggle="modal" data-target="#assetShare">Share Asset ...</button>
-
-
 	</div>
+
 	<div id="asset-editor">
 		<!-- <input type="text" class="form-control"> -->
 		<header>
@@ -53,7 +46,6 @@
 		</header>
 
 		<div class="panel-group" id="accordion">
-
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -69,6 +61,7 @@
 			</div>
 
 			<div class="panel panel-default">
+
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -76,33 +69,19 @@
 						</a>
 					</h4>
 				</div>
+
 				<div id="collapseThree" class="panel-collapse collapse">
 					<div class="panel-body">
-
-
 						<div id="current-asset-permissions-container">
-
-							<div id="permissions-list">
-
-							</div>
-
+							<div id="permissions-list"></div>
 							<a id="current-asset-permissions" class="btn btn-primary" data-type="checklist" data-name="permissions"  data-editable-data="" href="#" >Edit Permissions</a>
 						</div>
-
-
 					</div>
 				</div>
+
 			</div>
 
 		</div>
-
-
-
-
-
-
-
-
 	</div>
 
 </nav>
@@ -145,8 +124,6 @@
 		</div>
 	</div>
 </div>
-
-
 @stop
 
 @section('scripts')
@@ -169,5 +146,5 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/3.7.1/css/basic.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/css/manage.css" rel="stylesheet" type="text/css"/>
 <link href="/bower/tag-it/css/jquery.tagit.css" rel="stylesheet" type="text/css"/>
-
 @stop
+

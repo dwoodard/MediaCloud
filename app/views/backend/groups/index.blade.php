@@ -31,7 +31,7 @@ Group Management ::
 						}
 					}
 				});
-			} 
+			}
 		});
 
 		})
@@ -83,7 +83,7 @@ Group Management ::
 			<td>
 				<a href="{{ route('update/group', $group->id) }}" class="btn btn-info">@lang('button.edit')</a>
 
-				
+
 				@if ( ! is_null($group->deleted_at))
 				<a href="{{ route('restore/group', $group->id) }}" class="btn btn-mini btn-warning">@lang('button.restore')</a>
 				@else

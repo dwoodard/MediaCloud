@@ -2,43 +2,6 @@
 
 class PermissionsController extends BaseController {
 
-//	public function __call($method, $args){
-//
-//        //assetsController_index
-//
-//
-////        $this->checkPermissions();
-//
-//        //do other stuff
-//        //possibly do method_exists check
-//
-//        var_dump($method);
-//        var_dump($args);
-//        var_dump(get_class($this));
-//        die();
-//
-//        return call_user_func_array(array($this, $method), $args);
-//    }
-
-//    public function __callStatic($method, $args){
-//
-//        //assetsController_index
-//
-//
-////        $this->checkPermissions();
-//
-//        //do other stuff
-//        //possibly do method_exists check
-//
-//        var_dump($method);
-//        var_dump($args);
-//        var_dump(get_class($this));
-//        die();
-//
-//        return call_user_func_array(array($this, $method), $args);
-//    }
-
-	
 
 	/**
 	 * Encodes the permissions so that they are form friendly.

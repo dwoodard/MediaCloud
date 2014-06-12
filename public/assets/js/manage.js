@@ -4,6 +4,8 @@ var Manage = {
 	userId: "",
 	init: function (collectionId, userId) {
 
+		$('body').addClass('cbp-spmenu-push cbp-spmenu-push-toright')
+
 		this.userId = userId;
 		this.dropzoneInit();
 		this.menuEvents();
@@ -337,7 +339,7 @@ addFolderInit: function () {
 },
 
 setCurrentAssetView: function (id) {
-
+	$("#asset-view").addClass("cbp-spmenu-open")
 
 	$.ajax({
 		url: "/v1/assets/" + id + "/asset"
@@ -439,7 +441,6 @@ $.ajax({
 	url: "/player/asset/" + id
 }).done(function (data) {
 	$("#asset-player").html(data);
-	$("#asset-view").addClass("cbp-spmenu-open")
 });
 })
 },

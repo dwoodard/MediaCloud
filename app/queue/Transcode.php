@@ -5,8 +5,6 @@ class Transcode {
 	function fire($job, $data) {
 		$asset = Asset::find($data['asset_id']);
 
-
-
 		$originalFilename =  $asset->alphaID . '.'. $asset->original_ext;
 		$filename =  $asset->alphaID;
 		$filenameThumb =  $asset->alphaID."-thumb.jpg";
@@ -16,13 +14,7 @@ class Transcode {
 
 		$original = "$mediaPathOriginal/$originalFilename";
 
-
-
 		File::append(storage_path() . '/logs/queue.txt', $asset->id . '--' . $asset->type .'--' . $original .'--' . "$mediaPath/$filenameThumb" .'--' . "$mediaPath/$filename.mp4" . PHP_EOL);
-
-
-
-
 
 		$asset->status = "transcoded:start";
 		$asset->save();

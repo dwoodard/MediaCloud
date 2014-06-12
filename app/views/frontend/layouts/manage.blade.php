@@ -20,8 +20,8 @@
 
 </head>
 
-
-<body class="cbp-spmenu-push cbp-spmenu-push-toright">
+<!--  -->
+<body class="">
 
 	<div id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -67,48 +67,6 @@
 
 @yield('content')
 
-
-
-
-<!-- Button trigger modal -->
-<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
- --><!-- Modal -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-
-<!-- <menu id="context-menu-collection" type="context" style="display:none" class="showcase">
-
-	<command label="play"  onclick="" > </command>
-	<command label="resize" onclick="" icon="images/door.png"></command>
-	<menu label="share">
-		<command label="twitter" onclick="" icon="images/page_white_copy.png"></command>
-		<hr>
-		<command label="facebook" onclick="" icon="images/page_white_edit.png"></command>
-		<hr>
-		<label>foo bar<input type="text" name="foo"></label>
-	</menu>
-</menu> -->
-
-
 <div id="share-container"></div>
 
 
@@ -116,86 +74,17 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+    <!-- Manage.blade.php -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="/assets/js/dropzone.js"></script>
+    <!-- / Manage.blade.php -->
 
-
-
-
-<!-- Kaltura Capture Hack -->
-
-    <?php
-    /* include Kaltura Client Library*/
-    require '../vendor/dwoodard/kaltura/KalturaClient.php';
-
-
-    /*define constants*/
-    define("KALTURA_PARTNER_ID", 1533221);
-    define("KALTURA_PARTNER_SERVICE_SECRET", "ccef132ea9f35904042aec252330a080");
-    $uiconfId = 16215081;
-    $partnerUserId = Sentry::getUser()->email;
-
-
-
-    /*prepare KS*/
-    $config = new KalturaConfiguration(KALTURA_PARTNER_ID);
-    $client = new KalturaClient($config);
-
-    $ks = $client->generateSession(KALTURA_PARTNER_SERVICE_SECRET, $partnerUserId, KalturaSessionType::USER, KALTURA_PARTNER_ID);
-    ?>
-
-
-    <script type="text/javascript" src=" https://www.kaltura.com/p/<?php echo KALTURA_PARTNER_ID; ?>/sp/<?php echo KALTURA_PARTNER_ID; ?>/ksr/uiconfId/<?php echo $uiconfId; ?> "></script>
-    <script type="text/javascript">
-        function removeDescAndTags(objOptions){
-            console.log("object before change");
-            console.log(objOptions);
-            // objOptions['kaltura.server'] = 'http://dev.media.weber.edu';
-            objOptions['kaltura.server'] = 'http://'+window.location.host;
-            objOptions['kaltura.submit.description.enabled'] = false;
-            objOptions['kaltura.submit.tags.enabled'] = false;
-            objOptions['kaltura.submit.title.enabled'] = false;
-            objOptions['kaltura.submit.title.value'] = '<?php echo Sentry::getUser()->username ?>';
-            console.log("object after change");
-            console.log(objOptions);
-            return objOptions;
-        }
-
-
-
-        /*setting callback to override some kaltura options*/
-
-        kalturaScreenRecord.setModifyKalturaOptionsCallback(removeDescAndTags);
-         $("#subnav-btn-capture").click(function(){
-            kalturaScreenRecord.startKsr(<?php echo KALTURA_PARTNER_ID;?>, '<?php echo $ks; ?>', false);
-
-         })
-
-        kalturaScreenRecord.startCallBack = function(result) {
-            console.log(result);
-            $("#subnav-btn-capture").addClass('capture_on')
-        }
-
-        kalturaScreenRecord.downloadCallBack = function(percent){
-            console.log(percent);
-        }
-
-        kalturaScreenRecord.UploadCompleteCallBack = function(entryId) {
-            console.log("Kaltura KSR uploadCompleteCallBack: created entry with ID ["+entryId+"]");
-            $("#subnav-btn-capture").removeClass('capture_on')
-        }
-
-
-
-    </script>
-<!-- Kaltura Capture Hack -->
-
-
-
+    <!-- Page Scripts -->
     @yield('scripts')
+    <!-- /Page Scripts -->
 
 </body>
 </html>
