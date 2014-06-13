@@ -31,7 +31,7 @@
       <br>
       <input id="current-collection-embed-link" class="form-control share-select" class="form-control " type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/collection/'.$collection->id }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
       <br>
-      <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}"> Preview Here</a> 
+      <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}"> Preview Here</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -66,15 +66,17 @@
 
 
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#playlists-container" data-toggle="tab">Playlists (<span>{{count($collection->playlists)}}</span>)</a></li>
+		<li>
+			<a id="btn-new-playlist" href="#"><i class="fa fa-plus"></i> </a></li>
+		</li>
+		<li>
+			<a href="#playlists-container" data-toggle="tab">Playlists (<span>{{count($collection->playlists)}}</span>)</a>
+		</li>
 		<li><a href="#assets-container" data-toggle="tab">Assets (<span>{{count($collection->assets)}}</span>)</a></li>
 		<!--
  		<li><a href="#settings-container" data-toggle="tab">Settings</a></li>
 		<li><a href="#deployments-container" data-toggle="tab">Deployments</a></li>
 		-->
- <li class="pull-right">
-			<a id="btn-new-playlist" href="#"><i class="fa fa-plus"></i> New Playlist</a>
-		</li>
 	</ul>
 
 	<div class="tab-content">
