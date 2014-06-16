@@ -2,9 +2,6 @@
 
 echo "------------------ Good morning, Let's get to work. Installing now. ------------------"
 
-echo "------------------ Make CERT. ------------------"
-sudo openssl req -new -newkey rsa:4096 -days 3652 -nodes -x509 -subj "/C=US/ST=UT/L=Ogden/O=IT/CN=dev.media.weber.edu" -keyout /var/www/server.pem  -out /var/www/server.cert
-
 echo "------------------ Updating packages list ------------------"
 sudo apt-get update >> /tmp/install.log 2>&1
 
@@ -184,10 +181,15 @@ sudo tee -a /etc/apache2/sites-available/mediacloud.conf <<VIRTUALHOST
 </VirtualHost>
 VIRTUALHOST
 
+echo "------------------ Make CERT. ------------------"
+sudo openssl req -new -newkey rsa:4096 -days 3652 -nodes -x509 -subj "/C=US/ST=UT/L=Ogden/O=IT/CN=dev.media.weber.edu" -keyout /var/www/server.pem  -out /var/www/server.cert
+
 sudo a2ensite mediacloud.conf
 
 echo "------------------ Set SSL  ------------------"
 sudo a2enmod ssl >> /tmp/install.log 2>&1
+
+
 
 sudo wget -O /etc/init.d/beanstalkd https://gist.github.com/dwoodard/8257582/raw/73ece556fa468d4ac05deb75b0246c3cfa00abcb/beanstalkd.init.sh
 sudo wget -O /etc/init.d/supervisord https://raw.github.com/dwoodard/beanstalkd/master/etc-init.d-supervisord
@@ -196,3 +198,4 @@ sudo chmod +x /etc/init.d/supervisord
 sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
+sudo service apache2 restart
