@@ -350,7 +350,7 @@ setCurrentAssetView: function (id) {
 		$("#current-asset-id").html(id)
 		$("#current-asset-title").html(data.title)
 		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
-		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/player/asset/" + id + " frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
+		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/asset/" + id +   "' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
 		$("#current-asset-share-preview").attr("href", "/player/asset/"+id)
 
 

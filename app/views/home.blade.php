@@ -4,7 +4,7 @@
 <script>
     // $(document).ready(function() {
     // $('.hide-steps').show(); 
-    // });      
+    // });
 </script>
 
 @stop
@@ -48,7 +48,7 @@
                                  data-easing="easeInOutElastic">
                                  I use Media Cloud
                             </div>
-                            <a class="caption lfb btn green slide_btn slide_item_left" href="/login"
+                            <a class="caption lfb btn green slide_btn slide_item_left" href="/manage"
                                  data-x="0"
                                  data-y="300"
                                  data-speed="400"
@@ -103,13 +103,13 @@
                                  data-easing="easeOutExpo">
                                  Check out this video to help you get started
                             </div>
-                            <a class="caption lfr  btn green slide_btn" href=""
+                            <a class="caption lfr  btn green slide_btn" href="/manage"
                                  data-x="470"
                                  data-y="280"
                                  data-speed="400"
                                  data-start="3500"
                                  data-easing="easeOutExpo">
-                                 Get Started Now!                            </a>
+                                 Get Started Now!</a>
                         </li>
 
                 </ul>
