@@ -52,6 +52,7 @@ Vagrant is pointing to 33.33.33.10 `C:\Windows\System32\drivers\etc\hosts`
     33.33.33.10		dev.media.weber.edu
 
 You can Adjust settings in `Vagrantfile`
+
 --------------------
 
 ## Install Page
