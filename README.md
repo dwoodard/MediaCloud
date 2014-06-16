@@ -50,8 +50,9 @@ Php Dependency manager (its all the new rage) :) Read up on it. **https://getcom
 Vagrant is pointing to 33.33.33.10 `C:\Windows\System32\drivers\etc\hosts`
 
     33.33.33.10		dev.media.weber.edu
-    
+
+You can Adjust settings in `Vagrantfile`
 --------------------
 
 ## Install Page
-### Goto install page `https://dev.media.weber.edu/install/index.php`
+#### Goto install page `https://dev.media.weber.edu/install/index.php`
