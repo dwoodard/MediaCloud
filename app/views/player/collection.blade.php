@@ -23,10 +23,8 @@
 	<!-- Player -->
 	<div id="mediaplayer-wrapper">
 		<div id="player-video-wrapper">
-			<video id="player-video"
-			src=""
-			poster=""
-			class="video-js vjs-default-skin"
+			<video id="player-video" preload="metadata"
+			class="video-js vjs-default-skin" type='video/mp4'
 			data-setup='{ "controls": true, "autoplay": false, "preload": "auto" }'>
 			Your browser does not support the video tag.
 		</video>
