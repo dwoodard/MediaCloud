@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link href="/assets/js/video-js/video-js.min.css" rel="stylesheet">
-    <script src="/assets/js/video-js/video.js"></script>
     <style type="text/css">
         html, body {
             margin: 0;
@@ -46,10 +45,11 @@
     @endif
 
     data-setup="{}">
-    <source 
-    src="/asset/{{$asset->id}}"
-     type='video/mp4'>
-        Your browser does not support the video tag.
-    </video>
+    <source src="/asset/{{$asset->id}}" type='video/mp4'>
+    Your browser does not support the video tag.
+</video>
+
+
+@include('_partials/ga')
 </body>
 </html>
