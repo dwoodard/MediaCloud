@@ -71,6 +71,7 @@ class Transcode {
 
 					case "mts":
 						exec("sudo ffmpeg -i $original -vcodec libx264 -b:v 15M -acodec libmp3lame -b:a 192k -strict experimental $mediaPath/$filename.mp4", $out, $return);
+						exec("sudo ffmpeg -i $original -vcodec libx264 -b:v 15M -acodec libmp3lame -b:a 192k -strict experimental $mediaPath/$filename.mp4", $out, $return);
 					break;
 
 					default:
