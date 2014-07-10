@@ -57,3 +57,5 @@ You can Adjust settings in `Vagrantfile`
 
 ## Install Page
 #### Goto install page `https://dev.media.weber.edu/install/index.php`
+
+It would a wise Idea to delete the install after install is done.
