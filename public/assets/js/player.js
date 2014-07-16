@@ -34,10 +34,11 @@ var Player = (function(opts) {
 
 		/*load first*/
 
-		if (this.data.playlists[0].assets[0].id) {
+
+		if (this.data.playlists.length) {
 			this.loadVideo(this.data.playlists[0].assets[0].id)
 		}
-		else if(this.data.assets[0].id){
+		else if(this.data.assets.length){
 			this.loadVideo(this.data.assets[0].id)
 
 		};
@@ -163,3 +164,4 @@ var Player = (function(opts) {
 
 	return new Player(opts);
 });
+
