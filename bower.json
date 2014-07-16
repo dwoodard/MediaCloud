@@ -22,7 +22,7 @@
     "tag-it": "https://github.com/aehlke/tag-it.git",
     "underscore": "~1.6.0",
     "webshim": "~1.12.7",
-    "datatables": "~1.10.0"
+    "dynatable": "~0.3.1"
   },
   "devDependencies": {
     "QUnit": "~1.11.0",

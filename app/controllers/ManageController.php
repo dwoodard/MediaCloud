@@ -107,31 +107,56 @@ class ManageController extends PermissionsController {
 
 	public function files(){
 		$user = Sentry::getUser();
-		$assets = array();
+		$records = array();
+		$table = array();
+
 		foreach ($user->assets as $key => $asset)
 		{
-			array_push($assets, $asset);
+			$users = array_pluck($asset->users->toArray(), 'username');
+
+			$item = json_decode(json_encode(
+				[
+				"id" => $asset->id,
+				"alphaID" => $asset->alphaID,
+				"title" => $asset->title,
+				"description" => $asset->description,
+				"users" => implode(", ", $users),
+				"created_at" => $asset->created_at->toDateTimeString(),
+				]
+				), FALSE);
+
+			array_push($table, $item);
 		}
-		$unassignedAssets =  $this->asset->unassigned(Sentry::getUser()->id);
-		$data = array('assets' => $assets, 'unassignedAssets' => $unassignedAssets );
+
+		$data = array('assets'=>$table);
 
 		return View::make('frontend.manage.files', $data);
 	}
+
 	public function user_assets(){
 		$user = Sentry::getUser();
-		$assets = array();
-		$table = new stdClass();
-		$table->data = array();
+		$records = array();
+		$data = array();
 
 		foreach ($user->assets as $key => $asset)
 		{
-			// var_dump($asset->created_at->toDateTimeString());
-			$asset->users;
-			array_push($table->data, $asset->toArray());
+			$users = array_pluck($asset->users->toArray(), 'username');
+
+			$item = json_decode(json_encode(
+				[
+				"id" => $asset->id,
+				"alphaID" => $asset->alphaID,
+				"title" => $asset->title,
+				"description" => $asset->description,
+				"users" => implode(", ", $users),
+				"created_at" => $asset->created_at->toDateTimeString(),
+				]
+				), FALSE);
+
+			array_push($data, $item);
 		}
 
-		// var_dump($table);
-		return json_encode($table);
+		return json_encode($data);
 	}
 
 	public function context_menu($type=null){
