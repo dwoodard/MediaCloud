@@ -1,34 +1,13 @@
 <?php
 
-// Use Sentry;
-
 class CollectionsController extends PermissionsController {
 
-	/**
-	 * Show the administration dashboard page.
-	 *
-	 * @return View
-	 */
 	public function index($id = null, $cpa = null)
 	{
-		$user = User::find(Sentry::getUser()->id);
-		// return $user->collections()->get();
-		// return array(Request::segment(1),Request::segment(2),Request::segment(3));
+        $collections = Collection::all();
 
-		// /collections/null/null
-		if (Request::segment(1) == 'collections' && Request::segment(2) == null && Request::segment(3) == null) {
-			return $user->collections()->get();
-		}
 
-		if (Request::segment(2) == $id && Request::segment(3) == null) {
-			return Collection::find($id);
-		}
-
-		// /collections/1/cpa
-		if (Request::segment(3) == 'cpa') {
-			return Collection::collection_playlist_asset($id);
-		}
-
+        return View::make('backend/collections/index', compact('collections'));
 
 	}
 
@@ -132,21 +111,6 @@ class CollectionsController extends PermissionsController {
 		// Redirect to the collections post management page
 		return Redirect::to("admin/collections/$collection->id/edit")->with('error', Lang::get('admin/collections/message.update.error'));
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
