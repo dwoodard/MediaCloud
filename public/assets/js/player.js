@@ -13,7 +13,7 @@ var Player = (function(opts) {
 		p.menu = p.options.menu;
 		p.type = p.options.type;
 		p.data = p.options.data
-		p.init(p.data)
+		p.init(p.data,p.type)
 
 		$(p.video).on('click',function(e) {
 			// console.log('click video', this, e)
@@ -28,22 +28,37 @@ var Player = (function(opts) {
 
 	};
 
-	Player.prototype.init = function(data) {
+	Player.prototype.init = function(data,type) {
 		videojsInit();
 		menuInit();
 
+
 		/*load first*/
+		console.log(type);
 
 
-		if (this.data.playlists.length) {
-			this.loadVideo(this.data.playlists[0].assets[0].id)
+		switch(type){
+			case "collections":
+				if (this.data.playlists.length) {
+					this.loadVideo(this.data.playlists[0].assets[0].id)
+				}
+				else if(this.data.assets.length){
+					this.loadVideo(this.data.assets[0].id)
+
+				};
+			break
+
+			case "playlists":
+				this.loadVideo(this.data.assets[0].alphaID)
+			break
+
+			default:
+			break;
 		}
-		else if(this.data.assets.length){
-			this.loadVideo(this.data.assets[0].id)
 
-		};
 
-		console.log(data);
+
+
 	};
 
 	function videojsInit() {
@@ -140,6 +155,7 @@ var Player = (function(opts) {
 	};
 
 	Player.prototype.changeVideo = function (url) {
+		console.log(url);
 		this.video.src = url;
 		this.video.play();
 	};
@@ -157,9 +173,23 @@ var Player = (function(opts) {
 		/*do on video end stuff*/
 	};
 	Player.prototype.onStart = function() {
-		/*do on video end stuff*/
+		/*do on video start stuff*/
 	};
 
+
+
+	function checkNested(obj) {
+		var args = Array.prototype.slice.call(arguments),
+		obj = args.shift();
+
+		for (var i = 0; i < args.length; i++) {
+			if (!obj || !obj.hasOwnProperty(args[i])) {
+				return false;
+			}
+			obj = obj[args[i]];
+		}
+		return true;
+	}
 
 
 	return new Player(opts);
