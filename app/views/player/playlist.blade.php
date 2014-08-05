@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="/bower/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
 	<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
 	<link href="//vjs.zencdn.net/4.1.0/video-js.css" rel="stylesheet">
 
@@ -36,7 +37,7 @@
 			<div class="carousel-inner">
 				<!-- Main Menu -->
 				<div id="player-menu" class="item active">
-					<header id="menuTitle" class="row">
+					<header class="row">
 						<div class="title col-md-8">{{$playlist->name}}</div>
 						<div class="toolbar col-md-4">
 							<a href="#" id="btn-settings" data-target="#menu-container" data-slide-to="1">
@@ -52,12 +53,20 @@
 
 						<ul class="panel">
 							@foreach ($playlist->assets as $key =>$asset)
+							<?php $permissions = json_decode($asset->permissions); ?>
+							@if($permissions->public)
 							<li class="row">
-								<div class="col-md-10"><a href="" data-asset-id="{{$asset->id}}">{{$asset->title}}</a></div>
+								<div class="col-md-10">
+									<a class="video_play" data-asset-id="{{$asset->id}}">{{$asset->title}}</a>
+								</div>
 								<div class="toolbar col-md-2">
-									<a href=""> <i class="fa fa-cloud-download"></i> </a>
+									@if($permissions->can_download)
+									<a class="download_asset" href=""> <i class="fa fa-cloud-download"></i> </a>
+									@endif
+
 								</div>
 							</li>
+							@endif
 							@endforeach
 						</ul>
 
@@ -81,11 +90,19 @@
 
 					<div class="menuSection">Video Settings</div>
 					<div id="settings-panel">
-						<p>Put settings here</p>
 
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-md-4 control-label">Video Playrate </label>
+								<div class="col-md-6">
 
-						<?php // var_dump($playlist->toArray()) ?>
-
+									<div id="playrate-slider"></div><span id="video_playrate_val"></span>
+								</div>
+								<div class="col-md-2">
+									<a id="video_playrate_reset" href="" > <i class="fa fa-reply"></i> </a>
+								</div>
+							</div>
+						</form>
 
 
 					</div>
@@ -108,20 +125,32 @@
 
 <script src="//vjs.zencdn.net/4.1.0/video.js"></script>
 
-
-
-
-
-
 <script type="text/javascript">
+
 	$(document).ready(function() {
-		player = new Player({
-			type: "{{$type}}",
-			data: {{$playlist}}
+		videojs("player-video").ready(function(){
+
+			Player.init(this,{
+				type: "{{$type}}",
+				data: {{$playlist}}
+			});
+
 		});
+
 		$('#menu-container').carousel(0).carousel('pause');
 
 	})
+</script>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-44578411-1', 'weber.edu');
+	ga('send', 'pageview');
+
 </script>
 
 

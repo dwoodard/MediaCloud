@@ -13,9 +13,10 @@
 	<link href="/assets/css/player.css" rel="stylesheet">
 
 	<style>
-
-
-
+		.vjs-control.vjs-vidMenu-button:before {
+			font-family: verdana;
+			content: "MENU";
+		}
 	</style>
 
 </head>
@@ -168,33 +169,34 @@
 
 <script src="//vjs.zencdn.net/4.1.0/video.js"></script>
 
-
-
-
-
-
 <script type="text/javascript">
+
 	$(document).ready(function() {
-		player = new Player({
-			type: "{{$type}}",
-			data: {{$collection}}
+		videojs("player-video").ready(function(){
+
+			Player.init(this,{
+				type: "{{$type}}",
+				data: {{$collection}}
+			});
+
 		});
+
 		$('#menu-container').carousel(0).carousel('pause');
 
 	})
 </script>
 
-
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-44578411-1', 'weber.edu');
-  ga('send', 'pageview');
+	ga('create', 'UA-44578411-1', 'weber.edu');
+	ga('send', 'pageview');
 
 </script>
+
 
 
 </body>

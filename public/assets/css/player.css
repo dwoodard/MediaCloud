@@ -15,6 +15,7 @@ body.push-menu{}
 	overflow-y: auto;
 
 	width: 25%;
+	min-width: 200px;
 	height: 100%;
 	top: 0;
 	right: -25%;
