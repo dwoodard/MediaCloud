@@ -31,7 +31,7 @@
       <br>
       <input id="current-collection-embed-link" class="form-control share-select" class="form-control " type="text" value="<iframe width='100%' height='100%' src='{{URL::to('/').'/player/collection/'.$collection->id }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
       <br>
-      <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}"> Preview Here</a>
+      <i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/collection/'.$collection->id }}" target="_blank"> Preview Here</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

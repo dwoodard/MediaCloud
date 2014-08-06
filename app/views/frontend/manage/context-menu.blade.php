@@ -11,13 +11,13 @@
 	<div class="carousel-inner">
 		<div class="item active">
 			<ul id="menu-collection">
-				<li><a href="#" id="play">Play</a></li>
-				<li class="slide-submenu">
+				<!-- <li><a href="#" id="play">Play</a></li> -->
+				<!-- <li class="slide-submenu">
 					<a href="#" id="add-to" data-target="#context-menu-{{$key}}" data-slide-to="2">
 						Add to...
 					</a>
-				</li>
-				<li><a href="#" id="publish">Make public</a></li>
+				</li> -->
+				<!-- <li><a href="#" id="publish">Make public</a></li> -->
 				<li class="slide-submenu">
 					<a href="#" data-target="#context-menu-{{$key}}" data-slide-to="1">Remove...</a>
 				</li>

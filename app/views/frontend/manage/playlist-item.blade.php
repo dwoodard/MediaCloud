@@ -29,33 +29,7 @@
 							<div class="btn-group ">
 								<button class="share-select btn btn-primary " data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
 
-								<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="myModalLabel">Share This Playlist</h4>
-											</div>
-											<div class="modal-body">
-
-												<p>Hit <strong>(CTRL/CMD)+C</strong> to copy the link to your clipboard!</p>
-
-												<br>
-												<input id="current-playlist-direct-link" class="form-control share-select " type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
-												<br>
-												<p>Embed this playlist on your webpage!</p>
-												<br>
-												<input id="current-playlist-embed-link" class="form-control share-select" type="text" value="<iframe width='800px' height='600px' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
-												<br>
-												<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}"> Preview Here</a>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-												<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-											</div>
-										</div>
-									</div>
-								</div>
+								
 
 								<!-- Playlist Settings ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
@@ -140,3 +114,31 @@
 </div> <!-- /.folderContent -->
 @endforeach
 @endforeach
+
+<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Share This Playlist</h4>
+			</div>
+			<div class="modal-body">
+
+				<p>Hit <strong>(CTRL/CMD)+C</strong> to copy the link to your clipboard!</p>
+
+				<br>
+				<input id="current-playlist-direct-link" class="form-control share-select " type="text" value="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}">
+				<br>
+				<p>Embed this playlist on your webpage!</p>
+				<br>
+				<input id="current-playlist-embed-link" class="form-control share-select" type="text" value="<iframe width='800px' height='600px' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
+				<br>
+				<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}" target="_blank"> Preview Here</a>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			</div>
+		</div>
+	</div>
+</div>
