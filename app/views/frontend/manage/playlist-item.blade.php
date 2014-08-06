@@ -29,8 +29,6 @@
 							<div class="btn-group ">
 								<button class="share-select btn btn-primary " data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
 
-								
-
 								<!-- Playlist Settings ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
 
@@ -112,8 +110,7 @@
 	</div>
 
 </div> <!-- /.folderContent -->
-@endforeach
-@endforeach
+
 
 <div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -142,3 +139,5 @@
 		</div>
 	</div>
 </div>
+@endforeach
+@endforeach
