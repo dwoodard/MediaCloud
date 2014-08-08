@@ -27,7 +27,7 @@
 						</a></div>
 						<div id="playlist-toolbar"  role="toolbar">
 							<div class="btn-group ">
-								<button class="share-select btn btn-primary " data-toggle="modal" data-target="#playlistShare">Share Playlist ...</button>
+								<button class="share-select btn btn-primary " data-toggle="modal" data-target="#playlistShare-{{$playlist['id']}}">Share Playlist ...</button>
 
 								<!-- Playlist Settings ContextMenu -->
 								<div class="context-menu-container dropdown keep-open pull-right">
@@ -111,8 +111,8 @@
 
 </div> <!-- /.folderContent -->
 
-
-<div class="modal fade" id="playlistShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="playlistModal">
+<div class="modal fade" id="playlistShare-{{$playlist['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -130,7 +130,7 @@
 				<br>
 				<input id="current-playlist-embed-link" class="form-control share-select" type="text" value="<iframe width='800px' height='600px' src='{{URL::to('/').'/player/playlist/'.$playlist['id'] }}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>">
 				<br>
-				<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}" target="_blank"> Preview Here</a>
+				<i class="fa fa-external-link-square"></i><a href="{{URL::to('/').'/player/playlist/'.$playlist['id'] }}" target="_blank">Preview Here</a>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -138,6 +138,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 @endforeach
 @endforeach
