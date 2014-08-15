@@ -99,7 +99,7 @@
 									<div id="playrate-slider"></div><span id="video_playrate_val"></span>
 								</div>
 								<div class="col-md-2">
-									<a id="video_playrate_reset" href="" > <i class="fa fa-reply"></i> </a>
+									<a id="video_playrate_reset" href="" > <i class="fa fa-reply"></i> Reset</a>
 								</div>
 							</div>
 						</form>

@@ -292,7 +292,7 @@ class AssetsController extends PermissionsController{
 
 			header("Content-Type: application/octet-stream");
 			header("Content-Transfer-Encoding: Binary");
-			header("Content-disposition: attachment; filename=" . Str::snake(Str::lower($asset->title)).  '.' . $ext);
+			header("Content-Disposition: attachment; filename=" . Str::snake(Str::lower($asset->title)).  '.' . $ext);
 			echo readfile($file);
 			return;
 		}
