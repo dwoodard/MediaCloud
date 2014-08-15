@@ -73,7 +73,6 @@ var Player = {
             }
         },
         videoLinksHandler:function(event) {
-            console.log(event);
             $.each(Player.videoLinks,function(i){
                 Player.videoLinks.parent().removeClass('active');
             })
