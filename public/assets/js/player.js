@@ -73,6 +73,12 @@ var Player = {
             }
         },
         videoLinksHandler:function(event) {
+            console.log(event);
+            $.each(Player.videoLinks,function(i){
+                Player.videoLinks.parent().removeClass('active');
+            })
+            $(this).parent().addClass('active');
+
             assetId = event.currentTarget.dataset.assetId;
             Player.loadVideo(assetId);
         },
