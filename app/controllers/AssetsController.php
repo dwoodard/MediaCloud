@@ -290,9 +290,13 @@ class AssetsController extends PermissionsController{
 				return View::make('player.no_download');
 			}
 
+
+			$filename = preg_replace("/[^A-Za-z0-9 ]/", '', Str::snake(Str::lower($asset->title)));
+			$filename = preg_replace("/\s/", '_', $filename.'.'.$ext);
+
 			header("Content-Type: application/octet-stream");
 			header("Content-Transfer-Encoding: Binary");
-			header("Content-Disposition: attachment; filename=" . Str::snake(Str::lower($asset->title)).  '.' . $ext);
+			header("Content-Disposition: attachment; filename=" . $filename);
 			echo readfile($file);
 			return;
 		}
