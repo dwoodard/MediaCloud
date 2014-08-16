@@ -11,11 +11,11 @@
 	<link href="//vjs.zencdn.net/4.1.0/video-js.css" rel="stylesheet">
 
 	<link href="/assets/css/player.css" rel="stylesheet">
-
 	<style>
-		.vjs-control.vjs-vidMenu-button:before {
-			font-family: verdana;
-			content: "MENU";
+		.vjs-fade-in,.vjs-fade-out {
+			visibility: visible !important;
+			opacity: 1 !important;
+			transition-duration: 0s!important;
 		}
 	</style>
 

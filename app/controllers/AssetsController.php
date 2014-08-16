@@ -255,6 +255,7 @@ class AssetsController extends PermissionsController{
 		else{
 			$asset = Asset::where('alphaID', '=', $id)->firstOrFail();
 		}
+
 		$permissions = json_decode($asset->permissions);
 
 
@@ -278,14 +279,11 @@ class AssetsController extends PermissionsController{
 		$file = base_path() . "/" . $path . "/" . $asset->alphaID.  '.' . $ext;
 		$mime = Mimes::getMimes($ext);
 
-
 		if(file_exists($file)){
 			$filesize = filesize($file);
 		}
 
 		if($id && $token == "download"){
-
-
 			if ($permissions->can_download == 0) {
 				return View::make('player.no_download');
 			}
@@ -300,15 +298,14 @@ class AssetsController extends PermissionsController{
 			echo readfile($file);
 			return;
 		}
+		$_SERVER['HTTP_ACCEPT'] = $mime;
 
 		if (is_file($file)){
-			header('Content-Type:'. $mime);
-			if (isset($_SERVER['HTTP_RANGE'])){ // do it for any device that supports byte-ranges not only iPhone
-				$this->rangeDownload($file);
-			} else {
-				header("Content-length: " . filesize($file));
-				readfile($file);
-			}
+			header("Content-type:". $mime);
+			header("Content-length: " . filesize($file));
+			$this->rangeDownload($file);
+			// readfile($file);
+
 		}
 	}
 

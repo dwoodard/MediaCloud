@@ -8,14 +8,15 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link href="/bower/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
 	<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
-	<link href="//vjs.zencdn.net/4.1.0/video-js.css" rel="stylesheet">
+	<link href="//vjs.zencdn.net/4.7.2/video-js.css" rel="stylesheet">
 
 	<link href="/assets/css/player.css" rel="stylesheet">
-
 	<style>
-		.vjs-control.vjs-vidMenu-button:before {
-			font-family: verdana;
-			content: "MENU";
+		.vjs-fade-in,.vjs-fade-out {
+			visibility: visible !important;
+			opacity: 1 !important;
+			-webkit-transition-duration: 0s!important;
+			transition-duration: 0s!important;
 		}
 	</style>
 
@@ -167,7 +168,7 @@
 <script src="/bower/underscore/underscore.js"></script>
 <script type="text/javascript" src="/assets/js/player.js"></script>
 
-<script src="//vjs.zencdn.net/4.1.0/video.js"></script>
+<script src="//vjs.zencdn.net/4.7.2/video.js"></script>
 
 <script type="text/javascript">
 

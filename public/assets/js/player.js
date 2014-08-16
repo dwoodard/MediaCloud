@@ -73,11 +73,6 @@ var Player = {
             }
         },
         videoLinksHandler:function(event) {
-            $.each(Player.videoLinks,function(i){
-                Player.videoLinks.parent().removeClass('active');
-            })
-            $(this).parent().addClass('active');
-
             assetId = event.currentTarget.dataset.assetId;
             Player.loadVideo(assetId);
         },
@@ -87,11 +82,17 @@ var Player = {
             window.open(window.location.origin + '/asset/' + id + "/download", '_blank');
         },
         loadVideo: function (assetId) {
+            $.each(Player.videoLinks,function(i){
+                Player.videoLinks.parent().removeClass('active');
+            })
+            $('[data-asset-id='+assetId+']').parent().addClass('active')
             url = window.location.origin+"/asset/"+assetId;
+
             this.changeVideo(url);
         },
         changeVideo:function(url) {
             Player.video.src(url);
+            $("#player-video_html5_api").attr('src', url)
             // Player.video.play();
         }
     };
