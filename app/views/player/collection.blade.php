@@ -161,6 +161,7 @@
 </div>
 <!-- End Player -->
 
+<script src="/bower/modernizr/modernizr.js"></script>
 <script src="/bower/webshim/js-webshim/minified/polyfiller.js"></script>
 <script src="/bower/jquery/dist/jquery.min.js"></script>
 <script src="/bower/jquery-ui/ui/minified/jquery-ui.min.js"></script>

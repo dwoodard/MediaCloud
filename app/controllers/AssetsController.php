@@ -298,10 +298,10 @@ class AssetsController extends PermissionsController{
 			echo readfile($file);
 			return;
 		}
-		$_SERVER['HTTP_ACCEPT'] = $mime;
 
 		if (is_file($file)){
 			header("Content-type:". $mime);
+			header("Cache-Control: public");
 			header("Content-length: " . filesize($file));
 			$this->rangeDownload($file);
 			// readfile($file);
