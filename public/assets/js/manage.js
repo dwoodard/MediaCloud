@@ -22,7 +22,7 @@ var Manage = {
 
 		var myDropzone;
 		Dropzone.options.filedrop = {
-			maxFilesize: 2048,
+			maxFilesize: 3000,
 			addRemoveLinks: true,
 			init: function () {
 

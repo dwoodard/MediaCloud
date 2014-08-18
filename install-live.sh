@@ -79,12 +79,12 @@ sudo sed -i "s/disable_functions = .*/disable_functions = /" /etc/php5/cli/php.i
 echo "------------------ Set up php.ini (both cli and apache2) ------------------"
 
 echo "------------------ post_max_size ------------------"
-sudo sed -i "s/.*post_max_size.*/post_max_size = 2G/" /etc/php5/cli/php.ini
-sudo sed -i "s/.*post_max_size.*/post_max_size = 2G/" /etc/php5/apache2/php.ini
+sudo sed -i "s/.*post_max_size.*/post_max_size = 3G/" /etc/php5/cli/php.ini
+sudo sed -i "s/.*post_max_size.*/post_max_size = 3G/" /etc/php5/apache2/php.ini
 
 echo "------------------ upload_max_filesize ------------------"
-sudo sed -i "s/.*upload_max_filesize.*/upload_max_filesize = 2G/" /etc/php5/cli/php.ini
-sudo sed -i "s/.*upload_max_filesize.*/upload_max_filesize = 2G/" /etc/php5/apache2/php.ini
+sudo sed -i "s/.*upload_max_filesize.*/upload_max_filesize = 3G/" /etc/php5/cli/php.ini
+sudo sed -i "s/.*upload_max_filesize.*/upload_max_filesize = 3G/" /etc/php5/apache2/php.ini
 
 echo "------------------ max_input_time ------------------"
 sudo sed -i "s/.*max_input_time.*/max_input_time = 9000/" /etc/php5/apache2/php.ini
