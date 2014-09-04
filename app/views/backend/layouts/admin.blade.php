@@ -373,21 +373,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                <!--   <li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a>
-                  </li>
-                  <li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a>
-                  </li>
-                  <li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox <span class="badge badge-danger">3</span></a>
-                  </li>
-                  <li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">7</span></a>
-                  </li>
-                  <li class="divider"></li>
-                  <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a>
-                  </li>
-                  <li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a>
-                  </li> -->
-                  <li><a href="{{ URL::to('logout') }}"><i class="icon-key"></i> Log Out</a>
-                  </li>
+                  <li><a href="{{ URL::to('manage') }}">Manage</a> </li>
+                  <li><a href="{{ URL::to('logout') }}"><i class="icon-key"></i> Log Out</a> </li>
                </ul>
             </li>
             <!-- END USER LOGIN DROPDOWN -->
