@@ -16,64 +16,64 @@ use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-
-class UploadCreatorService {
+class UploadCreatorService
+{
 
 
     protected $validator;
 
-    public function __construct(UploadValidator $validator){
+    public function __construct(UploadValidator $validator) {
         $this->validator = $validator;
     }
 
-    public function make($userId, UploadedFile $file){
+    public function make($userId, UploadedFile $file) {
 
         // Upload file
 
         $filename = $file->getClientOriginalName();
-        $extension =$file->getClientOriginalExtension();
+        $extension = $file->getClientOriginalExtension();
 
         $filesize = $file->getClientSize();
         $filetype = Mimes::getMimes(strtolower($extension));
 
         $assetId = "";
         $attributes = array(
-            "title" => $filename,
+            "title"        => $filename,
             "original_ext" => $extension,
-            "filename" => $filename,
-            "filesize" => $filesize,
-            "type" => preg_replace('/(\w+)\/(.*)/','${1}',$filetype),
-            "status" => "uploaded"
+            "filename"     => $filename,
+            "filesize"     => $filesize,
+            "type"         => preg_replace('/(\w+)\/(.*)/', '${1}', $filetype),
+            "status"       => "uploaded"
         );
 
 
         // If not a video or audio no need to transcode or save original out again.
-        if($attributes['type'] == "video" || $attributes['type'] == "audio"){
-            $destinationPath =  base_path(). "/" . Config::get('settings.media-path-original');
-        }else{
-            $destinationPath =  base_path(). "/" . Config::get('settings.media-path');
+        if ($attributes['type'] == "video" || $attributes['type'] == "audio") {
+            $destinationPath = base_path() . "/" . Config::get('settings.media-path-original');
+        } else {
+            $destinationPath = base_path() . "/" . Config::get('settings.media-path');
         }
 
         // Save Asset if valid
 
-        if($this->validator->isValid($attributes)){
+        if ($this->validator->isValid($attributes)) {
             // Create a new asset
             $asset = new Asset;
-            $asset->title          = $attributes['title'];
-            $asset->original_ext   = $attributes['original_ext'];
-            $asset->type           = $attributes['type'];
-            $asset->filesize       = $attributes['filesize'];
-            $asset->status         = "uploaded";
-            $asset->permissions    = json_encode(array("can_download" => 1, "public" => 1, "must_be_logged_in" => 0));
+            $asset->title = $attributes['title'];
+            $asset->original_ext = $attributes['original_ext'];
+            $asset->type = $attributes['type'];
+            $asset->filesize = $attributes['filesize'];
+            $asset->status = "uploaded";
+            $asset->permissions = json_encode(array("can_download" => 1, "public" => 1, "must_be_logged_in" => 0));
             $asset->save();
             $assetId = $asset->id;
 
-        }else{
+        } else {
             throw new ValidationException('Upload validation failed', $this->validator->getErrors());
         }
 
         // get assetId, call alphaId
-        $alpha_out  = alphaID($assetId, false);
+        $alpha_out = alphaID($assetId, false);
         // $number_out = alphaID($alpha_out, true);
 
 
@@ -81,17 +81,14 @@ class UploadCreatorService {
         $asset->alphaID = $alpha_out;
         $asset->save();
 
-
-
-            if(copy( $file->getPath().'/'.$file->getFilename(), $destinationPath."/". $asset->alphaID . "." . $extension) ){
-                unlink($file->getPath().'/'.$file->getFilename());
-            }
+        
+        rename($file->getPath() . '/' . $file->getFilename(), $destinationPath . "/" . $asset->alphaID . "." . $extension);
 
 //        $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
-        if($asset->type == 'video' || $asset->type == 'audio'){
-           // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
-           Queue::push('Transcode', array('asset_id' => $asset->id));
+        if ($asset->type == 'video' || $asset->type == 'audio') {
+            // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
+            Queue::push('Transcode', array('asset_id' => $asset->id));
         }
 
 
@@ -99,7 +96,7 @@ class UploadCreatorService {
         $user = User::find($userId);
         $user->assets()->attach($assetId);
 
-        echo json_encode(array('user'=>$user->toArray(), 'asset'=>$asset->toArray()));
+        echo json_encode(array('user' => $user->toArray(), 'asset' => $asset->toArray()));
     }
 
 
