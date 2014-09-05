@@ -81,7 +81,13 @@ class UploadCreatorService {
         $asset->alphaID = $alpha_out;
         $asset->save();
 
-        $file->move($destinationPath, $asset->alphaID . "." . $extension);
+
+
+            if(copy($file->getPath().'/'.$file->getFilename(), $destinationPath, $asset->alphaID . "." . $extension) ){
+                unlink($file->getPath().'/'.$file->getFilename());
+            }
+
+//        $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
         if($asset->type == 'video' || $asset->type == 'audio'){
            // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
