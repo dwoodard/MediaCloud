@@ -157,9 +157,9 @@ Route::post('contact-us', 'ContactUsController@postIndex');
 
 
 # Capture
+Route::post('/kaltura/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@kaltura'));
 Route::group(array('prefix' => 'capture'), function () {
     Route::get('/', array('as' => 'asset', 'uses' => 'CaptureController@index'));
-    Route::post('/kaltura/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@kaltura'));
     Route::post('/job/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@job'));
 });
 
