@@ -5,19 +5,20 @@ use MC\Services\UploadCreatorService;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-class CaptureController extends BaseController {
+class CaptureController extends BaseController
+{
 
     public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
         $this->asset = $asset;
         $this->uploadCreator = $uploadCreator;
     }
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index() {
 
         return "index";
 
@@ -42,10 +43,10 @@ class CaptureController extends BaseController {
         //     ->with('schedules', $schedules);
     }
 
-    public function get_devices($id){
+    public function get_devices($id) {
         $this->layout = "";
 
-        return CaptureAgent::where('id','=',$id)->get();
+        return CaptureAgent::where('id', '=', $id)->get();
     }
 
     /**
@@ -57,7 +58,7 @@ class CaptureController extends BaseController {
         $this->layout = "";
 
         $capture = new Capture();
-        $capture->duration = (int) Input::get('duration');
+        $capture->duration = (int)Input::get('duration');
         $capture->userId = Auth::user()->id;
         $capture->save();
 
@@ -67,38 +68,34 @@ class CaptureController extends BaseController {
         $data->captureId = $captureId;
         $data->duration = $capture->duration;
         $data->userId = $capture->userId;
-        echo json_encode((object) $data);
+        echo json_encode((object)$data);
     }
 
-    public function kaltura($token, $entryId){
+    public function kaltura($token, $entryId) {
 
-        $filePath =  public_path() . "/kaltura/";
+        $filePath = public_path() . "/kaltura/";
         $fileName = "$token.mp4";
-        $file = $filePath.$fileName;
+        $file = $filePath . $fileName;
 
         if (!file_exists($file)) {
-            return json_encode(array("status"=>"no file", "where"=>__FILE__.":".__LINE__));
+            return json_encode(array("status" => "no file", "where" => __FILE__ . ":" . __LINE__));
         }
 
-        $user = User::where("username","=", $entryId)->get()->first();
-        $uploadedFile = new UploadedFile($file,$fileName,'video/mp4',filesize($file), 0, true);
+        $user = User::where("username", "=", $entryId)->get()->first();
+        $uploadedFile = new UploadedFile($file, $fileName, 'video/mp4', filesize($file), 0, true);
 
-        File::append(storage_path() . '/logs/kaltura_capture.txt', "kaltura" . " - " . $token ." ". $entryId . PHP_EOL);
-        try{
+        File::append(storage_path() . '/logs/kaltura_capture.txt', "kaltura" . " - " . $token . " " . $entryId . PHP_EOL);
+        try {
             $this->uploadCreator->make($user->id, $uploadedFile);
-        }
-        catch(\MC\Exceptions\ValidationException $e){
+        } catch (\MC\Exceptions\ValidationException $e) {
             return $e;
-        }
-        catch(FileException $e){
+        } catch (FileException $e) {
             var_dump($e);
-
         }
 
         return;
 
     }
 
-    
 
 }
