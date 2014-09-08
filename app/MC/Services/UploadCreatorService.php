@@ -3,7 +3,6 @@
 namespace MC\Services;
 
 use Asset;
-
 use Config;
 use User;
 use Mimes;
@@ -80,7 +79,12 @@ class UploadCreatorService
         $asset->alphaID = $alpha_out;
         $asset->save();
 
-        $file->move($destinationPath, $asset->alphaID . "." . $extension);
+        file_put_contents(storage_path() . '/logs/UploadCreatorService.txt', $file->getPath() .'/'. $file->getFilename() .'------ '.$destinationPath ."/". $asset->alphaID. "." . $extension . PHP_EOL, FILE_APPEND);
+
+        copy($file->getPath() .'/'. $file->getFilename(), $destinationPath ."/". $asset->alphaID. "." . $extension);
+        unlink($file->getPath() .'/'. $file->getFilename());
+
+//        $file->move($destinationPath, $asset->alphaID . "." . $extension);
 
         if ($asset->type == 'video' || $asset->type == 'audio') {
             // Queue::push('DoSomethingIntensive', array('asset_id' => $asset->id));
