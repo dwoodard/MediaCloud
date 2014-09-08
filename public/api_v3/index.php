@@ -16,6 +16,8 @@ if ($_REQUEST['service'] == 'media' && $_REQUEST['action'] == 'addContent') {
 	$entryId = $_REQUEST['entryId'];
 	$data = json_encode(array("status" => "success"));
 
+    sleep(5);
+
 	$c = curl_init("$site_url/kaltura/$token/$entryId");
 	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($c, CURLOPT_SSL_VERIFYHOST, false);
