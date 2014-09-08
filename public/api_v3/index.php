@@ -15,6 +15,7 @@ if ($_REQUEST['service'] == 'media' && $_REQUEST['action'] == 'addContent') {
 	$token = $_REQUEST['resource:token'];
 	$entryId = $_REQUEST['entryId'];
 	$data = json_encode(array("status" => "success"));
+
 	$c = curl_init("$site_url/kaltura/$token/$entryId");
 	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($c, CURLOPT_SSL_VERIFYHOST, false);
@@ -24,6 +25,7 @@ if ($_REQUEST['service'] == 'media' && $_REQUEST['action'] == 'addContent') {
 	curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-type:application/json', 'Content-Length: '.strlen($data)));
 	curl_exec($c);
 	curl_close($c);
+
 	echo '<?xml version="1.0" encoding="utf-8"?><xml><result><objectType>KalturaMediaEntry</objectType><mediaType>1</mediaType><conversionQuality>4762681</conversionQuality><sourceType>1</sourceType><dataUrl>http://cdnbakmi.kaltura.com/p/1533221/sp/153322100/flvclipper/entry_id/'.$token.'/version/0</dataUrl><plays>0</plays><views>0</views><duration>0</duration><msDuration>0</msDuration><id>'.$token.'</id><name>Default Title</name><partnerId>1533221</partnerId><userId>media@weber.edu</userId><creatorId>media@weber.edu</creatorId><status>1</status><moderationStatus>6</moderationStatus><moderationCount>0</moderationCount><type>1</type><createdAt>'.time().'</createdAt><updatedAt>'.time().'</updatedAt><rank>0</rank><totalRank>0</totalRank><votes>0</votes><downloadUrl>http://cdnbakmi.kaltura.com/p/1533221/sp/153322100/raw/entry_id/'.$token.'/version/0</downloadUrl><searchText>_PAR_ONLY_ _1533221_ _MEDIA_TYPE_1|  Default Title </searchText><licenseType>-1</licenseType><version>0</version><thumbnailUrl>http://cdnbakmi.kaltura.com/p/1533221/sp/153322100/thumbnail/entry_id/'.$token.'/version/0</thumbnailUrl><accessControlId>1458341</accessControlId><replacementStatus>0</replacementStatus><partnerSortValue>0</partnerSortValue><conversionProfileId>4762681</conversionProfileId><rootEntryId>'.$token.'</rootEntryId><operationAttributes></operationAttributes><entitledUsersEdit></entitledUsersEdit><entitledUsersPublish></entitledUsersPublish></result><executionTime>0.34513711929321</executionTime></xml>';
 
 	file_put_contents("$publicDir/kaltura/log.txt", "$site_url/kaltura/$token/$entryId" . PHP_EOL , FILE_APPEND | LOCK_EX);
