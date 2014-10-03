@@ -143,6 +143,7 @@ Route::filter('cas-login', function(){
 
 	if(App::environment() == "dev" || App::environment() == "production"){
 		$cas = Config::get('cas');
+
 		phpCAS::client($cas['version'], $cas['cas_host'], $cas['cas_port'], $cas['cas_context']);
 		phpCAS::setNoCasServerValidation();
 		// phpCAS::setCasServerCACert($cas['cas_server_ca_cert_path']);

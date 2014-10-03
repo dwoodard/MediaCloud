@@ -256,15 +256,22 @@ class AssetsController extends PermissionsController{
 			$asset = Asset::where('alphaID', '=', $id)->firstOrFail();
 		}
 
+		/******************** PERMISSIONS ***************************/
 		$permissions = json_decode($asset->permissions);
 
 		if ($permissions->public == 0) {
 			return;
 		}
 
-		if ($permissions->must_be_logged_in == 1) {
-			$this->beforeFilter('cas-login');
-		}
+		// if ($permissions->must_be_logged_in == 1) {
+		// 	if (Sentry::check()) {
+		// 		Session::set('redirect', Request::url());
+		// 		die("call filter");
+		// 		Parent::beforeFilter('cas-login', array());
+		// 	}
+
+		// }
+		/******************** PERMISSIONS ***************************/
 
 		$path = Config::get('settings.media-path');
 
