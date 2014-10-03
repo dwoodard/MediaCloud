@@ -143,7 +143,7 @@
 			<div class="row">
 				<div class="col-md-8 col-sm-8">
 					<p>
-						<span class="margin-right-10">2013 © Media Cloud. ALL Rights Reserved.</span>
+						<span class="margin-right-10">2014 © MediaCloud. ALL Rights Reserved.</span>
 						<a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-services">Terms of Service</a> | <a href="/faq">FAQ</a>
 					</p>
 				</div>

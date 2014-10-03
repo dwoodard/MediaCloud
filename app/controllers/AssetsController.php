@@ -258,9 +258,12 @@ class AssetsController extends PermissionsController{
 
 		$permissions = json_decode($asset->permissions);
 
-
 		if ($permissions->public == 0) {
 			return;
+		}
+
+		if ($permissions->must_be_logged_in == 1) {
+			$this->beforeFilter('cas-login');
 		}
 
 		$path = Config::get('settings.media-path');
