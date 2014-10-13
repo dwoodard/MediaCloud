@@ -162,7 +162,7 @@
 		function removeDescAndTags(objOptions){
 			console.log("object before change");
 			console.log(objOptions);
-			objOptions['kaltura.server'] = 'http://'+window.location.host; /*http needed for hack*/
+			objOptions['kaltura.server'] = 'https://'+window.location.host; /*http needed for hack*/
 			objOptions['kaltura.submit.description.enabled'] = false;
 			objOptions['kaltura.submit.tags.enabled'] = false;
 			objOptions['kaltura.submit.title.enabled'] = false;
