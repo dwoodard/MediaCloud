@@ -554,9 +554,9 @@ height: 400px
 
 
 	.cbp-spmenu-horizontal{
-		width: 100%;
+		width: 50%;
 		height: 300px;
-		left: 0;
+		right: 0;
 		z-index: 11;
 		overflow: hidden;
 	}
@@ -756,9 +756,9 @@ height: 400px
 	}
 	.browse-assets-container ul{
 		padding:4px 40px 40px 40px;
-		column-count:4;
-		-moz-column-count:4; /* Firefox */
-		-webkit-column-count:4; /* Safari and Chrome */
+		column-count:2;
+		-moz-column-count:2; /* Firefox */
+		-webkit-column-count:2; /* Safari and Chrome */
 	}
 	.browse-assets-container ul li{
 		/*padding: 2px 0px*/
