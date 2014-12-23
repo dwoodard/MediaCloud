@@ -181,6 +181,13 @@ class AppInstallCommand extends Command {
                         'CollectionsController@update' => 1,
                         'CollectionsController@destroy' => 1,
 
+						'PlaylistsController@index' => 1,
+                        'PlaylistsController@create' => 1,
+                        'PlaylistsController@store' => 1,
+                        'PlaylistsController@edit' => 1,
+                        'PlaylistsController@update' => 1,
+                        'PlaylistsController@destroy' => 1,
+
                         'QueuesController@index' => 1,
 
                         'HistoryController@index' => 1,

@@ -101,10 +101,10 @@ Route::filter('admin-auth', function()
 
 
 Route::filter('permissions', function(Illuminate\Routing\Route $route){
-	$permissionName =$route->getActionName();
-
+	$permissionName = $route->getActionName();
 
 	if (!Sentry::getUser()->hasAccess($permissionName)) {
+
 		Session::flash('error', Lang::get('admin/permissions/message.no_permission') . " - " . $permissionName);
 		return Redirect::route('admin');
 	}

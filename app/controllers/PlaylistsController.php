@@ -23,7 +23,7 @@ class PlaylistsController extends PermissionsController {
 		}
 
 
-		// /collections/1/pa
+		// /collections/1/cpa
 		if (Request::segment(3) == 'cpa') {
 
 			return Playlist::playlist_asset($id);

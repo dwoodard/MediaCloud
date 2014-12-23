@@ -90,6 +90,33 @@ return [
 			],
 		],
 
+	'Permission' => [
+			[
+			'permission' => 'PermissionsController@index',
+			'label'      => 'Playlists Index Rights',
+			],
+			[
+			'permission' => 'PermissionsController@create',
+			'label'      => 'Playlists Create Rights',
+			],
+			[
+			'permission' => 'PermissionsController@store',
+			'label'      => 'Playlists Store Rights',
+			],
+			[
+			'permission' => 'PermissionsController@edit',
+			'label'      => 'Playlists Edit Rights',
+			],
+			[
+			'permission' => 'PermissionsController@update',
+			'label'      => 'Playlists Update Rights',
+			],
+			[
+			'permission' => 'PermissionsController@destroy',
+			'label'      => 'Playlists Destroy Rights',
+			],
+		],
+
 	'Queue' => [
 			[
 			'permission' => 'QueuesController@index',

@@ -62,9 +62,9 @@
     <tbody>
     @foreach ($collections as $collection)
     <tr>
-        <td>{{{ $collection->name}}}</td>
-        <td>{{{ $collection->description}}}</td>
-        <td>{{{ $collection->created_at}}}</td>
+        <td> <a href="/player/collection/{{{$collection->id}}}" target="_blank">{{{ $collection->name}}}</a> </td>
+        <td>{{{$collection->description}}}</td>
+        <td>{{{$collection->created_at}}}</td>
         <td>{{ link_to_route('collection.edit', 'Edit', array($collection->id), array('class' => 'btn btn-info')) }}</td>
         <td>
             <form id="delete-{{ $collection->id}}" method="POST" action="{{action('CollectionsController@destroy',$collection->id )}}" accept-charset="UTF-8">
