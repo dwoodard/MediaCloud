@@ -5,10 +5,7 @@ class CollectionsController extends PermissionsController
 
     public function index($id = null, $cpa = null) {
         $collections = Collection::all();
-
-
         return View::make('backend/collections/index', compact('collections'));
-
     }
 
     public function create() {
