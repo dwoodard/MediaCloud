@@ -74,8 +74,7 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     Route::group(array('prefix' => 'playlists'), function () {
         Route::get('/', array('as' => 'playlists', 'uses' => 'PlaylistsController@index'));
         Route::get('create', array('as' => 'playlist.create', 'uses' => 'PlaylistsController@create'));
-        Route::post('create', array('as' => 'playlist.store', 'uses' => 'PlaylistsController@store'));
-        //show
+        Route::post('create', array('as' => 'playlist.store', 'uses' => 'PlaylistsController@store')); //show
         Route::get('{playlistId}/edit', array('as' => 'playlist.edit', 'uses' => 'PlaylistsController@edit'));
         Route::post('{playlistId}/edit', array('as' => 'playlist.update', 'uses' => 'PlaylistsController@update')); //POST /admin/Playlists/{playlistId}/edit
         Route::delete('{playlistId}/delete', array('as' => 'playlist.delete', 'uses' => 'PlaylistsController@destroy'));
@@ -100,7 +99,7 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
 
     Route::get('settings', array('as' => 'settings', 'uses' => 'SettingsController@getIndex'));
     Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
-    Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@getIndex'));
+    // Route::get('playlists', array('as' => 'playlists', 'uses' => 'PlaylistsController@index'));
     Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
     Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));
     Route::get('reports', array('as' => 'reports', 'uses' => 'ReportsController@index'));

@@ -9,37 +9,19 @@ class PlaylistsController extends PermissionsController {
 	 */
 	public function index($id = null, $cpa = null)
 	{
-		$user = User::find(Sentry::getUser()->id);
-
-		// /collections/null/null
-		if (Request::segment(1) == 'playlists' && Request::segment(2) == null && Request::segment(3) == null) {
-			return $user->collections()->get();
-		}
-
-
-		// /collections/$id/null
-		if (Request::segment(2) == $id && Request::segment(3) == null) {
-			return Collection::find($id);
-		}
-
-
-		// /collections/1/cpa
-		if (Request::segment(3) == 'cpa') {
-
-			return Playlist::playlist_asset($id);
-		}
+		$playlists = Playlist::all();
+		return View::make('backend/playlists/index', compact('playlists'));
 	}
 
 	public function create()
 	{
-
 		return View::make('backend/playlists/create');
 	}
 
 
 	public function store()
 	{
-// Create a new Playlist
+		// Create a new Playlist
 		$playlist =  new Playlist;
 
 		// Update the blog playlist data
@@ -56,14 +38,7 @@ class PlaylistsController extends PermissionsController {
 
 		// Redirect to the blog playlist create page
 		return Redirect::to('admin/playlists')->with('error', Lang::get('Error Adding playlist'));
-
-
 	}
-
-
-
-
-
 
 
 

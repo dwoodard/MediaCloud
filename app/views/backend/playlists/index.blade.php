@@ -9,6 +9,7 @@
 			e.preventDefault()
 			btn = $(this);
 			url = this.action;
+
 		// confirm dialog
 		alertify.confirm("Whooo are you Sure?! Once it's gone, it ain't comin' back!", function (e) {
 			if (e) {
@@ -23,7 +24,7 @@
 						}
 					}
 				});
-			} 
+			}
 		});
 
 		})
@@ -58,8 +59,7 @@
 			<th>Description</th>
 			<!-- <th>Author</th> -->
 			<th>Date Created</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 
@@ -68,12 +68,13 @@
 	<tbody>
 		@foreach ($playlists as $playlist)
 		<tr>
-			<td>{{{ $playlist->name}}}</td>
+			<td> <a href="/player/playlist/{{{ $playlist->id}}}">{{{ $playlist->name}}}</a></td>
 			<td>{{{ $playlist->description}}}</td>
 			<td>{{{ $playlist->created_at}}}</td>
-			<td>{{ link_to_route('playlist.edit', 'Edit', array($playlist->id), array('class' => 'btn btn-info')) }}</td>
 			<td>
-				<form id="delete-{{ $playlist->id}}" method="POST" action="{{action('PlaylistsController@destroy',$playlist->id )}}" accept-charset="UTF-8">
+				{{ link_to_route('playlist.edit', 'Edit', array($playlist->id), array('class' => 'btn btn-info')) }}
+
+				<form style="display:inline" id="delete-{{ $playlist->id}}" method="POST" action="{{action('PlaylistsController@destroy',$playlist->id )}}" accept-charset="UTF-8">
 							<input type="hidden" name="_method" value="DELETE" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 							{{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
