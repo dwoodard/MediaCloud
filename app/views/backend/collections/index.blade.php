@@ -54,9 +54,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Date Created</th>
-        <th>Edit</th>
-        <th>Delete</th>
-
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
