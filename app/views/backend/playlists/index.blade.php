@@ -56,6 +56,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
+			<!-- <th>User</th> -->
 			<th>Description</th>
 			<!-- <th>Author</th> -->
 			<th>Date Created</th>
@@ -69,6 +70,7 @@
 		@foreach ($playlists as $playlist)
 		<tr>
 			<td> <a href="/player/playlist/{{{ $playlist->id}}}">{{{ $playlist->name}}}</a></td>
+			<!-- <td> (will fix soon) </td> -->
 			<td>{{{ $playlist->description}}}</td>
 			<td>{{{ $playlist->created_at}}}</td>
 			<td>

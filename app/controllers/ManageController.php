@@ -198,6 +198,8 @@ class ManageController extends PermissionsController {
 		$playlist->save();
 
 		$playlist->collections()->attach(Input::get('collection'));
+		$playlist->users()->attach(Input::get('userId'));
+
 		return $playlist;
 	}
 

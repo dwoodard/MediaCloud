@@ -23,10 +23,17 @@ class Playlist extends Eloquent {
 		->withPivot('asset_order')
 		->orderBy('pivot_asset_order', 'asc');
 	}
+
 	public function collections()
 	{
 		return $this->belongsToMany('Collection');
 	}
+
+	public function users()
+	{
+		return $this->belongsToMany('User');
+	}
+
 	public static function playlist_asset($id)
 	{
 

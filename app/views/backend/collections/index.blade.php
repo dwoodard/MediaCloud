@@ -65,9 +65,8 @@
         <td> <a href="/player/collection/{{{$collection->id}}}" target="_blank">{{{ $collection->name}}}</a> </td>
         <td>{{{$collection->description}}}</td>
         <td>{{{$collection->created_at}}}</td>
-        <td>{{ link_to_route('collection.edit', 'Edit', array($collection->id), array('class' => 'btn btn-info')) }}</td>
-        <td>
-            <form id="delete-{{ $collection->id}}" method="POST" action="{{action('CollectionsController@destroy',$collection->id )}}" accept-charset="UTF-8">
+        <td>{{ link_to_route('collection.edit', 'Edit', array($collection->id), array('class' => 'btn btn-info')) }}
+            <form style="display:inline" id="delete-{{ $collection->id}}" method="POST" action="{{action('CollectionsController@destroy',$collection->id )}}" accept-charset="UTF-8">
                 <input type="hidden" name="_method" value="DELETE"/>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}

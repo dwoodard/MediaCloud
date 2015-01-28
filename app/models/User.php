@@ -84,7 +84,7 @@ class User extends SentryUserModel {
 
 	public function playlists()
 	{
-		return $this->belongsToMany('Playlist');
+		return $this->belongsToMany('Playlist', 'playlist_user');
 	}
 
 	public function cpa()

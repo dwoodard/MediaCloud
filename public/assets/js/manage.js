@@ -288,7 +288,8 @@ submitNewPlaylist: function () {
 		url: "manage/playlist/add",
 		data: {
 			name: $("#input-new-playlist").val(),
-			collection: currentCollectionId
+			collection: currentCollectionId,
+			userId: Manage.userId
 		},
 		dataType: "json"
 	}).done(function (data) {
