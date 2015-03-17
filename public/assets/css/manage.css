@@ -15,8 +15,11 @@ html,body{
 }
 
 #subnav-btn-capture.capture_on{
-	background: red;
-	color: white;
+    background: red;
+    color: white;
+}
+#subnav-btn-capture.capture_on>.nav-text{
+    color: white;
 }
 
 #collection-view header h2{
