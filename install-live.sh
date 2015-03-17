@@ -141,8 +141,8 @@ minprocs=200                 ; (min. avail process descriptors;default 200)
 [program:laravel]
 command=sudo php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
-numprocs=10
-numprocs_start=10
+numprocs=5
+numprocs_start=5
 directory=/opt/MediaCloud/
 autostart=true
 autorestart=true
