@@ -79,7 +79,7 @@ class UploadCreatorService
         $asset->alphaID = $alpha_out;
         $asset->save();
 
-//        file_put_contents(storage_path() . '/logs/UploadCreatorService.txt', $file->getPath() .'/'. $file->getFilename() .'------ '.$destinationPath ."/". $asset->alphaID. "." . $extension . PHP_EOL, FILE_APPEND);
+        file_put_contents(storage_path() . '/logs/UploadCreatorService.txt', '----|'. $file->isValid().  '|-------------'. $file->getError()  .'------------' . $file->getPath() .'/'. $file->getFilename() .'------ '.$destinationPath ."/". $asset->alphaID. "." . $extension . PHP_EOL, FILE_APPEND);
 
         copy($file->getPath() .'/'. $file->getFilename(), $destinationPath ."/". $asset->alphaID. "." . $extension);
         unlink($file->getPath() .'/'. $file->getFilename());
