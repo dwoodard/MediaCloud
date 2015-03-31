@@ -76,19 +76,23 @@
             events: [
                 {
                     title  : 'event1',
-                    start  : moment()
+                    start  : moment().hour(12.8),
+                    end    : moment().hour(13.8)
                 },
                 {
                     title  : 'event2',
-                    start  : moment().hour(1),
-                    end    : moment().hour(2)
+                    start  : moment().hour(9),
+                    end    : moment().hour(12)
                 },
                 {
                     title  : 'event3',
-                    start  : moment().hour(3),
+                    start  : moment().hour(14),
                     allDay : false // will make the time show
                 }
             ],
+
+
+
             businessHours:true,
             start: '8:00', // a start time (10am in this example)
             end: '18:00', // an end time (6pm in this example)
@@ -96,8 +100,22 @@
             editable: true,
             slotEventOverlap: true,
             fixedWeekCount: true,
-            selectable:true,
-            selectHelper:true,
+            selectable: true,
+            selectHelper: true,
+            select: function(start, end) {
+                var title = prompt('Event Title:');
+                var eventData;
+                if (title) {
+                    eventData = {
+                        title: title,
+                        start: start,
+                        end: end
+                    };
+                    $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                }
+                $('#calendar').fullCalendar('unselect');
+            },
+
             unselectAuto:true,
             selectOverlap: function(event) {
                 return event.rendering === 'background';

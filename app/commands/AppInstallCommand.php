@@ -198,7 +198,14 @@ class AppInstallCommand extends Command {
                         'GroupsController@getEdit' => 1,
                         'GroupsController@postEdit' => 1,
                         'GroupsController@getDelete' => 1,
-                        'GroupsController@getRestore' => 1
+                        'GroupsController@getRestore' => 1,
+
+                        'CaptureController@index' => 1,
+                        'CaptureController@create' => 1, (Need to create more functions)
+                        'CaptureController@store' => 1,
+                        'CaptureController@edit' => 1,
+                        'CaptureController@update' => 1,
+                        'CaptureController@destroy' => 1,
 
 						)
 					)

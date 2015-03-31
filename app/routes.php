@@ -48,6 +48,16 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
         Route::delete('{assetId}/delete', array('as' => 'asset.delete', 'uses' => 'AssetsController@destroy'));
     });
 
+    # Capture Management
+    Route::group(array('prefix' => 'capture'), function () {
+        Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
+        // Route::get('upload', array('as' => 'capture.upload', 'uses' => 'CaptureController@create'));
+        // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
+        // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));
+        // Route::post('{captureId}/edit', array('as' => 'capture.update', 'uses' => 'CaptureController@update')); //POST /admin/captures/{captureId}/edit
+        // Route::delete('{captureId}/delete', array('as' => 'capture.delete', 'uses' => 'CaptureController@destroy'));
+    });
+
     # User Management
     Route::group(array('prefix' => 'users'), function () {
         Route::get('/', array('as' => 'users', 'uses' => 'UsersController@getIndex'));

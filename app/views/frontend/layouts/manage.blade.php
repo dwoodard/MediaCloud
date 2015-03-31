@@ -80,6 +80,7 @@
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="/assets/js/dropzone.js"></script>
+    <script src="/bower/underscore/underscore.js"></script>
     <!-- / Manage.blade.php -->
 
     <!-- Page Scripts -->

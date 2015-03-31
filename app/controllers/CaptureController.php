@@ -20,27 +20,8 @@ class CaptureController extends BaseController
      */
     public function index() {
 
-        return "index";
+        return View::make('backend/capture/index');
 
-        // if(!Auth::check())
-        // {
-        //     return URL::to('/login');
-        // }
-
-        // $curl = new Curl();
-        // $curl->create('https://media.weber.edu/api/schedule.php?username=gtuck'); //Add Auth::user()->username in place of gtuck
-        // $curl->options(array(CURLOPT_SSL_VERIFYPEER => 0));
-
-        // $schedules = json_decode($curl->execute());
-
-//        var_dump();
-//        var_dump($schedules);
-
-//        var_dump(CaptureAgent::all());
-        // $this->layout->title = "Capture";
-        // $this->layout->content = View::make('capture.index')
-        //     ->with('capture_agents', CaptureAgent::all())
-        //     ->with('schedules', $schedules);
     }
 
     public function get_devices($id) {
