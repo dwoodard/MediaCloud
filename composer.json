@@ -13,7 +13,8 @@
 		"iron-io/iron_mq": "1.4.8",
 		"codescale/ffmpeg-php": "2.7.0",
 		"pda/pheanstalk": "2.1.1",
-		"underscore/underscore.php": "1.3.1"
+		"underscore/underscore.php": "1.3.1",
+		"eluceo/ical": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "3",

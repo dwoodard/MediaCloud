@@ -201,7 +201,7 @@ class AppInstallCommand extends Command {
                         'GroupsController@getRestore' => 1,
 
                         'CaptureController@index' => 1,
-                        'CaptureController@create' => 1, (Need to create more functions)
+                        'CaptureController@create' => 1, //(Need to create more functions)
                         'CaptureController@store' => 1,
                         'CaptureController@edit' => 1,
                         'CaptureController@update' => 1,

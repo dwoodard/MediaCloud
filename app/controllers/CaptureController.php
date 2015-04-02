@@ -19,9 +19,7 @@ class CaptureController extends BaseController
      * @return Response
      */
     public function index() {
-
         return View::make('backend/capture/index');
-
     }
 
     public function get_devices($id) {

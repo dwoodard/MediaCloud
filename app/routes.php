@@ -11,9 +11,65 @@ App::bind('AssetRepository', 'Asset');
 
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
+Route::get('/test2', function () {
+    $dt = Carbon::now()->setTimezone('America/Denver');
+    $dt->tz('America/Toronto');
+    var_dump($dt);
+});
+
 Route::get('/test', function () {
 
+    // echo $dt = Carbon::now();
+    // var_dump($dt->year(1975)->month(5)->day(21)->hour(22)->minute(32)->second(5)->toDateTimeString());
+    // var_dump($dt->setDate(1975, 5, 21)->setTime(22, 32, 5)->toDateTimeString());
+    // dd(Carbon::now('America/Denver'));
+    // dd(Carbon::now()->tzName);
+    // dd(new Carbon('first day of January 2008', 'America/denver'));
 
+    // dd(Carbon::now()->subMinutes(2));
+    // dd(Carbon::createFromTime(14, 0, 0, 'america/denver'));
+    $tomorrow = Carbon::now()->addDay();
+
+    $vCalendar = new \Eluceo\iCal\Component\Calendar(URL::to('/'));
+
+// Create Event
+    $vEvent = new \Eluceo\iCal\Component\Event();
+
+
+// Add Info
+    $vEvent
+    ->setDtStart(new \DateTime())
+    ->setDtEnd(new \DateTime())
+    ->setorganizer(Sentry::getUser()->username)
+    // ->setNoTime(true)
+    ->setSummary('Today');
+// Add event to calendar
+    $vCalendar->addComponent($vEvent);
+
+// header('Content-Type: text/calendar; charset=utf-8');
+// header('Content-Disposition: attachment; filename="LP-203.ics"');
+
+echo $vCalendar->render();
+
+    var_dump($vCalendar);
+var_dump($vEvent);
+
+
+
+
+// printf("%s", Carbon::now()->toDateTimeString());
+
+// echo "<br>";
+// function dateToCal($timestamp) {
+//     return date('Ymd\THis\Z', $timestamp);
+// }
+// echo dateToCal(time());
+
+// function escapeString($string) {
+//     return preg_replace('/([\,;])/','\\\$1', $string);
+// }
+
+    // echo date('Ymd\THis\Z');
 });
 
 
