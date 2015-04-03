@@ -22,25 +22,16 @@
                 <div class="col-sm-11 col-sm-offset-1">
                     <h3>Add Capture Agent</h3>
                 </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                 <div class="form-group">
+                    <label for="captureIP" class="col-sm-2 control-label">IP Address</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="captureName" placeholder="Name">
+                        <input type="text" class="form-control" id="captureIP" name="captureIP" placeholder="0.0.0.0">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="captureIp" class="col-sm-2 control-label">Password</label>
+                    <label for="captureLocation" class="col-sm-2 control-label">Location</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="captureIp" name="captureIp" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
+                        <input type="text" class="form-control" id="captureLocation" name="captureLocation" placeholder="LP-203">
                     </div>
                 </div>
                 <div class="form-group">

@@ -17,8 +17,7 @@ Route::get('/test2', function () {
     var_dump($dt);
 });
 
-Route::get('/test', function () {
-
+Route::get('/ca/LP-203.ics', function () {
     // echo $dt = Carbon::now();
     // var_dump($dt->year(1975)->month(5)->day(21)->hour(22)->minute(32)->second(5)->toDateTimeString());
     // var_dump($dt->setDate(1975, 5, 21)->setTime(22, 32, 5)->toDateTimeString());
@@ -28,7 +27,7 @@ Route::get('/test', function () {
 
     // dd(Carbon::now()->subMinutes(2));
     // dd(Carbon::createFromTime(14, 0, 0, 'america/denver'));
-    $tomorrow = Carbon::now()->addDay();
+    // $tomorrow = Carbon::now()->addDay();
 
     $vCalendar = new \Eluceo\iCal\Component\Calendar(URL::to('/'));
 
@@ -42,7 +41,7 @@ Route::get('/test', function () {
     ->setDtEnd(new \DateTime())
     ->setorganizer(Sentry::getUser()->username)
     // ->setNoTime(true)
-    ->setSummary('Today');
+    ->setSummary('TItle');
 // Add event to calendar
     $vCalendar->addComponent($vEvent);
 
@@ -51,8 +50,8 @@ Route::get('/test', function () {
 
 echo $vCalendar->render();
 
-    var_dump($vCalendar);
-var_dump($vEvent);
+//     var_dump($vCalendar);
+// var_dump($vEvent);
 
 
 

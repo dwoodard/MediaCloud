@@ -1,10 +1,10 @@
 <?php
-// 2015_04_02_202956_create_calendar_table.php
+// 2015_04_02_202956_create_events_table.php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCalendarTable extends Migration {
+class CreateEventsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,8 +13,10 @@ class CreateCalendarTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar', function(Blueprint $table) {
+		Schema::create('events', function(Blueprint $table) {
 			$table->increments('id');
+			$table->integer('ca_id');
+			$table->integer('user_id');
 			$table->string('location');
 			$table->date('startDate');
 			$table->date('endDate');
@@ -31,7 +33,7 @@ class CreateCalendarTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar');
+		Schema::drop('events');
 	}
 
 }
