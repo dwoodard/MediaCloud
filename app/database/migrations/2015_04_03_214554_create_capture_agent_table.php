@@ -12,7 +12,13 @@ class CreateCaptureAgentTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('capture_agents', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('ip');
+			$table->string('location');
+			$table->string('description');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +28,7 @@ class CreateCaptureAgentTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('capture_agents');
 	}
 
 }
