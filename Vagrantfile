@@ -4,13 +4,13 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-Vagrant.require_plugin 'vagrant-cachier'
+# Vagrant.require_plugin 'vagrant-cachier'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
-	config.cache.enable :apt
-	config.cache.enable :composer
+	# config.cache.enable :apt
+	# config.cache.enable :composer
 
     config.vm.box = "base"
     config.vm.network "private_network", ip: "33.33.33.10"
@@ -32,11 +32,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Install 'vagrant-cachier' via command line:
     ########### vagrant plugin install vagrant-cachier
-	if Vagrant.has_plugin?("vagrant-cachier")
-	config.cache.auto_detect = true
-		# If you are using VirtualBox, you might want to enable NFS for shared folders
-	    config.vm.provision :shell, :path => "install.sh"
-	end
+	
+	# if Vagrant.has_plugin?("vagrant-cachier")
+	# config.cache.auto_detect = true
+	# 	# If you are using VirtualBox, you might want to enable NFS for shared folders
+	#     config.vm.provision :shell, :path => "install.sh"
+	# end
+	
+
+	config.vm.provision :shell, :path => "install.sh"
 
 
 end

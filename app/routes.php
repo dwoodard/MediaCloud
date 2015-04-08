@@ -11,6 +11,34 @@ App::bind('AssetRepository', 'Asset');
 
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
+
+Route::get('/test', function () {
+    // return CaptureAgent::all();
+    return CalendarEvent::all();
+});
+
+Route::get('/test-ca', function () {
+
+    $ca = new CaptureAgent;
+    $ca->ip          = '1.2.3.4';
+    $ca->location    = 'LP-203';
+    $ca->save();
+
+});
+
+Route::get('/test-ce', function () {
+
+    $ce = new CalendarEvent;
+    $ce->ca_id = '1.2.3.4';
+    $ce->user_id = '12';
+    $ce->location = '12';
+    $ce->startDate = Carbon::now();
+    $ce->endDate = Carbon::now()->addMinute(1);
+    $ce->save();
+
+    return CalendarEvent::all();
+});
+
 Route::get('/test2', function () {
     $dt = Carbon::now()->setTimezone('America/Denver');
     $dt->tz('America/Toronto');
@@ -48,7 +76,7 @@ Route::get('/ca/LP-203.ics', function () {
 // header('Content-Type: text/calendar; charset=utf-8');
 // header('Content-Disposition: attachment; filename="LP-203.ics"');
 
-echo $vCalendar->render();
+    echo $vCalendar->render();
 
 //     var_dump($vCalendar);
 // var_dump($vEvent);
@@ -107,6 +135,8 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     Route::group(array('prefix' => 'capture'), function () {
         Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
         // Route::get('upload', array('as' => 'capture.upload', 'uses' => 'CaptureController@create'));
+        // Route::post('upload', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+        // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
         // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
         // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));
         // Route::post('{captureId}/edit', array('as' => 'capture.update', 'uses' => 'CaptureController@update')); //POST /admin/captures/{captureId}/edit

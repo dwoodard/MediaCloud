@@ -16,7 +16,6 @@ class CreateCaptureAgentTable extends Migration {
 			$table->increments('id');
 			$table->string('ip');
 			$table->string('location');
-			$table->string('description');
 			$table->timestamps();
 		});
 	}

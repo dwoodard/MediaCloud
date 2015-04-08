@@ -19,7 +19,30 @@ class CaptureController extends BaseController
      * @return Response
      */
     public function index() {
-        return View::make('backend/capture/index');
+        $data = [];
+        $captureAgents = CaptureAgent::all();
+        $calendarEvents = CalendarEvent::all();
+        // return $calendarEvents;
+        return View::make('backend/capture/index', compact('captureAgents'));
+    }
+
+
+    public function addEvent() {
+        $ce = new CalendarEvent;
+        $ce->ca_id = '';
+        $ce->user_id = '12';
+        $ce->location = '12';
+        $ce->startDate = Carbon::now();
+        $ce->endDate = Carbon::now()->addMinute(1);
+        $ce->save();
+
+    }
+
+    public function addCaptureAgent() {
+        $ca = new CaptureAgent;
+        $ca->ip          = '1.2.3.4';
+        $ca->location    = 'LP-203';
+        $ca->save();
     }
 
     public function get_devices($id) {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Tag
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Asset[] $assets
+ */
 class Tag extends Eloquent {
 	protected $guarded = array();
 

@@ -28,6 +28,8 @@ use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Asset[] $assets
  * @property-read \Illuminate\Database\Eloquent\Collection|\Collection[] $collections
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cartalyst\Sentry\Groups\Eloquent\Group[] $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Playlist[] $playlists
+ * @property-read \Illuminate\Database\Eloquent\Collection|\CollectionPlaylistAsset[] $cpa
  */
 class User extends SentryUserModel {
 	/**

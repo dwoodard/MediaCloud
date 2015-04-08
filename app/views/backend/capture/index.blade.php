@@ -51,11 +51,14 @@
 
             <div id="rooms" class="col-xs-12 col-lg-4 ">
                 <ul>
-                    <li class="device">
-                        <span>Room Name</span>
-                        <span>Config</span>
+
+                    @foreach ($captureAgents as $ca)
+                    <li class="device" data-ca-id="{{$ca->id}}">
+                        <span>{{$ca->location}}</span>
+                        <span><a target="_blank" href="http://{{$ca->ip}}/www"><i class="fa fa-cog"></i></a></span>
                         <span></span>
                     </li>
+                    @endforeach
                 </ul>
             </div>
 
