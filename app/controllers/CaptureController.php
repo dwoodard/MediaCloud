@@ -21,28 +21,61 @@ class CaptureController extends BaseController
     public function index() {
         $data = [];
         $captureAgents = CaptureAgent::all();
-        $calendarEvents = CalendarEvent::all();
         // return $calendarEvents;
         return View::make('backend/capture/index', compact('captureAgents'));
     }
 
+    /**
+     * Store a newly created test123 in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $validator = Validator::make($data = Input::all(), CaptureAgent::$rules);
+
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        CaptureAgent::create($data);
+
+        // return Redirect::route('test123s.index');
+    }
 
     public function addEvent() {
-        $ce = new CalendarEvent;
-        $ce->ca_id = '';
-        $ce->user_id = '12';
-        $ce->location = '12';
-        $ce->startDate = Carbon::now();
-        $ce->endDate = Carbon::now()->addMinute(1);
-        $ce->save();
+
+        //
+
+        if (Request::ajax())
+        {
+            return Input::all();
+        }
+        return "not ajax";
+
+        // $ce = new CalendarEvent;
+        // $ce->ca_id = '';
+        // $ce->user_id = '12';
+        // $ce->location = '12';
+        // $ce->startDate = Carbon::now();
+        // $ce->endDate = Carbon::now()->addMinute(1);
+        // $ce->save();
 
     }
 
     public function addCaptureAgent() {
-        $ca = new CaptureAgent;
-        $ca->ip          = '1.2.3.4';
-        $ca->location    = 'LP-203';
-        $ca->save();
+
+        if (Request::ajax())
+        {
+            $ca = new CaptureAgent;
+            $ca->ip          = Input::get('ip');
+            $ca->location    = Input::get('location');
+            $ca->save();
+            return $ca->toJson();
+        }
+        return "not ajax";
+
     }
 
     public function get_devices($id) {
@@ -51,27 +84,7 @@ class CaptureController extends BaseController
         return CaptureAgent::where('id', '=', $id)->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function store() {
-        $this->layout = "";
 
-        $capture = new Capture();
-        $capture->duration = (int)Input::get('duration');
-        $capture->userId = Auth::user()->id;
-        $capture->save();
-
-        $captureId = $capture->id;
-
-        $data = new stdClass();
-        $data->captureId = $captureId;
-        $data->duration = $capture->duration;
-        $data->userId = $capture->userId;
-        echo json_encode((object)$data);
-    }
 
     public function kaltura($token, $entryId) {
 

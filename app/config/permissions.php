@@ -68,10 +68,14 @@ return [
 			'permission' => 'CaptureController@index',
 			'label'      => 'Collections Index',
 			],
-			// [
-			// 'permission' => 'CaptureController@create',
-			// 'label'      => 'Capture Create',
-			// ],
+			[
+			'permission' => 'CaptureController@addEvent',
+			'label'      => 'Capture Admin Add Event',
+			],
+			[
+			'permission' => 'CaptureController@addCaptureAgent',
+			'label'      => 'Add Capture Agent',
+			],
 			// [
 			// 'permission' => 'CaptureController@store',
 			// 'label'      => 'Capture Store',

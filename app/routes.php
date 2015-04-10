@@ -69,7 +69,7 @@ Route::get('/ca/LP-203.ics', function () {
     ->setDtEnd(new \DateTime())
     ->setorganizer(Sentry::getUser()->username)
     // ->setNoTime(true)
-    ->setSummary('TItle');
+    ->setSummary('Title');
 // Add event to calendar
     $vCalendar->addComponent($vEvent);
 
@@ -135,7 +135,8 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     Route::group(array('prefix' => 'capture'), function () {
         Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
         // Route::get('upload', array('as' => 'capture.upload', 'uses' => 'CaptureController@create'));
-        // Route::post('upload', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+        Route::post('add-event', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+        Route::post('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
         // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
         // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
         // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));

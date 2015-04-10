@@ -17,7 +17,7 @@
 		"eluceo/ical": "dev-master"
 	},
 	"require-dev": {
-		"way/generators": "3",
+		"way/generators": "2.6.1",
 		"barryvdh/laravel-ide-helper": "1.11.4"
 	},
 	"autoload": {
