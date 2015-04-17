@@ -65,7 +65,7 @@
                 </ul>
             </div>
 
-            <div class="col-xs-12 col-md-10">
+            <div id="event-calendar-container" class="col-xs-12 col-md-10">
                 <div id="event-calendar"></div>
             </div>
 
@@ -133,6 +133,14 @@
 
         $(document).ready(function() {
 
+            // Select Room
+            $('#rooms li').click(function(e){
+
+                console.log($(e.currentTarget).data('ca-id'))
+
+                // Load Calendar
+                // Ajax Calender data
+            })
 
 
 
@@ -173,10 +181,12 @@
 
 $('#event-calendar').fullCalendar({
     header: {
-        left: 'prev,next today',
+        left: 'prev,next',
         center: 'title',
-        right: 'month,agendaWeek,agendaFourDay'
+        right: 'today, month,agendaWeek'
     },
+    minTime: "6:00:00",
+    maxTime: "20:00:00",
     views: {
         agendaFourDay: {
             type: 'agenda',
