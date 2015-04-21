@@ -12,9 +12,10 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 
-Route::get('/test', function () {
+Route::get('/extron/events/{id}', function () {
     // return CaptureAgent::all();
-    return CalendarEvent::all();
+    return $events = CalendarEvent::all();
+    
 });
 
 Route::get('/test-ca', function () {

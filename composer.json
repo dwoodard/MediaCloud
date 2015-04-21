@@ -18,7 +18,8 @@
 	},
 	"require-dev": {
 		"way/generators": "2.6.1",
-		"barryvdh/laravel-ide-helper": "1.11.4"
+		"barryvdh/laravel-ide-helper": "1.11.4",
+		"fzaninotto/faker": "v1.3.0"
 	},
 	"autoload": {
 		"classmap": [
