@@ -45,22 +45,31 @@ class CaptureController extends BaseController
     }
 
     public function addEvent() {
+        // validate data
 
-        //
+        return CalendarEvent::create(Input::all());
+    }
 
-        if (Request::ajax())
-        {
-            return Input::all();
+    public function updateEvent($id) {
+        // validate data
+
+        $event = CalendarEvent::find($id);
+        if ($event) {
+            $event->update(Input::all());
+            return $event;
         }
-        return "not ajax";
+        return json_encode("event does not exist");
 
-        // $ce = new CalendarEvent;
-        // $ce->ca_id = '';
-        // $ce->user_id = '12';
-        // $ce->location = '12';
-        // $ce->startDate = Carbon::now();
-        // $ce->endDate = Carbon::now()->addMinute(1);
-        // $ce->save();
+        // return CalendarEvent::create(Input::all());
+    }
+
+    public function deleteEvent($id) {
+        $event = CalendarEvent::find($id);
+        if ($event) {
+            $event->delete();
+            return $event;
+        }
+        return json_encode("event does not exist");
 
     }
 

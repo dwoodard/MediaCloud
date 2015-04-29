@@ -12,10 +12,9 @@ App::bind('AssetRepository', 'Asset');
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
 
-Route::get('/extron/events/{id}', function () {
+Route::get('/extron/events/{id}', function ($id) {
     // return CaptureAgent::all();
-    return $events = CalendarEvent::all();
-    
+    return $events = CalendarEvent::where('ca_id', '=', $id)->get();
 });
 
 Route::get('/test-ca', function () {
@@ -132,18 +131,9 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
         Route::delete('{assetId}/delete', array('as' => 'asset.delete', 'uses' => 'AssetsController@destroy'));
     });
 
-    # Capture Management
-    Route::group(array('prefix' => 'capture'), function () {
-        Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
-        // Route::get('upload', array('as' => 'capture.upload', 'uses' => 'CaptureController@create'));
-        Route::post('add-event', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
-        Route::post('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
-        // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
-        // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
-        // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));
-        // Route::post('{captureId}/edit', array('as' => 'capture.update', 'uses' => 'CaptureController@update')); //POST /admin/captures/{captureId}/edit
-        // Route::delete('{captureId}/delete', array('as' => 'capture.delete', 'uses' => 'CaptureController@destroy'));
-    });
+
+
+
 
     # User Management
     Route::group(array('prefix' => 'users'), function () {
@@ -178,7 +168,7 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     });
 
 
-# Collections Management
+    # Collections Management
     Route::group(array('prefix' => 'collections'), function () {
         Route::get('/', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
         Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
@@ -189,6 +179,43 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
         Route::post('{collectionId}/edit', array('as' => 'collection.update', 'uses' => 'CollectionsController@update')); //POST /admin/Collections/{collectionId}/edit
         Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
     });
+
+
+
+/**
+*
+*
+
+
+
+
+
+
+
+
+
+
+
+*
+*
+*/
+
+
+
+
+ # Calendar Events
+    Route::group(array('prefix' => 'events'), function () {
+        // Route::get('/', array('as' => 'capture', 'uses' => 'CalendarEventsController@index'));
+        // Route::get('upload', array('as' => 'capture.upload', 'uses' => 'CalendarEventsController@create'));
+        // Route::post('add-event', array('as' => 'capture.addEvent', 'uses' => 'CalendarEventsController@addEvent'));
+        // Route::post('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CalendarEventsController@addCaptureAgent'));
+        // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CalendarEventsController@deleteEvent'));
+        // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CalendarEventsController@store'));
+        // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CalendarEventsController@edit'));
+        // Route::post('{captureId}/edit', array('as' => 'capture.update', 'uses' => 'CalendarEventsController@update')); //POST /admin/captures/{captureId}/edit
+        // Route::delete('{captureId}/delete', array('as' => 'capture.delete', 'uses' => 'CalendarEventsController@destroy'));
+    });
+
 
     # Dashboard
     Route::get('/', array('as' => 'admin', 'uses' => 'DashboardController@getIndex'));
@@ -202,6 +229,9 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     Route::get('reports', array('as' => 'reports', 'uses' => 'ReportsController@index'));
     Route::get('help', array('as' => 'help', function () { return View::make("backend.pages.help"); }));
 });
+
+
+
 
 
 /*
@@ -238,6 +268,24 @@ Route::group(array('prefix' => 'auth'), function () {
     Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
 
 });
+
+    # Capture Management & CalendarEventsController Mixed
+    Route::group(array('prefix' => 'capture'), function () {
+
+        Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
+        Route::post('event', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+        Route::put('event/{id}', array('as' => 'capture.updateEvent', 'uses' => 'CaptureController@updateEvent'));
+        Route::delete('event/{id}', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
+
+        Route::get('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
+        // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
+        // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
+        // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));
+        // Route::post('{captureId}/edit', array('as' => 'capture.update', 'uses' => 'CaptureController@update')); //POST /admin/captures/{captureId}/edit
+        // Route::delete('{captureId}/delete', array('as' => 'capture.delete', 'uses' => 'CaptureController@destroy'));
+    });
+
+
 
 
 # Frontend Static Pages

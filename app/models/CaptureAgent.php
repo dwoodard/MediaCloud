@@ -9,11 +9,14 @@ class CaptureAgent extends Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		'ip' => 'required',
-		'location' => 'required'
+		'ip' => 'required|ip',
+		'location' => 'required|string'
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
+        'ip',
+        'location'
+    ];
 
 }
