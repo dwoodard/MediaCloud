@@ -231,7 +231,7 @@
 				var ca_id = Number($(e.currentTarget).data('ca-id'));
 
 				$.get('/extron/events/'+ca_id, function(data) {
-
+					
 					$(data).each(function() {
 
 						events.push({
@@ -260,6 +260,7 @@
 			$('#form-add-capture-agent').submit(function(e) {
 				e.preventDefault();
 
+
 				var ip = $("#captureIP").val(),
 				location = $("#captureLocation").val(),
 				form = $("#form-add-capture-agent"),
@@ -283,7 +284,7 @@
 					newCA += '<a class="config" target="_blank" href="' + data.ip + '/www"> <i class="fa fa-cog"></i> </a>'
 					newCA += '</li>';
 
-					$('#btnAddCapture').trigger('click')
+					$('#btnAddCapture').trigger('click');
 					$("#rooms ul").append(newCA);
 				});
 			});

@@ -75,6 +75,7 @@ class CaptureController extends BaseController
 
     public function addCaptureAgent() {
 
+    
         if (Request::ajax())
         {
             $ca = new CaptureAgent;

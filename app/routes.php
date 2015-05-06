@@ -277,7 +277,8 @@ Route::group(array('prefix' => 'auth'), function () {
         Route::put('event/{id}', array('as' => 'capture.updateEvent', 'uses' => 'CaptureController@updateEvent'));
         Route::delete('event/{id}', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
 
-        Route::get('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
+       // Route::get('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
+        Route::post('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
         // Route::delete('upload', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
         // Route::post('upload', array('as' => 'capture.store', 'uses' => 'CaptureController@store'));
         // Route::get('{captureId}/edit', array('as' => 'capture.edit', 'uses' => 'CaptureController@edit'));
