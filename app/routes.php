@@ -214,7 +214,7 @@ Route::group(array ('prefix' => 'auth'), function () {
 
 });
 
-<<<<<<< HEAD
+
     # Capture Management & CalendarEventsController Mixed
     Route::group(array('prefix' => 'capture'), function () {
 
@@ -232,10 +232,10 @@ Route::group(array ('prefix' => 'auth'), function () {
         // Route::delete('{captureId}/delete', array('as' => 'capture.delete', 'uses' => 'CaptureController@destroy'));
     });
 
-=======
+
 # Capture Management & CalendarEventsController Mixed
 Route::group(array ('prefix' => 'capture'), function () {
->>>>>>> 789e189d24ae365b17b150ef2ad85f53da988eaf
+
 
     Route::get('/', array ('as' => 'capture', 'uses' => 'CaptureController@index'));
     Route::post('event', array ('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
