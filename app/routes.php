@@ -53,20 +53,23 @@ Route::get('/ca/{name}.ics', function ($name) {
     foreach ($events as $event) {
         $start = new Carbon\Carbon($event->start);
         $end = new \Carbon\Carbon($event->end);
+
+//        dd($start);
         $user = User::find($event->user_id);
         // Create Event
         $vEvent = new \Eluceo\iCal\Component\Event();
         // Add Info
-        $vEvent->setDtStart(new DateTime($start->toDateTimeString()))
-               ->setDtEnd(new DateTime($end->toDateTimeString()))
-               ->setorganizer($user->username)
-               ->setSummary($event->title);
+        $vEvent->setDtStart(new DateTime($start->setTimezone('UTC')))
+            ->setDtEnd(new DateTime($end->setTimezone('UTC')))
+            ->setLocation($event->location,$event->title)
+            ->setorganizer($user->username)
+            ->setSummary($event->title);
         $vCalendar->addComponent($vEvent);
     }
 
     // Add event to calendar
-    header('Content-Type: text/calendar; charset=utf-8');
-    header('Content-Disposition: attachment; filename="' . $name . '.ics"');
+//    header('Content-Type: text/calendar; charset=utf-8');
+//    header('Content-Disposition: attachment; filename="' . $name . '.ics"');
     echo $vCalendar->render();
 });
 
