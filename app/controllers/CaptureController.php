@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class CaptureController extends BaseController
 {
 
-    public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
+    public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator)
+    {
         $this->asset = $asset;
         $this->uploadCreator = $uploadCreator;
     }
@@ -18,7 +19,8 @@ class CaptureController extends BaseController
      *
      * @return Response
      */
-    public function index() {
+    public function index()
+    {
         $data = [];
         $captureAgents = CaptureAgent::all();
         // return $calendarEvents;
@@ -34,53 +36,75 @@ class CaptureController extends BaseController
     {
         $validator = Validator::make($data = Input::all(), CaptureAgent::$rules);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-
         CaptureAgent::create($data);
-
-        // return Redirect::route('test123s.index');
+        $this->writeICal();
     }
 
-    public function addEvent() {
-        // validate data
-
-        return CalendarEvent::create(Input::all());
-    }
-
-    public function updateEvent($id) {
+    public function updateEvent($id)
+    {
         // validate data
 
         $event = CalendarEvent::find($id);
         if ($event) {
             $event->update(Input::all());
+            $this->writeICal();
             return $event;
         }
         return json_encode("event does not exist");
-
-        // return CalendarEvent::create(Input::all());
     }
 
-    public function deleteEvent($id) {
+    public function writeICal()
+    {
+        //Capture Agents iCal file - events.ics
+        $events = CalendarEvent::all();
+        $vCalendar = new \Eluceo\iCal\Component\Calendar(URL::to('/'));
+        foreach ($events as $event) {
+            $start = new Carbon\Carbon($event->start);
+            $end = new \Carbon\Carbon($event->end);
+            $user = User::find($event->user_id);
+            // Create Event
+            $vEvent = new \Eluceo\iCal\Component\Event();
+            // Add Info
+            $vEvent->setDtStart(new DateTime($start->setTimezone('UTC')))
+                ->setDtEnd(new DateTime($end->setTimezone('UTC')))
+                ->setLocation($event->location, $event->title)
+                ->setorganizer($user->username)
+                ->setSummary($event->title);
+            $vCalendar->addComponent($vEvent);
+        }
+        // Add event to calendar
+        File::put(base_path() . "/ics/events.ics", $vCalendar->render());
+    }
+
+    public function addEvent()
+    {
+        // validate data
+
+        return CalendarEvent::create(Input::all());
+    }
+
+    public function deleteEvent($id)
+    {
         $event = CalendarEvent::find($id);
         if ($event) {
             $event->delete();
+            $this->writeICal();
             return $event;
         }
         return json_encode("event does not exist");
 
     }
 
-    public function addCaptureAgent() {
+    public function addCaptureAgent()
+    {
 
-    
-        if (Request::ajax())
-        {
+        if (Request::ajax()) {
             $ca = new CaptureAgent;
-            $ca->ip          = Input::get('ip');
-            $ca->location    = Input::get('location');
+            $ca->ip = Input::get('ip');
+            $ca->location = Input::get('location');
             $ca->save();
             return $ca->toJson();
         }
@@ -88,15 +112,15 @@ class CaptureController extends BaseController
 
     }
 
-    public function get_devices($id) {
+    public function get_devices($id)
+    {
         $this->layout = "";
 
         return CaptureAgent::where('id', '=', $id)->get();
     }
 
-
-
-    public function kaltura($token, $entryId) {
+    public function kaltura($token, $entryId)
+    {
 
         $filePath = public_path() . "/kaltura/";
         $fileName = "$token.mp4";
