@@ -60,6 +60,7 @@ class CaptureController extends BaseController
     {
         //Capture Agents iCal file - events.ics
         $events = CalendarEvent::all();
+//        return $events;
         $vCalendar = new \Eluceo\iCal\Component\Calendar(URL::to('/'));
         foreach ($events as $event) {
             $start = new Carbon\Carbon($event->start);
@@ -82,8 +83,10 @@ class CaptureController extends BaseController
     public function addEvent()
     {
         // validate data
+        $data = CalendarEvent::create(Input::all());
+        $this->writeICal();
+        return $data;
 
-        return CalendarEvent::create(Input::all());
     }
 
     public function deleteEvent($id)

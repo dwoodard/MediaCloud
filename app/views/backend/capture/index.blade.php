@@ -66,8 +66,8 @@
 				<h3>Impersonate</h3>
 				<div class="lookUpUser">
 					<label for="owner">User: </label>
-					<input id="owner" type="text" class="typeahead">
 					<label for="owner" id="userId"></label>
+					<input id="owner" type="text" class="typeahead">
 				</div>
 			</div>
 
@@ -207,6 +207,7 @@
 
 	<script>
 		$(document).ready(function () {
+			Manage.userId = {{Sentry::getUser()->id}};
 			// Submit Form
 			$('#form-add-capture-agent').submit(function (e) {
 				e.preventDefault();
@@ -300,16 +301,29 @@
 				}
 			});
 
-			$('#owner').focus()
+			function updateUserId(){
+				if($("#owner").val().length == 0){
+					console.log
+					$("#userId").text(Manage.userId);
+					$('#event-calendar').attr('data-user-id', Manage.userId)
+				}else{
+//					$("#userId").text();
+//					$('#event-calendar').attr('data-user-id', Manage.userId)
+				}
+			}
+
+			$('#owner')
 					.keypress(function (e) {
 						var code = e.keyCode || e.which;
 						if (code == 13) { //Enter keycode
 							e.preventDefault();
+							updateUserId();
 						}
 					})
-					.on('focus', function () {
-						$("userId").text('');
-						$('#event-calendar').attr('data-user-id', "")
+					.on('focus, blur', function (e, i) {
+						console.log(e, this, $(this));
+						updateUserId();
+
 					})
 		});
 	</script>
