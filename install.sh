@@ -199,3 +199,13 @@ sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
 sudo service apache2 restart
+
+
+echo "------------------ FTP SETUP. ------------------"
+sudo apt-get install vsftpd
+# sudo sed -i "s/.*#chroot_local_user=YES/chroot_local_user=YES/" /etc/vsftpd.conf
+sudo mkdir /vagrant/ics
+sudo chmod a-w /vagrant/ics/
+sudo chown ftp:ftp /vagrant/ics/
+sudo usermod -d /vagrant/ics ftp
+sudo /etc/init.d/vsftpd restart

@@ -18,3 +18,4 @@ composer.lock
 /server.pem
 /server.cert
 /public/jobs/*
+/ics/*.ics

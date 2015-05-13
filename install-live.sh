@@ -180,3 +180,11 @@ sudo service supervisord start
 sudo service apache2 restart
 
 
+echo "------------------ FTP SETUP. ------------------"
+sudo apt-get install vsftpd
+sudo sed -i "s/.*#chroot_local_user=YES/chroot_local_user=YES/" /etc/vsftpd.conf
+sudo mkdir /opt/MediaCloud/ics
+sudo chmod a-w /opt/MediaCloud/ics/
+sudo chown ftp:ftp /opt/MediaCloud/ics/
+sudo usermod -d /opt/MediaCloud/ics ftp
+sudo /etc/init.d/vsftpd restart
