@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class CaptureController extends BaseController
 {
 
-    public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator) {
+    public function __construct(AssetRepository $asset, UploadCreatorService $uploadCreator)
+    {
         $this->asset = $asset;
         $this->uploadCreator = $uploadCreator;
     }
@@ -18,60 +19,111 @@ class CaptureController extends BaseController
      *
      * @return Response
      */
-    public function index() {
-
-        return "index";
-
-        // if(!Auth::check())
-        // {
-        //     return URL::to('/login');
-        // }
-
-        // $curl = new Curl();
-        // $curl->create('https://media.weber.edu/api/schedule.php?username=gtuck'); //Add Auth::user()->username in place of gtuck
-        // $curl->options(array(CURLOPT_SSL_VERIFYPEER => 0));
-
-        // $schedules = json_decode($curl->execute());
-
-//        var_dump();
-//        var_dump($schedules);
-
-//        var_dump(CaptureAgent::all());
-        // $this->layout->title = "Capture";
-        // $this->layout->content = View::make('capture.index')
-        //     ->with('capture_agents', CaptureAgent::all())
-        //     ->with('schedules', $schedules);
+    public function index()
+    {
+        $data = [];
+        $captureAgents = CaptureAgent::all();
+        // return $calendarEvents;
+        return View::make('backend/capture/index', compact('captureAgents'));
     }
 
-    public function get_devices($id) {
+    /**
+     * Store a newly created test123 in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $validator = Validator::make($data = Input::all(), CaptureAgent::$rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        CaptureAgent::create($data);
+        $this->writeICal();
+    }
+
+    public function updateEvent($id)
+    {
+        // validate data
+
+        $event = CalendarEvent::find($id);
+        if ($event) {
+            $event->update(Input::all());
+            $this->writeICal();
+            return $event;
+        }
+        return json_encode("event does not exist");
+    }
+
+    public function writeICal()
+    {
+        //Capture Agents iCal file - events.ics
+        $events = CalendarEvent::all();
+//        return $events;
+        $vCalendar = new \Eluceo\iCal\Component\Calendar(URL::to('/'));
+        foreach ($events as $event) {
+            $start = new Carbon\Carbon($event->start);
+            $end = new \Carbon\Carbon($event->end);
+            $user = User::find($event->user_id);
+            // Create Event
+            $vEvent = new \Eluceo\iCal\Component\Event();
+            // Add Info
+            $vEvent->setDtStart(new DateTime($start->setTimezone('UTC')))
+                ->setDtEnd(new DateTime($end->setTimezone('UTC')))
+                ->setLocation($event->location, $event->title)
+                ->setorganizer($user->username)
+                ->setSummary($event->title);
+            $vCalendar->addComponent($vEvent);
+        }
+        // Add event to calendar
+        File::put(base_path() . "/ics/events.ics", $vCalendar->render());
+    }
+
+    public function addEvent()
+    {
+        // validate data
+        $data = CalendarEvent::create(Input::all());
+        $this->writeICal();
+        return $data;
+
+    }
+
+    public function deleteEvent($id)
+    {
+        $event = CalendarEvent::find($id);
+        if ($event) {
+            $event->delete();
+            $this->writeICal();
+            return $event;
+        }
+        return json_encode("event does not exist");
+
+    }
+
+    public function addCaptureAgent()
+    {
+
+        if (Request::ajax()) {
+            $ca = new CaptureAgent;
+            $ca->ip = Input::get('ip');
+            $ca->location = Input::get('location');
+            $ca->save();
+            return $ca->toJson();
+        }
+        return "not ajax";
+
+    }
+
+    public function get_devices($id)
+    {
         $this->layout = "";
 
         return CaptureAgent::where('id', '=', $id)->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function store() {
-        $this->layout = "";
-
-        $capture = new Capture();
-        $capture->duration = (int)Input::get('duration');
-        $capture->userId = Auth::user()->id;
-        $capture->save();
-
-        $captureId = $capture->id;
-
-        $data = new stdClass();
-        $data->captureId = $captureId;
-        $data->duration = $capture->duration;
-        $data->userId = $capture->userId;
-        echo json_encode((object)$data);
-    }
-
-    public function kaltura($token, $entryId) {
+    public function kaltura($token, $entryId)
+    {
 
         $filePath = public_path() . "/kaltura/";
         $fileName = "$token.mp4";

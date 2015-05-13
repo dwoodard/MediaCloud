@@ -10,6 +10,7 @@
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Asset[] $assets
  * @property-read \Illuminate\Database\Eloquent\Collection|\Collections[] $collections
+ * @property-read \Illuminate\Database\Eloquent\Collection|\User[] $users
  */
 class Playlist extends Eloquent {
 	protected $guarded = array();

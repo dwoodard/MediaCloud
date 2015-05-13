@@ -10,8 +10,6 @@
 	$( document ).ready(function( $ ) {
         $('.typeahead').autocomplete({
             source: function(request, response){
-
-
                 $.ajax({
                     url: "/v1/users",
                     data: {search: request.term, fields:'username,id'},
@@ -21,13 +19,11 @@
                             return {
                                 id:item.id,
                                 username:item.username,
-                                label: item.id+": "+item.username ,
-                                value: item.username,
-
+                                label: item.id+": "+item.username,
+                                value: item.username
                             }
                         }));
-                    },
-
+                    }
                 });
             },
             select: function(event,ui){
@@ -39,7 +35,6 @@
         function showDropzone(){
             $(".btn-getUserInfo").text("got it");
             $("#uploads-area").removeClass('hide');
-
         }
 
 
@@ -106,15 +101,6 @@
                 });
             }
         };
-
-
-
-
-
-
-
-
-
 	});
  </script>
 @stop
@@ -140,7 +126,7 @@
 
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <div class="form-group">
             <div class="lookUpUser">
                 <label class="control-label col-md-3">Owner</label>
@@ -150,7 +136,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
 
     </div>
 </div>

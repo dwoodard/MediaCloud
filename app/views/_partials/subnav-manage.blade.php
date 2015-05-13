@@ -97,9 +97,22 @@
 			<li>
 				<a id="subnav-btn-browse" href="#"><i class="fa fa-folder"></i> <span class="nav-text">Browse</span></a>
 			</li>
-			<li>
-				<a id="subnav-btn-capture" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>
-			</li>
+<!--            <li>-->
+<!--                <a id="subnav-btn-capture" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Capture</span></a>-->
+<!--            </li>-->
+
+                <li class="dropdown keep-open">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                         <i class="fa fa-camera"></i>  <span class="nav-text">Capture</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a id="subnav-btn-capture" href="#"><i class="fa fa-camera"></i> <span class="nav-text">Screen Capture (Java Applet)</span></a></li>
+                        <li><a href="/manage/schedule-capture"><i class="fa fa-calendar"></i> <span class="nav-text">Schedule Capture (Extron)</span></a></li>
+                    </ul>
+
+                </li>
+
+
 			<li>
 				<a id="subnav-btn-files" href="/manage/files"><i class="fa fa-files-o"></i> <span class="nav-text">Files</span></a>
 			</li>

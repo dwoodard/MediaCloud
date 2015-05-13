@@ -63,6 +63,37 @@ return [
 		],
 
 
+	'Capture Agents' => [
+			[
+			'permission' => 'CaptureController@index',
+			'label'      => 'Collections Index',
+			],
+			[
+			'permission' => 'CaptureController@addEvent',
+			'label'      => 'Capture Admin Add Event',
+			],
+			[
+			'permission' => 'CaptureController@addCaptureAgent',
+			'label'      => 'Add Capture Agent',
+			],
+			// [
+			// 'permission' => 'CaptureController@store',
+			// 'label'      => 'Capture Store',
+			// ],
+			// [
+			// 'permission' => 'CaptureController@edit',
+			// 'label'      => 'Capture Edit',
+			// ],
+			// [
+			// 'permission' => 'CaptureController@update',
+			// 'label'      => 'Capture Update',
+			// ],
+			// [
+			// 'permission' => 'CaptureController@destroy',
+			// 'label'      => 'Capture Destroy',
+			// ],
+		],
+
 	'Collections' => [
 			[
 			'permission' => 'CollectionsController@index',

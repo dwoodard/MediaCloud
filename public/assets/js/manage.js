@@ -4,7 +4,7 @@ var Manage = {
 	userId: "",
 	init: function (collectionId, userId) {
 
-		$('body').addClass('cbp-spmenu-push cbp-spmenu-push-toright')
+		$('body').addClass('cbp-spmenu-push cbp-spmenu-push-toright');
 
 		this.userId = userId;
 		this.dropzoneInit();
@@ -131,7 +131,7 @@ var Manage = {
 		});
 
 		$(".close").on("click", function (e) {
-			var cbp_menu = $(this).closest('.cbp-spmenu')[0]
+			var cbp_menu = $(this).closest('.cbp-spmenu')[0];
 			switch (cbp_menu.id) {
 				case "collections-list":
 				$(this).closest(".cbp-spmenu").removeClass("cbp-spmenu-open");
@@ -262,13 +262,13 @@ addPlaylist: function () {
 	})
 
 	$("#btn-cancel-new-playlist").on('click', function (e) {
-		$("#input-new-playlist").val("Playlist Name")
+		$("#input-new-playlist").val("Playlist Name");
 		$("#newPlaylist").hide()
 	});
 
 	$("#btn-save-new-playlist").on('click', function (e) {
-		Manage.submitNewPlaylist();
-	})
+        Manage.submitNewPlaylist();
+    });
 
 	$("#input-new-playlist").keypress(function (e) {
 		if (e.which == 13) {
@@ -340,24 +340,24 @@ addFolderInit: function () {
 },
 
 setCurrentAssetView: function (id) {
-	$("#asset-view").addClass("cbp-spmenu-open")
+	$("#asset-view").addClass("cbp-spmenu-open");
 
 	$.ajax({
 		url: "/v1/assets/" + id + "/asset"
 	}).done(function (data) {
 		Manage.data = data;
-		$("#asset-view").data('current-asset-id', id)
+		$("#asset-view").data('current-asset-id', id);
 
-		$("#current-asset-id").html(id)
-		$("#current-asset-title").html(data.title)
-		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id)
-		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/asset/" + id +   "' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
-		$("#current-asset-share-preview").attr("href", "/player/asset/"+id)
+		$("#current-asset-id").html(id);
+		$("#current-asset-title").html(data.title);
+		$("#current-asset-direct-link").val(window.location.origin + "/player/asset/"+ id);
+		$("#current-asset-embed-link").val("<iframe width='800px' height='600px' src='"+window.location.origin + "/asset/" + id +   "' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
+		$("#current-asset-share-preview").attr("href", "/player/asset/"+id);
 
 
 		/* textEdit() */
-		$('#current-asset-can-download').data("editable-data", "asset-"+id)
-		$('#current-asset-public').data("editable-data", "asset-"+id)
+		$('#current-asset-can-download').data("editable-data", "asset-"+id);
+		$('#current-asset-public').data("editable-data", "asset-"+id);
 
 
 		/* permissions */
@@ -366,9 +366,8 @@ setCurrentAssetView: function (id) {
 		var source = [];
 		for (var i = 0; i < keys.length; i++) {
 			source.push({"value":i, "text": keys[i], "can":permissions[keys[i]]})
-		};
-
-		var value =_.map(_.filter(source, function(item){ return item.can; }), function(i){return i.value })
+        }
+        var value =_.map(_.filter(source, function(item){ return item.can; }), function(i){return i.value })
 
 
 
@@ -400,13 +399,15 @@ setCurrentAssetView: function (id) {
 				$el.html(html);
 			},
 			url: function(params) {
-				var oldParamsValue = _.map(params.value, function(i){return parseInt(i)})
+				var oldParamsValue = _.map(params.value, function (i) {
+                    return parseInt(i)
+                });
 
 
 				newParams = {};
 
 				for (var i = 0; i < source.length; i++) {
-					console.log("FOR", oldParamsValue, source[i].value)
+					console.log("FOR", oldParamsValue, source[i].value);
 					newParams[source[i].text] = _.contains(oldParamsValue, source[i].value) ? 1 : 0
 				};
 
@@ -436,7 +437,7 @@ $('#current-asset-permissions').on('submit', function(e, params) {
 Manage.loadTags();
 Manage.shareSelect();
 
-$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>')
+$("#asset-player").html('<i class="fa fa-spinner fa-spin fa-5x"></i>');
 
 $.ajax({
 	url: "/player/asset/" + id
@@ -702,7 +703,7 @@ tagAsset: function () {
 	var tags;
 	$.ajax({
 		type: "GET",
-		url: "/manage/tags",
+		url: "/manage/tags"
 	}).done(function (data) {
 		tags = data;
 		$("#assetTags").tagit({
@@ -748,7 +749,7 @@ tagAsset: function () {
 	});
 
 
-},
+}
 
 
 }

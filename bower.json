@@ -23,7 +23,9 @@
     "underscore": "~1.6.0",
     "webshim": "~1.12.7",
     "dynatable": "~0.3.1",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "fullcalendar": "~2.3.1",
+    "moment": "~2.9.0"
   },
   "devDependencies": {
     "QUnit": "~1.11.0",

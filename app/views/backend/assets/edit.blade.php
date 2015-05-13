@@ -4,7 +4,7 @@
 
 
 {{Breadcrumbs::render('editAsset')}}
-<div class="page-header">    
+<div class="page-header">
     <h1>Edit Asset
         <div class="pull-right">
             <a href="{{ route('assets') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> Back</a>
@@ -179,7 +179,7 @@
      <label class="control-label col-md-3">Updated At</label>
      <div class="col-md-9 read-only">
         <!-- <input type="text" class="form-control" placeholder="Chee Kin"> -->
-        {{$asset->updated_at}}                       
+        {{$asset->updated_at}}
     </div>
 </div>
 </div>
@@ -193,7 +193,7 @@
 
 
         {{ link_to_route('assets', 'Cancel') }}
-    </div>    
+    </div>
 
 
 </div>

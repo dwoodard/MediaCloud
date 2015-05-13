@@ -8,12 +8,42 @@
 
 App::bind('AssetRepository', 'Asset');
 
-
 // Route::post('/test', array('uses' => 'ManageController@collection_delete'));
 
+Route::get('/extron/events/{id}', function ($id) {
+    // return CaptureAgent::all();
+    return $events = CalendarEvent::where('ca_id', '=', $id)->get();
+});
+
+Route::get('/test-ca', function () {
+
+    $ca = new CaptureAgent;
+    $ca->ip = '1.2.3.4';
+    $ca->location = 'LP-203';
+    $ca->save();
+
+});
+
 Route::get('/test', function () {
+    File::put(base_path() . "/ics/events.ics","this is a test");
+});
+Route::get('/test-ce', function () {
 
+    $ce = new CalendarEvent;
+    $ce->ca_id = '1.2.3.4';
+    $ce->user_id = '12';
+    $ce->location = '12';
+    $ce->startDate = Carbon::now();
+    $ce->endDate = Carbon::now()->addMinute(1);
+    $ce->save();
 
+    return CalendarEvent::all();
+});
+
+Route::get('/test2', function () {
+    $dt = Carbon::now()->setTimezone('America/Denver');
+    $dt->tz('America/Toronto');
+    var_dump($dt);
 });
 
 
@@ -80,8 +110,7 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
         Route::delete('{playlistId}/delete', array('as' => 'playlist.delete', 'uses' => 'PlaylistsController@destroy'));
     });
 
-
-# Collections Management
+    # Collections Management
     Route::group(array('prefix' => 'collections'), function () {
         Route::get('/', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
         Route::get('create', array('as' => 'collection.create', 'uses' => 'CollectionsController@create'));
@@ -93,9 +122,13 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
         Route::delete('{collectionId}/delete', array('as' => 'collection.delete', 'uses' => 'CollectionsController@destroy'));
     });
 
+    # Capture Management & CalendarEventsController Mixed
+    Route::group(array('prefix' => 'capture'), function () {
+        Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
+    });
+
     # Dashboard
     Route::get('/', array('as' => 'admin', 'uses' => 'DashboardController@getIndex'));
-
 
     Route::get('settings', array('as' => 'settings', 'uses' => 'SettingsController@getIndex'));
     Route::get('collections', array('as' => 'collections', 'uses' => 'CollectionsController@index'));
@@ -103,9 +136,10 @@ Route::group(array('before' => 'admin-auth|permissions', 'prefix' => 'admin'), f
     Route::get('queue', array('as' => 'queue', 'uses' => 'QueuesController@index'));
     Route::get('history', array('as' => 'history', 'uses' => 'HistoryController@index'));
     Route::get('reports', array('as' => 'reports', 'uses' => 'ReportsController@index'));
-    Route::get('help', array('as' => 'help', function () { return View::make("backend.pages.help"); }));
+    Route::get('help', array('as' => 'help', function () {
+        return View::make("backend.pages.help");
+    }));
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -142,18 +176,26 @@ Route::group(array('prefix' => 'auth'), function () {
 
 });
 
-
 # Frontend Static Pages
 
-Route::get('help', function () { return View::make('frontend.pages.help'); });
-Route::get('faq', function () { return View::make('frontend.pages.faq'); });
-Route::get('privacy', function () { return View::make('frontend.pages.privacy-policy'); });
-Route::get('terms', function () { return View::make('frontend.pages.terms-of-service'); });
-Route::get('about-us', function () { return View::make('frontend.pages.about-us'); });
+Route::get('help', function () {
+    return View::make('frontend.pages.help');
+});
+Route::get('faq', function () {
+    return View::make('frontend.pages.faq');
+});
+Route::get('privacy', function () {
+    return View::make('frontend.pages.privacy-policy');
+});
+Route::get('terms', function () {
+    return View::make('frontend.pages.terms-of-service');
+});
+Route::get('about-us', function () {
+    return View::make('frontend.pages.about-us');
+});
 
 Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
 Route::post('contact-us', 'ContactUsController@postIndex');
-
 
 # Capture
 Route::post('kaltura/{token}/{entryId}', array('as' => 'kaltura', 'uses' => 'CaptureController@kaltura'));
@@ -169,7 +211,6 @@ Route::group(array('prefix' => 'player'), function () {
     Route::get('collection/{id}', array('as' => 'collection', 'uses' => 'PlayerController@collection'));
 
 });
-
 
 #Asset File
 Route::group(array('prefix' => 'asset'), function () {
@@ -193,7 +234,6 @@ Route::group(array('prefix' => 'playlists'), function () {
 
 });
 
-
 # Media Manager
 //'before' => 'cas-login',
 Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function () {
@@ -201,6 +241,7 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function () {
     Route::get('collections/{id?}', array('as' => 'manage.collections', 'uses' => 'ManageController@collection'));
     Route::get('playlists/{collection_id}/{playlist_id}', array('as' => 'manage.playlists', 'uses' => 'ManageController@playlist'));
     Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
+    Route::get('schedule-capture', array('as' => 'manage.schedule-capture', 'uses' => 'ManageController@scheduleCapture'));
     Route::get('files', array('as' => 'manage.browse', 'uses' => 'ManageController@files'));
     Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 
@@ -209,7 +250,6 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function () {
     Route::get('context-menu/{type?}', array('as' => 'manage.store', 'uses' => 'ManageController@context_menu'));
 
     Route::post('sort/update', array('before' => 'cas-auth', 'uses' => 'ManageController@update_order_by_type'));
-
 
     Route::get('tags/{id?}', array('uses' => 'ManageController@tags'));
     Route::post('tag/add', array('uses' => 'ManageController@tag_add'));
@@ -230,8 +270,16 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function () {
 
     Route::delete('asset/destroy/{id}', array('before' => 'cas-auth', 'uses' => 'AssetsController@destroy'));
 
-});
+    # Capture Management & CalendarEventsController Mixed
+    Route::group(array('prefix' => 'capture'), function () {
+        Route::get('/', array('as' => 'capture', 'uses' => 'CaptureController@index'));
+        Route::post('event', array('as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+        Route::put('event/{id}', array('as' => 'capture.updateEvent', 'uses' => 'CaptureController@updateEvent'));
+        Route::delete('event/{id}', array('as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
+        Route::post('add-capture-agent', array('as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
+    });
 
+});
 
 Route::get('/', array('as' => 'home', function () {
     if (file_exists(base_path() . '/app/config/database.php')) {
@@ -256,7 +304,6 @@ Route::post('/app/install', array('as' => 'app/install', function () {
     }
 }));
 
-
 Route::get('login', array('before' => 'cas-login', function () {
     return Redirect::to('/');
 }));
@@ -264,7 +311,6 @@ Route::get('login', array('before' => 'cas-login', function () {
 Route::get('logout', array('before' => 'cas-logout', function () {
     return Redirect::to('/');
 }));
-
 
 Route::group(array('prefix' => 'v1'), function () {
     //cas-auth
@@ -283,4 +329,13 @@ Route::group(array('prefix' => 'v1'), function () {
     Route::get('collection/{id?}/{token?}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@collection'));
     // Route::get('cpa/{id}', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@cpa'));
     Route::get('test', array('before' => 'cas-auth', 'uses' => 'Controllers\Api\V1\ApiController@test'));
+
+    /*
+     * Capture Events
+     */
+    Route::post('capture/event', array('before' => 'cas-auth', 'as' => 'capture.addEvent', 'uses' => 'CaptureController@addEvent'));
+    Route::put('capture/event/{id}', array('before' => 'cas-auth', 'as' => 'capture.updateEvent', 'uses' => 'CaptureController@updateEvent'));
+    Route::delete('capture/event/{id}', array('before' => 'cas-auth', 'as' => 'capture.deleteEvent', 'uses' => 'CaptureController@deleteEvent'));
+    Route::post('capture/add-capture-agent', array('before' => 'cas-auth', 'as' => 'capture.addCaptureAgent', 'uses' => 'CaptureController@addCaptureAgent'));
+
 });

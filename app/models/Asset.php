@@ -23,6 +23,7 @@
  * @property-read \User $user
  * @property-read \Playlist $playlists
  * @property-read \Collection $collections
+ * @property-read \Illuminate\Database\Eloquent\Collection|\User[] $users
  */
 class Asset extends Eloquent implements AssetRepository {
 

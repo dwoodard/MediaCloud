@@ -26,10 +26,6 @@
 	<div id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-          <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <i class="fa fa-bars"></i>
-        </button> -->
         <a class="navbar-brand navbar-brand-size" href="/">
         	<img id="logo-brand" src="/assets/img/WSU_InstSig_horiz1.png" alt=""> <span>Media Cloud</span>
         </a>
@@ -80,6 +76,7 @@
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="/assets/js/dropzone.js"></script>
+    <script src="/bower/underscore/underscore.js"></script>
     <!-- / Manage.blade.php -->
 
     <!-- Page Scripts -->

@@ -98,7 +98,7 @@ echo "------------------ Restarting Apache ------------------"
 sudo service apache2 restart
 
 echo "------------------ Composer is the future. But you knew that did you Nice job. ------------------"
-sudo curl -sS https://getcomposer.org/installer | php
+sudo curl -sS https://getcomposer.org/installer | sudo php
 sudo mv composer.phar /usr/local/bin/composer
 
 
@@ -135,7 +135,7 @@ minfds=1024                  ; (min. avail startup file descriptors;default 1024
 minprocs=200                 ; (min. avail process descriptors;default 200)
 
 [program:laravel]
-command=php artisan queue:listen --timeout=14400
+command=sudo php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
 numprocs=2
 numprocs_start=2
@@ -199,3 +199,13 @@ sudo update-rc.d supervisord defaults
 
 sudo service supervisord start
 sudo service apache2 restart
+
+
+echo "------------------ FTP SETUP. ------------------"
+sudo apt-get install vsftpd
+# sudo sed -i "s/.*#chroot_local_user=YES/chroot_local_user=YES/" /etc/vsftpd.conf
+sudo mkdir /vagrant/ics
+sudo chmod a-w /vagrant/ics/
+sudo chown ftp:ftp /vagrant/ics/
+sudo usermod -d /vagrant/ics ftp
+sudo /etc/init.d/vsftpd restart

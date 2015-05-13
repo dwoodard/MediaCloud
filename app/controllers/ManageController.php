@@ -133,6 +133,14 @@ class ManageController extends PermissionsController {
 		return View::make('frontend.manage.files', $data);
 	}
 
+    public function scheduleCapture(){
+        $user = Sentry::getUser();
+        $data = array('user'=>$user);
+		$captureAgents = CaptureAgent::all();
+
+        return View::make('frontend.manage.schedule-capture', compact('captureAgents'));//$data);
+    }
+
 	public function user_assets(){
 		$user = Sentry::getUser();
 		$records = array();
