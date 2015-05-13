@@ -2,11 +2,8 @@
 
 echo "------------------ Good morning, Let's get to work. Installing now. ------------------"
 
-
-
-
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ MySQL time ------------------"
 #USERNAME
@@ -15,22 +12,22 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 echo "------------------ Installing base packages ------------------"
-sudo apt-get install -y vim curl wget python-software-properties unzip
+sudo apt-get install -y vim curl wget python-software-properties unzip >> /tmp/install.log 2>&1
 
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ We want the bleeding edge of PHP, right ------------------"
 sudo add-apt-repository -y ppa:ondrej/php5
 
 echo "------------------ Updating packages list ------------------"
-sudo apt-get update
+sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ Installing PHP-specific packages ------------------"
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core
+sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core >> /tmp/install.log 2>&1
 
 echo "------------------ Installing and configuring Xdebug ------------------"
-sudo apt-get install -y php5-xdebug
+sudo apt-get install -y php5-xdebug >> /tmp/install.log 2>&1
 
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
 xdebug.scream=1
@@ -44,8 +41,8 @@ sudo a2enmod rewrite
 
 
 echo "------------------ Enabling mod-xsendfile ------------------"
-sudo apt-get update
-sudo apt-get install libapache2-mod-xsendfile
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install libapache2-mod-xsendfile >> /tmp/install.log 2>&1
 sudo a2enmod xsendfile
 sudo invoke-rc.d apache reload
 
@@ -107,10 +104,10 @@ sudo mv composer.phar /usr/local/bin/composer
 
 
 echo "------------------ FFMPEG  ------------------"
-sudo apt-get install -y ffmpeg
-sudo apt-get update
-sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0
-sudo apt-get install -y libavcodec-extra-53
+sudo apt-get install -y ffmpeg >> /tmp/install.log 2>&1
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install -y libavcodec-extra-52 libavdevice-extra-52 libavfilter-extra-0 libavformat-extra-52 libavutil-extra-49 libpostproc-extra-51 libswscale-extra-0 >> /tmp/install.log 2>&1
+sudo apt-get install -y libavcodec-extra-53 >> /tmp/install.log 2>&1
 
 echo "------------------ Correct Time  ------------------"
 echo "America/Denver" | sudo tee /etc/timezone
@@ -118,13 +115,13 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 echo "------------------ INSTALL BEANSTALKD  ------------------"
 echo "------------------ INSTALL SUPERVISORD  ------------------"
-sudo apt-get update
-sudo apt-get install -y beanstalkd
+sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get install -y beanstalkd >> /tmp/install.log 2>&1
 sudo sed -i "s/.*#START.*/START yes/" /etc/default/beanstalkd
 
-sudo apt-get install -y python-setuptools
+sudo apt-get install -y python-setuptools >> /tmp/install.log 2>&1
 sudo easy_install supervisor
-sudo apt-get install -y supervisord
+sudo apt-get install -y supervisord >> /tmp/install.log 2>&1
 
 
 sudo tee -a /etc/supervisord.conf <<SUPERVISORD
@@ -141,9 +138,9 @@ minprocs=200                 ; (min. avail process descriptors;default 200)
 [program:laravel]
 command=sudo php artisan queue:listen --timeout=14400
 process_name=%(program_name)s%(process_num)s
-numprocs=10
-numprocs_start=10
-directory=/opt/MediaCloud/
+numprocs=2
+numprocs_start=2
+directory=/vagrant
 autostart=true
 autorestart=true
 exitcodes=2
@@ -180,6 +177,6 @@ sudo chown -R www-data:www-data /opt/MediaCloud
 
 
 sudo service supervisord start
-sudo service supervisord restart
+sudo service apache2 restart
 
 
