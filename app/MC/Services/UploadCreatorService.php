@@ -21,10 +21,19 @@ class UploadCreatorService
 
     protected $validator;
 
+    /**
+     * @param UploadValidator $validator
+     */
     public function __construct(UploadValidator $validator) {
         $this->validator = $validator;
     }
 
+    /**
+     * @param $userId
+     * @param UploadedFile $file
+     * @throws ValidationException
+     * @throws \MC\Exceptions\UploadFileNotAllowedException
+     */
     public function make($userId, UploadedFile $file) {
 
         // Upload file

@@ -19,3 +19,4 @@ composer.lock
 /server.cert
 /public/jobs/*
 /ics/*.ics
+/captures/*
