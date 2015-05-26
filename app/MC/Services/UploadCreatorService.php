@@ -34,10 +34,9 @@ class UploadCreatorService
      * @throws ValidationException
      * @throws \MC\Exceptions\UploadFileNotAllowedException
      */
-    public function make($userId, UploadedFile $file) {
+    public function make($userId, UploadedFile $file, $returnJson=true) {
 
         // Upload file
-
         $filename = $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
 
@@ -105,7 +104,9 @@ class UploadCreatorService
         $user = User::find($userId);
         $user->assets()->attach($assetId);
 
-        echo json_encode(array('user' => $user->toArray(), 'asset' => $asset->toArray()));
+        if($returnJson){
+            echo json_encode(array('user' => $user->toArray(), 'asset' => $asset->toArray()));
+        }
     }
 
 

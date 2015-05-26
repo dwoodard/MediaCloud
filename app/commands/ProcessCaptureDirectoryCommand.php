@@ -2,7 +2,7 @@
 
 use Illuminate\Console\Command;
 use MC\Services\UploadCreatorService;
-use MC\Services\UploadCreatorServiceInterface;
+use MC\Validators\UploadValidator;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -41,39 +41,41 @@ class ProcessCaptureDirectoryCommand extends Command
      */
     public function fire() {
 
-        //Process Capture directory
+        // Process Capture directory
         $videos = File::directories(base_path() . '/captures');
 
-        //get of Count directory count($videos)
-        //loop dir
+        // get of Count directory count($videos)
+        // loop dir
         foreach ($videos as $video) {
-
             $path_parts = pathinfo(realpath($video));
             $name = $path_parts['basename'];
             $video_data = File::get($video . '/' . $name . '.json');
-            //not real json file... fix it
+            // not real json file... fix it
             $video_data = str_replace(["var manifest ="], "", $video_data);
-            //convert to obj
+            // convert to obj
             $video_data = json_decode($video_data);
 
             // take name of video and get username's id & title set vars
             $username = $video_data->package->metadata->{'dc:creator'};
-//                dd($username);
+            // dd($username);
             $user = User::where('username', '=', $username)->get()->first();
             $title = $video_data->package->metadata->{'dc:title'};
             $fileName = $video_data->package->streams[0]->recordings[0]->name;
             $file = realpath($video) . '/' . $fileName;
-
-//            echo (" - ".$file . PHP_EOL );
-
-
-//            dd(array($file, $fileName, $title));
-
+            // echo (" - ".$file . PHP_EOL );
+            // dd(array($file, $fileName, $title));
             $uploadedFile = new UploadedFile($file, $fileName, 'video/mp4', filesize($file), 0, true);
-//            dd($uploadedFile);
+            // dd($uploadedFile);
 
-            $uploadCreator = new UploadCreatorService(new MC\Validators\UploadValidator());
-            $uploadCreator->make($user->id, $uploadedFile);
+            $uploadCreator = new UploadCreatorService(new UploadValidator());
+
+            if ($user == null) {
+                File::move($video, base_path() . '/tmp');
+            } else {
+                $uploadCreator->make($user->id, $uploadedFile, false);
+                File::deleteDirectory($video, false);
+            }
+
 
         }
 

@@ -59,10 +59,10 @@ class AssetsController extends PermissionsController{
 	public function store()
 	{
 		try{
-			$this->uploadCreator->make(Input::get("userId"), Input::file('file'));
-		}
-		catch(\MC\Exceptions\ValidationException $e){
-			return $e;
+                $this->uploadCreator->make(Input::get("userId"), Input::file('file'));
+            }
+            catch(\MC\Exceptions\ValidationException $e){
+                return $e;
 //      return Redirect::back()->withInput()->withErrors($e->getErrors());
 
 		}
