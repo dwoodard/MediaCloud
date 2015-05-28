@@ -188,3 +188,7 @@ sudo chmod a-w /opt/MediaCloud/ics/
 sudo chown ftp:ftp /opt/MediaCloud/ics/
 sudo usermod -d /opt/MediaCloud/ics ftp
 sudo /etc/init.d/vsftpd restart
+
+
+echo "------------------ TMUX. ------------------"
+sudo apt-get install tmux
