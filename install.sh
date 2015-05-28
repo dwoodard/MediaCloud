@@ -209,3 +209,7 @@ sudo chmod a-w /vagrant/ics/
 sudo chown ftp:ftp /vagrant/ics/
 sudo usermod -d /vagrant/ics ftp
 sudo /etc/init.d/vsftpd restart
+
+
+echo "------------------ TMUX. ------------------"
+sudo apt-get install tmux
