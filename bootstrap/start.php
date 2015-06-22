@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -12,6 +13,11 @@
 */
 
 $app = new Illuminate\Foundation\Application;
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +76,9 @@ require $framework.'/Illuminate/Foundation/start.php';
 | from the actual running of the application and sending responses.
 |
 */
+
+
+//Hack to allow for Iframe/Embed
+App::forgetMiddleware('Illuminate\Http\FrameGuard');
 
 return $app;
