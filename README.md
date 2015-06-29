@@ -31,6 +31,8 @@ Php Dependency manager (its all the new rage) :) Read up on it. **https://getcom
 
 ### _Great Now that we got our dependencies!!!_
 
+https://www.youtube.com/playlist?list=PLzk8AQZS663oDAb3DDlWwwMqjnSjZ_xg-
+
 ## Setup
 
 ### 1. Clone Repo
