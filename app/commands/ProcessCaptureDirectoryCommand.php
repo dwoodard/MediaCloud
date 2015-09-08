@@ -42,7 +42,7 @@ class ProcessCaptureDirectoryCommand extends Command
     public function fire() {
 
         // Process Capture directory
-        $videos = File::directories(base_path() . '/captures');
+        $videos = File::directories(base_path() . '/media/captures');
 
         // get of Count directory count($videos)
         // loop dir
