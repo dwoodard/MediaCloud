@@ -42,8 +42,10 @@ class ProcessCaptureDirectoryCommand extends Command
     public function fire() {
 
         // Process Capture directory
-        $videos = File::directories(base_path() . '/media/captures');
+        $temporary_captures = '/media/tmp/captures';
+        $capture_storage_path = '/media/captures';
 
+        $videos = File::directories(base_path() . $capture_storage_path);
         // get of Count directory count($videos)
         // loop dir
         foreach ($videos as $video) {
@@ -70,7 +72,7 @@ class ProcessCaptureDirectoryCommand extends Command
             $uploadCreator = new UploadCreatorService(new UploadValidator());
 
             if ($user == null) {
-                File::move($video, base_path() . '/tmp/' . $name);
+                File::move($video, base_path() . $temporary_captures . $name);
             } else {
                 $uploadCreator->make($user->id, $uploadedFile, false);
                 File::deleteDirectory($video, false);
