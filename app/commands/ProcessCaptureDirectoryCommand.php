@@ -72,7 +72,10 @@ class ProcessCaptureDirectoryCommand extends Command
             $uploadCreator = new UploadCreatorService(new UploadValidator());
 
             if ($user == null) {
-                File::move($video, base_path() . $temporary_captures . '/' . $name);
+                File::move(
+                    base_path() . $capture_storage_path . '/' . $name, //source
+                    base_path() . $temporary_captures . '/' . $name //destination
+                );
             } else {
                 $uploadCreator->make($user->id, $uploadedFile, false);
                 File::deleteDirectory($video, false);
