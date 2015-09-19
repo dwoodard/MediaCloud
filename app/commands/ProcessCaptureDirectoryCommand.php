@@ -56,7 +56,10 @@ class ProcessCaptureDirectoryCommand extends Command
             $video_data = str_replace(["var manifest ="], "", $video_data);
             // convert to obj
             $video_data = json_decode($video_data);
-
+            if($video_data == null){
+                $this->move_to_tmp($capture_storage_path, $name, $temporary_captures);
+                continue;
+            }
             // take name of video and get username's id & title set vars
             $username = $video_data->package->metadata->{'dc:creator'};
             // dd($username);
@@ -72,10 +75,7 @@ class ProcessCaptureDirectoryCommand extends Command
             $uploadCreator = new UploadCreatorService(new UploadValidator());
 
             if ($user == null) {
-                File::move(
-                    base_path() . $capture_storage_path . '/' . $name, //source
-                    base_path() . $temporary_captures . '/' . $name //destination
-                );
+                $this->move_to_tmp($capture_storage_path, $name, $temporary_captures);
             } else {
                 $uploadCreator->make($user->id, $uploadedFile, false);
                 File::deleteDirectory($video, false);
@@ -85,6 +85,17 @@ class ProcessCaptureDirectoryCommand extends Command
         }
 
 
+    }
+
+    /**
+     * @param $capture_storage_path
+     * @param $name
+     * @param $temporary_captures
+     */
+    private function move_to_tmp($capture_storage_path, $name, $temporary_captures) {
+        File::move(base_path() . $capture_storage_path . '/' . $name, //source
+            base_path() . $temporary_captures . '/' . $name //destination
+        );
     }
 
     /**
