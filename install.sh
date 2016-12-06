@@ -12,28 +12,59 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 echo "------------------ Installing base packages ------------------"
-sudo apt-get install -y vim curl wget python-software-properties unzip >> /tmp/install.log 2>&1
+sudo apt-get install -y vim >> /tmp/install.log 2>&1
+sudo apt-get install -y curl >> /tmp/install.log 2>&1
+sudo apt-get install -y wget >> /tmp/install.log 2>&1
+sudo apt-get install -y python-software-properties >> /tmp/install.log 2>&1
+sudo apt-get install -y unzip >> /tmp/install.log 2>&1
+sudo apt-get install -y git-core >> /tmp/install.log 2>&1
 
 echo "------------------ Updating packages list ------------------"
 sudo apt-get update >> /tmp/install.log 2>&1
 
 echo "------------------ We want the bleeding edge of PHP, right ------------------"
-sudo add-apt-repository -y ppa:ondrej/php5
+sudo add-apt-repository -y ppa:ondrej/php
+
 
 echo "------------------ Updating packages list ------------------"
 sudo apt-get update >> /tmp/install.log 2>&1
+sudo apt-get upgrade
+
+echo "------------------ Apache ------------------"
+sudo apt-get install -y apache2
+
+echo "------------------ Installing PHP ------------------"
+# sudo apt-get install -y php5
+sudo apt-get install -y php5.6
+sudo apt-get install -y php5.6-cli
 
 echo "------------------ Installing PHP-specific packages ------------------"
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core >> /tmp/install.log 2>&1
+sudo apt-get install -y libapache2-mod-php5.6
+sudo apt-get install -y php5.6-curl
+sudo apt-get install -y php5.6-gd
+sudo apt-get install -y php5.6-mcrypt
+sudo apt-get install -y php5.6-readline
+sudo apt-get install -y mysql-server-5.5
+sudo apt-get install -y php5.6-mysql
+sudo apt-get install -y php5.6-xml
+sudo apt-get install -y php5.6-simplexml
+sudo apt-get install -y php5.6-mbstring
+sudo apt-get install -y php5.6-gettext
 
-echo "------------------ Installing and configuring Xdebug ------------------"
-sudo apt-get install -y php5-xdebug >> /tmp/install.log 2>&1
 
-cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
-xdebug.scream=1
-xdebug.cli_color=1
-xdebug.show_local_vars=1
-EOF
+echo "------------------             ------------------"
+echo "------------------ PHP Version ------------------"
+echo "------------------             ------------------"
+php -v
+
+# echo "------------------ Installing and configuring Xdebug ------------------"
+# sudo apt-get install -y php5.6-xdebug >> /tmp/install.log 2>&1
+
+# cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
+# xdebug.scream=1
+# xdebug.cli_color=1
+# xdebug.show_local_vars=1
+# EOF
 
 
 echo "------------------ Enabling mod-rewrite ------------------"
@@ -49,8 +80,6 @@ sudo invoke-rc.d apache reload
 echo "------------------ Setting document root ------------------"
 sudo rm -rf /var/www
 sudo ln -fs /vagrant /var/www
-:
-
 
 echo "------------------ Set DocumentRoot to public ------------------"
 sudo sed -i "s#.*DocumentRoot /var/www/html#\tDocumentRoot /var/www/public#" /etc/apache2/sites-enabled/000-default.conf

@@ -198,6 +198,37 @@
 
 @yield('scripts')
 
+<script>
+		$(document).ready(function () {
+			$('.popupDelete').on("click",function (e) {
+				$("#Notify").remove();
+			})
+		});
+		
+		 
+	</script>
+
+
+<div id="Notify" class="modal show" role="dialog" style="background:rgba(0,0,0,.5)">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+	<div class="modal-content">
+		<div class="modal-header" style="background: khaki">
+		<h4 class="modal-title">Notice</h4>
+		</div>
+		<div class="modal-body">
+		<h2>We are moving</h2>
+		<p>Media Beta is being upgraded to the <a href="https://videos.weber.edu">Kaltura platform</a>. Uploads to media-beta.weber.edu will end on Dec 31st. For any questions or concerns about uploading content to the new platform, please contact <a href="mailto:bronsonjanes@weber.edu?Subject=Media%20Beta">Bronson Janes</a> or <a href="mailto:mmitchell@weber.edu?Subject=Media%20Beta">Mike Mitchell</a>.</p>
+
+		<p>Your links will still work and give you plenty of time to migrate, but to make the migration easier it would be best to start using <a href="https://videos.weber.edu">videos.weber.edu</a></p>
+
+		</div>
+		<div class="modal-footer">
+		<button type="button" class="popupDelete btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+	</div>
+</div>
 
 </body>
 <!-- END BODY -->
