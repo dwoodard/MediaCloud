@@ -243,7 +243,7 @@ Route::group(array('before' => 'cas-login', 'prefix' => 'manage'), function () {
     Route::get('browse/{id?}', array('as' => 'manage.browse', 'uses' => 'ManageController@browse'));
     Route::get('schedule-capture', array('as' => 'manage.schedule-capture', 'uses' => 'ManageController@scheduleCapture'));
     Route::get('files', array('as' => 'manage.browse', 'uses' => 'ManageController@files'));
-    Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
+    //Route::post('upload', array('as' => 'manage.store', 'uses' => 'ManageController@store'));
 
     Route::get('data/user_assets', array('uses' => 'ManageController@user_assets'));
 

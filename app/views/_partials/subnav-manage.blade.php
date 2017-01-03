@@ -27,7 +27,7 @@
 			</li>
 
 
-			<li class="dropdown keep-open">
+			<!--<li class="dropdown keep-open">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="fa fa-cloud-upload"></i> <span class="nav-text">Upload</span>
 				</a>
@@ -84,7 +84,7 @@
 
 
 				</ul>
-			</li>
+			</li>-->
 
 			<li>
 				<a id="subnav-btn-collections"  href="#">
